@@ -34,7 +34,19 @@ body {
 .logo-block {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.75rem;
+}
+
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f0c27b, #4b1248);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .logo-text .site-title {
@@ -56,6 +68,10 @@ body {
 
 .nav-links a:hover {
   color: var(--primary);
+}
+
+.cart-indicator {
+  font-size: 1.5rem;
 }
 
 .page {
