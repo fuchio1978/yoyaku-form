@@ -1,0 +1,286 @@
+:root {
+  --primary: #0b6d8c;
+  --accent: #f5a623;
+  --background: #f7f9fb;
+  --card: #ffffff;
+  --text: #1f2d3d;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', system-ui, -apple-system, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  margin: 0;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logo-text .site-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.logo-text .site-subtitle {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.nav-links a {
+  margin-right: 1rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+}
+
+.page-heading {
+  margin: 1.5rem 0 1rem;
+}
+
+.page-heading h1 {
+  margin: 0.35rem 0;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0;
+}
+
+.back-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.product-card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.price {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.product-figure {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.product-figure img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.product-meta {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.product-meta strong {
+  color: var(--muted);
+}
+
+.feature-list {
+  list-style: disc;
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--text);
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.panel h3 {
+  margin-top: 0;
+}
+
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.step {
+  padding: 0.75rem;
+  background: #eef2ff;
+  border-radius: 12px;
+  border: 1px solid #c7d2fe;
+  text-align: center;
+  font-weight: 700;
+  color: #4338ca;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 1rem;
+}
+
+.schedule-table th,
+.schedule-table td {
+  border: 1px solid var(--border);
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.schedule-table th {
+  background: #f8fafc;
+}
+
+.time-chip {
+  display: inline-block;
+  padding: 0.35rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin: 0.2rem;
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.reservation-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+label {
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #f8fafc;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.button {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  background: var(--primary);
+  color: white;
+  padding: 0.9rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: fit-content;
+  box-shadow: 0 8px 18px rgba(11, 109, 140, 0.25);
+}
+
+.button.secondary {
+  background: #0ea5e9;
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+
+  .page {
+    padding: 1rem;
+  }
+}

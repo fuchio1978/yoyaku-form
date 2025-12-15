@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-labelledby="title desc">
+  <title id="title">ふちLABO. ロゴ</title>
+  <desc id="desc">山と鳥、寺院をあしらった緑色の円形ロゴ</desc>
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bfffc2" />
+      <stop offset="100%" stop-color="#e8ffe5" />
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38b265" />
+      <stop offset="100%" stop-color="#1c8a3d" />
+    </linearGradient>
+  </defs>
+  <circle cx="180" cy="180" r="172" fill="url(#sky)" stroke="#1c8a3d" stroke-width="16" />
+  <path d="M60 214c42-70 82-94 120-94s78 24 120 94" fill="url(#green)" />
+  <path d="M180 120c-54 0-102 40-130 106 54-44 113-62 170-56 38 4 72 20 100 44-26-56-82-94-140-94z" fill="#2c9b52" opacity="0.9" />
+  <path d="M142 238h76l-10 62h-56z" fill="#fdfdfd" stroke="#1c8a3d" stroke-width="6" />
+  <path d="M168 168h24l20 70h-64z" fill="#fdfdfd" stroke="#1c8a3d" stroke-width="6" />
+  <path d="M150 172h60l-8-22h-44z" fill="#1c8a3d" />
+  <path d="M172 146h16l-8-18z" fill="#1c8a3d" />
+  <path d="M110 244h24v10h-24zm116 0h24v10h-24z" fill="#1c8a3d" />
+  <path d="M176 256c18 10 22 22 22 22h-44s4-12 22-22z" fill="#fdfdfd" stroke="#1c8a3d" stroke-width="6" />
+  <path d="M136 226h16v34h-16zm72 0h16v34h-16z" fill="#1c8a3d" />
+  <path d="M160 292c14-12 26-14 40 0" fill="none" stroke="#1c8a3d" stroke-width="6" stroke-linecap="round" />
+  <path d="M96 206c14-10 28-14 42-12m124 0c-14-10-28-14-42-12" fill="none" stroke="#e5ffe5" stroke-width="10" stroke-linecap="round" />
+  <path d="M106 188c18-46 52-72 74-76 22 4 56 30 74 76-42-30-106-30-148 0z" fill="#e5ffe5" opacity="0.9" />
+  <g fill="#1c8a3d">
+    <circle cx="120" cy="130" r="6" />
+    <circle cx="240" cy="130" r="6" />
+    <path d="M174 116c0-10 6-20 16-24-6 10-4 22 4 30" fill="none" stroke="#1c8a3d" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <g fill="#1c8a3d" opacity="0.9">
+    <path d="M92 118c12 0 16 6 16 6s-6 4-16 4-16-4-16-4 4-6 16-6z" />
+    <path d="M268 118c12 0 16 6 16 6s-6 4-16 4-16-4-16-4 4-6 16-6z" />
+    <path d="M214 104c18-6 26 6 26 6s-12 10-26 4c-14-6 0-10 0-10z" />
+  </g>
+  <g fill="#1c8a3d">
+    <path d="M140 294c-18 8-38 14-54 12 22-18 36-28 64-36" opacity="0.9" />
+    <path d="M220 270c28 8 42 18 64 36-16 2-36-4-54-12" opacity="0.9" />
+  </g>
+</svg>
