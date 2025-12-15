@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="280" viewBox="0 0 400 280" fill="none">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="280" rx="24" fill="url(#grad)" />
+  <text x="200" y="120" text-anchor="middle" font-size="28" font-family="'Noto Sans JP'" fill="#fff" font-weight="700">四柱手帖0</text>
+  <text x="200" y="165" text-anchor="middle" font-size="18" font-family="'Noto Sans JP'" fill="#fff">創刊号 特別価格</text>
+</svg>
