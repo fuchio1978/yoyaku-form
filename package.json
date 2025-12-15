@@ -1,0 +1,19 @@
+{
+  "name": "yoyaku-form",
+  "version": "1.0.0",
+  "description": "商品展示＆予約フォームです",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "echo \"No automated tests were run\""
+  },
+  "keywords": [
+    "reservation",
+    "booking",
+    "workshop"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
