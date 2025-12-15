@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo-block">
+        <div class="logo-mark">ミ</div>
+        <div class="logo-text">
+          <div class="site-title">ミニヤ工房</div>
+          <div class="site-subtitle">C'est en forgeant qu'on devient forgeron.</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="/">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#item">ITEM</a>
+      </nav>
+      <div class="cart-indicator" aria-label="カート">
+        🧺
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="page-heading">
+        <a class="back-link" href="{{backLink}}">← 戻る</a>
+        <h1>{{title}}</h1>
+        <p class="subtitle">{{subtitle}}</p>
+      </section>
+      <section>
+        {{content}}
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>since 2019 / ホロスコープと四柱推命のラボ</p>
+    </footer>
+  </body>
+</html>
