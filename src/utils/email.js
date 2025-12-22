@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const adminRecipient = process.env.RESERVATION_RECIPIENT || 'fuchi.labo.2025@gmail.com';
 
@@ -39,10 +40,52 @@ function sendReservationEmail(reservation) {
   const timestamp = Date.now();
   const adminFilePath = path.join(outbox, `reservation-admin-${timestamp}.txt`);
 
-  fs.writeFileSync(adminFilePath, adminContent, 'utf-8');
+  // まずは従来どおりファイルに書き出す
+  try {
+    fs.writeFileSync(adminFilePath, adminContent, 'utf-8');
+  } catch (e) {
+    console.error('Failed to write reservation email to outbox', e);
+  }
+
+  // 環境変数が設定されていれば Gmail 経由でメール送信を試みる
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPass = process.env.GMAIL_PASS;
+
+  if (gmailUser && gmailPass) {
+    try {
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+          user: gmailUser,
+          pass: gmailPass,
+        },
+      });
+
+      const subject = `【予約控え】${reservation.productTitle || ''} / ${reservation.name || ''}`.trim();
+
+      transporter
+        .sendMail({
+          from: gmailUser,
+          to: adminRecipient,
+          subject: subject || '【予約控え】新しい予約を受け付けました',
+          text: adminContent,
+        })
+        .then(() => {
+          // 成功時はログだけ出す（アプリの挙動には影響させない）
+          console.log('Reservation email sent to admin via Gmail');
+        })
+        .catch((err) => {
+          console.error('Failed to send reservation email via Gmail', err);
+        });
+    } catch (e) {
+      console.error('Failed to configure Gmail transporter', e);
+    }
+  }
 
   return {
-    transport: 'file',
+    transport: gmailUser && gmailPass ? 'gmail+file' : 'file',
     adminRecipient,
     adminFilePath,
   };

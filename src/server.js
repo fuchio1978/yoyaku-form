@@ -17,6 +17,7 @@ const { sendReservationEmail, recipient } = require('./utils/email');
 
 const publicDir = path.join(__dirname, '..', 'public');
 const contactsStorePath = path.join(__dirname, '..', 'storage', 'contacts.json');
+const outboxDir = path.join(__dirname, '..', 'storage', 'outbox');
 
 // /admin 配下を保護するための簡易Basic認証
 const ADMIN_USER = 'admin';
@@ -107,6 +108,30 @@ function saveContactMessage(contact) {
     fs.writeFileSync(contactsStorePath, JSON.stringify(all, null, 2));
   } catch (e) {
     console.error('Failed to save contact message', e);
+  }
+}
+
+function saveContactOutbox(contact) {
+  try {
+    fs.mkdirSync(outboxDir, { recursive: true });
+    const lines = [
+      '【お問い合わせ】',
+      '',
+      `■ お名前: ${contact.name || ''}`,
+      `■ メールアドレス: ${contact.email || ''}`,
+      `■ 電話番号: ${contact.phone || ''}`,
+      `■ オーダー番号: ${contact.orderNumber || ''}`,
+      '',
+      '▼ お問い合わせ内容',
+      contact.message || '',
+      '',
+      `受信日時: ${contact.createdAt || new Date().toISOString()}`,
+    ].join('\n');
+
+    const filePath = path.join(outboxDir, `contact-${Date.now()}.txt`);
+    fs.writeFileSync(filePath, lines, 'utf-8');
+  } catch (e) {
+    console.error('Failed to save contact outbox message', e);
   }
 }
 
@@ -1400,6 +1425,7 @@ const server = http.createServer(async (req, res) => {
       };
 
       saveContactMessage(contact);
+      saveContactOutbox(contact);
 
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(renderContactComplete(contact));
