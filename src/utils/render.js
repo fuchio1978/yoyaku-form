@@ -1,9 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 
-function renderPage({ title, content, subtitle = '', backLink = '/' }) {
+function renderPage({ title, content, subtitle = '', backLink = '/', hideHeading = false }) {
   const layoutPath = path.join(__dirname, '..', 'templates', 'layout.html');
-  const layout = fs.readFileSync(layoutPath, 'utf-8');
+  let layout = fs.readFileSync(layoutPath, 'utf-8');
+
+  if (hideHeading) {
+    layout = layout.replace(
+      /\s*<section class="page-heading">[\s\S]*?<\/section>/,
+      ''
+    );
+  }
+
   return layout
     .replace('{{title}}', title)
     .replace('{{subtitle}}', subtitle)

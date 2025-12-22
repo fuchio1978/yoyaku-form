@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ai-keshiki",
+    "title": "AI/景色セミナー",
+    "price": 49500,
+    "currency": "¥",
+    "image": "/aikeshiki.jpg",
+    "summary": "CANVA AIで作る四柱推命の景色",
+    "details": [
+      "3か月プラン／90分zoom×2回／LINEでの無制限フォロー"
+    ],
+    "duration": "3か月",
+    "typeLabel": "AI×四柱推命セミナー",
+    "requiresSchedule": true,
+    "personId": "chigusa",
+    "providerLabel": "担当：ちぐさ",
+    "displayOrder": 1
+  },
+  {
+    "id": "kantei-tetsu",
+    "title": "（オンライン）四柱推命鑑定",
+    "price": 16500,
+    "currency": "¥",
+    "image": "/kantei1.jpg",
+    "summary": "オンライン四柱推命鑑定",
+    "details": [
+      "60分オンライン（ZOOM）鑑定",
+      "1週間のフォローアップ（質問）期間含む",
+      "※鑑定動画データは付きません。"
+    ],
+    "duration": "",
+    "typeLabel": "オンライン四柱推命鑑定",
+    "displayOrder": 3,
+    "requiresSchedule": true,
+    "personId": "tetsuya",
+    "providerLabel": "担当：てつ先生"
+  },
+  {
+    "id": "kantei-tetsu2",
+    "title": "（オンライン）四柱推命鑑定　鑑定動画データ付き",
+    "price": 22000,
+    "currency": "¥",
+    "image": "/kantei2.jpg",
+    "summary": "オンライン四柱推命鑑定",
+    "details": [
+      "・60分オンライン（ZOOM）鑑定",
+      "・鑑定動画データつき",
+      "・1週間のフォローアップ（質問）期間含む"
+    ],
+    "duration": "",
+    "typeLabel": "オンライン四柱推命鑑定",
+    "requiresSchedule": true,
+    "personId": "tetsuya",
+    "providerLabel": "担当：てつ先生",
+    "displayOrder": 2
+  }
+]

@@ -1,27 +1,31 @@
 const fs = require('fs');
 const path = require('path');
 
-const recipient = process.env.RESERVATION_RECIPIENT || 'fuchi.labo.2025@gmail.com';
+const adminRecipient = process.env.RESERVATION_RECIPIENT || 'fuchi.labo.2025@gmail.com';
 
-function buildMessage(reservation) {
+function buildAdminMessage(reservation) {
   return [
-    `件名: 【予約確定】${reservation.productTitle} / ${reservation.date} ${reservation.timeSlot}`,
-    `宛先: ${recipient}`,
-    '',
-    '以下の内容で予約を受け付けました。',
+    '【管理者控え】予約を受け付けました。',
     '',
     `■ 予約商品: ${reservation.productTitle}`,
-    `■ 日時: ${reservation.date} ${reservation.timeSlot}`,
+    `■ 日時: ${reservation.date || '（未指定）'} ${reservation.timeSlot || ''}`.trim(),
     `■ お名前: ${reservation.name}`,
     `■ メール: ${reservation.email}`,
-    reservation.phone ? `■ 電話番号: ${reservation.phone}` : '',
     reservation.birthday ? `■ 生年月日: ${reservation.birthday}` : '',
-    reservation.address ? `■ ご住所: ${reservation.address}` : '',
+    reservation.birthTime ? `■ 生まれ時間: ${reservation.birthTime}` : '',
+    reservation.birthPlace ? `■ 出身地: ${reservation.birthPlace}` : '',
+    reservation.paymentMethod
+      ? `■ お支払方法: ${
+          reservation.paymentMethod === 'bank'
+            ? '銀行振込（振込手数料はお客様のご負担となります）'
+            : reservation.paymentMethod === 'paypal'
+            ? 'PAYPAL'
+            : reservation.paymentMethod
+        }`
+      : '',
     '',
     '▼ ご要望・メモ',
     reservation.notes || '（未入力）',
-    '',
-    'このメールはシステムから自動生成されています。'
   ]
     .filter(Boolean)
     .join('\n');
@@ -30,10 +34,18 @@ function buildMessage(reservation) {
 function sendReservationEmail(reservation) {
   const outbox = path.join(__dirname, '..', '..', 'storage', 'outbox');
   fs.mkdirSync(outbox, { recursive: true });
-  const content = buildMessage(reservation);
-  const filePath = path.join(outbox, `reservation-${Date.now()}.txt`);
-  fs.writeFileSync(filePath, content, 'utf-8');
-  return { recipient, filePath };
+
+  const adminContent = buildAdminMessage(reservation);
+  const timestamp = Date.now();
+  const adminFilePath = path.join(outbox, `reservation-admin-${timestamp}.txt`);
+
+  fs.writeFileSync(adminFilePath, adminContent, 'utf-8');
+
+  return {
+    transport: 'file',
+    adminRecipient,
+    adminFilePath,
+  };
 }
 
-module.exports = { sendReservationEmail, recipient };
+module.exports = { sendReservationEmail, recipient: adminRecipient };
