@@ -17,6 +17,7 @@ body {
   background: var(--background);
   color: var(--text);
   margin: 0;
+  overflow-x: hidden;
 }
 
 .site-header {
@@ -340,7 +341,8 @@ textarea {
   }
 
   .page {
-    padding: 1rem;
+    padding: 0.75rem 1rem 2rem;
+    max-width: 100%;
   }
 
   .product-layout {
@@ -354,7 +356,8 @@ textarea {
 
 @media (max-width: 480px) {
   .page {
-    padding: 0.75rem 0.75rem 2rem;
+    padding: 0.5rem 0.25rem 2rem;
+    max-width: 100%;
   }
 
   .page-heading {

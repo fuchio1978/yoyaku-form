@@ -18,6 +18,35 @@ const { sendReservationEmail, recipient } = require('./utils/email');
 const publicDir = path.join(__dirname, '..', 'public');
 const contactsStorePath = path.join(__dirname, '..', 'storage', 'contacts.json');
 const outboxDir = path.join(__dirname, '..', 'storage', 'outbox');
+const sheetsWebhookUrl =
+  process.env.SHEETS_WEBHOOK_URL ||
+  'https://script.google.com/macros/s/AKfycbyppWE01CZyQgz_S-8o2LfvOrKoTw4gX9IM97iNmsR0LCmGFIPlyPT07Xxp7XmM-VTzvw/exec';
+
+async function sendReservationToSheets(reservation) {
+  if (!sheetsWebhookUrl) return;
+
+  const payload = {
+    productTitle: reservation.productTitle || '',
+    date: reservation.date || '',
+    timeSlot: reservation.timeSlot || '',
+    name: reservation.name || '',
+    email: reservation.email || '',
+    notes: reservation.notes || '',
+  };
+
+  try {
+    // Node.js 18+ on Render ではグローバルfetchが利用可能
+    await fetch(sheetsWebhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (e) {
+    console.error('Failed to send reservation to Google Sheets webhook', e);
+  }
+}
 
 // /admin 配下を保護するための簡易Basic認証
 const ADMIN_USER = 'admin';
@@ -1168,6 +1197,7 @@ function handleReservation(body, res) {
 
   saveReservation(reservation);
   sendReservationEmail(reservation);
+  sendReservationToSheets(reservation);
 
   try {
     if (requiresSchedule && reservation.personId && reservation.date && reservation.timeSlot) {
