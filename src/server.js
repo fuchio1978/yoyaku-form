@@ -1192,6 +1192,8 @@ function handleReservation(body, res) {
   const reservation = {
     productId: product.id,
     productTitle: product.title,
+    price: typeof product.price === 'number' ? product.price : Number(product.price || 0),
+    currency: product.currency || '¥',
     personId,
     personName: personId ? getPersonName(personId) : '',
     date: requiresSchedule ? body.date : '',
