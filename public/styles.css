@@ -330,7 +330,10 @@ textarea {
 
 @media (max-width: 640px) {
   .site-header {
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .logo-mark {
