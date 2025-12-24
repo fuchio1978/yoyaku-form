@@ -27,11 +27,22 @@ async function sendReservationToSheets(reservation) {
 
   const payload = {
     productTitle: reservation.productTitle || '',
+    productPrice: typeof reservation.price === 'number' ? reservation.price : '',
+    productCurrency: reservation.currency || '',
+    productPriceFormatted:
+      reservation.currency && typeof reservation.price === 'number'
+        ? `${reservation.currency}${reservation.price.toLocaleString('ja-JP')}`
+        : '',
     date: reservation.date || '',
     timeSlot: reservation.timeSlot || '',
     name: reservation.name || '',
     email: reservation.email || '',
     notes: reservation.notes || '',
+    personName: reservation.personName || '',
+    birthday: reservation.birthday || '',
+    birthTime: reservation.birthTime || '',
+    birthPlace: reservation.birthPlace || '',
+    paymentMethod: reservation.paymentMethod || '',
   };
 
   try {
