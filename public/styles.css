@@ -388,13 +388,20 @@ textarea {
   }
 
   .schedule-table {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    max-width: 100%;
+    table-layout: fixed;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 0.4rem;
   }
 
   .time-chip {
-    padding: 0.3rem 0.55rem;
-    margin: 0.15rem;
-    font-size: 0.9rem;
+    padding: 0.25rem 0.45rem;
+    margin: 0.1rem;
+    font-size: 0.85rem;
   }
 
   .panel {
