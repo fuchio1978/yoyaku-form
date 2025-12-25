@@ -410,7 +410,27 @@ textarea {
     font-size: 0.85rem;
   }
 
+  /* 入力フォーム全体を少しコンパクトに */
   .panel {
-    padding: 1rem;
+    padding: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  textarea {
+    min-height: 96px;
+  }
+
+  /* 予約ボタンまわりの余白を増やしてフッターと重ならないように */
+  .button {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.75rem;
   }
 }
