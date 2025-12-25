@@ -364,6 +364,12 @@ textarea {
     margin: 0 0.75rem 1.5rem;
   }
 
+  .panel {
+    margin: 0 0.75rem 1.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .product-layout {
     grid-template-columns: 1fr;
     max-width: 100%;
