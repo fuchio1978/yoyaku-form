@@ -59,6 +59,32 @@ async function sendReservationToSheets(reservation) {
   }
 }
 
+async function sendContactToSheets(contact) {
+  if (!sheetsWebhookUrl) return;
+
+  const payload = {
+    kind: 'contact',
+    name: contact.name || '',
+    email: contact.email || '',
+    phone: contact.phone || '',
+    orderNumber: contact.orderNumber || '',
+    message: contact.message || '',
+    createdAt: contact.createdAt || new Date().toISOString(),
+  };
+
+  try {
+    await fetch(sheetsWebhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (e) {
+    console.error('Failed to send contact to Google Sheets webhook', e);
+  }
+}
+
 // /admin 配下を保護するための簡易Basic認証
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'fuchilabo2025';
@@ -1464,11 +1490,13 @@ const server = http.createServer(async (req, res) => {
         phone: body.phone || '',
         orderNumber: body.orderNumber || '',
         message: body.message || '',
+        agree: !!body.agree,
         createdAt: new Date().toISOString(),
       };
 
       saveContactMessage(contact);
       saveContactOutbox(contact);
+      sendContactToSheets(contact);
 
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(renderContactComplete(contact));
