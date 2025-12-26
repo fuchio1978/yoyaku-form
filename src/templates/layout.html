@@ -8,6 +8,11 @@
   </head>
   <body>
     <header class="site-header">
+      <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <a class="logo-block" href="/">
         <div class="logo-mark">
           <img src="/logo-fuchilabo.png" alt="ふちLABO. ロゴ" />
@@ -35,6 +40,15 @@
       </section>
     </main>
 
+    <nav id="mobile-nav" class="mobile-nav" aria-label="モバイルメニュー">
+      <div class="mobile-nav-inner">
+        <button class="mobile-nav-close" aria-label="メニューを閉じる">×</button>
+        <a href="/">HOME</a>
+        <a href="/about">ABOUT</a>
+        <a href="/contact">CONTACT</a>
+      </div>
+    </nav>
+
     <footer class="site-footer">
       <div class="footer-links">
         <a href="/legal">特定商取引法に関する表記</a>
@@ -45,5 +59,43 @@
       </div>
       <p>© ふちLABO. /自然の景色でみる四柱推命を探究するラボ</p>
     </footer>
+
+    <script>
+      (function () {
+        var toggle = document.querySelector('.menu-toggle');
+        var mobileNav = document.getElementById('mobile-nav');
+        var closeBtn = document.querySelector('.mobile-nav-close');
+
+        if (!toggle || !mobileNav) return;
+
+        function openNav() {
+          mobileNav.classList.add('open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeNav() {
+          mobileNav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+
+        toggle.addEventListener('click', function () {
+          if (mobileNav.classList.contains('open')) {
+            closeNav();
+          } else {
+            openNav();
+          }
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeNav);
+        }
+
+        mobileNav.addEventListener('click', function (e) {
+          if (e.target === mobileNav) {
+            closeNav();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
