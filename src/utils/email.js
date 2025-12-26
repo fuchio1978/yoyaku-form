@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 
 const adminRecipient = process.env.RESERVATION_RECIPIENT || 'fuchi.labo.2025@gmail.com';
 
@@ -47,45 +48,36 @@ function sendReservationEmail(reservation) {
     console.error('Failed to write reservation email to outbox', e);
   }
 
-  // 環境変数が設定されていれば Gmail 経由でメール送信を試みる
-  const gmailUser = process.env.GMAIL_USER;
-  const gmailPass = process.env.GMAIL_PASS;
+  // SendGrid API キーが設定されていれば、SendGrid 経由でメール送信を試みる
+  const sendgridApiKey = process.env.SENDGRID_API_KEY;
+  const fromAddress = process.env.SENDGRID_FROM || adminRecipient;
 
-  if (gmailUser && gmailPass) {
+  if (sendgridApiKey) {
     try {
-      const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-          user: gmailUser,
-          pass: gmailPass,
-        },
-      });
+      sgMail.setApiKey(sendgridApiKey);
 
       const subject = `【予約控え】${reservation.productTitle || ''} / ${reservation.name || ''}`.trim();
 
-      transporter
-        .sendMail({
-          from: gmailUser,
+      sgMail
+        .send({
           to: adminRecipient,
+          from: fromAddress,
           subject: subject || '【予約控え】新しい予約を受け付けました',
           text: adminContent,
         })
         .then(() => {
-          // 成功時はログだけ出す（アプリの挙動には影響させない）
-          console.log('Reservation email sent to admin via Gmail');
+          console.log('Reservation email sent to admin via SendGrid');
         })
         .catch((err) => {
-          console.error('Failed to send reservation email via Gmail', err);
+          console.error('Failed to send reservation email via SendGrid', err);
         });
     } catch (e) {
-      console.error('Failed to configure Gmail transporter', e);
+      console.error('Failed to configure SendGrid client', e);
     }
   }
 
   return {
-    transport: gmailUser && gmailPass ? 'gmail+file' : 'file',
+    transport: sendgridApiKey ? 'sendgrid+file' : 'file',
     adminRecipient,
     adminFilePath,
   };
