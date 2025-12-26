@@ -429,7 +429,7 @@ textarea {
   }
 
   .page {
-    padding: 0;
+    padding: 0.75rem 1rem 2rem;
     margin: 0;
     max-width: 100%;
     width: 100%;
@@ -458,7 +458,7 @@ textarea {
 
 @media (max-width: 480px) {
   .page {
-    padding: 0;
+    padding: 0.75rem 0.75rem 2rem;
     margin: 0;
     max-width: 100%;
     width: 100%;
