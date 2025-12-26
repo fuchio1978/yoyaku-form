@@ -425,6 +425,12 @@ textarea {
     max-width: 100%;
   }
 
+  /* iOS の date 入力だけ横方向に大きく見えないように少し小さめに調整 */
+  input[type='date'] {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.5rem;
+  }
+
   textarea {
     min-height: 96px;
   }
