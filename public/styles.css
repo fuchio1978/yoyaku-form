@@ -425,12 +425,6 @@ textarea {
     max-width: 100%;
   }
 
-  /* iOS の date ピッカーが横に広がりすぎるのを抑える */
-  input[type='date'] {
-    font-size: 0.9rem;
-    padding: 0.45rem 0.5rem;
-  }
-
   textarea {
     min-height: 96px;
   }
@@ -443,8 +437,15 @@ textarea {
   }
 }
 
-/* PC 表示用：予約フォームの横幅をパネル内に収める */
-@media (min-width: 1024px) {
+/* PC / タブレット表示用：予約フォームの横幅をパネル内に収める */
+@media (min-width: 768px) {
+  /* 白い枠（パネル）自体を少し細く中央寄せ */
+  .panel {
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* 入力フォームはさらに少し細くして中央寄せ */
   .reservation-form {
     max-width: 420px;
     margin: 0 auto;
