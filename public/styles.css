@@ -425,6 +425,12 @@ textarea {
     max-width: 100%;
   }
 
+  /* iOS の date ピッカーが横に広がりすぎるのを抑える */
+  input[type='date'] {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.5rem;
+  }
+
   textarea {
     min-height: 96px;
   }
@@ -436,3 +442,12 @@ textarea {
     margin-top: 0.75rem;
   }
 }
+
+/* PC 表示用：予約フォームの横幅をパネル内に収める */
+@media (min-width: 1024px) {
+  .reservation-form {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
