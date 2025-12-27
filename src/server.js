@@ -1215,6 +1215,25 @@ function handleReservation(body, res) {
     return;
   }
 
+  // 予約枠がまだ空いているか最終チェック（ブラウザの戻るボタンなどによる二重予約防止）
+  if (requiresSchedule && personId && body.date && body.timeSlot) {
+    const schedule = getScheduleForPerson(personId);
+    const entry = schedule.find((e) => e.date === body.date);
+    const available = entry && Array.isArray(entry.slots) && entry.slots.includes(body.timeSlot);
+
+    if (!available) {
+      res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(
+        renderPage({
+          title: 'エラー',
+          content: '<p>選択された日時はすでに満席になりました。別の日時をお選びください。</p>',
+          backLink: '/',
+        })
+      );
+      return;
+    }
+  }
+
   const reservation = {
     productId: product.id,
     productTitle: product.title,
