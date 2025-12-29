@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const storePath = path.join(__dirname, '..', '..', 'storage', 'products.json');
+// 永続ストレージのルート（Render の Persistent Disk など）
+// PERSISTENT_STORAGE_PATH が指定されていればそちらを優先し、なければ従来どおりローカルstorageを使用
+const storageRoot = process.env.PERSISTENT_STORAGE_PATH || path.join(__dirname, '..', '..', 'storage');
+const storePath = path.join(storageRoot, 'products.json');
 
 function loadProducts() {
   if (!fs.existsSync(storePath)) {

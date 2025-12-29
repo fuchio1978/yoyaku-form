@@ -16,8 +16,10 @@ const { saveReservation } = require('./utils/reservations');
 const { sendReservationEmail, recipient } = require('./utils/email');
 
 const publicDir = path.join(__dirname, '..', 'public');
-const contactsStorePath = path.join(__dirname, '..', 'storage', 'contacts.json');
-const outboxDir = path.join(__dirname, '..', 'storage', 'outbox');
+// 永続ストレージのルート（Render の Persistent Disk など）
+const storageRoot = process.env.PERSISTENT_STORAGE_PATH || path.join(__dirname, '..', 'storage');
+const contactsStorePath = path.join(storageRoot, 'contacts.json');
+const outboxDir = path.join(storageRoot, 'outbox');
 const sheetsWebhookUrl =
   process.env.SHEETS_WEBHOOK_URL ||
   'https://script.google.com/macros/s/AKfycbyppWE01CZyQgz_S-8o2LfvOrKoTw4gX9IM97iNmsR0LCmGFIPlyPT07Xxp7XmM-VTzvw/exec';

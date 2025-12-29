@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const schedulesPath = path.join(__dirname, '..', '..', 'storage', 'schedules.json');
+// 永続ストレージのルート（Render の Persistent Disk など）
+const storageRoot = process.env.PERSISTENT_STORAGE_PATH || path.join(__dirname, '..', '..', 'storage');
+const schedulesPath = path.join(storageRoot, 'schedules.json');
 
 function getSchedules() {
   if (!fs.existsSync(schedulesPath)) {

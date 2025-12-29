@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const storePath = path.join(__dirname, '..', '..', 'storage', 'reservations.json');
+// 永続ストレージのルート（Render の Persistent Disk など）
+const storageRoot = process.env.PERSISTENT_STORAGE_PATH || path.join(__dirname, '..', '..', 'storage');
+const storePath = path.join(storageRoot, 'reservations.json');
 
 function loadReservations() {
   if (!fs.existsSync(storePath)) {
