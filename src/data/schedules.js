@@ -18,12 +18,12 @@ function getSchedules() {
     return [];
   }
 
-  // 今日より前の日付の枠は自動的に除外する
+  // 今日以前の日付の枠は自動的に除外し、常に「明日以降」の枠のみを表示する
   const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
   return (all || []).map((person) => {
     const schedule = Array.isArray(person.schedule) ? person.schedule : [];
     const filtered = schedule
-      .filter((entry) => entry && typeof entry.date === 'string' && entry.date >= today)
+      .filter((entry) => entry && typeof entry.date === 'string' && entry.date > today)
       .map((entry) => ({
         date: entry.date,
         slots: Array.isArray(entry.slots) ? entry.slots.slice() : [],
