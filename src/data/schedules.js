@@ -10,12 +10,29 @@ function getSchedules() {
     return [];
   }
   const raw = fs.readFileSync(schedulesPath, 'utf-8');
+  let all;
   try {
-    return JSON.parse(raw || '[]');
+    all = JSON.parse(raw || '[]');
   } catch (e) {
     console.error('Failed to parse schedules.json', e);
     return [];
   }
+
+  // 今日より前の日付の枠は自動的に除外する
+  const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+  return (all || []).map((person) => {
+    const schedule = Array.isArray(person.schedule) ? person.schedule : [];
+    const filtered = schedule
+      .filter((entry) => entry && typeof entry.date === 'string' && entry.date >= today)
+      .map((entry) => ({
+        date: entry.date,
+        slots: Array.isArray(entry.slots) ? entry.slots.slice() : [],
+      }));
+    return {
+      ...person,
+      schedule: filtered,
+    };
+  });
 }
 
 function saveSchedules(all) {
