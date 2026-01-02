@@ -355,6 +355,12 @@ textarea {
   position: relative;
 }
 
+.footer-icon img {
+  max-width: 70%;
+  max-height: 70%;
+  display: block;
+}
+
 .footer-icon:hover {
   background-color: #0ea5e9;
   border-color: #0ea5e9;
