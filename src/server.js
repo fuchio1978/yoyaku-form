@@ -1026,53 +1026,47 @@ function renderAdminProductForm(product) {
           <input id="id" name="id" type="text" required value="${isNew ? '' : safe(product.id)}" />
         </div>
         <div class="field">
-          <label for="title">商品名</label>
-          <input id="title" name="title" type="text" required value="${safe(product && product.title)}" />
-        </div>
-        <div class="field">
-          <label for="price">価格</label>
-          <input id="price" name="price" type="number" min="0" step="1" required value="${safe(product && product.price)}" />
-        </div>
-        <div class="field">
-          <label for="currency">通貨記号</label>
-          <input id="currency" name="currency" type="text" value="${safe((product && product.currency) || '¥')}" />
-        </div>
-        <div class="field">
           <label for="image">画像</label>
           <select id="image" name="image">
             ${imageOptionsHtml}
           </select>
-          <small>あらかじめ <code>public/images</code> フォルダにアップロードした画像ファイルから選択できます。</small>
-        </div>
-        <div class="field">
-          <label for="summary">概要（カードに表示）</label>
-          <textarea id="summary" name="summary">${safe(product && product.summary)}</textarea>
-        </div>
-        <div class="field">
-          <label for="details">詳細（1行1項目）</label>
-          <textarea id="details" name="details">${product ? product.details.join('\n') : ''}</textarea>
-        </div>
-        <div class="field">
-          <label for="duration">時間</label>
-          <input id="duration" name="duration" type="text" value="${safe(product && product.duration)}" />
+          <small>あらかじめ <code>/admin/images</code> から画像をアップロードしておくと、ここで選択できます。</small>
         </div>
         <div class="field">
           <label for="typeLabel">種別ラベル</label>
           <input id="typeLabel" name="typeLabel" type="text" value="${safe(product && product.typeLabel)}" />
         </div>
         <div class="field">
-          <label for="displayOrder">表示順（小さい数字ほど上に表示されます）</label>
-          <input id="displayOrder" name="displayOrder" type="number" step="1" min="0" value="${safe(
-            (product && product.displayOrder) || ''
-          )}" />
+          <label for="price">価格（円）</label>
+          <input id="price" name="price" type="number" min="0" step="1" required value="${safe(product && product.price)}" />
         </div>
         <div class="field">
-          <label for="personId">担当者</label>
+          <label for="personId">鑑定士</label>
           <select id="personId" name="personId">
             <option value="">未選択</option>
             <option value="tetsuya" ${product && product.personId === 'tetsuya' ? 'selected' : ''}>てつ先生</option>
             <option value="chigusa" ${product && product.personId === 'chigusa' ? 'selected' : ''}>ちぐさ</option>
           </select>
+        </div>
+        <div class="field">
+          <label for="title">商品名（太字で表示されます）</label>
+          <input id="title" name="title" type="text" required value="${safe(product && product.title)}" />
+        </div>
+        <div class="field">
+          <label for="summary">商品カード説明欄（トップページのカードに表示）</label>
+          <textarea id="summary" name="summary">${safe(product && product.summary)}</textarea>
+        </div>
+        <div class="field">
+          <label for="benefit">商品ベネフィット（商品ページの説明文）</label>
+          <textarea id="benefit" name="benefit">${safe(product && product.benefit)}</textarea>
+        </div>
+        <div class="field">
+          <label for="duration">時間</label>
+          <input id="duration" name="duration" type="text" value="${safe(product && product.duration)}" />
+        </div>
+        <div class="field">
+          <label for="details">含まれるもの（1行1項目）</label>
+          <textarea id="details" name="details">${product ? product.details.join('\n') : ''}</textarea>
         </div>
         <div class="field">
           <label>
@@ -1764,9 +1758,9 @@ const server = http.createServer(async (req, res) => {
         .split(/\r?\n/)
         .map((s) => s.trim())
         .filter(Boolean);
-      const displayOrder = body.displayOrder !== undefined && body.displayOrder !== ''
-        ? Number(body.displayOrder)
-        : undefined;
+      // 表示順はドラッグ＆ドロップの別フォームで管理するため、ここでは既存値をそのまま保持する
+      const prevProduct = existingIndex >= 0 ? all[existingIndex] : undefined;
+      const displayOrder = prevProduct && typeof prevProduct.displayOrder === 'number' ? prevProduct.displayOrder : undefined;
       const personId = body.personId || '';
       const providerLabel = personId === 'tetsuya'
         ? '鑑定士：てつ先生'
@@ -1778,13 +1772,14 @@ const server = http.createServer(async (req, res) => {
         id: body.id,
         title: body.title,
         price: Number(body.price || 0),
-        currency: body.currency || '¥',
+        currency: '¥',
         image: body.image || '',
         summary: body.summary || '',
+        benefit: body.benefit || '',
         details,
         duration: body.duration || '',
         typeLabel: body.typeLabel || '',
-         displayOrder,
+        displayOrder,
         requiresSchedule: !!body.requiresSchedule,
         personId,
         providerLabel,
