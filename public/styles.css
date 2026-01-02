@@ -346,7 +346,7 @@ textarea {
   width: 64px;
   height: 64px;
   border-radius: 999px;
-  border: 1px solid #d1d5db;
+  border: none;
   font-size: 0.75rem;
   font-weight: 600;
   color: #6b7280;
@@ -363,7 +363,6 @@ textarea {
 
 .footer-icon:hover {
   background-color: #0ea5e9;
-  border-color: #0ea5e9;
   color: #f9fafb;
 }
 
