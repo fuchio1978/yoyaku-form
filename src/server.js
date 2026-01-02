@@ -1345,7 +1345,7 @@ function renderConfirmation(reservation) {
 ※メールが届かない場合は、迷惑メールフォルダもご確認ください。
       </p>
       <p style="white-space: pre-line;">
-ご連絡先として fuchi.labo.2025@gmail.com を登録しております。
+ご連絡先として info@fuchilabo.com を登録しております。
 こちらのアドレスより、あらためてご連絡いたします。
       </p>
       <table class="schedule-table"><tbody>${summaryRows}</tbody></table>
