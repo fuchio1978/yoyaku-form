@@ -1769,9 +1769,9 @@ const server = http.createServer(async (req, res) => {
         : undefined;
       const personId = body.personId || '';
       const providerLabel = personId === 'tetsuya'
-        ? '担当：てつ先生'
+        ? '鑑定士：てつ先生'
         : personId === 'chigusa'
-        ? '担当：ちぐさ'
+        ? '鑑定士：ちぐさ'
         : '';
 
       const product = {
