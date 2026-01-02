@@ -1501,6 +1501,12 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (isReadMethod && parsedUrl.pathname === '/admin/images') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderAdminImagesPage());
+    return;
+  }
+
   if (isReadMethod && parsedUrl.pathname === '/admin/product') {
     const id = parsedUrl.query.id;
     const product = id ? getProduct(id) : undefined;
@@ -1578,6 +1584,27 @@ const server = http.createServer(async (req, res) => {
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(renderPage({ title: 'エラー', content: '<p>サーバーで問題が発生しました。</p>', backLink: '/' }));
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/images') {
+    try {
+      const { fileName, data } = await parseMultipartImage(req);
+      fs.mkdirSync(imagesStorageDir, { recursive: true });
+      const targetPath = path.join(imagesStorageDir, fileName);
+      fs.writeFileSync(targetPath, data);
+
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(renderAdminImagesPage('画像をアップロードしました。'));
+    } catch (error) {
+      console.error('Failed to upload image', error);
+      res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(
+        renderAdminImagesPage(
+          '画像のアップロードに失敗しました。ファイル形式（PNG / JPG / JPEG / SVG）とサイズ（10MB以内）をご確認ください。'
+        )
+      );
     }
     return;
   }
