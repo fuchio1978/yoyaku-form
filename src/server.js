@@ -270,7 +270,13 @@ function serveUploadedImage(req, res) {
     return false;
   }
 
-  const fileName = path.basename(pathname);
+  let fileName;
+  try {
+    fileName = path.basename(decodeURIComponent(pathname));
+  } catch (e) {
+    // 不正なエンコードの場合は配信不可
+    return false;
+  }
   const filePath = path.join(imagesStorageDir, fileName);
 
   if (!filePath.startsWith(imagesStorageDir) || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
