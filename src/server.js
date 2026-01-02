@@ -60,12 +60,6 @@ async function sendReservationToSheets(reservation) {
   } catch (e) {
     console.error('Failed to send reservation to Google Sheets webhook', e);
   }
-
-  if (isReadMethod && parsedUrl.pathname === '/admin/images') {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(req.method === 'HEAD' ? undefined : renderAdminImagesPage());
-    return;
-  }
 }
 
 // アップロード済み画像の一覧を取得
