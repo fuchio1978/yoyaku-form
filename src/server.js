@@ -427,10 +427,6 @@ function renderContactPage(errors, body) {
             <input id="phone" name="phone" type="tel" value="${phone}" placeholder="08012345678" />
           </div>
           <div class="field">
-            <label for="orderNumber">オーダー番号（任意）</label>
-            <input id="orderNumber" name="orderNumber" type="text" value="${orderNumber}" />
-          </div>
-          <div class="field">
             <label for="message">お問い合わせ内容<span style="color:#dc2626;">（必須）</span></label>
             <textarea id="message" name="message" required>${message}</textarea>
           </div>
@@ -465,7 +461,6 @@ function renderContactComplete(body) {
     ['お名前', safe(body.name)],
     ['メールアドレス', safe(body.email)],
     ['電話番号', safe(body.phone) || '未入力'],
-    ['オーダー番号', safe(body.orderNumber) || '未入力'],
   ]
     .map((row) => `<tr><th>${row[0]}</th><td>${row[1]}</td></tr>`)
     .join('');
@@ -1203,8 +1198,7 @@ function renderReservationForm(product) {
       <div class="field">
         <label for="paymentMethod">お支払方法</label>
         <select id="paymentMethod" name="paymentMethod">
-          <option value="">選択してください</option>
-          <option value="bank">銀行振込（振込手数料はお客様のご負担となります）</option>
+          <option value="bank">銀行振込</option>
           <option value="paypal">PAYPAL</option>
         </select>
         <small id="paymentMethodNote" style="display: none; font-size: 0.85rem; color: #6b7280;">
@@ -1747,7 +1741,6 @@ const server = http.createServer(async (req, res) => {
         name: body.name,
         email: body.email,
         phone: body.phone || '',
-        orderNumber: body.orderNumber || '',
         message: body.message || '',
         agree: !!body.agree,
         createdAt: new Date().toISOString(),
