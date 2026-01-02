@@ -343,8 +343,8 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   border-radius: 999px;
   border: 1px solid #d1d5db;
   font-size: 0.75rem;
@@ -356,8 +356,8 @@ textarea {
 }
 
 .footer-icon img {
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 80%;
+  max-height: 80%;
   display: block;
 }
 
