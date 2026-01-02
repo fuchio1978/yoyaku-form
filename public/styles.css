@@ -352,12 +352,36 @@ textarea {
   color: #6b7280;
   text-decoration: none;
   background-color: #ffffff;
+  position: relative;
 }
 
 .footer-icon:hover {
   background-color: #0ea5e9;
   border-color: #0ea5e9;
   color: #f9fafb;
+}
+
+.footer-icon[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 120%;
+  white-space: nowrap;
+  background: rgba(15, 23, 42, 0.95);
+  color: #f9fafb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.35rem;
+  font-size: 0.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-out;
+  z-index: 10;
+}
+
+.footer-icon[data-tooltip]:hover::after,
+.footer-icon[data-tooltip]:focus-visible::after {
+  opacity: 1;
 }
 
 .footer-links {
