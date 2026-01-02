@@ -91,6 +91,12 @@ function renderAdminImagesPage(message) {
           <td><code>/uploads/images/${file}</code></td>
           <td>${file}</td>
           <td><img src="/uploads/images/${file}" alt="${file}" style="max-width:120px; max-height:80px; object-fit:contain;"></td>
+          <td>
+            <form method="POST" action="/admin/delete-image" onsubmit="return confirm('この画像を削除してよろしいですか？');" style="margin:0;">
+              <input type="hidden" name="file" value="${file}">
+              <button type="submit">削除</button>
+            </form>
+          </td>
         </tr>
       `
     )
@@ -113,9 +119,9 @@ function renderAdminImagesPage(message) {
       <hr style="margin:1.5rem 0;" />
       <h4>アップロード済み画像</h4>
       <table class="schedule-table">
-        <thead><tr><th>パス</th><th>ファイル名</th><th>プレビュー</th></tr></thead>
+        <thead><tr><th>パス</th><th>ファイル名</th><th>プレビュー</th><th>操作</th></tr></thead>
         <tbody>
-          ${rows || '<tr><td colspan="3">まだ画像がありません。</td></tr>'}
+          ${rows || '<tr><td colspan="4">まだ画像がありません。</td></tr>'}
         </tbody>
       </table>
       <p style="margin-top:1rem;"><a class="button secondary" href="/admin">商品一覧へ戻る</a></p>
@@ -935,6 +941,7 @@ function renderAdminHome() {
       <p>商品を編集するとトップページと商品ページに反映されます。</p>
       <a class="button secondary" href="/admin/product">新規商品を追加</a>
       <a class="button" href="/admin/schedules" style="margin-left:0.5rem;">予約枠を編集</a>
+      <a class="button" href="/admin/images" style="margin-left:0.5rem;">画像を管理</a>
       <table class="schedule-table" style="margin-top:1rem;">
         <thead>
           <tr><th>ID</th><th>タイトル</th><th>価格</th><th>表示順</th><th>操作</th></tr>
@@ -1590,6 +1597,32 @@ const server = http.createServer(async (req, res) => {
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(renderPage({ title: 'エラー', content: '<p>サーバーで問題が発生しました。</p>', backLink: '/' }));
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/delete-image') {
+    try {
+      const body = await parseBody(req);
+      const file = body.file && String(body.file);
+      if (!file) {
+        throw new Error('Missing file name');
+      }
+
+      // パストラバーサル対策としてベース名のみを使用
+      const safeName = path.basename(file);
+      const targetPath = path.join(imagesStorageDir, safeName);
+
+      if (targetPath.startsWith(imagesStorageDir) && fs.existsSync(targetPath) && fs.statSync(targetPath).isFile()) {
+        fs.unlinkSync(targetPath);
+      }
+
+      res.writeHead(302, { Location: '/admin/images' });
+      res.end();
+    } catch (error) {
+      console.error('Failed to delete image', error);
+      res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(renderAdminImagesPage('画像の削除に失敗しました。もう一度お試しください。'));
     }
     return;
   }
