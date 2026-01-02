@@ -370,7 +370,7 @@ function renderHomePage() {
           <div class="badge">${product.typeLabel}</div>
           <div class="price">${formatCurrency(product.currency, product.price)}</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
-          <div class="title">${product.title}</div>
+          <div class="title"><strong>${product.title}</strong></div>
           <p class="subtitle">${product.summary}</p>
         </div>
       </a>
@@ -1207,6 +1207,7 @@ function renderProductPage(product) {
   const reservationForm = renderReservationForm(product);
 
   const detailItems = product.details.map((item) => `<li>${item}</li>`).join('');
+  const benefitText = product.benefit && product.benefit.trim() ? product.benefit : product.summary;
 
   const content = `
     <div class="product-layout">
@@ -1217,7 +1218,7 @@ function renderProductPage(product) {
           <div class="price">${formatCurrency(product.currency, product.price)}</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
         </div>
-        <p>${product.summary}</p>
+        <p>${benefitText}</p>
         <div class="product-meta">
           <strong>時間</strong>
           <span>${product.duration}</span>
