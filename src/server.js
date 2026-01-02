@@ -20,6 +20,7 @@ const publicDir = path.join(__dirname, '..', 'public');
 const storageRoot = process.env.PERSISTENT_STORAGE_PATH || path.join(__dirname, '..', 'storage');
 const contactsStorePath = path.join(storageRoot, 'contacts.json');
 const outboxDir = path.join(storageRoot, 'outbox');
+const imagesStorageDir = path.join(storageRoot, 'images');
 const sheetsWebhookUrl =
   process.env.SHEETS_WEBHOOK_URL ||
   'https://script.google.com/macros/s/AKfycbyppWE01CZyQgz_S-8o2LfvOrKoTw4gX9IM97iNmsR0LCmGFIPlyPT07Xxp7XmM-VTzvw/exec';
@@ -59,6 +60,120 @@ async function sendReservationToSheets(reservation) {
   } catch (e) {
     console.error('Failed to send reservation to Google Sheets webhook', e);
   }
+
+  if (isReadMethod && parsedUrl.pathname === '/admin/images') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderAdminImagesPage());
+    return;
+  }
+}
+
+// アップロード済み画像の一覧を取得
+function getUploadedImages() {
+  try {
+    if (!fs.existsSync(imagesStorageDir)) {
+      return [];
+    }
+    const files = fs.readdirSync(imagesStorageDir).filter((name) => /\.(png|jpg|jpeg|svg)$/i.test(name));
+    return files.sort();
+  } catch (e) {
+    console.error('Failed to list uploaded images', e);
+    return [];
+  }
+}
+
+function renderAdminImagesPage(message) {
+  const files = getUploadedImages();
+  const rows = files
+    .map(
+      (file) => `
+        <tr>
+          <td><code>/uploads/images/${file}</code></td>
+          <td>${file}</td>
+          <td><img src="/uploads/images/${file}" alt="${file}" style="max-width:120px; max-height:80px; object-fit:contain;"></td>
+        </tr>
+      `
+    )
+    .join('');
+
+  const notice = message ? `<p style="color:#16a34a;">${message}</p>` : '';
+
+  const content = `
+    <div class="panel">
+      <h3>画像管理（管理画面）</h3>
+      <p>ここでアップロードした画像は、商品編集画面から選択して利用できます。</p>
+      ${notice}
+      <form method="POST" action="/admin/images" enctype="multipart/form-data" class="reservation-form">
+        <div class="field">
+          <label for="imageFile">画像ファイルをアップロード（PNG / JPG / JPEG / SVG）</label>
+          <input id="imageFile" name="image" type="file" accept=".png,.jpg,.jpeg,.svg,image/png,image/jpeg,image/svg+xml" required />
+        </div>
+        <button class="button" type="submit">アップロード</button>
+      </form>
+      <hr style="margin:1.5rem 0;" />
+      <h4>アップロード済み画像</h4>
+      <table class="schedule-table">
+        <thead><tr><th>パス</th><th>ファイル名</th><th>プレビュー</th></tr></thead>
+        <tbody>
+          ${rows || '<tr><td colspan="3">まだ画像がありません。</td></tr>'}
+        </tbody>
+      </table>
+      <p style="margin-top:1rem;"><a class="button secondary" href="/admin">商品一覧へ戻る</a></p>
+    </div>
+  `;
+
+  return renderPage({ title: '', subtitle: '', content, backLink: '/admin', hideHeading: true });
+}
+
+// multipart/form-data から単一ファイル (name="image") を取り出す簡易パーサ
+function parseMultipartImage(req) {
+  return new Promise((resolve, reject) => {
+    const contentType = req.headers['content-type'] || '';
+    const boundaryMatch = contentType.match(/boundary=(.+)$/);
+    if (!boundaryMatch) {
+      return reject(new Error('Missing multipart boundary'));
+    }
+    const boundaryStr = `--${boundaryMatch[1]}`;
+
+    const chunks = [];
+    let totalLength = 0;
+    req.on('data', (chunk) => {
+      chunks.push(chunk);
+      totalLength += chunk.length;
+      if (totalLength > 10 * 1024 * 1024) {
+        // 10MB 超は拒否
+        reject(new Error('File too large')); 
+        req.destroy();
+      }
+    });
+    req.on('end', () => {
+      try {
+        const buffer = Buffer.concat(chunks);
+        const all = buffer.toString('binary');
+        const rawParts = all.split(boundaryStr).slice(1, -1); // 先頭と末尾の空パートを除外
+        for (const rawPart of rawParts) {
+          const part = Buffer.from(rawPart, 'binary');
+          const idx = part.indexOf('\r\n\r\n');
+          if (idx === -1) continue;
+          const headerBuf = part.slice(0, idx).toString('utf8');
+          const body = part.slice(idx + 4, part.length - 2); // 末尾の CRLF を除外
+
+          if (!/name="image"/i.test(headerBuf)) continue;
+          const fileNameMatch = headerBuf.match(/filename="([^"\\]+)"/i);
+          if (!fileNameMatch || !fileNameMatch[1]) continue;
+          let fileName = path.basename(fileNameMatch[1]);
+          if (!/\.(png|jpg|jpeg|svg)$/i.test(fileName)) {
+            throw new Error('Unsupported file type');
+          }
+          return resolve({ fileName, data: body });
+        }
+        reject(new Error('No image file field'));
+      } catch (e) {
+        reject(e);
+      }
+    });
+    req.on('error', reject);
+  });
 }
 
 async function sendContactToSheets(contact) {
@@ -144,6 +259,34 @@ function serveStaticFile(req, res) {
   const contentType = contentTypeMap[ext] || 'application/octet-stream';
   res.writeHead(200, { 'Content-Type': contentType });
   res.end(fs.readFileSync(filePath));
+  return true;
+}
+
+// Persistent Disk 上の画像 (/uploads/images/...) を配信する
+function serveUploadedImage(req, res) {
+  const parsedUrl = url.parse(req.url);
+  const pathname = parsedUrl.pathname || '';
+  if (!pathname.startsWith('/uploads/images/')) {
+    return false;
+  }
+
+  const fileName = path.basename(pathname);
+  const filePath = path.join(imagesStorageDir, fileName);
+
+  if (!filePath.startsWith(imagesStorageDir) || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+    return false;
+  }
+
+  const ext = path.extname(filePath).toLowerCase();
+  const contentTypeMap = {
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.svg': 'image/svg+xml',
+  };
+  const contentType = contentTypeMap[ext] || 'application/octet-stream';
+  res.writeHead(200, { 'Content-Type': contentType });
+  fs.createReadStream(filePath).pipe(res);
   return true;
 }
 
@@ -851,6 +994,25 @@ function renderAdminProductForm(product) {
   const safe = (v) => (v == null ? '' : String(v));
   const requiresSchedule = !product || product.requiresSchedule !== false; // 既存商品はデフォルトで日時指定あり
 
+  // 永続ストレージ上の images ディレクトリにある画像ファイルを取得して、選択肢として表示する
+  let imageOptionsHtml = '<option value="">（画像を選択）</option>';
+  try {
+    if (fs.existsSync(imagesStorageDir)) {
+      const files = fs.readdirSync(imagesStorageDir).filter((name) =>
+        /\.(png|jpg|jpeg|svg)$/i.test(name)
+      );
+      imageOptionsHtml += files
+        .map((file) => {
+          const relPath = `/uploads/images/${file}`;
+          const selected = product && product.image === relPath ? ' selected' : '';
+          return `<option value="${relPath}"${selected}>${file}</option>`;
+        })
+        .join('');
+    }
+  } catch (e) {
+    // 画像一覧の取得に失敗してもフォーム全体の動作には影響させない
+  }
+
   const content = `
     <div class="panel">
       <h3>${isNew ? '新規商品' : '商品編集'}（管理画面）</h3>
@@ -874,8 +1036,11 @@ function renderAdminProductForm(product) {
           <input id="currency" name="currency" type="text" value="${safe((product && product.currency) || '¥')}" />
         </div>
         <div class="field">
-          <label for="image">画像パス</label>
-          <input id="image" name="image" type="text" placeholder="/images/xxx.svg" value="${safe(product && product.image)}" />
+          <label for="image">画像</label>
+          <select id="image" name="image">
+            ${imageOptionsHtml}
+          </select>
+          <small>あらかじめ <code>public/images</code> フォルダにアップロードした画像ファイルから選択できます。</small>
         </div>
         <div class="field">
           <label for="summary">概要（カードに表示）</label>
@@ -1276,6 +1441,11 @@ function handleReservation(body, res) {
 
 const server = http.createServer(async (req, res) => {
   const isReadMethod = req.method === 'GET' || req.method === 'HEAD';
+
+  // アップロード画像の配信
+  if (serveUploadedImage(req, res)) {
+    return;
+  }
 
   if (serveStaticFile(req, res)) {
     return;
