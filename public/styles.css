@@ -140,6 +140,10 @@ body {
   justify-content: center;
 }
 
+.cards-grid.single-person-grid {
+  grid-template-columns: minmax(260px, 360px);
+}
+
 .product-card {
   display: block;
   background: var(--card);

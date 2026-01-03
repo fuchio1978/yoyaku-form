@@ -206,10 +206,12 @@ function renderPersonProductsPage(personId) {
     )
     .join('');
 
+  const gridClass = products.length === 1 ? 'cards-grid single-person-grid' : 'cards-grid';
+
   const content = `
     <div style="margin-bottom: 0.75rem;"><a href="/" style="font-size: 0.85rem; color: #2563eb; text-decoration: none;">&larr; TOPに戻る</a></div>
     <h2 style="margin-bottom: 1rem;">${personLabel ? `${personLabel}のメニュー一覧` : 'メニュー一覧'}</h2>
-    <div class="cards-grid">${cards}</div>
+    <div class="${gridClass}">${cards}</div>
   `;
 
   return renderPage({
