@@ -430,13 +430,6 @@ function renderHomePage() {
       return `
       <a class="product-card" href="${listPath}">
         <img src="${imageSrc}" alt="${product.title}" loading="lazy" />
-        <div class="card-body">
-          <div class="badge">${product.typeLabel}</div>
-          <div class="price">${formatCurrency(product.currency, product.price)}</div>
-          ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
-          <div class="title"><strong>${product.title}</strong></div>
-          <p class="subtitle">${product.summary}</p>
-        </div>
       </a>
     `;
     })
