@@ -1152,11 +1152,15 @@ function filterFutureSchedule(schedule) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
+  // 今日から数えて1週間後のみ表示するため、基準日を「今日+6日」にする
+  const threshold = new Date(today.getTime());
+  threshold.setDate(threshold.getDate() + 6);
+
   return schedule.filter((entry) => {
     const d = new Date(entry.date);
     if (Number.isNaN(d.getTime())) return true;
     d.setHours(0, 0, 0, 0);
-    return d.getTime() > today.getTime();
+    return d.getTime() > threshold.getTime();
   });
 }
 
