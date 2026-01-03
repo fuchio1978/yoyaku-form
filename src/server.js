@@ -1320,6 +1320,10 @@ function renderProductPage(product) {
 
   const detailItems = product.details.map((item) => `<li>${item}</li>`).join('');
   const benefitText = product.benefit && product.benefit.trim() ? product.benefit : product.summary;
+  const benefitHtml = benefitText
+    .split(/\r?\n/)
+    .map((line) => safe(line))
+    .join('<br>');
 
   const content = `
     <div class="product-layout">
@@ -1331,7 +1335,7 @@ function renderProductPage(product) {
           <div class="price">${formatCurrency(product.currency, product.price)}</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
         </div>
-        <p class="product-benefit">${benefitText}</p>
+        <p class="product-benefit">${benefitHtml}</p>
         <div class="product-meta">
           <strong>時間</strong>
           <span>${product.duration}</span>
