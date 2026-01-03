@@ -1088,12 +1088,24 @@ function renderAdminProductForm(product) {
   });
 }
 
+function filterFutureSchedule(schedule) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return schedule.filter((entry) => {
+    const d = new Date(entry.date);
+    if (Number.isNaN(d.getTime())) return true;
+    d.setHours(0, 0, 0, 0);
+    return d.getTime() > today.getTime();
+  });
+}
+
 function renderScheduleTable(product) {
   if (!product.requiresSchedule && product.requiresSchedule !== undefined) {
     return '';
   }
   const effectivePersonId = product.personId || 'tetsuya';
-  const schedule = effectivePersonId ? getScheduleForPerson(effectivePersonId) : [];
+  const schedule = filterFutureSchedule(effectivePersonId ? getScheduleForPerson(effectivePersonId) : []);
   const rows = schedule
     .map((entry) => {
       const timeBadges = entry.slots
@@ -1121,7 +1133,7 @@ function renderReservationForm(product) {
 
   if (requiresSchedule) {
     const effectivePersonId = product.personId || 'tetsuya';
-    const schedule = effectivePersonId ? getScheduleForPerson(effectivePersonId) : [];
+    const schedule = filterFutureSchedule(effectivePersonId ? getScheduleForPerson(effectivePersonId) : []);
     const dateOptions = schedule
       .map((entry) => `<option value="${entry.date}">${entry.date}</option>`)
       .join('');
