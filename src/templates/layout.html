@@ -100,6 +100,37 @@
 
     <script>
       (function () {
+        var isTouch = 'ontouchstart' in window || (navigator && navigator.maxTouchPoints > 0);
+        if (!isTouch) return;
+
+        var icons = document.querySelectorAll('.footer-icon[data-tooltip]');
+        for (var i = 0; i < icons.length; i++) {
+          (function (icon) {
+            icon.addEventListener('click', function (e) {
+              var el = e.currentTarget;
+              var href = el.getAttribute('href');
+              if (!href) return;
+
+              if (!el.classList.contains('tooltip-active')) {
+                // 1回目タップ: ツールチップだけ表示して遷移はしない
+                e.preventDefault();
+                el.classList.add('tooltip-active');
+                setTimeout(function () {
+                  el.classList.remove('tooltip-active');
+                }, 3000);
+              } else {
+                // 2回目タップ: ツールチップを消してリンク先へ遷移
+                el.classList.remove('tooltip-active');
+                window.location.href = href;
+              }
+            });
+          })(icons[i]);
+        }
+      })();
+    </script>
+
+    <script>
+      (function () {
         var toggle = document.querySelector('.menu-toggle');
         var mobileNav = document.getElementById('mobile-nav');
         var closeBtn = document.querySelector('.mobile-nav-close');
