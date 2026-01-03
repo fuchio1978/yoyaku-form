@@ -16,6 +16,7 @@ function buildAdminMessage(reservation) {
     reservation.birthday ? `■ 生年月日: ${reservation.birthday}` : '',
     reservation.birthTime ? `■ 生まれ時間: ${reservation.birthTime}` : '',
     reservation.birthPlace ? `■ 出身地: ${reservation.birthPlace}` : '',
+    reservation.sessionType ? `■ 対面／オンライン: ${reservation.sessionType}` : '',
     reservation.paymentMethod
       ? `■ お支払方法: ${
           reservation.paymentMethod === 'bank'

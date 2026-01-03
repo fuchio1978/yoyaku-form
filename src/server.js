@@ -45,6 +45,7 @@ async function sendReservationToSheets(reservation) {
     birthday: reservation.birthday || '',
     birthTime: reservation.birthTime || '',
     birthPlace: reservation.birthPlace || '',
+    sessionType: reservation.sessionType || '',
     paymentMethod: reservation.paymentMethod || '',
   };
 
