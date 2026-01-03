@@ -207,6 +207,7 @@ function renderPersonProductsPage(personId) {
     .join('');
 
   const content = `
+    <div style="margin-bottom: 0.75rem;"><a href="/" style="font-size: 0.85rem; color: #2563eb; text-decoration: none;">&larr; TOPに戻る</a></div>
     <h2 style="margin-bottom: 1rem;">${personLabel ? `${personLabel}のメニュー一覧` : 'メニュー一覧'}</h2>
     <div class="cards-grid">${cards}</div>
   `;
@@ -434,6 +435,9 @@ function renderHomePage() {
     .join('');
 
   const content = `
+    <div style="max-width: 900px; margin: 0 auto 1.5rem; text-align: center;">
+      <p style="font-size: 0.95rem; color: #4b5563;">鑑定を受けたい鑑定士を選んで、そのメニュー一覧をご覧ください。</p>
+    </div>
     <div class="cards-grid">${cards}</div>
   `;
 
