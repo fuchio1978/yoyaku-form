@@ -155,7 +155,7 @@ body {
   color: inherit;
 }
 
-.product-card img {
+.product-card img:not(.person-card-image) {
   width: 100%;
   height: 180px;
   object-fit: cover;
