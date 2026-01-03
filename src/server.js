@@ -1349,6 +1349,11 @@ function renderProductPage(product) {
         ${reservationForm}
       </div>
     </div>
+    <div style="margin-top: 1.5rem; text-align: center;">
+      <a href="javascript:history.back()" style="color:#0ea5e9; text-decoration:none;">
+        ← 前のページに戻る
+      </a>
+    </div>
     <script>
       function __selectTimeSlot(d, t, el) {
         var dateSelect = document.getElementById('date');
