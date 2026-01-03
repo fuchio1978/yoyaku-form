@@ -3,7 +3,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
 
-const adminRecipient = process.env.RESERVATION_RECIPIENT || 'fuchi.labo.2025@gmail.com';
+const adminRecipient = process.env.RESERVATION_RECIPIENT || 'info@fuchilabo.com';
 
 function buildAdminMessage(reservation) {
   return [
