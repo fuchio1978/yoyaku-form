@@ -421,9 +421,15 @@ function renderHomePage() {
   const cards = featured
     .map(({ personId, product }) => {
       const listPath = `/products/${personId}`;
+      const imageSrc =
+        personId === 'tetsuya'
+          ? '/uploads/images/tetsu-top.jpg'
+          : personId === 'chigusa'
+          ? '/uploads/images/chigusa-top.jpg'
+          : product.image;
       return `
       <a class="product-card" href="${listPath}">
-        <img src="${product.image}" alt="${product.title}" loading="lazy" />
+        <img src="${imageSrc}" alt="${product.title}" loading="lazy" />
         <div class="card-body">
           <div class="badge">${product.typeLabel}</div>
           <div class="price">${formatCurrency(product.currency, product.price)}</div>
