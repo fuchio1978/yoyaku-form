@@ -1326,6 +1326,11 @@ function renderProductPage(product) {
   const benefitHtml = rawBenefit.replace(/\r?\n/g, '<br>');
 
   const content = `
+    <div style="margin-bottom: 1rem;">
+      <a href="javascript:history.back()" style="color:#0ea5e9; text-decoration:none;">
+        ← 前のページに戻る
+      </a>
+    </div>
     <div class="product-layout">
       <figure class="product-figure">
         <img src="${product.image}" alt="${product.title}" loading="lazy" />
@@ -1348,11 +1353,6 @@ function renderProductPage(product) {
         ${scheduleTable}
         ${reservationForm}
       </div>
-    </div>
-    <div style="margin-top: 1.5rem; text-align: center;">
-      <a href="javascript:history.back()" style="color:#0ea5e9; text-decoration:none;">
-        ← 前のページに戻る
-      </a>
     </div>
     <script>
       function __selectTimeSlot(d, t, el) {
