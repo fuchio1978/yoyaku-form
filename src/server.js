@@ -436,7 +436,7 @@ function renderHomePage() {
 
   const content = `
     <div style="max-width: 900px; margin: 0 auto 1.5rem; text-align: center;">
-      <p style="font-size: 0.95rem; color: #4b5563;">鑑定を受けたい鑑定士を選んで、そのメニュー一覧をご覧ください。</p>
+      <p style="font-size: 0.95rem; color: #4b5563;">鑑定士を選んで、メニュー一覧をご覧ください。</p>
     </div>
     <div class="cards-grid">${cards}</div>
   `;
