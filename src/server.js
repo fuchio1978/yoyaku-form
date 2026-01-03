@@ -1319,11 +1319,11 @@ function renderProductPage(product) {
   const reservationForm = renderReservationForm(product);
 
   const detailItems = product.details.map((item) => `<li>${item}</li>`).join('');
-  const benefitText = product.benefit && product.benefit.trim() ? product.benefit : product.summary;
-  const benefitHtml = benefitText
-    .split(/\r?\n/)
-    .map((line) => safe(line))
-    .join('<br>');
+  const rawBenefit =
+    product.benefit && String(product.benefit).trim()
+      ? String(product.benefit)
+      : String(product.summary || '');
+  const benefitHtml = rawBenefit.replace(/\r?\n/g, '<br>');
 
   const content = `
     <div class="product-layout">
