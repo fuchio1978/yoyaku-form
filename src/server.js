@@ -176,6 +176,50 @@ function parseMultipartImage(req) {
   });
 }
 
+function renderPersonProductsPage(personId) {
+  const products = getProducts()
+    .slice()
+    .filter((p) => p.personId === personId)
+    .sort((a, b) => {
+      const ao = typeof a.displayOrder === 'number' ? a.displayOrder : 9999;
+      const bo = typeof b.displayOrder === 'number' ? b.displayOrder : 9999;
+      if (ao !== bo) return ao - bo;
+      return (a.title || '').localeCompare(b.title || '');
+    });
+
+  const personLabel = personId === 'tetsuya' ? 'てつ先生' : personId === 'chigusa' ? 'ちぐさ' : '';
+
+  const cards = products
+    .map(
+      (product) => `
+      <a class="product-card" href="/products/${product.id}">
+        <img src="${product.image}" alt="${product.title}" loading="lazy" />
+        <div class="card-body">
+          <div class="badge">${product.typeLabel}</div>
+          <div class="price">${formatCurrency(product.currency, product.price)}</div>
+          ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
+          <div class="title"><strong>${product.title}</strong></div>
+          <p class="subtitle">${product.summary}</p>
+        </div>
+      </a>
+    `
+    )
+    .join('');
+
+  const content = `
+    <h2 style="margin-bottom: 1rem;">${personLabel ? `${personLabel}のメニュー一覧` : 'メニュー一覧'}</h2>
+    <div class="cards-grid">${cards}</div>
+  `;
+
+  return renderPage({
+    title: '',
+    subtitle: '',
+    content,
+    backLink: '/',
+    hideHeading: true,
+  });
+}
+
 async function sendContactToSheets(contact) {
   if (!sheetsWebhookUrl) return;
 
@@ -361,10 +405,21 @@ function renderHomePage() {
       if (ao !== bo) return ao - bo;
       return (a.title || '').localeCompare(b.title || '');
     });
-  const cards = products
-    .map(
-      (product) => `
-      <a class="product-card" href="/products/${product.id}">
+
+  // 鑑定士ごとに代表商品を1件ずつ取得
+  const tetsuyaProduct = products.find((p) => p.personId === 'tetsuya');
+  const chigusaProduct = products.find((p) => p.personId === 'chigusa');
+
+  const featured = [
+    tetsuyaProduct && { personId: 'tetsuya', product: tetsuyaProduct },
+    chigusaProduct && { personId: 'chigusa', product: chigusaProduct },
+  ].filter(Boolean);
+
+  const cards = featured
+    .map(({ personId, product }) => {
+      const listPath = `/products/${personId}`;
+      return `
+      <a class="product-card" href="${listPath}">
         <img src="${product.image}" alt="${product.title}" loading="lazy" />
         <div class="card-body">
           <div class="badge">${product.typeLabel}</div>
@@ -374,8 +429,8 @@ function renderHomePage() {
           <p class="subtitle">${product.summary}</p>
         </div>
       </a>
-    `
-    )
+    `;
+    })
     .join('');
 
   const content = `
@@ -1539,6 +1594,13 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && (parsedUrl.pathname === '/' || parsedUrl.pathname === '/index.html')) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderHomePage());
+    return;
+  }
+
+  if (isReadMethod && (parsedUrl.pathname === '/products/tetsuya' || parsedUrl.pathname === '/products/chigusa')) {
+    const personId = parsedUrl.pathname.split('/')[2];
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderPersonProductsPage(personId));
     return;
   }
 
