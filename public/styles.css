@@ -370,11 +370,17 @@ textarea {
   max-width: 80%;
   max-height: 80%;
   display: block;
+  border-radius: 16px;
+  opacity: 0.8;
 }
 
 .footer-icon:hover {
   background-color: #0ea5e9;
   color: #f9fafb;
+}
+
+.footer-icon:hover img {
+  opacity: 1;
 }
 
 .footer-icon[data-tooltip]::after {
