@@ -429,7 +429,7 @@ function renderHomePage() {
           : product.image;
       return `
       <a class="product-card" href="${listPath}">
-        <img src="${imageSrc}" alt="${product.title}" loading="lazy" />
+        <img class="person-card-image" src="${imageSrc}" alt="${product.title}" loading="lazy" />
       </a>
     `;
     })
