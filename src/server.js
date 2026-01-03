@@ -1239,6 +1239,7 @@ function renderProductPage(product) {
         <img src="${product.image}" alt="${product.title}" />
         <div class="product-meta">
           <div class="badge">${product.typeLabel}</div>
+          <div class="title"><strong>${product.title}</strong></div>
           <div class="price">${formatCurrency(product.currency, product.price)}</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
         </div>
