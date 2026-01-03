@@ -1135,6 +1135,13 @@ function renderAdminProductForm(product) {
           </label>
           <small>セミナーや対面鑑定など日時予約が必要な場合はチェックを入れます。動画販売など日時不要の商品はチェックを外してください。</small>
         </div>
+        <div class="field">
+          <label>
+            <input type="checkbox" name="showSessionType" ${product && product.showSessionType ? 'checked' : ''} />
+            予約フォームに「対面／オンライン」を表示する
+          </label>
+          <small>対面鑑定とオンライン鑑定を選んでもらいたい商品の場合にチェックを入れてください。</small>
+        </div>
         <button class="button" type="submit">保存する</button>
       </form>
     </div>
@@ -1242,11 +1249,40 @@ function renderReservationForm(product) {
     `;
   }
 
+  let sessionTypeField = '';
+  if (product.showSessionType) {
+    sessionTypeField = `
+      <div class="field">
+        <label for="sessionType">対面／オンライン</label>
+        <select id="sessionType" name="sessionType" required>
+          <option value="">選択してください</option>
+          <option value="対面">対面</option>
+          <option value="オンライン">オンライン</option>
+        </select>
+      ${
+        product.showSessionType
+          ? `
+      <div class="field">
+        <label for="sessionType">対面 / オンライン</label>
+        <select id="sessionType" name="sessionType">
+          <option value="">選択してください</option>
+          <option value="対面">対面</option>
+          <option value="オンライン">オンライン</option>
+        </select>
+      </div>
+      `
+          : ''
+      }
+      </div>
+    `;
+  }
+
   return `
     <form class="reservation-form" method="POST" action="/reserve/confirm">
       <input type="hidden" name="productId" value="${product.id}" />
       <input type="hidden" name="personId" value="${product.personId || 'tetsuya'}" />
       ${dateTimeFields}
+      ${sessionTypeField}
       <div class="field">
         <label for="name">お名前</label>
         <input id="name" name="name" type="text" placeholder="例）山田 花子" required />
@@ -1404,6 +1440,7 @@ function renderConfirmation(reservation) {
         ? 'PAYPAL'
         : '未入力',
     ],
+    ['対面／オンライン', reservation.sessionType || '未入力'],
   ]
     .map((row) => `<tr><th>${row[0]}</th><td>${row[1]}</td></tr>`)
     .join('');
@@ -1461,6 +1498,9 @@ function handleReservation(body, res) {
   if (requiresSchedule) {
     required.push('date', 'timeSlot');
   }
+  if (product.showSessionType) {
+    required.push('sessionType');
+  }
   const missing = required.filter((key) => !body[key]);
 
   if (missing.length > 0 || !product) {
@@ -1497,6 +1537,7 @@ function handleReservation(body, res) {
     personName: personId ? getPersonName(personId) : '',
     date: requiresSchedule ? body.date : '',
     timeSlot: requiresSchedule ? body.timeSlot : '',
+    sessionType: product.showSessionType ? body.sessionType : '',
     name: body.name,
     email: body.email,
     birthday: body.birthday || '',
@@ -1647,6 +1688,9 @@ const server = http.createServer(async (req, res) => {
       if (requiresSchedule) {
         required.push('date', 'timeSlot');
       }
+      if (product.showSessionType) {
+        required.push('sessionType');
+      }
       const missing = required.filter((key) => !body[key]);
 
       if (missing.length > 0 || !product) {
@@ -1662,6 +1706,7 @@ const server = http.createServer(async (req, res) => {
         personName: personId ? getPersonName(personId) : '',
         date: requiresSchedule ? body.date : '',
         timeSlot: requiresSchedule ? body.timeSlot : '',
+        sessionType: product.showSessionType ? body.sessionType : '',
         name: body.name,
         email: body.email,
         birthday: body.birthday || '',
@@ -1878,6 +1923,7 @@ const server = http.createServer(async (req, res) => {
         typeLabel: body.typeLabel || '',
         displayOrder,
         requiresSchedule: !!body.requiresSchedule,
+        showSessionType: !!body.showSessionType,
         personId,
         providerLabel,
       };
