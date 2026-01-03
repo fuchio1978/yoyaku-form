@@ -149,8 +149,6 @@ body {
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  max-width: 420px;
-  margin: 0 auto;
 }
 
 .product-card img {
