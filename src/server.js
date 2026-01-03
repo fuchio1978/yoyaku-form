@@ -1331,7 +1331,7 @@ function renderProductPage(product) {
           <div class="price">${formatCurrency(product.currency, product.price)}</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
         </div>
-        <p>${benefitText}</p>
+        <p class="product-benefit">${benefitText}</p>
         <div class="product-meta">
           <strong>時間</strong>
           <span>${product.duration}</span>
