@@ -569,6 +569,7 @@ function renderReservationConfirmPage(reservation) {
         <input type="hidden" name="personId" value="${reservation.personId || ''}" />
         <input type="hidden" name="date" value="${reservation.date}" />
         <input type="hidden" name="timeSlot" value="${reservation.timeSlot}" />
+        <input type="hidden" name="sessionType" value="${reservation.sessionType || ''}" />
         <input type="hidden" name="name" value="${reservation.name}" />
         <input type="hidden" name="email" value="${reservation.email}" />
         <input type="hidden" name="birthday" value="${reservation.birthday || ''}" />
