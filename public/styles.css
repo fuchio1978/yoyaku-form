@@ -140,6 +140,17 @@ body {
   justify-content: center;
 }
 
+.product-card {
+  display: block;
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
 .product-card img {
   width: 100%;
   height: 180px;
