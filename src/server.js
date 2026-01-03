@@ -1259,20 +1259,6 @@ function renderReservationForm(product) {
           <option value="対面">対面</option>
           <option value="オンライン">オンライン</option>
         </select>
-      ${
-        product.showSessionType
-          ? `
-      <div class="field">
-        <label for="sessionType">対面 / オンライン</label>
-        <select id="sessionType" name="sessionType">
-          <option value="">選択してください</option>
-          <option value="対面">対面</option>
-          <option value="オンライン">オンライン</option>
-        </select>
-      </div>
-      `
-          : ''
-      }
       </div>
     `;
   }
@@ -1282,7 +1268,6 @@ function renderReservationForm(product) {
       <input type="hidden" name="productId" value="${product.id}" />
       <input type="hidden" name="personId" value="${product.personId || 'tetsuya'}" />
       ${dateTimeFields}
-      ${sessionTypeField}
       <div class="field">
         <label for="name">お名前</label>
         <input id="name" name="name" type="text" placeholder="例）山田 花子" required />
@@ -1295,6 +1280,7 @@ function renderReservationForm(product) {
         <label for="emailConfirm">メールアドレス（確認用）</label>
         <input id="emailConfirm" name="emailConfirm" type="email" placeholder="確認のためもう一度入力してください" required />
       </div>
+      ${sessionTypeField}
       <div class="field">
         <label for="birthday">生年月日</label>
         <input id="birthday" name="birthday" type="date" value="1980-01-01" />
