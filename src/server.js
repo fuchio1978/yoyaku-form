@@ -1100,6 +1100,17 @@ function filterFutureSchedule(schedule) {
   });
 }
 
+function formatScheduleDateLabel(dateStr) {
+  const d = new Date(dateStr);
+  if (Number.isNaN(d.getTime())) return dateStr;
+  const yy = String(d.getFullYear()).slice(-2);
+  const m = d.getMonth() + 1;
+  const day = d.getDate();
+  const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+  const w = weekdays[d.getDay()];
+  return `${yy}/${m}/${day}（${w}）`;
+}
+
 function renderScheduleTable(product) {
   if (!product.requiresSchedule && product.requiresSchedule !== undefined) {
     return '';
@@ -1114,7 +1125,8 @@ function renderScheduleTable(product) {
             `<span class="time-chip" data-date="${entry.date}" data-time="${time}" onclick="window.__selectTimeSlot && window.__selectTimeSlot('${entry.date}','${time}', this);">${time}</span>`
         )
         .join('');
-      return `<tr><th scope="row">${entry.date}</th><td>${timeBadges}</td></tr>`;
+      const label = formatScheduleDateLabel(entry.date);
+      return `<tr><th scope="row">${label}</th><td>${timeBadges}</td></tr>`;
     })
     .join('');
 
@@ -1135,7 +1147,7 @@ function renderReservationForm(product) {
     const effectivePersonId = product.personId || 'tetsuya';
     const schedule = filterFutureSchedule(effectivePersonId ? getScheduleForPerson(effectivePersonId) : []);
     const dateOptions = schedule
-      .map((entry) => `<option value="${entry.date}">${entry.date}</option>`)
+      .map((entry) => `<option value="${entry.date}">${formatScheduleDateLabel(entry.date)}</option>`)
       .join('');
     const timeOptions = schedule
       .flatMap((entry) => entry.slots)
