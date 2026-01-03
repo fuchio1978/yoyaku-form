@@ -365,7 +365,7 @@ function renderHomePage() {
     .map(
       (product) => `
       <a class="product-card" href="/products/${product.id}">
-        <img src="${product.image}" alt="${product.title}" />
+        <img src="${product.image}" alt="${product.title}" loading="lazy" />
         <div class="card-body">
           <div class="badge">${product.typeLabel}</div>
           <div class="price">${formatCurrency(product.currency, product.price)}</div>
@@ -1236,7 +1236,7 @@ function renderProductPage(product) {
   const content = `
     <div class="product-layout">
       <figure class="product-figure">
-        <img src="${product.image}" alt="${product.title}" />
+        <img src="${product.image}" alt="${product.title}" loading="lazy" />
         <div class="product-meta">
           <div class="badge">${product.typeLabel}</div>
           <div class="title"><strong>${product.title}</strong></div>
