@@ -354,8 +354,8 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 52px;
+  height: 52px;
   border-radius: 999px;
   border: none;
   font-size: 0.75rem;
@@ -371,7 +371,7 @@ textarea {
   max-height: 80%;
   display: block;
   border-radius: 16px;
-  opacity: 0.55;
+  opacity: 0.4;
 }
 
 .footer-icon:hover {
@@ -402,7 +402,8 @@ textarea {
 }
 
 .footer-icon[data-tooltip]:hover::after,
-.footer-icon[data-tooltip]:focus-visible::after {
+.footer-icon[data-tooltip]:focus-visible::after,
+.footer-icon.tooltip-active[data-tooltip]::after {
   opacity: 1;
 }
 
