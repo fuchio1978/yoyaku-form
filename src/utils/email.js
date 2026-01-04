@@ -14,6 +14,7 @@ function buildAdminMessage(reservation) {
     `■ お名前: ${reservation.name}`,
     `■ メール: ${reservation.email}`,
     reservation.birthday ? `■ 生年月日: ${reservation.birthday}` : '',
+    reservation.genderAtBirth ? `■ 性別（出生時）: ${reservation.genderAtBirth}` : '',
     reservation.birthTime ? `■ 生まれ時間: ${reservation.birthTime}` : '',
     reservation.birthPlace ? `■ 出身地: ${reservation.birthPlace}` : '',
     reservation.sessionType ? `■ 対面／オンライン: ${reservation.sessionType}` : '',

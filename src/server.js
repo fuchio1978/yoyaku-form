@@ -45,6 +45,7 @@ async function sendReservationToSheets(reservation) {
     birthday: reservation.birthday || '',
     birthTime: reservation.birthTime || '',
     birthPlace: reservation.birthPlace || '',
+    genderAtBirth: reservation.genderAtBirth || '',
     sessionType: reservation.sessionType || '',
     paymentMethod: reservation.paymentMethod || '',
   };
@@ -1286,6 +1287,17 @@ function renderReservationForm(product) {
       <div class="field">
         <label for="birthday">生年月日</label>
         <input id="birthday" name="birthday" type="date" value="1980-01-01" />
+      </div>
+      <div class="field">
+        <label for="genderAtBirth">性別（出生時）</label>
+        <select id="genderAtBirth" name="genderAtBirth">
+          <option value="">選択してください</option>
+          <option value="男性">男性</option>
+          <option value="女性">女性</option>
+        </select>
+        <small style="font-size: 0.85rem; color: #6b7280;">
+          ※四柱推命では大運（10年運）の算出に必要なため「出生時の性別」をお伺いします。
+        </small>
       </div>
       <div class="field">
         <label for="birthTime">生まれ時間</label>
