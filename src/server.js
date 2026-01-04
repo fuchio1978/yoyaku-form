@@ -1553,6 +1553,7 @@ function handleReservation(body, res) {
     name: body.name,
     email: body.email,
     birthday: body.birthday || '',
+    genderAtBirth: body.genderAtBirth || '',
     birthTime: body.birthTime || '',
     birthPlace: body.birthPlace || '',
     paymentMethod: body.paymentMethod || '',
