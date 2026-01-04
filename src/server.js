@@ -544,6 +544,7 @@ function renderReservationConfirmPage(reservation) {
     ['お名前', reservation.name],
     ['メール', reservation.email],
     ['生年月日', reservation.birthday || '未入力'],
+    ['性別（出生時）', reservation.genderAtBirth || '未入力'],
     ['生まれ時間', reservation.birthTime || '未入力'],
     ['出身地', reservation.birthPlace || '未入力'],
     ['お支払方法',
@@ -575,6 +576,7 @@ function renderReservationConfirmPage(reservation) {
         <input type="hidden" name="name" value="${reservation.name}" />
         <input type="hidden" name="email" value="${reservation.email}" />
         <input type="hidden" name="birthday" value="${reservation.birthday || ''}" />
+        <input type="hidden" name="genderAtBirth" value="${reservation.genderAtBirth || ''}" />
         <input type="hidden" name="birthTime" value="${reservation.birthTime || ''}" />
         <input type="hidden" name="birthPlace" value="${reservation.birthPlace || ''}" />
         <input type="hidden" name="paymentMethod" value="${reservation.paymentMethod || ''}" />
