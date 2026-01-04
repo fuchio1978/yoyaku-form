@@ -652,7 +652,7 @@ function renderLegalPage() {
 ※お問い合わせは原則としてお問い合わせフォームまたはメールにてお願いいたします。
 
 連絡先メールアドレス
-fuchi.labo.2025@gmail.com
+info@fuchilabo.com
 
 営業時間
 平日 10:00〜18:00（不定休）
