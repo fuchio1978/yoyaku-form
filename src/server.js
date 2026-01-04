@@ -1264,6 +1264,7 @@ function renderReservationForm(product) {
           <option value="対面">対面</option>
           <option value="オンライン">オンライン</option>
         </select>
+        <div class="field-error-message" data-error-for="sessionType"></div>
       </div>
     `;
   }
@@ -1276,23 +1277,27 @@ function renderReservationForm(product) {
       <div class="field">
         <label for="name">お名前</label>
         <input id="name" name="name" type="text" placeholder="例）山田 花子" required />
+        <div class="field-error-message" data-error-for="name"></div>
       </div>
       <div class="field">
         <label for="email">メールアドレス</label>
         <input id="email" name="email" type="email" placeholder="sample@example.com" required />
+        <div class="field-error-message" data-error-for="email"></div>
       </div>
       <div class="field">
         <label for="emailConfirm">メールアドレス（確認用）</label>
         <input id="emailConfirm" name="emailConfirm" type="email" placeholder="確認のためもう一度入力してください" required />
+        <div class="field-error-message" data-error-for="emailConfirm"></div>
       </div>
       ${sessionTypeField}
       <div class="field">
         <label for="birthday">生年月日</label>
-        <input id="birthday" name="birthday" type="date" value="1980-01-01" />
+        <input id="birthday" name="birthday" type="date" value="1980-01-01" required />
+        <div class="field-error-message" data-error-for="birthday"></div>
       </div>
       <div class="field">
         <label for="genderAtBirth">性別（出生時）</label>
-        <select id="genderAtBirth" name="genderAtBirth">
+        <select id="genderAtBirth" name="genderAtBirth" required>
           <option value="">選択してください</option>
           <option value="男性">男性</option>
           <option value="女性">女性</option>
@@ -1300,6 +1305,7 @@ function renderReservationForm(product) {
         <small style="font-size: 0.85rem; color: #6b7280;">
           ※四柱推命では大運（10年運）の算出に必要なため「出生時の性別」をお伺いします。
         </small>
+        <div class="field-error-message" data-error-for="genderAtBirth"></div>
       </div>
       <div class="field">
         <label for="birthTime">生まれ時間</label>
@@ -1307,17 +1313,19 @@ function renderReservationForm(product) {
       </div>
       <div class="field">
         <label for="birthPlace">出身地</label>
-        <input id="birthPlace" name="birthPlace" type="text" placeholder="例）愛知県" />
+        <input id="birthPlace" name="birthPlace" type="text" placeholder="例）愛知県" required />
+        <div class="field-error-message" data-error-for="birthPlace"></div>
       </div>
       <div class="field">
         <label for="paymentMethod">お支払方法</label>
-        <select id="paymentMethod" name="paymentMethod">
+        <select id="paymentMethod" name="paymentMethod" required>
           <option value="bank">銀行振込</option>
           <option value="paypal">PAYPAL</option>
         </select>
         <small id="paymentMethodNote" style="display: none; font-size: 0.85rem; color: #6b7280;">
           ※銀行振込をお選びの場合、振込手数料はお客さまのご負担となります。
         </small>
+        <div class="field-error-message" data-error-for="paymentMethod"></div>
       </div>
       <div class="field">
         <label for="notes">ご要望・メモ</label>
@@ -1390,19 +1398,120 @@ function renderProductPage(product) {
 
       (function() {
         var form = document.querySelector('.reservation-form');
+        if (!form) return;
+
         var emailInput = document.getElementById('email');
         var emailConfirmInput = document.getElementById('emailConfirm');
+        var nameInput = document.getElementById('name');
+        var dateSelect = document.getElementById('date');
+        var timeSelect = document.getElementById('timeSlot');
+        var birthdayInput = document.getElementById('birthday');
+        var genderSelect = document.getElementById('genderAtBirth');
+        var birthPlaceInput = document.getElementById('birthPlace');
         var paymentSelect = document.getElementById('paymentMethod');
         var paymentNote = document.getElementById('paymentMethodNote');
+        var sessionTypeSelect = document.getElementById('sessionType');
 
-        if (form && emailInput && emailConfirmInput) {
-          form.addEventListener('submit', function(e) {
-            if (emailInput.value !== emailConfirmInput.value) {
-              e.preventDefault();
-              alert('メールアドレスと確認用メールアドレスが一致しません。入力内容をご確認ください。');
-              emailConfirmInput.focus();
+        function getErrorContainer(name) {
+          return form.querySelector('.field-error-message[data-error-for="' + name + '"]');
+        }
+
+        function setFieldError(inputEl, name, message) {
+          var field = inputEl && inputEl.closest ? inputEl.closest('.field') : null;
+          var msgEl = getErrorContainer(name);
+          if (message) {
+            if (field) field.classList.add('field-error');
+            if (msgEl) msgEl.textContent = message;
+          } else {
+            if (field) field.classList.remove('field-error');
+            if (msgEl) msgEl.textContent = '';
+          }
+        }
+
+        function validateRequired(inputEl, name, label) {
+          if (!inputEl) return true;
+          var value = (inputEl.value || '').trim();
+          if (!value) {
+            setFieldError(inputEl, name, label + 'は必須です。');
+            return false;
+          }
+          setFieldError(inputEl, name, '');
+          return true;
+        }
+
+        function validateEmailPair() {
+          if (!emailInput || !emailConfirmInput) return true;
+          var ok1 = validateRequired(emailInput, 'email', 'メールアドレス');
+          var ok2 = validateRequired(emailConfirmInput, 'emailConfirm', 'メールアドレス（確認用）');
+          if (!ok1 || !ok2) return false;
+          if (emailInput.value.trim() && emailConfirmInput.value.trim() && emailInput.value.trim() !== emailConfirmInput.value.trim()) {
+            setFieldError(emailConfirmInput, 'emailConfirm', 'メールアドレスと確認用メールアドレスが一致しません。');
+            return false;
+          }
+          setFieldError(emailConfirmInput, 'emailConfirm', '');
+          return true;
+        }
+
+        function validateAll(showAlert) {
+          var ok = true;
+
+          if (dateSelect) {
+            ok = validateRequired(dateSelect, 'date', 'ご希望日') && ok;
+          }
+          if (timeSelect) {
+            ok = validateRequired(timeSelect, 'timeSlot', '開始時間') && ok;
+          }
+          if (sessionTypeSelect) {
+            ok = validateRequired(sessionTypeSelect, 'sessionType', '対面／オンライン') && ok;
+          }
+
+          ok = validateRequired(nameInput, 'name', 'お名前') && ok;
+          ok = validateEmailPair() && ok;
+          ok = validateRequired(birthdayInput, 'birthday', '生年月日') && ok;
+          ok = validateRequired(genderSelect, 'genderAtBirth', '性別（出生時）') && ok;
+          ok = validateRequired(birthPlaceInput, 'birthPlace', '出身地') && ok;
+          ok = validateRequired(paymentSelect, 'paymentMethod', 'お支払方法') && ok;
+
+          if (!ok && showAlert) {
+            var firstError = form.querySelector('.field.field-error input, .field.field-error select, .field.field-error textarea');
+            if (firstError && firstError.focus) {
+              firstError.focus();
             }
-          });
+          }
+
+          return ok;
+        }
+
+        // 入力中／変更時にエラーをリアルタイムで解除
+        if (nameInput) {
+          nameInput.addEventListener('input', function() { validateRequired(nameInput, 'name', 'お名前'); });
+        }
+        if (emailInput) {
+          emailInput.addEventListener('input', validateEmailPair);
+        }
+        if (emailConfirmInput) {
+          emailConfirmInput.addEventListener('input', validateEmailPair);
+        }
+        if (dateSelect) {
+          dateSelect.addEventListener('change', function() { validateRequired(dateSelect, 'date', 'ご希望日'); });
+        }
+        if (timeSelect) {
+          timeSelect.addEventListener('change', function() { validateRequired(timeSelect, 'timeSlot', '開始時間'); });
+        }
+        if (sessionTypeSelect) {
+          sessionTypeSelect.addEventListener('change', function() { validateRequired(sessionTypeSelect, 'sessionType', '対面／オンライン'); });
+        }
+        if (birthdayInput) {
+          birthdayInput.addEventListener('change', function() { validateRequired(birthdayInput, 'birthday', '生年月日'); });
+        }
+        if (genderSelect) {
+          genderSelect.addEventListener('change', function() { validateRequired(genderSelect, 'genderAtBirth', '性別（出生時）'); });
+        }
+        if (birthPlaceInput) {
+          birthPlaceInput.addEventListener('input', function() { validateRequired(birthPlaceInput, 'birthPlace', '出身地'); });
+        }
+        if (paymentSelect) {
+          paymentSelect.addEventListener('change', function() { validateRequired(paymentSelect, 'paymentMethod', 'お支払方法'); });
         }
 
         if (paymentSelect && paymentNote) {
@@ -1417,6 +1526,12 @@ function renderProductPage(product) {
           paymentSelect.addEventListener('change', updatePaymentNote);
           updatePaymentNote();
         }
+
+        form.addEventListener('submit', function(e) {
+          if (!validateAll(true)) {
+            e.preventDefault();
+          }
+        });
       })();
     </script>
   `;
@@ -1513,6 +1628,7 @@ function handleReservation(body, res) {
   if (product.showSessionType) {
     required.push('sessionType');
   }
+  required.push('birthday', 'genderAtBirth', 'birthPlace', 'paymentMethod');
   const missing = required.filter((key) => !body[key]);
 
   if (missing.length > 0 || !product) {
