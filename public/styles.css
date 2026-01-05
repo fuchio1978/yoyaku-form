@@ -239,6 +239,21 @@ body {
   margin-top: 0;
 }
 
+/* 予約フォームのエラー表示 */
+.field-error input,
+.field-error select,
+.field-error textarea {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.15);
+}
+
+.field-error-message {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #ff0000; /* はっきりした赤 */
+  min-height: 1em;
+}
+
 .stepper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
