@@ -181,7 +181,7 @@ function parseMultipartImage(req) {
 function renderPersonProductsPage(personId) {
   const products = getProducts()
     .slice()
-    .filter((p) => p.personId === personId)
+    .filter((p) => p.personId === personId && !p.isHidden)
     .sort((a, b) => {
       const ao = typeof a.displayOrder === 'number' ? a.displayOrder : 9999;
       const bo = typeof b.displayOrder === 'number' ? b.displayOrder : 9999;
@@ -977,6 +977,7 @@ function renderAdminHome() {
         <td>${p.title}</td>
         <td>${formatCurrency(p.currency, p.price)}</td>
         <td>${typeof p.displayOrder === 'number' ? p.displayOrder : ''}</td>
+        <td>${p.isHidden ? '非表示' : '表示中'}</td>
         <td>
           <a href="/admin/product?id=${encodeURIComponent(p.id)}">編集</a>
           <form method="POST" action="/admin/delete-product" style="display:inline;margin-left:0.5rem;">
@@ -998,7 +999,7 @@ function renderAdminHome() {
       <a class="button" href="/admin/images" style="margin-left:0.5rem;">画像を管理</a>
       <table class="schedule-table" style="margin-top:1rem;">
         <thead>
-          <tr><th>ID</th><th>タイトル</th><th>価格</th><th>表示順</th><th>操作</th></tr>
+          <tr><th>ID</th><th>タイトル</th><th>価格</th><th>表示順</th><th>状態</th><th>操作</th></tr>
         </thead>
         <tbody>${rows}</tbody>
       </table>
@@ -1146,6 +1147,13 @@ function renderAdminProductForm(product) {
             予約フォームに「対面／オンライン」を表示する
           </label>
           <small>対面鑑定とオンライン鑑定を選んでもらいたい商品の場合にチェックを入れてください。</small>
+        </div>
+        <div class="field">
+          <label>
+            <input type="checkbox" name="isHidden" ${product && product.isHidden ? 'checked' : ''} />
+            商品一覧に表示しない（非表示）
+          </label>
+          <small>チェックを入れると、トップページや鑑定士ごとの一覧には表示されなくなります（商品ページのURLを知っている場合はアクセス可能です）。</small>
         </div>
         <button class="button" type="submit">保存する</button>
       </form>
@@ -2054,6 +2062,7 @@ const server = http.createServer(async (req, res) => {
         displayOrder,
         requiresSchedule: !!body.requiresSchedule,
         showSessionType: !!body.showSessionType,
+        isHidden: !!body.isHidden,
         personId,
         providerLabel,
       };
