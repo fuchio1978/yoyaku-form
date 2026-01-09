@@ -639,7 +639,8 @@ function renderAdminSchedulesPage(options) {
         function parseText(text) {
           var map = {};
           if (!text) return map;
-          var lines = text.split(/\r?\n/);
+          // シンプルな改行分割にして、正規表現リテラルによる構文エラーを避ける
+          var lines = text.split('\n');
           lines.forEach(function(line) {
             line = line.trim();
             if (!line) return;
