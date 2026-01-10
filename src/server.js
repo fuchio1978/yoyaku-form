@@ -208,7 +208,9 @@ function renderPersonProductsPage(personId) {
     )
     .join('');
 
-  const gridClass = products.length === 1 ? 'cards-grid single-person-grid' : 'cards-grid';
+  const gridClass = products.length === 1
+    ? 'cards-grid single-person-grid person-products-grid'
+    : 'cards-grid person-products-grid';
 
   const content = `
     <div style="margin-bottom: 0.75rem;"><a href="/" style="font-size: 0.85rem; color: #2563eb; text-decoration: none;">&larr; TOPに戻る</a></div>
