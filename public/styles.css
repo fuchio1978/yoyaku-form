@@ -288,6 +288,180 @@ body {
   background: #f8fafc;
 }
 
+/* 管理画面 予約枠編集（カレンダーUI） */
+.schedule-admin-tabs {
+  display: inline-flex;
+  background: #e5f3fb;
+  border-radius: 999px;
+  padding: 0.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.schedule-admin-tab {
+  border: none;
+  background: transparent;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0369a1;
+  cursor: pointer;
+}
+
+.schedule-admin-tab.active {
+  background: #0ea5e9;
+  color: #f9fafb;
+}
+
+.schedule-admin-content {
+  margin-top: 0.5rem;
+}
+
+.schedule-admin-person {
+  display: none;
+}
+
+.schedule-admin-person-active {
+  display: block;
+}
+
+.schedule-admin-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .schedule-admin-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.schedule-admin-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.schedule-admin-cal-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.schedule-admin-cal-nav {
+  border: 1px solid var(--border);
+  background: #ffffff;
+  border-radius: 999px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.schedule-admin-cal-nav:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.schedule-admin-cal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.schedule-admin-cal-table th,
+.schedule-admin-cal-table td {
+  width: 14.285%;
+  padding: 0.1rem;
+  text-align: center;
+}
+
+.schedule-admin-cal-day {
+  width: 100%;
+  padding: 0.25rem 0;
+  border-radius: 999px;
+  border: none;
+  background: #e5f3fb;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.schedule-admin-cal-day-disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: default;
+}
+
+.schedule-admin-cal-day-selected {
+  background: #0ea5e9;
+  color: #f9fafb;
+}
+
+.schedule-admin-time-info {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+}
+
+.schedule-admin-time-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.schedule-admin-time-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem;
+}
+
+.schedule-admin-time-item input[type='checkbox'] {
+  display: none;
+}
+
+.schedule-admin-time-item span {
+  display: inline-block;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.schedule-admin-time-item input[type='checkbox']:checked + span {
+  background: #0ea5e9;
+  color: #f9fafb;
+  border-color: #0284c7;
+}
+
+.schedule-admin-summary-title {
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.schedule-admin-summary {
+  max-height: 180px;
+  overflow-y: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  background: #f8fafc;
+}
+
+.schedule-admin-summary-row + .schedule-admin-summary-row {
+  margin-top: 0.15rem;
+}
+
 .time-chip {
   display: inline-block;
   padding: 0.35rem 0.65rem;

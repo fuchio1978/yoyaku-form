@@ -3,7 +3,8 @@
   if (!root) return;
 
   var HOURS = [];
-  for (var h = 9; h <= 21; h++) {
+  // 8:00〜23:00 まで 1時間刻みで表示
+  for (var h = 8; h <= 23; h++) {
     HOURS.push(h);
   }
 
@@ -80,9 +81,9 @@
     var maxYear = currentYear + (currentMonth + 1 >= 12 ? 1 : 0);
 
     var header = createElement('div', 'schedule-admin-cal-header');
-    var prevBtn = createElement('button', 'button secondary', '<');
+    var prevBtn = createElement('button', 'schedule-admin-cal-nav', '<');
     prevBtn.type = 'button';
-    var nextBtn = createElement('button', 'button secondary', '>');
+    var nextBtn = createElement('button', 'schedule-admin-cal-nav', '>');
     nextBtn.type = 'button';
     var title = createElement('div', 'schedule-admin-cal-title');
     header.appendChild(prevBtn);
@@ -246,6 +247,7 @@
     month: now.getMonth(),
     selectedDate: null,
     renderTimes: null,
+    summaryContainer: null,
   };
   var chigusaState = {
     map: parseText(chigusaTextarea ? chigusaTextarea.value : ''),
@@ -253,6 +255,7 @@
     month: now.getMonth(),
     selectedDate: null,
     renderTimes: null,
+    summaryContainer: null,
   };
 
   function syncTextareas() {
@@ -262,6 +265,9 @@
     if (chigusaTextarea) {
       chigusaTextarea.value = mapToText(chigusaState.map);
     }
+    // サマリー表示も更新
+    renderSummary(tetsuyaState);
+    renderSummary(chigusaState);
   }
 
   var tabs = createElement('div', 'schedule-admin-tabs');
@@ -281,6 +287,27 @@
   contentWrap.appendChild(tContainer);
   contentWrap.appendChild(cContainer);
 
+  function renderSummary(state) {
+    if (!state.summaryContainer) return;
+    var container = state.summaryContainer;
+    container.innerHTML = '';
+    var dates = Object.keys(state.map).sort();
+    if (!dates.length) {
+      container.textContent = '現在登録されている予約枠はありません。';
+      return;
+    }
+    for (var i = 0; i < dates.length; i++) {
+      var date = dates[i];
+      var slotsMap = state.map[date] || {};
+      var slots = Object.keys(slotsMap).filter(function (k) { return !!slotsMap[k]; });
+      if (!slots.length) continue;
+      slots.sort();
+      var row = createElement('div', 'schedule-admin-summary-row');
+      row.textContent = date + ' : ' + slots.join(', ');
+      container.appendChild(row);
+    }
+  }
+
   function createPersonUI(container, state) {
     var layout = createElement('div', 'schedule-admin-layout');
     var calCol = createElement('div', 'schedule-admin-cal');
@@ -288,6 +315,12 @@
     layout.appendChild(calCol);
     layout.appendChild(timeCol);
     container.appendChild(layout);
+
+    var summaryTitle = createElement('div', 'schedule-admin-summary-title', '現在の登録済み予約枠');
+    var summaryBox = createElement('div', 'schedule-admin-summary');
+    container.appendChild(summaryTitle);
+    container.appendChild(summaryBox);
+    state.summaryContainer = summaryBox;
 
     var calState = { year: state.year, month: state.month, selectedDate: state.selectedDate };
 
