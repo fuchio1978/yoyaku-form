@@ -216,11 +216,12 @@
         cb.type = 'checkbox';
         cb.checked = !!dateMap[label];
         (function (lbl) {
-          cb.addEventListener('change', function () {
+          cb.addEventListener('change', function (e) {
             if (!personState.map[personState.selectedDate]) {
               personState.map[personState.selectedDate] = {};
             }
-            personState.map[personState.selectedDate][lbl] = cb.checked;
+            // 実際に変更されたチェックボックスの状態を使って反映する
+            personState.map[personState.selectedDate][lbl] = !!e.target.checked;
             if (onChange) onChange();
           });
         })(label);
