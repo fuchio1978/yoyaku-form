@@ -122,7 +122,9 @@
         var td = document.createElement('td');
         var btn = createElement('button', 'schedule-admin-cal-day', String(day));
         btn.type = 'button';
-        var iso = date.toISOString().slice(0, 10);
+        // タイムゾーンによるズレを避けるため、Date.toISOString() は使わず手動で YYYY-MM-DD を組み立てる
+        var m = state.month + 1;
+        var iso = state.year + '-' + (m < 10 ? '0' + m : String(m)) + '-' + (day < 10 ? '0' + day : String(day));
         btn.setAttribute('data-date', iso);
 
         if (date < today) {
