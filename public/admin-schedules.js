@@ -19,7 +19,20 @@
       var line = lines[i].trim();
       if (!line) continue;
       var parts = line.split(':');
-      var date = parts[0];
+      var rawDate = (parts[0] || '').trim();
+      // 日付は "2026-1-9" / "2026-01-09" など様々な表記を "YYYY-MM-DD" に正規化する
+      var date = rawDate;
+      var dm = rawDate.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+      if (dm) {
+        var y = dm[1];
+        var m = parseInt(dm[2], 10);
+        var d = parseInt(dm[3], 10);
+        if (!isNaN(m) && !isNaN(d)) {
+          var mm = m < 10 ? '0' + m : String(m);
+          var dd = d < 10 ? '0' + d : String(d);
+          date = y + '-' + mm + '-' + dd;
+        }
+      }
       var slotsPart = parts.slice(1).join(':');
       if (!date) continue;
       var rawSlots = (slotsPart || '').split(',');
