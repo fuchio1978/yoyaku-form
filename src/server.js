@@ -1003,9 +1003,11 @@ function renderAdminHome() {
     <div class="panel">
       <h3>商品一覧（管理画面）</h3>
       <p>商品を編集するとトップページと商品ページに反映されます。</p>
-      <a class="button secondary" href="/admin/product">新規商品を追加</a>
-      <a class="button" href="/admin/schedules" style="margin-left:0.5rem;">予約枠を編集</a>
-      <a class="button" href="/admin/images" style="margin-left:0.5rem;">画像を管理</a>
+      <div class="admin-actions">
+        <a class="button secondary" href="/admin/product">新規商品を追加</a>
+        <a class="button" href="/admin/schedules">予約枠を編集</a>
+        <a class="button" href="/admin/images">画像を管理</a>
+      </div>
       <table class="schedule-table" style="margin-top:1rem;">
         <thead>
           <tr><th>ID</th><th>タイトル</th><th>価格</th><th>表示順</th><th>状態</th><th>操作</th></tr>

@@ -288,6 +288,17 @@ body {
   background: #f8fafc;
 }
 
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.admin-actions .button {
+  margin: 0;
+}
+
 /* 管理画面 予約枠編集（カレンダーUI） */
 .schedule-admin-tabs {
   display: inline-flex;
