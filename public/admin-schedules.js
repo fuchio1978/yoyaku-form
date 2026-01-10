@@ -292,12 +292,18 @@
     var container = state.summaryContainer;
     container.innerHTML = '';
     var dates = Object.keys(state.map).sort();
+    // 今日より前の日付はサマリーには表示しない
+    var todayStr = new Date().toISOString().slice(0, 10);
     if (!dates.length) {
       container.textContent = '現在登録されている予約枠はありません。';
       return;
     }
+    var hasAny = false;
     for (var i = 0; i < dates.length; i++) {
       var date = dates[i];
+      if (date < todayStr) {
+        continue;
+      }
       var slotsMap = state.map[date] || {};
       var slots = Object.keys(slotsMap).filter(function (k) { return !!slotsMap[k]; });
       if (!slots.length) continue;
@@ -305,6 +311,10 @@
       var row = createElement('div', 'schedule-admin-summary-row');
       row.textContent = date + ' : ' + slots.join(', ');
       container.appendChild(row);
+      hasAny = true;
+    }
+    if (!hasAny) {
+      container.textContent = '現在登録されている予約枠はありません。';
     }
   }
 
