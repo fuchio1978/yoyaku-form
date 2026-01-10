@@ -354,10 +354,22 @@ function parseScheduleText(text) {
       const idx = line.indexOf(':');
       const date = idx === -1 ? line : line.slice(0, idx);
       const times = idx === -1 ? '' : line.slice(idx + 1);
+      // 時刻は "09:00" と "9:00" が混在していても同一とみなし、常に "H:MM" 形式に正規化し、数値順にソートする
       const slots = (times || '')
         .split(',')
         .map((t) => t.trim())
-        .filter(Boolean);
+        .filter(Boolean)
+        .map((t) => {
+          const m = t.match(/^(\d{1,2}):(\d{2})$/);
+          if (!m) return t; // 想定外フォーマットはそのまま
+          const h = String(parseInt(m[1], 10));
+          return `${h}:${m[2]}`;
+        })
+        .sort((a, b) => {
+          const ha = parseInt(a.split(':')[0], 10) || 0;
+          const hb = parseInt(b.split(':')[0], 10) || 0;
+          return ha - hb;
+        });
       return { date: date.trim(), slots };
     });
 }
