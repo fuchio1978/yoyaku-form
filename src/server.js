@@ -231,10 +231,6 @@ function renderCanvaAiCoursePage() {
   const content = `
     <section class="ai-course-page">
       <div class="ai-course-hero" style="background-image: url('/uploads/images/ai-course-hero.jpg');">
-        <div class="ai-course-hero-inner">
-          <div class="ai-course-tag">四柱推命×AI</div>
-          <h1 class="ai-course-title">Canvaでつくる<br />四柱推命の景色講座</h1>
-        </div>
       </div>
 
       <div class="ai-course-body">
