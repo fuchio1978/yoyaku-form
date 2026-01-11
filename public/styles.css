@@ -928,12 +928,12 @@ textarea {
 .ai-course-cta-image {
   display: block;
   text-align: center;
-  margin-top: -5.2rem;
-  margin-bottom: 0.3rem;
+  margin-top: -6.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .ai-course-cta-image img {
-  max-width: 70%;
+  max-width: 60%;
   height: auto;
   display: inline-block;
 }
@@ -964,7 +964,7 @@ textarea {
   }
 
   .ai-course-cta-image {
-    margin-top: -4.0rem;
+    margin-top: -5.0rem;
   }
 }
 
