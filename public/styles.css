@@ -918,60 +918,24 @@ textarea {
   height: 260px;
   background-size: cover;
   background-position: center center;
-  display: flex;
-  align-items: flex-end;
 }
 
 .ai-course-footer-inner {
   width: 100%;
-  padding: 1.1rem 1.5rem 1.4rem;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.4), transparent);
-  color: #f9fafb;
+  height: 100%;
+}
+
+.ai-course-cta-image {
+  display: block;
   text-align: center;
+  margin-top: -1.4rem;
+  margin-bottom: 0.4rem;
 }
 
-.ai-course-footer-note {
-  font-size: 0.85rem;
-  margin: 0 0 0.6rem;
-}
-
-.ai-course-price-block {
+.ai-course-cta-image img {
+  max-width: 80%;
+  height: auto;
   display: inline-block;
-  padding: 0.4rem 0.9rem;
-  border-radius: 12px;
-  background: rgba(15, 23, 42, 0.75);
-  margin-bottom: 0.7rem;
-}
-
-.ai-course-price-label {
-  font-size: 0.8rem;
-}
-
-.ai-course-price {
-  font-size: 1.4rem;
-  font-weight: 800;
-}
-
-.ai-course-price span {
-  font-size: 0.9rem;
-  margin-left: 0.15rem;
-}
-
-.ai-course-cta {
-  display: inline-block;
-  margin-top: 0.2rem;
-  padding: 0.75rem 1.8rem;
-  border-radius: 999px;
-  background: #f97316;
-  color: #111827;
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.4);
-}
-
-.ai-course-cta:hover {
-  background: #fb923c;
 }
 
 @media (max-width: 640px) {
@@ -996,7 +960,11 @@ textarea {
   }
 
   .ai-course-footer {
-    height: 240px;
+    height: 220px;
+  }
+
+  .ai-course-cta-image {
+    margin-top: -1.2rem;
   }
 }
 

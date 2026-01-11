@@ -315,17 +315,11 @@ function renderCanvaAiCoursePage() {
         </div>
 
         <div class="ai-course-footer" style="background-image: url('/uploads/images/ai-course-footer.jpg');">
-          <div class="ai-course-footer-inner">
-            <p class="ai-course-footer-note">1ヶ月間のマンツーマン伴走講座<br />＋LINEチャットサポート付き（受講期間内無制限）</p>
-            <div class="ai-course-price-block">
-              <div class="ai-course-price-label">講座価格</div>
-              <div class="ai-course-price">49,500円<span>（税込）</span></div>
-            </div>
-            <a class="ai-course-cta" href="https://forms.gle/ks5WxwCXbzaeu6k29" target="_blank" rel="noopener noreferrer">
-              Canva AIでつくる四柱推命の景色講座に申し込む
-            </a>
-          </div>
+          <div class="ai-course-footer-inner"></div>
         </div>
+        <a class="ai-course-cta-image" href="https://forms.gle/ks5WxwCXbzaeu6k29" target="_blank" rel="noopener noreferrer">
+          <img src="/uploads/images/ai-course-cta.png" alt="Canva AIでつくる四柱推命の景色講座に申し込む" loading="lazy" />
+        </a>
       </div>
     </section>
   `;
