@@ -936,6 +936,18 @@ textarea {
   max-width: 52%;
   height: auto;
   display: inline-block;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, opacity 0.12s ease-out;
+}
+
+.ai-course-cta-image:hover img {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.35);
+}
+
+.ai-course-cta-image:active img {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+  opacity: 0.92;
 }
 
 @media (max-width: 640px) {
