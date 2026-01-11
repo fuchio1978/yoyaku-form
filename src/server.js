@@ -227,6 +227,122 @@ function renderPersonProductsPage(personId) {
   });
 }
 
+function renderCanvaAiCoursePage() {
+  const content = `
+    <section class="ai-course-page">
+      <div class="ai-course-hero" style="background-image: url('/ai-course-hero.jpg');">
+        <div class="ai-course-hero-inner">
+          <div class="ai-course-tag">四柱推命×AI</div>
+          <h1 class="ai-course-title">Canvaでつくる<br />四柱推命の景色講座</h1>
+        </div>
+      </div>
+
+      <div class="ai-course-body">
+        <div class="ai-course-meta">
+          <div class="ai-course-meta-item">
+            <div class="ai-course-meta-label">期間</div>
+            <div class="ai-course-meta-value">4週間</div>
+          </div>
+          <div class="ai-course-meta-item">
+            <div class="ai-course-meta-label">形式</div>
+            <div class="ai-course-meta-value">zoom講義＋LINEフォロー</div>
+          </div>
+          <div class="ai-course-meta-item">
+            <div class="ai-course-meta-label">ゴール</div>
+            <div class="ai-course-meta-value">鑑定に使える「四柱の景色画像」を自分で作れるようになる</div>
+          </div>
+        </div>
+
+        <p class="ai-course-note">以下は、実際の講座スケジュール例です</p>
+
+        <div class="ai-course-section">
+          <h2 class="ai-course-section-heading">WEEK0　事前準備</h2>
+          <div class="ai-course-section-body">
+            <ul>
+              <li>Canvaインストール、ログイン（事前お試し）</li>
+              <li>講座のロードマップ確認</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ai-course-section">
+          <h2 class="ai-course-section-heading">WEEK1−2　Canva AI基本操作</h2>
+          <div class="ai-course-section-body">
+            <p class="ai-course-section-lead">zoom講義（毎回 120分）</p>
+            <ul>
+              <li>CanvaのAI機能を使った背景画像をどこまで作れるか</li>
+              <li>鑑定に使える景色とは？</li>
+              <li>「景色」の伝え方・選び方の基準</li>
+              <li>光・色の使い方</li>
+              <li>文字を入れたくなる配置の考え方</li>
+              <li>見せたい印象をコントロールするコツ　など</li>
+            </ul>
+            <p class="ai-course-section-foot">
+              【大事なポイント】<br />
+              十干・十二支の基本の性質をおさらいしながら、
+              それぞれの「景色」の表現を一緒に考えていきます。
+            </p>
+          </div>
+        </div>
+
+        <div class="ai-course-section">
+          <h2 class="ai-course-section-heading">WEEK3−4　命式入力シートで画像作成</h2>
+          <div class="ai-course-section-body">
+            <p class="ai-course-section-lead">zoom講義（毎回 90分）</p>
+            <ul>
+              <li>八字をもとに「景色」の軸を整理して言葉で表現する</li>
+              <li>人の印象に残る「3つの景色」</li>
+              <li>十干ごとの「景色」の切り口を深める</li>
+              <li>キーワードを使ったイメージの膨らませ方</li>
+              <li>「使いやすい景色画像」に整えるポイント</li>
+            </ul>
+            <p class="ai-course-section-foot">
+              【大事なポイント】<br />
+              実際の鑑定用シートを使いながら、
+              自分や身近な人の命式を題材に、
+              それぞれの「景色ショット」を一緒に作っていきます。
+            </p>
+          </div>
+        </div>
+
+        <div class="ai-course-section">
+          <h2 class="ai-course-section-heading">講座終了後</h2>
+          <div class="ai-course-section-body">
+            <p class="ai-course-section-lead">zoom MTG 30分（希望者）</p>
+            <ul>
+              <li>講座の振り返り</li>
+              <li>実際の鑑定で使ってみてのご感想・ご相談</li>
+              <li>今後の鑑定への取り入れ方の整理</li>
+              <li>五行バランスの確認など</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ai-course-footer" style="background-image: url('/ai-course-footer.jpg');">
+          <div class="ai-course-footer-inner">
+            <p class="ai-course-footer-note">1ヶ月間のマンツーマン伴走講座<br />＋LINEチャットサポート付き（受講期間内無制限）</p>
+            <div class="ai-course-price-block">
+              <div class="ai-course-price-label">講座価格</div>
+              <div class="ai-course-price">49,500円<span>（税込）</span></div>
+            </div>
+            <a class="ai-course-cta" href="https://forms.gle/ks5WxwCXbzaeu6k29" target="_blank" rel="noopener noreferrer">
+              Canva AIでつくる四柱推命の景色講座に申し込む
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+
+  return renderPage({
+    title: '',
+    subtitle: '',
+    content,
+    backLink: '/',
+    hideHeading: true,
+  });
+}
+
 async function sendContactToSheets(contact) {
   if (!sheetsWebhookUrl) return;
 
@@ -1794,6 +1910,12 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && (parsedUrl.pathname === '/' || parsedUrl.pathname === '/index.html')) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderHomePage());
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/courses/canva-ai') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderCanvaAiCoursePage());
     return;
   }
 
