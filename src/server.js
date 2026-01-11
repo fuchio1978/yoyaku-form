@@ -230,7 +230,7 @@ function renderPersonProductsPage(personId) {
 function renderCanvaAiCoursePage() {
   const content = `
     <section class="ai-course-page">
-      <div class="ai-course-hero" style="background-image: url('/ai-course-hero.jpg');">
+      <div class="ai-course-hero" style="background-image: url('/uploads/images/ai-course-hero.jpg');">
         <div class="ai-course-hero-inner">
           <div class="ai-course-tag">四柱推命×AI</div>
           <h1 class="ai-course-title">Canvaでつくる<br />四柱推命の景色講座</h1>
@@ -318,7 +318,7 @@ function renderCanvaAiCoursePage() {
           </div>
         </div>
 
-        <div class="ai-course-footer" style="background-image: url('/ai-course-footer.jpg');">
+        <div class="ai-course-footer" style="background-image: url('/uploads/images/ai-course-footer.jpg');">
           <div class="ai-course-footer-inner">
             <p class="ai-course-footer-note">1ヶ月間のマンツーマン伴走講座<br />＋LINEチャットサポート付き（受講期間内無制限）</p>
             <div class="ai-course-price-block">
