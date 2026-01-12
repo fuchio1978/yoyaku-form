@@ -241,11 +241,11 @@ function renderCanvaAiCoursePage() {
           </div>
           <div class="ai-course-meta-item">
             <div class="ai-course-meta-label">形式</div>
-            <div class="ai-course-meta-value">zoom講義＋LINEフォロー</div>
+            <div class="ai-course-meta-value">zoom講座＋LINEフォロー</div>
           </div>
           <div class="ai-course-meta-item">
             <div class="ai-course-meta-label">ゴール</div>
-            <div class="ai-course-meta-value">鑑定に使える「四柱の景色画像」を自分で作れるようになる</div>
+            <div class="ai-course-meta-value">鑑定に使える「命式の景色画像」を自分で作れるようになる</div>
           </div>
         </div>
 
@@ -255,8 +255,8 @@ function renderCanvaAiCoursePage() {
           <h2 class="ai-course-section-heading">WEEK0　事前準備</h2>
           <div class="ai-course-section-body">
             <ul>
-              <li>Canvaインストール、ログイン（事前お試し）</li>
-              <li>講座のロードマップ確認</li>
+              <li>Canvaインストール、ログイン（資料お渡し）</li>
+              <li>講座のロードマップ提示</li>
             </ul>
           </div>
         </div>
@@ -264,52 +264,52 @@ function renderCanvaAiCoursePage() {
         <div class="ai-course-section">
           <h2 class="ai-course-section-heading">WEEK1−2　Canva AI基本操作</h2>
           <div class="ai-course-section-body">
-            <p class="ai-course-section-lead">zoom講義（毎回 120分）</p>
+            <p class="ai-course-section-lead">zoom講座① 120分</p>
             <ul>
-              <li>CanvaのAI機能を使った背景画像をどこまで作れるか</li>
-              <li>鑑定に使える景色とは？</li>
-              <li>「景色」の伝え方・選び方の基準</li>
-              <li>光・色の使い方</li>
-              <li>文字を入れたくなる配置の考え方</li>
-              <li>見せたい印象をコントロールするコツ　など</li>
+              <li>Canvaで意図した画像を“再現性をもって”作れる</li>
+              <li>Canva AIとはなにか？</li>
+              <li>画像生成の基本構造</li>
+              <li>プロンプトの書き方、考え方</li>
+              <li>実演</li>
+              <li>思い通りにいかないときの対処法</li>
+              <li>六十干支を作るための必要情報</li>
             </ul>
             <p class="ai-course-section-foot">
-              【大事なポイント】<br />
-              十干・十二支の基本の性質をおさらいしながら、
-              それぞれの「景色」の表現を一緒に考えていきます。
+              【課題】<br />
+              六十干支の画像作ってみる<br />
+              →完成した画像とプロンプトをLINEにて添削
             </p>
           </div>
         </div>
 
         <div class="ai-course-section">
-          <h2 class="ai-course-section-heading">WEEK3−4　命式入力シートで画像作成</h2>
+          <h2 class="ai-course-section-heading">WEEK3−4　命式八文字で画像作成</h2>
           <div class="ai-course-section-body">
-            <p class="ai-course-section-lead">zoom講義（毎回 90分）</p>
+            <p class="ai-course-section-lead">zoom講座② 90分</p>
             <ul>
-              <li>八字をもとに「景色」の軸を整理して言葉で表現する</li>
-              <li>人の印象に残る「3つの景色」</li>
-              <li>十干ごとの「景色」の切り口を深める</li>
-              <li>キーワードを使ったイメージの膨らませ方</li>
-              <li>「使いやすい景色画像」に整えるポイント</li>
+              <li>八字全体を“1枚の景色”として表現できる</li>
+              <li>景色化の優先順位</li>
+              <li>八字全体を構成する「3つの層」</li>
+              <li>十二支は“足す”のではなく“引く”</li>
+              <li>実演</li>
             </ul>
             <p class="ai-course-section-foot">
-              【大事なポイント】<br />
-              実際の鑑定用シートを使いながら、
-              自分や身近な人の命式を題材に、
-              それぞれの「景色ショット」を一緒に作っていきます。
+              【課題】<br />
+              自分や家族の命式で作ってみる<br />
+              →完成した画像とプロンプトをLINEにて添削
             </p>
           </div>
         </div>
 
         <div class="ai-course-section">
-          <h2 class="ai-course-section-heading">講座終了後</h2>
+          <h2 class="ai-course-section-heading">講座終了時</h2>
           <div class="ai-course-section-body">
-            <p class="ai-course-section-lead">zoom MTG 30分（希望者）</p>
+            <p class="ai-course-section-lead">zoom MT③ 30分</p>
             <ul>
-              <li>講座の振り返り</li>
-              <li>実際の鑑定で使ってみてのご感想・ご相談</li>
-              <li>今後の鑑定への取り入れ方の整理</li>
-              <li>五行バランスの確認など</li>
+              <li>振り返り</li>
+              <li>この４週間でやったことの整理</li>
+              <li>鑑定での画像活用法</li>
+              <li>五行バランス概要</li>
             </ul>
           </div>
         </div>
