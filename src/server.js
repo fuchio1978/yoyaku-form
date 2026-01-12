@@ -249,7 +249,7 @@ function renderCanvaAiCoursePage() {
           </div>
         </div>
 
-        <p class="ai-course-note">以下は、実際の講座スケジュール例です</p>
+        <p class="ai-course-note">以下は、実際の講座スケジュール内容です</p>
 
         <div class="ai-course-section">
           <h2 class="ai-course-section-heading">WEEK0　事前準備</h2>
@@ -265,8 +265,8 @@ function renderCanvaAiCoursePage() {
           <h2 class="ai-course-section-heading">WEEK1−2　Canva AI基本操作</h2>
           <div class="ai-course-section-body">
             <p class="ai-course-section-lead">zoom講座① 120分</p>
+            <p>Canvaで意図した画像を“再現性をもって”作れる</p>
             <ul>
-              <li>Canvaで意図した画像を“再現性をもって”作れる</li>
               <li>Canva AIとはなにか？</li>
               <li>画像生成の基本構造</li>
               <li>プロンプトの書き方、考え方</li>
@@ -286,8 +286,8 @@ function renderCanvaAiCoursePage() {
           <h2 class="ai-course-section-heading">WEEK3−4　命式八文字で画像作成</h2>
           <div class="ai-course-section-body">
             <p class="ai-course-section-lead">zoom講座② 90分</p>
+            <p>八字全体を“1枚の景色”として表現できる</p>
             <ul>
-              <li>八字全体を“1枚の景色”として表現できる</li>
               <li>景色化の優先順位</li>
               <li>八字全体を構成する「3つの層」</li>
               <li>十二支は“足す”のではなく“引く”</li>
@@ -305,8 +305,8 @@ function renderCanvaAiCoursePage() {
           <h2 class="ai-course-section-heading">講座終了時</h2>
           <div class="ai-course-section-body">
             <p class="ai-course-section-lead">zoom MT③ 30分</p>
+            <p>振り返り</p>
             <ul>
-              <li>振り返り</li>
               <li>この４週間でやったことの整理</li>
               <li>鑑定での画像活用法</li>
               <li>五行バランス概要</li>
