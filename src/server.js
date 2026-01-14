@@ -1454,11 +1454,9 @@ function renderReservationForm(product) {
         <label for="paymentMethod">お支払方法</label>
         <select id="paymentMethod" name="paymentMethod" required>
           <option value="bank">銀行振込</option>
-          <option value="paypal">PAYPAL</option>
+          <option value="paypal">クレジットカード</option>
         </select>
-        <small id="paymentMethodNote" style="display: none; font-size: 0.85rem; color: #6b7280;">
-          ※銀行振込をお選びの場合、振込手数料はお客さまのご負担となります。
-        </small>
+        <small id="paymentMethodNote" style="display: none; font-size: 0.85rem; color: #6b7280;"></small>
         <div class="field-error-message" data-error-for="paymentMethod"></div>
       </div>
       `
@@ -1661,8 +1659,13 @@ function renderProductPage(product) {
         if (paymentSelect && paymentNote) {
           function updatePaymentNote() {
             if (paymentSelect.value === 'bank') {
+              paymentNote.textContent = '※銀行振込をお選びの場合、振込手数料はお客さまのご負担となります。';
+              paymentNote.style.display = 'block';
+            } else if (paymentSelect.value === 'paypal') {
+              paymentNote.textContent = '※追ってPAYPALのお支払いリンクを送付します';
               paymentNote.style.display = 'block';
             } else {
+              paymentNote.textContent = '';
               paymentNote.style.display = 'none';
             }
           }
@@ -1721,8 +1724,7 @@ function renderConfirmation(reservation) {
       <h3>予約を受け付けました</h3>
       <p style="white-space: pre-line; margin-bottom: 1rem;">
 ご予約ありがとうございます。
-内容を確認のうえ、24時間以内にご入金先などの詳細をメールにてご案内いたします。
-※メールが届かない場合は、迷惑メールフォルダもご確認ください。
+内容を確認のうえ、24時間以内にご入金先やクレジットカード支払い方法などの詳細をメールにてご案内いたします。
       </p>
       <p style="white-space: pre-line;">
 ご連絡先として info@fuchilabo.com を登録しております。
