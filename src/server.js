@@ -1343,6 +1343,9 @@ function renderScheduleTable(product) {
 
 function renderReservationForm(product) {
   const requiresSchedule = product.requiresSchedule !== false; // 未指定は true 扱い
+  const numericPrice =
+    typeof product.price === 'number' ? product.price : Number(product.price || 0);
+  const isFree = numericPrice === 0;
 
   let dateTimeFields = '';
 
@@ -1443,6 +1446,10 @@ function renderReservationForm(product) {
         <input id="birthPlace" name="birthPlace" type="text" placeholder="例）愛知県" required />
         <div class="field-error-message" data-error-for="birthPlace"></div>
       </div>
+      ${
+        isFree
+          ? ''
+          : `
       <div class="field">
         <label for="paymentMethod">お支払方法</label>
         <select id="paymentMethod" name="paymentMethod" required>
@@ -1454,6 +1461,8 @@ function renderReservationForm(product) {
         </small>
         <div class="field-error-message" data-error-for="paymentMethod"></div>
       </div>
+      `
+      }
       <div class="field">
         <label for="notes">ご要望・メモ</label>
         <textarea id="notes" name="notes" placeholder="鑑定で聴きたいお悩みや、ご相談内容があればご記入ください"></textarea>
@@ -1466,6 +1475,10 @@ function renderReservationForm(product) {
 function renderProductPage(product) {
   const scheduleTable = renderScheduleTable(product);
   const reservationForm = renderReservationForm(product);
+
+  const numericPrice =
+    typeof product.price === 'number' ? product.price : Number(product.price || 0);
+  const isFree = numericPrice === 0;
 
   const detailItems = product.details.map((item) => `<li>${item}</li>`).join('');
   const rawBenefit =
@@ -1486,7 +1499,9 @@ function renderProductPage(product) {
         <div class="product-meta">
           <div class="badge">${product.typeLabel}</div>
           <div class="title"><strong>${product.title}</strong></div>
-          <div class="price">${formatCurrency(product.currency, product.price)}</div>
+          <div class="price">${
+            isFree ? '無料イベントです' : formatCurrency(product.currency, numericPrice)
+          }</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
         </div>
         <p class="product-benefit">${benefitHtml}</p>
@@ -1597,7 +1612,9 @@ function renderProductPage(product) {
           ok = validateRequired(birthdayInput, 'birthday', '生年月日') && ok;
           ok = validateRequired(genderSelect, 'genderAtBirth', '性別（出生時）') && ok;
           ok = validateRequired(birthPlaceInput, 'birthPlace', '出身地') && ok;
-          ok = validateRequired(paymentSelect, 'paymentMethod', 'お支払方法') && ok;
+          if (paymentSelect) {
+            ok = validateRequired(paymentSelect, 'paymentMethod', 'お支払方法') && ok;
+          }
 
           if (!ok && showAlert) {
             var firstError = form.querySelector('.field.field-error input, .field.field-error select, .field.field-error textarea');
@@ -1744,6 +1761,11 @@ function handleReservation(body, res) {
   const product = getProduct(body.productId);
   const requiresSchedule = product && product.requiresSchedule !== false;
   const personId = body.personId || (product && product.personId) || '';
+  const numericPrice =
+    product && typeof product.price === 'number'
+      ? product.price
+      : Number((product && product.price) || 0);
+  const isFree = numericPrice === 0;
 
   const required = ['productId', 'name', 'email'];
   if (product && product.requiresSchedule && !personId) {
@@ -1755,7 +1777,10 @@ function handleReservation(body, res) {
   if (product.showSessionType) {
     required.push('sessionType');
   }
-  required.push('birthday', 'genderAtBirth', 'birthPlace', 'paymentMethod');
+  required.push('birthday', 'genderAtBirth', 'birthPlace');
+  if (!isFree) {
+    required.push('paymentMethod');
+  }
   const missing = required.filter((key) => !body[key]);
 
   if (missing.length > 0 || !product) {
@@ -1786,7 +1811,7 @@ function handleReservation(body, res) {
   const reservation = {
     productId: product.id,
     productTitle: product.title,
-    price: typeof product.price === 'number' ? product.price : Number(product.price || 0),
+    price: numericPrice,
     currency: product.currency || '¥',
     personId,
     personName: personId ? getPersonName(personId) : '',
