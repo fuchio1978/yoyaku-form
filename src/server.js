@@ -693,6 +693,24 @@ function renderReservationConfirmPage(reservation) {
 
   const content = `
     <div class="panel">
+      <div style="margin-bottom:1rem;">
+        <ol style="display:flex; gap:0.5rem; list-style:none; padding:0; margin:0; font-size:0.9rem; align-items:center; justify-content:center;">
+          <li style="display:flex; align-items:center; gap:0.25rem; opacity:0.6;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:1.4rem; height:1.4rem; border-radius:9999px; border:1px solid #9ca3af; font-size:0.8rem;">1</span>
+            <span>情報入力</span>
+          </li>
+          <li style="flex:0 0 1.5rem; height:2px; background:linear-gradient(to right,#9ca3af,#4b5563);"></li>
+          <li style="display:flex; align-items:center; gap:0.25rem; font-weight:bold; color:#16a34a;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:1.4rem; height:1.4rem; border-radius:9999px; background-color:#bbf7d0; color:#14532d; font-size:0.8rem;">2</span>
+            <span>確認</span>
+          </li>
+          <li style="flex:0 0 1.5rem; height:2px; background:#e5e7eb;"></li>
+          <li style="display:flex; align-items:center; gap:0.25rem; opacity:0.6;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:1.4rem; height:1.4rem; border-radius:9999px; border:1px solid #9ca3af; font-size:0.8rem;">3</span>
+            <span>完了</span>
+          </li>
+        </ol>
+      </div>
       <h3>入力内容の確認</h3>
       <p>以下の内容で予約を受け付けます。内容をご確認のうえ、「この内容で予約を確定する」ボタンを押してください。</p>
       <table class="schedule-table"><tbody>${rows}</tbody></table>
@@ -1806,6 +1824,24 @@ function renderConfirmation(reservation) {
 
   const content = `
     <div class="panel">
+      <div style="margin-bottom:1rem;">
+        <ol style="display:flex; gap:0.5rem; list-style:none; padding:0; margin:0; font-size:0.9rem; align-items:center; justify-content:center;">
+          <li style="display:flex; align-items:center; gap:0.25rem; opacity:0.6;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:1.4rem; height:1.4rem; border-radius:9999px; border:1px solid #9ca3af; font-size:0.8rem;">1</span>
+            <span>情報入力</span>
+          </li>
+          <li style="flex:0 0 1.5rem; height:2px; background:#e5e7eb;"></li>
+          <li style="display:flex; align-items:center; gap:0.25rem; opacity:0.6;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:1.4rem; height:1.4rem; border-radius:9999px; border:1px solid #9ca3af; font-size:0.8rem;">2</span>
+            <span>確認</span>
+          </li>
+          <li style="flex:0 0 1.5rem; height:2px; background:linear-gradient(to right,#9ca3af,#16a34a);"></li>
+          <li style="display:flex; align-items:center; gap:0.25rem; font-weight:bold; color:#16a34a;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:1.4rem; height:1.4rem; border-radius:9999px; background-color:#bbf7d0; color:#14532d; font-size:0.8rem;">3</span>
+            <span>完了</span>
+          </li>
+        </ol>
+      </div>
       <h3>予約を受け付けました</h3>
       <p style="white-space: pre-line; margin-bottom: 1rem;">
 ご予約ありがとうございます。
