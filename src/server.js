@@ -1961,13 +1961,13 @@ function renderReservationForm(product) {
   if (compatibilityEnabled && compatibilityPrice > 0) {
     const priceText = formatCurrency(product.currency || '¥', compatibilityPrice);
     compatibilityOptionField = `
-      <fieldset class="field" style="border:1px solid #e5e7eb; padding:0.75rem 1rem;">
+      <fieldset class="field compatibility-option" style="border:1px solid #e5e7eb; padding:0.75rem 1rem;">
         <legend style="font-weight:bold; color:#16a34a;">オプション</legend>
         <label style="display:flex; align-items:flex-start; gap:0.5rem;">
           <input type="checkbox" name="compatibilityOptionEnabled" value="1" />
           <div>
             <div style="font-size:0.95rem; margin-top:0.1rem;"><strong>相性鑑定</strong></div>
-            <div style="font-size:0.9rem; margin-top:0.25rem;">${priceText}（税込）／＋30分／1名ごと</div>
+            <div style="font-size:0.9rem; margin-top:0.25rem;"><strong>${priceText}（税込）／＋30分／1名ごと</strong></div>
             <div style="font-size:0.9rem; margin-top:0.5rem;">
               ・ご本人さまの鑑定に、ご家族（配偶者・お子さま等）を追加して相性を鑑定します。<br />
               ・お相手の参加は任意です（同席なしで鑑定できます）

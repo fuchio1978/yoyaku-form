@@ -502,6 +502,28 @@ body {
   gap: 0.75rem;
 }
 
+/* iOS Safari 対策: fieldset が min-content 幅に潰れて本文が1文字ずつ縦に並ぶことがあるため、
+   予約フォーム内の fieldset は幅を確保する */
+.reservation-form fieldset {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.reservation-form fieldset label {
+  width: 100%;
+}
+
+.reservation-form fieldset label > div {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* 相性鑑定オプション: 全文が太字にならないように、ブロック内の label だけ通常の太さに戻す */
+.reservation-form fieldset.compatibility-option > label {
+  font-weight: 400;
+}
+
 .field {
   display: grid;
   gap: 0.35rem;
