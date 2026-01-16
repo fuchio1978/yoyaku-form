@@ -658,6 +658,14 @@ function renderContactComplete(body) {
 }
 
 function renderReservationConfirmPage(reservation) {
+  const amount =
+    typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
+      ? reservation.displayPrice
+      : typeof reservation.price === 'number'
+      ? reservation.price
+      : 0;
+  const amountText = amount > 0 ? formatCurrency(reservation.currency || '¥', amount) : '未入力';
+
   const rows = [
     ['商品', reservation.productTitle],
     ['日時', `${reservation.date} ${reservation.timeSlot}`],
@@ -674,6 +682,7 @@ function renderReservationConfirmPage(reservation) {
         ? 'PAYPAL'
         : '未入力',
     ],
+    ['金額', amountText],
     reservation.compatibilityOptionEnabled
       ? ['相性鑑定オプション', `追加人数：${reservation.compatibilityOptionCount}名 / 追加料金：${formatCurrency(reservation.currency || '¥', reservation.compatibilityTotalPrice || 0)}`]
       : null,
@@ -704,6 +713,8 @@ function renderReservationConfirmPage(reservation) {
         <input type="hidden" name="birthTime" value="${reservation.birthTime || ''}" />
         <input type="hidden" name="birthPlace" value="${reservation.birthPlace || ''}" />
         <input type="hidden" name="paymentMethod" value="${reservation.paymentMethod || ''}" />
+        <input type="hidden" name="compatibilityOptionEnabled" value="${reservation.compatibilityOptionEnabled ? '1' : ''}" />
+        <input type="hidden" name="compatibilityOptionCount" value="${reservation.compatibilityOptionCount || 0}" />
         <input type="hidden" name="notes" value="${reservation.notes || ''}" />
         <div style="display:flex; gap: 0.75rem; flex-wrap: wrap;">
           <button class="button" type="submit">この内容で予約を確定する</button>
@@ -1433,14 +1444,20 @@ function renderReservationForm(product) {
         <label style="display:flex; align-items:flex-start; gap:0.5rem;">
           <input type="checkbox" name="compatibilityOptionEnabled" value="1" />
           <div>
-            <div><strong>相性鑑定（1名追加）</strong>　${priceText}（税込）</div>
-            <div style="font-size:0.9rem; margin-top:0.25rem;">
-              鑑定に1名追加するためのオプションです。（+30分）<br />
-              （鑑定時、お相手の方の参加は任意）
+            <div style="font-size:0.95rem; margin-top:0.1rem;"><strong>相性鑑定（1名追加）</strong>　${priceText}（税込）／＋30分</div>
+            <div style="font-size:0.9rem; margin-top:0.5rem;">
+              ご本人さまの鑑定に、ご家族（配偶者・お子さま等）を追加して相性を鑑定します。<br />
+              ※お相手の参加は任意です（同席なしで鑑定できます）
             </div>
-            <div style="font-size:0.9rem; margin-top:0.25rem;">
-              ※申し込み時、「ご相談内容」欄に追加される方の<br />
-              生年月日、性別、出生時間、出生地をご入力ください。
+            <div style="font-size:0.9rem; margin-top:0.75rem;">
+              <strong>ご入力について</strong><br />
+              お申し込み時、「ご相談内容」欄に、追加する方の以下をご記入ください。<br />
+              生年月日／性別／出生時間／出生地（都道府県）
+            </div>
+            <div style="font-size:0.9rem; margin-top:0.75rem;">
+              <strong>記入例（複数人の場合）</strong><br />
+              追加①：1990/01/23　女性　14:52　愛知県<br />
+              追加②：2018/05/10　男性　（出生時間）　東京都
             </div>
             <div style="margin-top:0.5rem;">
               <label for="compatibilityOptionCount" style="font-size:0.9rem;">追加する人数</label>
@@ -1752,6 +1769,14 @@ function renderNotFound() {
 }
 
 function renderConfirmation(reservation) {
+  const amount =
+    typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
+      ? reservation.displayPrice
+      : typeof reservation.price === 'number'
+      ? reservation.price
+      : 0;
+  const amountText = amount > 0 ? formatCurrency(reservation.currency || '¥', amount) : '未入力';
+
   const summaryRows = [
     ['商品', reservation.productTitle],
     ['日時', `${reservation.date} ${reservation.timeSlot}`],
@@ -1769,6 +1794,7 @@ function renderConfirmation(reservation) {
         : '未入力',
     ],
     ['対面／オンライン', reservation.sessionType || '未入力'],
+    ['金額', amountText],
     reservation.compatibilityOptionEnabled
       ? ['相性鑑定オプション', `追加人数：${reservation.compatibilityOptionCount}名 / 料金：${formatCurrency(reservation.currency || '¥', reservation.compatibilityTotalPrice || 0)}`]
       : null,
