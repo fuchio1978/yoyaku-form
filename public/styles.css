@@ -524,8 +524,14 @@ body {
   font-weight: 400;
 }
 
+.reservation-form fieldset.compatibility-option {
+  display: block;
+}
+
 .reservation-form fieldset.compatibility-option .compatibility-option-row {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .reservation-form fieldset.compatibility-option .compatibility-option-row > input[type='checkbox'] {
@@ -535,6 +541,10 @@ body {
 .reservation-form fieldset.compatibility-option .compatibility-option-row > div {
   flex: 1 1 auto;
   min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .field {
