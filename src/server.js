@@ -229,6 +229,16 @@ function renderPersonProductsPage(personId) {
 
 // 講座紹介LP専用ページ（/kouza）: Tailwind付きのフルHTMLをそのまま返す
 function renderKouzaCoursePage() {
+  // 森林系の背景画像候補（白文字でも読みやすい、やや暗め〜中間トーン）
+  const heroImages = [
+    'https://images.pexels.com/photos/167684/pexels-photo-167684.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    'https://images.pexels.com/photos/976994/pexels-photo-976994.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    'https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    'https://images.pexels.com/photos/94616/pexels-photo-94616.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    'https://images.pexels.com/photos/1670187/pexels-photo-1670187.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  ];
+  const heroSrc = heroImages[Math.floor(Math.random() * heroImages.length)] || heroImages[0];
+
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -297,7 +307,7 @@ function renderKouzaCoursePage() {
     <script>
         function handleImageError(img, type) {
             const backups = {
-                'hero': 'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=1600',
+                'hero': 'https://images.pexels.com/photos/167684/pexels-photo-167684.jpeg?auto=compress&cs=tinysrgb&w=1600',
                 'intro': 'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=1200',
                 'tree': 'https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=800',
                 'fire': 'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -325,22 +335,23 @@ function renderKouzaCoursePage() {
 
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
-        <img src="https://images.pexels.com/photos/167684/pexels-photo-167684.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+        <img src="${heroSrc}" 
              alt="" 
              class="absolute inset-0 w-full h-full object-cover"
              onerror="handleImageError(this, 'hero')">
         <div class="absolute inset-0 hero-overlay"></div>
         <div class="relative z-10 text-center px-6 max-w-5xl fade-in">
             <h1 class="text-white text-2xl md:text-5xl leading-snug md:leading-relaxed mb-10 drop-shadow-2xl tracking-[0.15em] text-balance">
-                あなたの宿命は、一枚の美しいキャンバス。<br>
+                あなたの宿命は、<br>
+                一枚の美しいキャンバス。<br>
                 <span class="text-lg md:text-2xl mt-6 block font-light tracking-widest leading-loose">
-                    「難解な漢字」を「大自然の景色」に書き換え、<br class="hidden md:block">
+                    「難解な漢字」を「大自然の景色」に書き換え、<br>
                     人生の歩み方を読み解く<br>
-                    ——自然の景色でみる四柱推命講座
+                    ——自然の景色でみる四柱推命講座——
                 </span>
             </h1>
             <div class="mt-16">
-                <a href="#intro" class="inline-block px-12 py-5 bg-white/10 hover:bg-white/30 text-white border border-white rounded-full transition duration-500 backdrop-blur-sm tracking-widest text-sm">
+                <a href="#intro" class="inline-block px-16 py-7 bg-white/10 hover:bg-white/30 text-white border border-white rounded-full transition duration-500 backdrop-blur-sm tracking-widest text-base">
                     無料講座説明会に参加する
                 </a>
             </div>
