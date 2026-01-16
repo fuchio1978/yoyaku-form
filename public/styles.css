@@ -520,8 +520,21 @@ body {
 }
 
 /* 相性鑑定オプション: 全文が太字にならないように、ブロック内の label だけ通常の太さに戻す */
-.reservation-form fieldset.compatibility-option > label {
+.reservation-form fieldset.compatibility-option label {
   font-weight: 400;
+}
+
+.reservation-form fieldset.compatibility-option .compatibility-option-row {
+  width: 100%;
+}
+
+.reservation-form fieldset.compatibility-option .compatibility-option-row > input[type='checkbox'] {
+  flex: 0 0 auto;
+}
+
+.reservation-form fieldset.compatibility-option .compatibility-option-row > div {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .field {
