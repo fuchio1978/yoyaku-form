@@ -315,17 +315,17 @@ function renderKouzaCoursePage() {
 
     <!-- Header -->
     <nav class="p-6 flex justify-between items-center bg-white/70 backdrop-blur-md fixed w-full z-50 border-b border-gray-100">
-        <div class="text-xl font-bold tracking-[0.2em] uppercase text-[#2d3a32]">Fuchi Labo</div>
+        <div class="text-xl font-bold tracking-[0.2em] text-[#2d3a32]">自然の景色でみる四柱推命講座</div>
         <div class="hidden md:flex space-x-10 text-sm tracking-widest">
-            <a href="/" class="hover:text-green-700 transition duration-300">コンセプト</a>
+            <a href="#concept" class="hover:text-green-700 transition duration-300">コンセプト</a>
             <a href="#plans" class="hover:text-green-700 transition duration-300">講座案内</a>
-            <a href="/contact" class="hover:text-green-700 transition duration-300">お問い合わせ</a>
+            <a href="https://www.fuchilabo.com/products/kouzasetumei" class="hover:text-green-700 transition duration-300">お問い合わせ</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
-        <img src="https://images.pexels.com/photos/957024/forest-trees-fog-foggy-957024.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+        <img src="https://images.pexels.com/photos/167684/pexels-photo-167684.jpeg?auto=compress&cs=tinysrgb&w=1600" 
              alt="" 
              class="absolute inset-0 w-full h-full object-cover"
              onerror="handleImageError(this, 'hero')">
@@ -429,8 +429,8 @@ function renderKouzaCoursePage() {
         </div>
     </section>
 
-    <!-- 3. ステップセクション -->
-    <section class="py-24 md:py-32 px-6 bg-white border-b border-gray-50">
+    <!-- 3. ステップセクション（コンセプト） -->
+    <section id="concept" class="py-24 md:py-32 px-6 bg-white border-b border-gray-50">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold mb-16 text-center tracking-widest leading-relaxed text-[#2d3a32]">「宿命」を知り、自ら「運命」を切り拓く</h2>
             
