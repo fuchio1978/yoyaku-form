@@ -532,6 +532,10 @@ body {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  display: grid !important;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  column-gap: 0.5rem;
+  align-items: start;
 }
 
 .reservation-form fieldset.compatibility-option .compatibility-option-row > input[type='checkbox'] {
