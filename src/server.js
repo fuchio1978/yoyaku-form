@@ -1444,14 +1444,15 @@ function renderReservationForm(product) {
         <label style="display:flex; align-items:flex-start; gap:0.5rem;">
           <input type="checkbox" name="compatibilityOptionEnabled" value="1" />
           <div>
-            <div style="font-size:0.95rem; margin-top:0.1rem;"><strong>相性鑑定（1名追加）</strong>　${priceText}（税込）／＋30分</div>
+            <div style="font-size:0.95rem; margin-top:0.1rem;"><strong>相性鑑定</strong></div>
+            <div style="font-size:0.9rem; margin-top:0.25rem;">${priceText}（税込）／＋30分／1名ごと</div>
             <div style="font-size:0.9rem; margin-top:0.5rem;">
-              ご本人さまの鑑定に、ご家族（配偶者・お子さま等）を追加して相性を鑑定します。<br />
-              ※お相手の参加は任意です（同席なしで鑑定できます）
+              ・ご本人さまの鑑定に、ご家族（配偶者・お子さま等）を追加して相性を鑑定します。<br />
+              ・お相手の参加は任意です（同席なしで鑑定できます）
             </div>
             <div style="font-size:0.9rem; margin-top:0.75rem;">
               <strong>ご入力について</strong><br />
-              お申し込み時、「ご相談内容」欄に、追加する方の以下をご記入ください。<br />
+              「ご相談内容」欄に、追加する方の以下をご記入ください。<br />
               生年月日／性別／出生時間／出生地（都道府県）
             </div>
             <div style="font-size:0.9rem; margin-top:0.75rem;">
@@ -1460,7 +1461,7 @@ function renderReservationForm(product) {
               追加②：2018/05/10　男性　（出生時間）　東京都
             </div>
             <div style="margin-top:0.5rem;">
-              <label for="compatibilityOptionCount" style="font-size:0.9rem;">追加する人数</label>
+              <label for="compatibilityOptionCount" style="font-size:0.9rem;"><strong>追加する人数</strong></label>
               <input id="compatibilityOptionCount" name="compatibilityOptionCount" type="number" min="1" step="1" value="1" style="width:4rem; margin-left:0.5rem;" />
             </div>
           </div>
@@ -2077,6 +2078,16 @@ const server = http.createServer(async (req, res) => {
       const requiresSchedule = product && product.requiresSchedule !== false;
       const personId = body.personId || (product && product.personId) || '';
 
+      const numericPrice =
+        product && typeof product.price === 'number'
+          ? product.price
+          : Number((product && product.price) || 0);
+      const compatibilityEnabled = !!(product && product.enableCompatibilityOption);
+      const rawCompatibilityPrice =
+        product && typeof product.compatibilityOptionPrice === 'number'
+          ? product.compatibilityOptionPrice
+          : Number((product && product.compatibilityOptionPrice) || 0);
+
       const required = ['productId', 'name', 'email'];
       if (product && product.requiresSchedule && !personId) {
         required.push('personId');
@@ -2095,9 +2106,25 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
+      const basePrice = numericPrice;
+      let compatibilityCount = 0;
+      let compatibilityTotalPrice = 0;
+      let displayPrice = basePrice;
+
+      if (compatibilityEnabled && rawCompatibilityPrice > 0) {
+        const enabled = !!body.compatibilityOptionEnabled;
+        const count = enabled ? Number(body.compatibilityOptionCount || 1) : 0;
+        compatibilityCount = Number.isNaN(count) || count <= 0 ? 0 : Math.floor(count);
+        compatibilityTotalPrice = compatibilityCount * rawCompatibilityPrice;
+        if (compatibilityTotalPrice < 0) compatibilityTotalPrice = 0;
+        displayPrice = basePrice + (compatibilityCount > 0 ? rawCompatibilityPrice : 0);
+      }
+
       const reservation = {
         productId: product.id,
         productTitle: product.title,
+        price: basePrice + compatibilityTotalPrice,
+        currency: product.currency || '¥',
         personId,
         personName: personId ? getPersonName(personId) : '',
         date: requiresSchedule ? body.date : '',
@@ -2111,6 +2138,10 @@ const server = http.createServer(async (req, res) => {
         birthPlace: body.birthPlace || '',
         paymentMethod: body.paymentMethod || '',
         notes: body.notes || '',
+        compatibilityOptionEnabled: compatibilityEnabled && compatibilityCount > 0,
+        compatibilityOptionCount: compatibilityCount,
+        compatibilityTotalPrice,
+        displayPrice,
       };
 
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });

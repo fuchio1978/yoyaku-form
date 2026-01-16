@@ -6,6 +6,19 @@ const sgMail = require('@sendgrid/mail');
 const adminRecipient = process.env.RESERVATION_RECIPIENT || 'info@fuchilabo.com';
 
 function buildAdminMessage(reservation) {
+  const amount =
+    typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
+      ? reservation.displayPrice
+      : typeof reservation.price === 'number'
+      ? reservation.price
+      : 0;
+  const amountText =
+    amount > 0 && reservation.currency
+      ? `${reservation.currency}${amount.toLocaleString('ja-JP')}`
+      : amount > 0
+      ? `${amount.toLocaleString('ja-JP')}円`
+      : '';
+
   return [
     '【管理者控え】予約を受け付けました。',
     '',
@@ -27,6 +40,7 @@ function buildAdminMessage(reservation) {
             : reservation.paymentMethod
         }`
       : '',
+    amountText ? `■ 金額: ${amountText}` : '',
     '',
     '▼ ご要望・メモ',
     reservation.notes || '（未入力）',
