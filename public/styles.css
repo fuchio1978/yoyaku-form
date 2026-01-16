@@ -70,14 +70,17 @@ body {
 .logo-mark {
   width: auto;
   height: auto;
-  border-radius: 0;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px 10px;
   overflow: visible;
 }
 
 .logo-mark img {
   width: auto;
-  height: 56px;
-  max-width: min(260px, 72vw);
+  height: 64px;
+  max-width: min(320px, 72vw);
   object-fit: contain;
   display: block;
 }
@@ -745,8 +748,8 @@ textarea {
   }
 
   .logo-mark img {
-    height: 44px;
-    max-width: min(220px, 76vw);
+    height: 54px;
+    max-width: min(260px, 76vw);
   }
 
   .logo-text .site-title {
