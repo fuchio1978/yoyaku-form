@@ -674,7 +674,11 @@ function renderReservationConfirmPage(reservation) {
         ? 'PAYPAL'
         : '未入力',
     ],
+    reservation.compatibilityOptionEnabled
+      ? ['相性鑑定オプション', `追加人数：${reservation.compatibilityOptionCount}名 / 追加料金：${formatCurrency(reservation.currency || '¥', reservation.compatibilityTotalPrice || 0)}`]
+      : null,
   ]
+    .filter(Boolean)
     .map((row) => `<tr><th>${row[0]}</th><td>${row[1]}</td></tr>`)
     .join('');
 
@@ -1180,6 +1184,10 @@ function renderAdminProductForm(product) {
   const isNew = !product;
   const safe = (v) => (v == null ? '' : String(v));
   const requiresSchedule = !product || product.requiresSchedule !== false; // 既存商品はデフォルトで日時指定あり
+  const compatibilityEnabled = !!(product && product.enableCompatibilityOption);
+  const compatibilityPrice = product && typeof product.compatibilityOptionPrice === 'number'
+    ? product.compatibilityOptionPrice
+    : Number((product && product.compatibilityOptionPrice) || 0);
 
   // 永続ストレージ上の images ディレクトリにある画像ファイルを取得して、選択肢として表示する
   let imageOptionsHtml = '<option value="">（画像を選択）</option>';
@@ -1224,6 +1232,17 @@ function renderAdminProductForm(product) {
         <div class="field">
           <label for="price">価格（円）</label>
           <input id="price" name="price" type="number" min="0" step="1" required value="${safe(product && product.price)}" />
+        </div>
+        <div class="field">
+          <label for="compatibilityOptionPrice">相性鑑定オプション価格（円）</label>
+          <input id="compatibilityOptionPrice" name="compatibilityOptionPrice" type="number" min="0" step="1" value="${compatibilityPrice || ''}" />
+          <small>相性鑑定オプションを利用する場合の1名あたりの追加料金です。</small>
+        </div>
+        <div class="field">
+          <label>
+            <input type="checkbox" name="enableCompatibilityOption" ${compatibilityEnabled ? 'checked' : ''} />
+            予約フォームに相性鑑定オプションを表示する
+          </label>
         </div>
         <div class="field">
           <label for="personId">鑑定士</label>
@@ -1399,6 +1418,40 @@ function renderReservationForm(product) {
     `;
   }
 
+  let compatibilityOptionField = '';
+  const compatibilityEnabled = !!product.enableCompatibilityOption;
+  const compatibilityPrice =
+    typeof product.compatibilityOptionPrice === 'number'
+      ? product.compatibilityOptionPrice
+      : Number(product.compatibilityOptionPrice || 0);
+
+  if (compatibilityEnabled && compatibilityPrice > 0) {
+    const priceText = formatCurrency(product.currency || '¥', compatibilityPrice);
+    compatibilityOptionField = `
+      <fieldset class="field" style="border:1px solid #e5e7eb; padding:0.75rem 1rem;">
+        <legend style="font-weight:bold; color:#16a34a;">オプション</legend>
+        <label style="display:flex; align-items:flex-start; gap:0.5rem;">
+          <input type="checkbox" name="compatibilityOptionEnabled" value="1" />
+          <div>
+            <div><strong>相性鑑定（1名追加）</strong>　${priceText}（税込）</div>
+            <div style="font-size:0.9rem; margin-top:0.25rem;">
+              鑑定に1名追加するためのオプションです。（+30分）<br />
+              （鑑定時、お相手の方の参加は任意）
+            </div>
+            <div style="font-size:0.9rem; margin-top:0.25rem;">
+              ※申し込み時、「ご相談内容」欄に追加される方の<br />
+              生年月日、性別、出生時間、出生地をご入力ください。
+            </div>
+            <div style="margin-top:0.5rem;">
+              <label for="compatibilityOptionCount" style="font-size:0.9rem;">追加する人数</label>
+              <input id="compatibilityOptionCount" name="compatibilityOptionCount" type="number" min="1" step="1" value="1" style="width:4rem; margin-left:0.5rem;" />
+            </div>
+          </div>
+        </label>
+      </fieldset>
+    `;
+  }
+
   return `
     <form class="reservation-form" method="POST" action="/reserve/confirm">
       <input type="hidden" name="productId" value="${product.id}" />
@@ -1446,6 +1499,7 @@ function renderReservationForm(product) {
         <input id="birthPlace" name="birthPlace" type="text" placeholder="例）愛知県" required />
         <div class="field-error-message" data-error-for="birthPlace"></div>
       </div>
+      ${compatibilityOptionField}
       ${
         isFree
           ? ''
@@ -1715,7 +1769,11 @@ function renderConfirmation(reservation) {
         : '未入力',
     ],
     ['対面／オンライン', reservation.sessionType || '未入力'],
+    reservation.compatibilityOptionEnabled
+      ? ['相性鑑定オプション', `追加人数：${reservation.compatibilityOptionCount}名 / 料金：${formatCurrency(reservation.currency || '¥', reservation.compatibilityTotalPrice || 0)}`]
+      : null,
   ]
+    .filter(Boolean)
     .map((row) => `<tr><th>${row[0]}</th><td>${row[1]}</td></tr>`)
     .join('');
 
@@ -1767,6 +1825,11 @@ function handleReservation(body, res) {
     product && typeof product.price === 'number'
       ? product.price
       : Number((product && product.price) || 0);
+  const compatibilityEnabled = !!(product && product.enableCompatibilityOption);
+  const rawCompatibilityPrice =
+    product && typeof product.compatibilityOptionPrice === 'number'
+      ? product.compatibilityOptionPrice
+      : Number((product && product.compatibilityOptionPrice) || 0);
   const isFree = numericPrice === 0;
 
   const required = ['productId', 'name', 'email'];
@@ -1810,10 +1873,24 @@ function handleReservation(body, res) {
     }
   }
 
+  const basePrice = numericPrice;
+  let compatibilityCount = 0;
+  let compatibilityTotalPrice = 0;
+  let displayPrice = basePrice;
+
+  if (compatibilityEnabled && rawCompatibilityPrice > 0) {
+    const enabled = !!body.compatibilityOptionEnabled;
+    const count = enabled ? Number(body.compatibilityOptionCount || 1) : 0;
+    compatibilityCount = Number.isNaN(count) || count <= 0 ? 0 : Math.floor(count);
+    compatibilityTotalPrice = compatibilityCount * rawCompatibilityPrice;
+    if (compatibilityTotalPrice < 0) compatibilityTotalPrice = 0;
+    displayPrice = basePrice + (compatibilityCount > 0 ? rawCompatibilityPrice : 0);
+  }
+
   const reservation = {
     productId: product.id,
     productTitle: product.title,
-    price: numericPrice,
+    price: basePrice + compatibilityTotalPrice,
     currency: product.currency || '¥',
     personId,
     personName: personId ? getPersonName(personId) : '',
@@ -1828,6 +1905,10 @@ function handleReservation(body, res) {
     birthPlace: body.birthPlace || '',
     paymentMethod: body.paymentMethod || '',
     notes: body.notes || '',
+    compatibilityOptionEnabled: compatibilityEnabled && compatibilityCount > 0,
+    compatibilityOptionCount: compatibilityCount,
+    compatibilityTotalPrice,
+    displayPrice,
     createdAt: new Date().toISOString(),
   };
 
@@ -2215,6 +2296,8 @@ const server = http.createServer(async (req, res) => {
         requiresSchedule: !!body.requiresSchedule,
         showSessionType: !!body.showSessionType,
         isHidden: !!body.isHidden,
+        enableCompatibilityOption: !!body.enableCompatibilityOption,
+        compatibilityOptionPrice: Number(body.compatibilityOptionPrice || 0),
         personId,
         providerLabel,
       };
