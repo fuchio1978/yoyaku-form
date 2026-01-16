@@ -1458,7 +1458,7 @@ function renderReservationForm(product) {
             <div style="font-size:0.9rem; margin-top:0.75rem;">
               <strong>記入例（複数人の場合）</strong><br />
               追加①：1990/01/23　女性　14:52　愛知県<br />
-              追加②：2018/05/10　男性　（出生時間）　東京都
+              追加②：2018/05/10　男性　時間不明　東京都
             </div>
             <div style="margin-top:0.5rem;">
               <label for="compatibilityOptionCount" style="font-size:0.9rem;"><strong>追加する人数</strong></label>
