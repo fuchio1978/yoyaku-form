@@ -227,6 +227,510 @@ function renderPersonProductsPage(personId) {
   });
 }
 
+// 講座紹介LP専用ページ（/kouza）: Tailwind付きのフルHTMLをそのまま返す
+function renderKouzaCoursePage() {
+  return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自然の景色でみる四柱推命講座 | 景色で読み解く運命の地図</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            color: #334139;
+            background-color: #fdfcf9;
+            line-height: 1.8;
+        }
+        .hero-overlay {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+        }
+        .accent-border {
+            border-left: 4px solid #7d9d85;
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .image-container {
+            position: relative;
+            background-color: #f3f4f6;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+        .plan-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .step-arrow::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d1d5db;
+            font-size: 1.2rem;
+            font-family: serif;
+        }
+        @media (max-width: 1024px) {
+            .step-arrow::after { content: none; }
+        }
+        .quote-bg {
+            background-color: #2d3a32;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        /* 読みやすさのための調整 */
+        .text-balance {
+            text-wrap: balance;
+        }
+    </style>
+    <script>
+        function handleImageError(img, type) {
+            const backups = {
+                'hero': 'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=1600',
+                'intro': 'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=1200',
+                'tree': 'https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=800',
+                'fire': 'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800',
+                'metal': 'https://images.pexels.com/photos/673020/pexels-photo-673020.jpeg?auto=compress&cs=tinysrgb&w=800',
+                'mountain': 'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=800'
+            };
+            if (backups[type]) {
+                img.onerror = null;
+                img.src = backups[type];
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Header -->
+    <nav class="p-6 flex justify-between items-center bg-white/70 backdrop-blur-md fixed w-full z-50 border-b border-gray-100">
+        <div class="text-xl font-bold tracking-[0.2em] uppercase text-[#2d3a32]">Fuchi Labo</div>
+        <div class="hidden md:flex space-x-10 text-sm tracking-widest">
+            <a href="/" class="hover:text-green-700 transition duration-300">コンセプト</a>
+            <a href="#plans" class="hover:text-green-700 transition duration-300">講座案内</a>
+            <a href="/contact" class="hover:text-green-700 transition duration-300">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
+        <img src="https://images.pexels.com/photos/957024/forest-trees-fog-foggy-957024.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+             alt="" 
+             class="absolute inset-0 w-full h-full object-cover"
+             onerror="handleImageError(this, 'hero')">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-10 text-center px-6 max-w-5xl fade-in">
+            <h1 class="text-white text-2xl md:text-5xl leading-snug md:leading-relaxed mb-10 drop-shadow-2xl tracking-[0.15em] text-balance">
+                あなたの宿命は、一枚の美しいキャンバス。<br>
+                <span class="text-lg md:text-2xl mt-6 block font-light tracking-widest leading-loose">
+                    「難解な漢字」を「大自然の景色」に書き換え、<br class="hidden md:block">
+                    人生の歩み方を読み解く<br>
+                    ——自然の景色でみる四柱推命講座
+                </span>
+            </h1>
+            <div class="mt-16">
+                <a href="#intro" class="inline-block px-12 py-5 bg-white/10 hover:bg-white/30 text-white border border-white rounded-full transition duration-500 backdrop-blur-sm tracking-widest text-sm">
+                    無料講座説明会に参加する
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. 四柱推命は「怖い占い」ではありません -->
+    <section id="intro" class="py-24 md:py-32 px-6 md:px-12 max-w-6xl mx-auto">
+        <div class="flex flex-col lg:flex-row items-center gap-12 md:gap-16">
+            <div class="w-full lg:w-1/2 image-container rounded-3xl shadow-2xl overflow-hidden text-center">
+                <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                     alt="" 
+                     class="w-full h-auto object-cover min-h-[300px]"
+                     onerror="handleImageError(this, 'intro')">
+            </div>
+            <div class="w-full lg:w-1/2">
+                <div class="mb-4 text-[#7d9d85] font-bold tracking-widest italic text-xl">01</div>
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 leading-relaxed text-[#2d3a32]">
+                    四柱推命は、<br class="md:hidden">「怖い占い」ではありません
+                </h2>
+                <p class="leading-relaxed mb-8 text-gray-700 md:text-lg">
+                    四柱推命の解説書を開くと、「死」「絶」「病」「傷官」といった、一見すると不吉で怖い言葉が並んでいます。そのため、「私は運が悪いんだ」「この星があるから不幸になるんだ」と、自分の可能性を否定されたように感じてしまったことはありませんか？
+                </p>
+                <div class="accent-border pl-8 bg-white/60 py-6 italic text-[#3e4d44] leading-loose">
+                    <strong class="text-[#2d3a32]">自然の景色でみる四柱推命</strong>では、こうした言葉のベールに隠された「本質的な五行（木・火・土・金・水）」に注目します。私たちは、四柱推命を単なる占いではなく、東洋の叡智が育んだ「自然哲学」であり、幸せに生きるための「人間哲学」であると考えています。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 命式を景色としてイメージする -->
+    <section class="py-24 md:py-32 bg-[#f4f7f2]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl font-bold mb-6 tracking-widest text-[#2d3a32]">命式を「景色」としてイメージする</h2>
+                <p class="text-gray-600 tracking-widest text-lg">8つの漢字を、あなただけの「運命の景色」に置き換えます</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="group overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition duration-500 text-center">
+                    <div class="h-64 overflow-hidden image-container bg-[#e8f0e9]">
+                        <img src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=800&v=1" 
+                             alt="" 
+                             class="h-full w-full object-cover group-hover:scale-110 transition duration-700"
+                             onerror="handleImageError(this, 'tree')">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold text-xl text-[#5a7d65] mb-2">甲・乙 (木)</h3>
+                        <p class="text-sm leading-relaxed text-gray-600">上に伸びゆく樹木や、<br>たおやかに咲く草花</p>
+                    </div>
+                </div>
+
+                <div class="group overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition duration-500 text-center">
+                    <div class="h-64 overflow-hidden image-container bg-[#fff7ed]">
+                        <img src="https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800&v=1" 
+                             alt="" 
+                             class="h-full w-full object-cover group-hover:scale-110 transition duration-700"
+                             onerror="handleImageError(this, 'fire')">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold text-xl text-[#b45309] mb-2">丙・丁 (火)</h3>
+                        <p class="text-sm leading-relaxed text-gray-600">万物を照らす太陽や、<br>闇を照らす灯火</p>
+                    </div>
+                </div>
+
+                <div class="group overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition duration-500 text-center">
+                    <div class="h-64 overflow-hidden image-container bg-[#f1f5f9]">
+                        <img src="https://images.pexels.com/photos/673020/pexels-photo-673020.jpeg?auto=compress&cs=tinysrgb&w=800&v=2" 
+                             alt="" 
+                             class="h-full w-full object-cover group-hover:scale-110 transition duration-700"
+                             onerror="handleImageError(this, 'metal')">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold text-xl text-[#475569] mb-2">庚・辛 (金)</h3>
+                        <p class="text-sm leading-relaxed text-gray-600">強固な岩や鋭い鉄、<br>そして気高く光る宝石</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center max-w-3xl mx-auto">
+                <p class="leading-loose text-lg md:text-xl text-[#3e4d44] tracking-wide">
+                    命式を視覚的な「景色」としてイメージすることで、専門用語に詳しくなくても、<br class="hidden md:block">
+                    <span class="border-b-2 border-yellow-200 font-bold px-1">「どうすれば自分自身が活き活き和やかに輝けるか」</span>が驚くほど直感的にわかるようになります。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ステップセクション -->
+    <section class="py-24 md:py-32 px-6 bg-white border-b border-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-16 text-center tracking-widest leading-relaxed text-[#2d3a32]">「宿命」を知り、自ら「運命」を切り拓く</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Step 01 -->
+                <div class="p-10 border border-gray-100 rounded-3xl bg-[#fcfdfc] shadow-sm">
+                    <div class="text-[#7d9d85] mb-6 flex items-center gap-3 font-bold tracking-widest uppercase text-xs">ステップ 01</div>
+                    <h4 class="font-bold text-xl mb-4 text-[#2d3a32]">五行バランスの分析</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        命式の景色が「暑すぎる」のか「寒すぎる」のか、あるいは「乾燥」しているのか。自然界の摂理に基づき、あなたの心の温度感を把握します。
+                    </p>
+                </div>
+                <!-- Step 02 -->
+                <div class="p-10 border border-gray-100 rounded-3xl bg-[#fcfdfc] shadow-sm">
+                    <div class="text-[#7d9d85] mb-6 flex items-center gap-3 font-bold tracking-widest uppercase text-xs">ステップ 02</div>
+                    <h4 class="font-bold text-xl mb-4 text-[#2d3a32]">通変星によるスタイル</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        あなたの「社会での活かし方」を分析します。特定の星がなくても、別の星の力を借りて自分らしく活躍する方法（スタイル論）を学びます。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Step 03 (用神) -->
+            <div class="p-8 md:p-12 bg-[#334139] text-white rounded-3xl flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/3 h-48 overflow-hidden rounded-2xl image-container shrink-0 text-center">
+                    <img src="https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                         alt="" 
+                         class="h-full w-full object-cover"
+                         onerror="handleImageError(this, 'mountain')">
+                </div>
+                <div class="w-full md:w-2/3">
+                    <div class="text-green-300 mb-4 flex items-center gap-3 font-bold tracking-widest uppercase text-xs">ステップ 03</div>
+                    <h4 class="font-bold text-xl mb-4 text-green-200 tracking-widest text-balance">「用神」という処方箋</h4>
+                    <p class="opacity-90 leading-relaxed text-sm md:text-base">
+                        足りない要素をどう補えば、景色がより美しく調和するのか。ただ当てるだけでなく、より良い人生を選ぶための具体的な「開運法」を導き出します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 言葉の呪いから自由になるために -->
+    <section class="py-24 md:py-32 quote-bg text-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-block mb-10 text-green-300">
+                <svg class="w-12 h-12 opacity-50 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.895 14.912 16 16.017 16H19.017C19.569 16 20.017 15.552 20.017 15V9C20.017 8.448 19.569 8 19.017 8H16.017C14.912 8 14.017 7.105 14.017 6V3L14.017 3H21.017V15C21.017 17.761 18.778 20 16.017 20L14.017 21ZM3.017 21L3.017 18C3.017 16.895 3.912 16 5.017 16H8.017C8.569 16 9.017 15.552 9.017 15V9C9.017 8.448 8.569 8 8.017 8H5.017C3.912 8 3.017 7.105 3.017 6V3L3.017 3H10.017V15C10.017 17.761 7.778 20 5.017 20L3.017 21Z"></path></svg>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-bold mb-10 tracking-[0.1em] leading-snug text-balance">
+                「言葉の呪い」から自由になるために
+            </h2>
+            <div class="space-y-8 text-lg opacity-90 leading-loose max-w-2xl mx-auto font-light text-balance text-center">
+                <p>
+                    占いの結果に一喜一憂し、自分を星の枠に当てはめて苦しくなってしまう。それは、あなたが本来持っている「無限の可能性」を、言葉という狭い箱に閉じ込めてしまっているからです。
+                </p>
+                <p>
+                    <span class="font-bold text-green-300 text-center">自然の景色でみる四柱推命</span>が目指すのは、<br class="md:hidden">「納得感のある人生」。
+                </p>
+                <p>
+                    自分の命式を美しい景色として眺めることができたとき、あなたは初めて、その景色をどう彩り、どの方向に歩いていくかを、自分自身の意思で決められるようになります。
+                </p>
+            </div>
+            <div class="mt-16 text-green-400 font-bold tracking-[0.3em] text-sm italic uppercase">Freedom from Words</div>
+        </div>
+    </section>
+
+    <!-- 講座カリキュラムの概要 -->
+    <section id="plans" class="py-24 md:py-32 bg-[#f4f7f2]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 tracking-widest text-[#2d3a32]">講座内容のご案内</h2>
+                <div class="w-20 h-1 bg-[#7d9d85] mx-auto mb-8"></div>
+                <p class="text-gray-600 tracking-widest max-w-3xl mx-auto leading-loose text-lg text-balance">
+                    難解な用語を暗記するのではなく、命式を「大自然の景色」として捉える感性を養いながら、着実にステップアップできる3段階の構成です。
+                </p>
+            </div>
+            
+            <div class="space-y-16 lg:space-y-24">
+                <!-- 1. 入門講座 -->
+                <div class="plan-card bg-white p-8 md:p-16 rounded-[2.5rem] shadow-sm border border-gray-100">
+                    <div class="flex flex-col lg:flex-row gap-12 md:gap-16">
+                        <div class="w-full lg:w-1/3 shrink-0">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ステップ 01</span>
+                                <span class="text-[#7d9d85] font-bold tracking-widest text-sm italic">入門クラス</span>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">入門講座</h3>
+                            <p class="text-[#7d9d85] font-bold mb-4">基礎の基礎を「景色」の視点で整える</p>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                                四柱推命の土台を学び、命式の各星がどのような自然界の要素に対応しているのかを理解するコースです。
+                            </p>
+                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100">
+                                <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest">受講形式</div>
+                                <div class="text-[#334139] font-bold text-sm">90分 × 2回 / オンライン個人指導</div>
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-2/3 space-y-12">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
+                                <div class="bg-green-50/50 p-8 rounded-3xl">
+                                    <h4 class="font-bold text-sm text-[#7d9d85] mb-4 uppercase tracking-widest italic">目指すゴール</h4>
+                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-left">命式の各星の出し方を理解し、四柱推命の基礎を完全に押さえる。</p>
+                                </div>
+                                <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
+                                    <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
+                                    <ul class="text-sm text-gray-700 space-y-2 text-left">
+                                        <li>・講座動画のアーカイブ配布</li>
+                                        <li>・期間中LINEでの質問無制限</li>
+                                        <li>・各回ごとの演習課題付き</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="border-t border-gray-100 pt-8">
+                                <h4 class="text-xs text-gray-400 mb-6 uppercase tracking-widest">カリキュラムのポイント</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                                    <div>
+                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm text-left">第1回：基礎理論</div>
+                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">四柱推命の成り立ち、陰陽五行説、各エネルギーの理解と相関関係。</p>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm text-left">第2回：干支と運気</div>
+                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">十干・十二支、六十干支の景色、空亡の捉え方、十二運の導出。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 中級講座 -->
+                <div class="plan-card bg-white p-8 md:p-16 rounded-[2.5rem] shadow-xl border-2 border-[#7d9d85]/10 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-[#7d9d85] text-white text-[10px] md:text-xs font-bold px-10 py-3 tracking-widest rounded-bl-3xl uppercase">おすすめのコース</div>
+                    
+                    <div class="flex flex-col lg:flex-row gap-12 md:gap-16">
+                        <div class="w-full lg:w-1/3 shrink-0">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ステップ 02</span>
+                                <span class="text-[#7d9d85] font-bold tracking-widest text-sm italic">中級クラス</span>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">中級講座</h3>
+                            <p class="text-[#7d9d85] font-bold mb-4">五行バランスから「運命の彩り」を解読する</p>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-8 text-balance">
+                                8つの漢字をエネルギーの塊として捉え、バイオリズムや個性を景色として描けるようになるコースです。
+                            </p>
+                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
+                                <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
+                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 15回 ＋ 質問会 / 個人指導</div>
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-2/3 space-y-12">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
+                                <div class="bg-green-50/50 p-8 rounded-3xl text-left">
+                                    <h4 class="font-bold text-sm text-[#7d9d85] mb-4 uppercase tracking-widest italic">目指すゴール</h4>
+                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-balance text-left text-left">五行バランスから、生まれ持った本来の景色と運気の流れを解読できるようになる。</p>
+                                </div>
+                                <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
+                                    <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
+                                    <ul class="text-sm text-gray-700 space-y-2 font-bold text-left">
+                                        <li>・毎月開催されるオンライン勉強会への参加権</li>
+                                        <li class="text-[#7d9d85]">・LINEによる無期限の質問・相談サポート</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-100 pt-8">
+                                <h4 class="text-xs text-gray-400 mb-6 uppercase tracking-widest text-left">学習のステップ</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 text-center">
+                                    <div class="p-5 bg-gray-50 rounded-2xl relative step-arrow">
+                                        <div class="text-[10px] text-[#7d9d85] font-bold mb-2">ステップ 01</div>
+                                        <p class="text-[11px] font-bold text-gray-700">鑑定の土台作り</p>
+                                    </div>
+                                    <div class="p-5 bg-gray-50 rounded-2xl relative step-arrow">
+                                        <div class="text-[10px] text-[#7d9d85] font-bold mb-2">ステップ 02</div>
+                                        <p class="text-[11px] font-bold text-gray-700">エネルギーの変化</p>
+                                    </div>
+                                    <div class="p-5 bg-gray-50 rounded-2xl relative step-arrow text-center">
+                                        <div class="text-[10px] text-[#7d9d85] font-bold mb-2 text-center">ステップ 03</div>
+                                        <p class="text-[11px] font-bold text-gray-700">格付け・用神導出</p>
+                                    </div>
+                                    <div class="p-5 bg-gray-50 rounded-2xl">
+                                        <div class="text-[10px] text-[#7d9d85] font-bold mb-2">ステップ 04</div>
+                                        <p class="text-[11px] font-bold text-gray-700">大運・年運解読</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 上級講座 -->
+                <div class="plan-card bg-white p-8 md:p-16 rounded-[3rem] shadow-sm border border-gray-100">
+                    <div class="flex flex-col lg:flex-row gap-12 md:gap-16">
+                        <div class="w-full lg:w-1/3 shrink-0">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="bg-[#2d3a32] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ステップ 03</span>
+                                <span class="text-[#2d3a32] font-bold tracking-widest text-sm italic">上級クラス</span>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">上級講座</h3>
+                            <p class="text-[#7d9d85] font-bold mb-4 text-left">鑑定を「生き方の戦略」へと昇華させる</p>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-8 text-left">
+                                景色をさらに深掘りし、仕事・恋愛・相性など、具体的な悩みに対応できるプロの視点を養うコースです。
+                            </p>
+                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
+                                <div class="text-[10px] text-[#2d3a32]/60 mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
+                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 18回 ＋ 質問会 / 個人指導</div>
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-2/3 space-y-12">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
+                                <div class="bg-gray-50 p-8 rounded-3xl text-left">
+                                    <h4 class="font-bold text-sm text-[#2d3a32] mb-4 uppercase tracking-widest italic text-left">目指すゴール</h4>
+                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-left">「五行バランス×命式の景色」を融合させ、深い次元での鑑定と戦略的開運が可能になる。</p>
+                                </div>
+                                <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
+                                    <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic text-left">受講特典</h4>
+                                    <ul class="text-sm text-gray-700 space-y-2 font-bold text-left text-left text-left">
+                                        <li>・毎月開催されるオンライン勉強会への参加権</li>
+                                        <li class="text-[#7d9d85]">・LINEによる無期限の質問・相談サポート</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-100 pt-8">
+                                <h4 class="text-xs text-gray-400 mb-6 uppercase tracking-widest text-left text-left">専門カリキュラムの内容</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                                    <div class="bg-gray-50/50 p-5 rounded-2xl text-left text-left">
+                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm underline decoration-[#7d9d85]/30 text-left">高度な推命理論</div>
+                                        <p class="text-[11px] text-gray-500 leading-relaxed italic text-balance text-left text-left">十干百態論、五行の偏りによる調整法の実践学習。</p>
+                                    </div>
+                                    <div class="bg-gray-50/50 p-5 rounded-2xl text-left">
+                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm underline decoration-[#7d9d85]/30 text-left text-left">実践鑑定テーマ</div>
+                                        <p class="text-[11px] text-gray-500 leading-relaxed italic text-balance text-left text-left">ビジネス運、恋愛・結婚、対人相性の奥義解明。</p>
+                                    </div>
+                                    <div class="bg-gray-50/50 p-5 rounded-2xl text-left">
+                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm underline decoration-[#7d9d85]/30 text-left text-left">開運の極意</div>
+                                        <p class="text-[11px] text-gray-500 leading-relaxed italic text-balance text-left text-left text-left text-left text-left">スタイル論による、一人ひとりに最適な戦略。 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 共通の安心サポート -->
+            <div class="mt-32 p-10 md:p-20 bg-[#334139] text-white rounded-[3rem] md:rounded-[4rem] shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full -mr-32 -mt-32 text-center"></div>
+                <div class="relative z-10">
+                    <div class="text-center mb-16 px-4">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4 tracking-[0.2em] text-center">全コース共通の安心サポート</h3>
+                        <p class="text-green-200/60 text-xs md:text-sm tracking-widest uppercase italic text-center">Support System</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-center">
+                        <div class="flex flex-col items-center text-center px-4">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 border border-white/20 text-center">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            </div>
+                            <h4 class="font-bold mb-4 text-xl tracking-widest text-center">マンツーマン指導</h4>
+                            <p class="text-sm opacity-80 leading-loose max-w-xs text-balance text-center">個別の理解度に合わせて丁寧に進めるため、初めての方でも安心です。</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center px-4">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 border border-white/20 text-center">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <h4 class="font-bold mb-4 text-xl tracking-widest text-center">復習用アーカイブ</h4>
+                            <p class="text-sm opacity-80 leading-loose max-w-xs text-balance text-center text-center">講義の動画をすべてお渡しします。ご自身のペースで何度でも復習できます。</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center px-4">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 border border-white/20 text-center text-center text-center text-center text-center">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            </div>
+                            <h4 class="font-bold mb-4 text-xl tracking-widest text-center text-center text-center text-center text-center">実践的な添削課題</h4>
+                            <p class="text-sm opacity-80 leading-loose max-w-xs text-balance text-center text-center text-center text-center">実際の命式を使った課題を通じて、本物の読み解く力を確実に身につけます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-32 pb-20 bg-[#2d3a32] text-white text-center px-6">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-3xl mb-16 italic leading-relaxed tracking-widest font-light text-balance text-center">
+                「答えは、常に自分の中にある」<br>
+                <span class="text-lg md:text-xl mt-4 block opacity-80 not-italic tracking-wide text-center text-center">暗闇の中を手探りで歩くような不安を感じたとき、<br class="hidden md:block">四柱推命の「景色」は、次の一歩を進む勇気を与えてくれるはずです。</span>
+            </h2>
+            <div class="h-[1px] w-24 bg-white/30 mx-auto mb-16 text-center text-center"></div>
+            <a href="/contact" class="inline-block bg-white text-[#2d3a32] hover:bg-[#7d9d85] hover:text-white px-16 py-6 rounded-full shadow-2xl transition duration-500 tracking-[0.2em] font-bold uppercase text-sm mb-20 text-center">
+                無料講座説明会に参加する
+            </a>
+            <p class="text-xs opacity-40 tracking-widest uppercase text-center">&copy; 縁らぼ (Fuchi Labo). 大自然の叡智を、あなたの人生に。</p>
+        </div>
+    </footer>
+
+</body>
+</html>`;
+}
+
 function renderCanvaAiCoursePage() {
   const content = `
     <section class="ai-course-page">
@@ -2038,6 +2542,12 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && parsedUrl.pathname === '/privacy') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderPrivacyPage());
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/kouza') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderKouzaCoursePage());
     return;
   }
 
