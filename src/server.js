@@ -380,17 +380,11 @@ function renderKouzaCoursePage() {
                 <h2 class="text-2xl md:text-3xl font-bold mb-8 leading-relaxed text-[#2d3a32]">
                     四柱推命は、<br class="md:hidden">「怖い占い」ではありません
                 </h2>
-                <p class="leading-relaxed mb-8 text-gray-700 md:text-lg">
-                    四柱推命の解説書を開くと、「死」「絶」「病」「傷官」といった<br>
-                    一見すると不吉で怖い言葉が並んでいます。<br>
-                    そのため、「私は運が悪いんだ」「この星があるから不幸になるんだ」と、<br>
-                    自分の可能性を否定されたように感じてしまったことはありませんか？
+                <p class="leading-relaxed mb-8 text-gray-700 md:text-lg text-balance">
+                    四柱推命の解説書を開くと、「死」「絶」「病」「傷官」といった、一見すると不吉で怖い言葉が並んでいます。そのため、「私は運が悪いんだ」「この星があるから不幸になるんだ」と、自分の可能性を否定されたように感じてしまったことはありませんか？
                 </p>
-                <div class="accent-border pl-8 bg-white/60 py-6 italic text-[#3e4d44] leading-loose">
-                    <strong class="text-[#2d3a32]">自然の景色でみる四柱推命</strong>では、こうした言葉のベールに隠された<br>
-                    「本質的な五行（木・火・土・金・水）」に注目します。<br>
-                    私たちは、四柱推命を単なる占いではなく、東洋の叡智が育んだ「自然哲学」であり、<br>
-                    幸せに生きるための「人間哲学」であると考えています。
+                <div class="accent-border pl-8 bg-white/60 py-6 italic text-[#3e4d44] leading-loose text-balance">
+                    <strong class="text-[#2d3a32]">自然の景色でみる四柱推命</strong>では、こうした言葉のベールに隠された「本質的な五行（木・火・土・金・水）」に注目します。私たちは、四柱推命を単なる占いではなく、東洋の叡智が育んだ「自然哲学」であり、幸せに生きるための「人間哲学」であると考えています。
                 </div>
             </div>
         </div>
