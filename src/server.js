@@ -731,10 +731,10 @@ function renderKouzaCoursePage() {
                 <span class="text-lg md:text-xl mt-4 block opacity-80 not-italic tracking-wide text-center text-center">暗闇の中を手探りで歩くような不安を感じたとき、<br class="hidden md:block">四柱推命の「景色」は、次の一歩を進む勇気を与えてくれるはずです。</span>
             </h2>
             <div class="h-[1px] w-24 bg-white/30 mx-auto mb-16 text-center text-center"></div>
-            <a href="/contact" class="inline-block bg-white text-[#2d3a32] hover:bg-[#7d9d85] hover:text-white px-16 py-6 rounded-full shadow-2xl transition duration-500 tracking-[0.2em] font-bold uppercase text-sm mb-20 text-center">
+            <a href="https://www.fuchilabo.com/products/kouzasetumei" class="inline-block bg-white text-[#2d3a32] hover:bg-[#7d9d85] hover:text-white px-16 py-6 rounded-full shadow-2xl transition duration-500 tracking-[0.2em] font-bold uppercase text-sm mb-20 text-center">
                 無料講座説明会に参加する
             </a>
-            <p class="text-xs opacity-40 tracking-widest uppercase text-center">&copy; 縁らぼ (Fuchi Labo). 大自然の叡智を、あなたの人生に。</p>
+            <p class="text-xs opacity-40 tracking-widest uppercase text-center">&copy; ふちLABO.  大自然の叡智を、あなたの人生に。</p>
         </div>
     </footer>
 
