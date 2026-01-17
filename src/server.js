@@ -247,6 +247,27 @@ function renderKouzaCoursePage() {
   ];
   const introSrc = introImages[Math.floor(Math.random() * introImages.length)] || introImages[0];
 
+  // 五行カード用のランダム画像（木・火・金）
+  const woodImages = [
+    'https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
+    'https://images.pexels.com/photos/167685/pexels-photo-167685.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?auto=compress&cs=tinysrgb&w=800',
+  ];
+  const fireImages = [
+    'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
+    'https://images.pexels.com/photos/258112/pexels-photo-258112.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
+  ];
+  const metalImages = [
+    'https://images.pexels.com/photos/673020/pexels-photo-673020.jpeg?auto=compress&cs=tinysrgb&w=800&v=2',
+    'https://images.pexels.com/photos/326659/pexels-photo-326659.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=800',
+  ];
+
+  const woodSrc = woodImages[Math.floor(Math.random() * woodImages.length)] || woodImages[0];
+  const fireSrc = fireImages[Math.floor(Math.random() * fireImages.length)] || fireImages[0];
+  const metalSrc = metalImages[Math.floor(Math.random() * metalImages.length)] || metalImages[0];
+
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -401,7 +422,7 @@ function renderKouzaCoursePage() {
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="group overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition duration-500 text-center">
                     <div class="h-64 overflow-hidden image-container bg-[#e8f0e9]">
-                        <img src="https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=800&v=1" 
+                        <img src="${woodSrc}" 
                              alt="" 
                              class="h-full w-full object-cover group-hover:scale-110 transition duration-700"
                              onerror="handleImageError(this, 'tree')">
@@ -414,7 +435,7 @@ function renderKouzaCoursePage() {
 
                 <div class="group overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition duration-500 text-center">
                     <div class="h-64 overflow-hidden image-container bg-[#fff7ed]">
-                        <img src="https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800&v=1" 
+                        <img src="${fireSrc}" 
                              alt="" 
                              class="h-full w-full object-cover group-hover:scale-110 transition duration-700"
                              onerror="handleImageError(this, 'fire')">
@@ -427,7 +448,7 @@ function renderKouzaCoursePage() {
 
                 <div class="group overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition duration-500 text-center">
                     <div class="h-64 overflow-hidden image-container bg-[#f1f5f9]">
-                        <img src="https://images.pexels.com/photos/673020/pexels-photo-673020.jpeg?auto=compress&cs=tinysrgb&w=800&v=2" 
+                        <img src="${metalSrc}" 
                              alt="" 
                              class="h-full w-full object-cover group-hover:scale-110 transition duration-700"
                              onerror="handleImageError(this, 'metal')">
