@@ -239,6 +239,14 @@ function renderKouzaCoursePage() {
   ];
   const heroSrc = heroImages[Math.floor(Math.random() * heroImages.length)] || heroImages[0];
 
+  // イントロセクション用の景色画像候補（木火土金水の要素が複数含まれる風景を想定）
+  const introImages = [
+    'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/552784/pexels-photo-552784.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  ];
+  const introSrc = introImages[Math.floor(Math.random() * introImages.length)] || introImages[0];
+
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -346,7 +354,7 @@ function renderKouzaCoursePage() {
                 一枚の美しいキャンバス。<br>
                 <span class="text-lg md:text-2xl mt-6 block font-light tracking-widest leading-loose">
                     「難解な漢字」を「大自然の景色」に書き換え、<br>
-                    人生の歩み方を読み解く<br>
+                    人生の歩み方を読み解く<br><br>
                     ——自然の景色でみる四柱推命講座——
                 </span>
             </h1>
@@ -362,7 +370,7 @@ function renderKouzaCoursePage() {
     <section id="intro" class="py-24 md:py-32 px-6 md:px-12 max-w-6xl mx-auto">
         <div class="flex flex-col lg:flex-row items-center gap-12 md:gap-16">
             <div class="w-full lg:w-1/2 image-container rounded-3xl shadow-2xl overflow-hidden text-center">
-                <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                <img src="${introSrc}" 
                      alt="" 
                      class="w-full h-auto object-cover min-h-[300px]"
                      onerror="handleImageError(this, 'intro')">
@@ -373,10 +381,16 @@ function renderKouzaCoursePage() {
                     四柱推命は、<br class="md:hidden">「怖い占い」ではありません
                 </h2>
                 <p class="leading-relaxed mb-8 text-gray-700 md:text-lg">
-                    四柱推命の解説書を開くと、「死」「絶」「病」「傷官」といった、一見すると不吉で怖い言葉が並んでいます。そのため、「私は運が悪いんだ」「この星があるから不幸になるんだ」と、自分の可能性を否定されたように感じてしまったことはありませんか？
+                    四柱推命の解説書を開くと、「死」「絶」「病」「傷官」といった<br>
+                    一見すると不吉で怖い言葉が並んでいます。<br>
+                    そのため、「私は運が悪いんだ」「この星があるから不幸になるんだ」と、<br>
+                    自分の可能性を否定されたように感じてしまったことはありませんか？
                 </p>
                 <div class="accent-border pl-8 bg-white/60 py-6 italic text-[#3e4d44] leading-loose">
-                    <strong class="text-[#2d3a32]">自然の景色でみる四柱推命</strong>では、こうした言葉のベールに隠された「本質的な五行（木・火・土・金・水）」に注目します。私たちは、四柱推命を単なる占いではなく、東洋の叡智が育んだ「自然哲学」であり、幸せに生きるための「人間哲学」であると考えています。
+                    <strong class="text-[#2d3a32]">自然の景色でみる四柱推命</strong>では、こうした言葉のベールに隠された<br>
+                    「本質的な五行（木・火・土・金・水）」に注目します。<br>
+                    私たちは、四柱推命を単なる占いではなく、東洋の叡智が育んだ「自然哲学」であり、<br>
+                    幸せに生きるための「人間哲学」であると考えています。
                 </div>
             </div>
         </div>
