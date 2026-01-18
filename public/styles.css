@@ -165,6 +165,14 @@ body {
   overflow: hidden;
   text-decoration: none;
   color: inherit;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.product-card:hover,
+.product-card:focus-visible {
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  transform: translateY(-2px) scale(1.01);
+  border-color: #7d9d85; /* LP と同系統のやわらかいグリーン */
 }
 
 .product-card img:not(.person-card-image) {
