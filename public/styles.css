@@ -103,7 +103,7 @@ body {
 }
 
 .nav-links a:hover {
-  color: var(--primary);
+  color: #166534; /* LP に近い深いグリーン */
 }
 
 .cart-indicator {
