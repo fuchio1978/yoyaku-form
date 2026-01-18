@@ -247,6 +247,17 @@ function renderKouzaCoursePage() {
   ];
   const introSrc = introImages[Math.floor(Math.random() * introImages.length)] || introImages[0];
 
+  // ステップ03（用神）の山岳イメージ用ランダム画像
+  const youjinImages = [
+    // 朝日の当たる岩山
+    'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 霧がかった山脈
+    'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
+    // 夕暮れのアルプスのような山並み
+    'https://images.pexels.com/photos/2252039/pexels-photo-2252039.jpeg?auto=compress&cs=tinysrgb&w=800',
+  ];
+  const youjinSrc = youjinImages[Math.floor(Math.random() * youjinImages.length)] || youjinImages[0];
+
   // 五行カード用のランダム画像（木・火・金）
   const woodImages = [
     // 大きな樹木の並木
@@ -505,7 +516,7 @@ function renderKouzaCoursePage() {
             <!-- Step 03 (用神) -->
             <div class="p-8 md:p-12 bg-[#334139] text-white rounded-3xl flex flex-col md:flex-row items-center gap-10">
                 <div class="w-full md:w-1/3 h-48 overflow-hidden rounded-2xl image-container shrink-0 text-center">
-                    <img src="https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                    <img src="${youjinSrc}"
                          alt="" 
                          class="h-full w-full object-cover"
                          onerror="handleImageError(this, 'mountain')">
