@@ -251,10 +251,10 @@ function renderKouzaCoursePage() {
   const youjinImages = [
     // 朝日の当たる岩山
     'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=800',
-    // 霧がかった山脈
-    'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
-    // 夕暮れのアルプスのような山並み
-    'https://images.pexels.com/photos/2252039/pexels-photo-2252039.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 山岳地帯（ユーザー指定1）
+    'https://images.pexels.com/photos/65684/pexels-photo-65684.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 山岳地帯（ユーザー指定2）
+    'https://images.pexels.com/photos/17090644/pexels-photo-17090644.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
   const youjinSrc = youjinImages[Math.floor(Math.random() * youjinImages.length)] || youjinImages[0];
 
