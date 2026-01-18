@@ -257,20 +257,20 @@ function renderKouzaCoursePage() {
     'https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
   const fireImages = [
-    // キャンプファイヤー
-    'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
     // 夕日の太陽
     'https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=800',
-    // 焚き火の炎
+    // 焚き火の炎（横構図）
     'https://images.pexels.com/photos/5586315/pexels-photo-5586315.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // キャンプファイヤー（別アングル）
+    'https://images.pexels.com/photos/533389/pexels-photo-533389.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
   const metalImages = [
     // ゴツゴツした岩山
     'https://images.pexels.com/photos/673020/pexels-photo-673020.jpeg?auto=compress&cs=tinysrgb&w=800&v=2',
-    // 石と鉱石のクローズアップ
-    'https://images.pexels.com/photos/326648/pexels-photo-326648.jpeg?auto=compress&cs=tinysrgb&w=800',
-    // 金属的な質感の山肌
-    'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 宝石の接写
+    'https://images.pexels.com/photos/1191710/pexels-photo-1191710.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 金属的な質感の石のクローズアップ
+    'https://images.pexels.com/photos/1407623/pexels-photo-1407623.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
 
   const woodSrc = woodImages[Math.floor(Math.random() * woodImages.length)] || woodImages[0];
