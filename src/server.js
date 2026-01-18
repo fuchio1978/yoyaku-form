@@ -376,6 +376,7 @@ function renderKouzaCoursePage() {
     <nav class="p-6 flex justify-between items-center bg-white/70 backdrop-blur-md fixed w-full z-50 border-b border-gray-100">
         <div class="text-xl font-bold tracking-[0.2em] text-[#2d3a32]">自然の景色でみる四柱推命講座</div>
         <div class="hidden md:flex space-x-10 text-sm tracking-widest">
+            <a href="/" class="hover:text-green-700 transition duration-300">メインサイト</a>
             <a href="#concept" class="hover:text-green-700 transition duration-300">コンセプト</a>
             <a href="#plans" class="hover:text-green-700 transition duration-300">講座案内</a>
             <a href="https://www.fuchilabo.com/products/kouzasetumei" class="hover:text-green-700 transition duration-300">お問い合わせ</a>
