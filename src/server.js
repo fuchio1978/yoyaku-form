@@ -249,19 +249,28 @@ function renderKouzaCoursePage() {
 
   // 五行カード用のランダム画像（木・火・金）
   const woodImages = [
+    // 大きな樹木の並木
     'https://images.pexels.com/photos/1632790/pexels-photo-1632790.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
-    'https://images.pexels.com/photos/167685/pexels-photo-167685.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 緑豊かな森の小道
+    'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 光が差し込む森
+    'https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
   const fireImages = [
+    // キャンプファイヤー
     'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
-    'https://images.pexels.com/photos/258112/pexels-photo-258112.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 夕日の太陽
+    'https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 焚き火の炎
+    'https://images.pexels.com/photos/5586315/pexels-photo-5586315.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
   const metalImages = [
+    // ゴツゴツした岩山
     'https://images.pexels.com/photos/673020/pexels-photo-673020.jpeg?auto=compress&cs=tinysrgb&w=800&v=2',
-    'https://images.pexels.com/photos/326659/pexels-photo-326659.jpeg?auto=compress&cs=tinysrgb&w=800',
-    'https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 石と鉱石のクローズアップ
+    'https://images.pexels.com/photos/326648/pexels-photo-326648.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 金属的な質感の山肌
+    'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
 
   const woodSrc = woodImages[Math.floor(Math.random() * woodImages.length)] || woodImages[0];
