@@ -257,12 +257,12 @@ function renderKouzaCoursePage() {
     'https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
   const fireImages = [
-    // 夕日の太陽（海に沈む太陽）
-    'https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=800',
-    // 焚き火の炎（暗い背景に炎が際立つ）
-    'https://images.pexels.com/photos/5586315/pexels-photo-5586315.jpeg?auto=compress&cs=tinysrgb&w=800',
-    // キャンプファイヤー（薪が燃えている様子）
-    'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
+    // 焚き火の炎（正面からのクローズアップ）
+    'https://images.pexels.com/photos/7124316/pexels-photo-7124316.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 暖炉の炎
+    'https://images.pexels.com/photos/316820/pexels-photo-316820.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 夜のキャンプファイヤー
+    'https://images.pexels.com/photos/11946380/pexels-photo-11946380.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
   const metalImages = [
     // ゴツゴツした岩山
