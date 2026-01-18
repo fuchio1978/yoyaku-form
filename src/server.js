@@ -252,7 +252,7 @@ function renderKouzaCoursePage() {
     // 朝日の当たる岩山
     'https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg?auto=compress&cs=tinysrgb&w=800',
     // 山岳地帯（ユーザー指定1）
-    'https://images.pexels.com/photos/65684/pexels-photo-65684.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'https://images.pexels.com/photos/16716334/pexels-photo-16716334.jpeg?auto=compress&cs=tinysrgb&w=800',
     // 山岳地帯（ユーザー指定2）
     'https://images.pexels.com/photos/17090644/pexels-photo-17090644.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
