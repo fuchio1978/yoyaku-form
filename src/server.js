@@ -261,12 +261,16 @@ function renderKouzaCoursePage() {
     'https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=800',
     // 焚き火の炎（暗い背景に炎が際立つ）
     'https://images.pexels.com/photos/5586315/pexels-photo-5586315.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // キャンプファイヤー（薪が燃えている様子）
+    'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=800&v=1',
   ];
   const metalImages = [
     // ゴツゴツした岩山
     'https://images.pexels.com/photos/673020/pexels-photo-673020.jpeg?auto=compress&cs=tinysrgb&w=800&v=2',
     // 宝石の接写（カラフルなラメ）
     'https://images.pexels.com/photos/1191710/pexels-photo-1191710.jpeg?auto=compress&cs=tinysrgb&w=800',
+    // 石と鉱石のクローズアップ
+    'https://images.pexels.com/photos/326648/pexels-photo-326648.jpeg?auto=compress&cs=tinysrgb&w=800',
   ];
 
   const woodSrc = woodImages[Math.floor(Math.random() * woodImages.length)] || woodImages[0];
