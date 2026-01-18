@@ -65,6 +65,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .logo-mark {
@@ -100,10 +102,20 @@ body {
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
+  padding-bottom: 0.1rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
 }
 
 .nav-links a:hover {
   color: #166534; /* LP に近い深いグリーン */
+  border-bottom-color: #166534;
+}
+
+.logo-block:hover .logo-mark {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  transform: translateY(-1px);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .cart-indicator {
