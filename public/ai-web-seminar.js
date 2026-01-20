@@ -303,7 +303,7 @@ const App = () => {
   };
 
   const goToContact = () => {
-    window.location.href = '/contact';
+    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScH97L2WMWei3UnKHAFfN-a0yA94fF0ozKMowE9qkp8nQnAVQ/viewform?usp=dialog';
   };
 
   return (
