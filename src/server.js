@@ -792,6 +792,26 @@ function renderKouzaCoursePage() {
 </html>`;
 }
 
+// AIセミナーLP専用ページ（/ai-web-seminar）: React アプリ用のシェルHTMLを返す
+function renderAiWebSeminarPage() {
+  return `<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>知識ゼロからAIで創る WEBサイト構築セミナー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="bg-[#fafaf9]">
+    <div id="root"></div>
+    <script type="text/babel" src="/ai-web-seminar.js"></script>
+  </body>
+</html>`;
+}
+
 function renderCanvaAiCoursePage() {
   const content = `
     <section class="ai-course-page">
@@ -2647,10 +2667,10 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // AIセミナーLP（/ai-web-seminar）: 既存の Canva AI 講座ページを流用
+  // AIセミナーLP（/ai-web-seminar）
   if (isReadMethod && parsedUrl.pathname === '/ai-web-seminar') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(req.method === 'HEAD' ? undefined : renderCanvaAiCoursePage());
+    res.end(req.method === 'HEAD' ? undefined : renderAiWebSeminarPage());
     return;
   }
 
