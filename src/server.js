@@ -2647,6 +2647,13 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // AIセミナーLP（/ai-web-seminar）: 既存の Canva AI 講座ページを流用
+  if (isReadMethod && parsedUrl.pathname === '/ai-web-seminar') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderCanvaAiCoursePage());
+    return;
+  }
+
   if (isReadMethod && parsedUrl.pathname === '/courses/canva-ai') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderCanvaAiCoursePage());
