@@ -429,7 +429,15 @@ const App = () => {
                 <iframe src="https://www.fuchilabo.com/kouza" title="事例1" className="w-full h-full border-none" loading="lazy"></iframe>
               </div>
               <div className="p-8 border-t bg-white">
-                <h4 className="text-xl font-serif font-bold text-[#1a2e2e]">講座紹介サイト</h4>
+                <h4 className="text-xl font-serif font-bold text-[#1a2e2e] mb-3">講座紹介サイト</h4>
+                <a
+                  href="https://www.fuchilabo.com/kouza"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 text-xs font-bold rounded-full border border-emerald-700 text-emerald-800 hover:bg-emerald-700 hover:text-white transition"
+                >
+                  サイトを見る
+                </a>
               </div>
             </div>
             <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-200 flex flex-col h-full">
@@ -440,7 +448,15 @@ const App = () => {
                 <iframe src="https://www.fuchilabo.com/products/tetsuya" title="事例2" className="w-full h-full border-none" loading="lazy"></iframe>
               </div>
               <div className="p-8 border-t bg-white">
-                <h4 className="text-xl font-serif font-bold text-[#1a2e2e]">鑑定予約サイト</h4>
+                <h4 className="text-xl font-serif font-bold text-[#1a2e2e] mb-3">鑑定予約サイト</h4>
+                <a
+                  href="https://www.fuchilabo.com/products/tetsuya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 text-xs font-bold rounded-full border border-emerald-700 text-emerald-800 hover:bg-emerald-700 hover:text-white transition"
+                >
+                  サイトを見る
+                </a>
               </div>
             </div>
           </div>
