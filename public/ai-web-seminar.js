@@ -596,8 +596,8 @@ const App = () => {
               {[
                 "知識ゼロからサイトが出来上がる「衝撃の工程」を目撃できます",
                 "「私にもできるかも！」という自信と具体的な一歩の踏み出し方",
-                "制作会社に依存せず、自分でビジネスを育てる自由を得る方法",
-                "WEBサイト作成の具体的なAIの組み合わせ方と使い方"
+                "外注費をゼロへ！修正や更新を自分で自由に行い、ビジネスを加速させる方法",
+                "2026年最新：3つのAIを迷わず使いこなす「サイト構築の黄金リレー" + "」"
               ].map((text, idx) => (
                 <div key={idx} className="flex items-center space-x-6">
                   <div className="flex-shrink-0 w-10 h-10 bg-emerald-800 text-white rounded-full flex items-center justify-center text-base font-bold shadow-md">{idx + 1}</div>
