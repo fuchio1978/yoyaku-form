@@ -662,7 +662,14 @@ const App = () => {
 
       <footer className="py-16 bg-white text-center border-t border-gray-100 font-bold">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-sm font-serif font-bold text-[#2d3a3a] tracking-[0.3em] mb-8 uppercase">知識ゼロからAIで創る WEBサイト構築セミナー</div>
+          <div className="text-sm font-serif font-bold text-[#2d3a3a] tracking-[0.3em] mb-6 uppercase">知識ゼロからAIで創る WEBサイト構築セミナー</div>
+          <div className="mb-4 text-xs text-gray-500 space-x-2 font-normal">
+            <a href="/legal" className="hover:underline">特定商取引法に関する表記</a>
+            <span className="opacity-50">｜</span>
+            <a href="/terms" className="hover:underline">利用規約</a>
+            <span className="opacity-50">｜</span>
+            <a href="/privacy" className="hover:underline">プライバシーポリシー</a>
+          </div>
           <p className="text-xs text-gray-400 font-normal">&copy; 2026 ふちLABO. 大自然の叡智を、あなたの人生に。</p>
         </div>
       </footer>
