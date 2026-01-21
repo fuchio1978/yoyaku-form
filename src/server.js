@@ -574,17 +574,17 @@ function renderKouzaCoursePage() {
                     <div class="flex flex-col lg:flex-row gap-12 md:gap-16">
                         <div class="w-full lg:w-1/3 shrink-0">
                             <div class="flex items-center gap-4 mb-6">
-                                <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ステップ 01</span>
+                                <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">レベル 01</span>
                                 <span class="text-[#7d9d85] font-bold tracking-widest text-sm italic">入門クラス</span>
                             </div>
                             <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">入門講座</h3>
                             <p class="text-[#7d9d85] font-bold mb-4">基礎の基礎を「景色」の視点で整える</p>
                             <p class="text-gray-500 text-sm leading-relaxed mb-8">
-                                四柱推命の土台を学び、命式の各星がどのような自然界の要素に対応しているのかを理解するコースです。
+                                四柱推命の土台をつくり、命式に出る「各星」を自分で出せるようにします。まずは基礎の基礎を押さえ、読み解きの土台を固める講座です。
                             </p>
                             <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100">
                                 <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm">90分 × 2回 / オンライン個人指導</div>
+                                <div class="text-[#334139] font-bold text-sm">90分 × 2回／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
                             </div>
                         </div>
 
@@ -592,7 +592,7 @@ function renderKouzaCoursePage() {
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
                                 <div class="bg-green-50/50 p-8 rounded-3xl">
                                     <h4 class="font-bold text-sm text-[#7d9d85] mb-4 uppercase tracking-widest italic">目指すゴール</h4>
-                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-left">命式の各星の出し方を理解し、四柱推命の基礎を完全に押さえる。</p>
+                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-left">命式の各星の出し方を理解し、四柱推命の基礎の基礎を押さえる。</p>
                                 </div>
                                 <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
                                     <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
@@ -607,12 +607,12 @@ function renderKouzaCoursePage() {
                                 <h4 class="text-xs text-gray-400 mb-6 uppercase tracking-widest">カリキュラムのポイント</h4>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
                                     <div>
-                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm text-left">第1回：基礎理論</div>
-                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">四柱推命の成り立ち、陰陽五行説、各エネルギーの理解と相関関係。</p>
+                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm text-left">第1回：概論／陰陽五行説／五行の理解と相関</div>
+                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">四柱推命全体の概論と、陰陽五行の基礎を景色の視点から整理します。</p>
                                     </div>
                                     <div>
-                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm text-left">第2回：干支と運気</div>
-                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">十干・十二支、六十干支の景色、空亡の捉え方、十二運の導出。</p>
+                                        <div class="font-bold mb-2 text-[#2d3a32] text-sm text-left">第2回：十干・十二支／六十干支／空亡／十二運</div>
+                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">十干・十二支と六十干支の基本構造、空亡と十二運の導き方を学びます。<br>事前課題：「四柱推命完全マニュアル」第2章まで</p>
                                     </div>
                                 </div>
                             </div>
