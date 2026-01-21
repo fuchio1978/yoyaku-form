@@ -575,7 +575,6 @@ function renderKouzaCoursePage() {
                         <div class="w-full lg:w-1/3 shrink-0">
                             <div class="flex items-center gap-4 mb-6">
                                 <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">レベル 01</span>
-                                <span class="text-[#7d9d85] font-bold tracking-widest text-sm italic">入門クラス</span>
                             </div>
                             <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">入門講座</h3>
                             <p class="text-[#7d9d85] font-bold mb-4">基礎の基礎を「景色」の視点で整える</p>
@@ -584,7 +583,7 @@ function renderKouzaCoursePage() {
                             </p>
                             <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100">
                                 <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm">90分 × 2回／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
+                                <div class="text-[#334139] font-bold text-sm">90分 × 2回／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br>事前課題：「四柱推命完全マニュアル」第2章まで</div>
                             </div>
                         </div>
 
@@ -598,7 +597,7 @@ function renderKouzaCoursePage() {
                                     <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
                                     <ul class="text-sm text-gray-700 space-y-2 text-left">
                                         <li>・講座動画のアーカイブ配布</li>
-                                        <li>・期間中LINEでの質問無制限</li>
+                                        <li>・LINEでの質問無制限</li>
                                         <li>・各回ごとの演習課題付き</li>
                                     </ul>
                                 </div>
@@ -612,7 +611,7 @@ function renderKouzaCoursePage() {
                                     </div>
                                     <div>
                                         <div class="font-bold mb-2 text-[#2d3a32] text-sm text-left">第2回：十干・十二支／六十干支／空亡／十二運</div>
-                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">十干・十二支と六十干支の基本構造、空亡と十二運の導き方を学びます。<br>事前課題：「四柱推命完全マニュアル」第2章まで</p>
+                                        <p class="text-xs text-gray-500 leading-relaxed italic text-left">十干・十二支と六十干支の基本構造、空亡と十二運の導き方を学びます。</p>
                                     </div>
                                 </div>
                             </div>
@@ -625,10 +624,9 @@ function renderKouzaCoursePage() {
                     <div class="absolute top-0 right-0 bg-[#7d9d85] text-white text-[10px] md:text-xs font-bold px-10 py-3 tracking-widest rounded-bl-3xl uppercase">おすすめのコース</div>
                     
                     <div class="flex flex-col lg:flex-row gap-12 md:gap-16">
-                        <div class="w-full lg:w-1/3 shrink-0">
+                        <div class="w-full lg:w-1/3 shrink-0 relative">
                             <div class="flex items-center gap-4 mb-6">
-                                <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ステップ 02</span>
-                                <span class="text-[#7d9d85] font-bold tracking-widest text-sm italic">中級クラス</span>
+                                <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">レベル 02</span>
                             </div>
                             <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">中級講座</h3>
                             <p class="text-[#7d9d85] font-bold mb-4">五行バランスから「運命の彩り」を解読する</p>
@@ -687,7 +685,6 @@ function renderKouzaCoursePage() {
                         <div class="w-full lg:w-1/3 shrink-0">
                             <div class="flex items-center gap-4 mb-6">
                                 <span class="bg-[#2d3a32] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ステップ 03</span>
-                                <span class="text-[#2d3a32] font-bold tracking-widest text-sm italic">上級クラス</span>
                             </div>
                             <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">上級講座</h3>
                             <p class="text-[#7d9d85] font-bold mb-4 text-left">鑑定を「生き方の戦略」へと昇華させる</p>
