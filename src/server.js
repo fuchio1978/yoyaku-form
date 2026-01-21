@@ -629,13 +629,13 @@ function renderKouzaCoursePage() {
                                 <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">レベル 02</span>
                             </div>
                             <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">中級講座</h3>
-                            <p class="text-[#7d9d85] font-bold mb-4">五行バランスから「運命の彩り」を解読する</p>
+                            <p class="text-[#7d9d85] font-bold mb-4">五行バランスから「原命式」と「運気の流れ」を読み解く</p>
                             <p class="text-gray-500 text-sm leading-relaxed mb-8 text-balance">
-                                8つの漢字をエネルギーの塊として捉え、バイオリズムや個性を景色として描けるようになるコースです。
+                                木火土金水の五行バランスを軸に、原命式の傾向と運気の流れを捉える力を育てます。鑑定の基本ステップから、通変・用神・巡運までを体系的に学びます。
                             </p>
                             <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
                                 <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 15回 ＋ 質問会 / 個人指導</div>
+                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 15回 ＋ 質問会（60分）／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
                             </div>
                         </div>
 
@@ -643,13 +643,14 @@ function renderKouzaCoursePage() {
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
                                 <div class="bg-green-50/50 p-8 rounded-3xl text-left">
                                     <h4 class="font-bold text-sm text-[#7d9d85] mb-4 uppercase tracking-widest italic">目指すゴール</h4>
-                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-balance text-left text-left">五行バランスから、生まれ持った本来の景色と運気の流れを解読できるようになる。</p>
+                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-balance text-left text-left">五行バランスから、原命式・運気の流れを見ることができるようになる。</p>
                                 </div>
                                 <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
                                     <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
                                     <ul class="text-sm text-gray-700 space-y-2 font-bold text-left">
-                                        <li>・毎月開催されるオンライン勉強会への参加権</li>
-                                        <li class="text-[#7d9d85]">・LINEによる無期限の質問・相談サポート</li>
+                                        <li>・LINEでの質問無制限</li>
+                                        <li>・月1オンライン勉強会に参加（毎月第3土曜 21:00-22:30／アーカイブあり）</li>
+                                        <li>・各回ごとのワーク（宿題）付き</li>
                                     </ul>
                                 </div>
                             </div>
@@ -663,15 +664,15 @@ function renderKouzaCoursePage() {
                                     </div>
                                     <div class="p-5 bg-gray-50 rounded-2xl relative step-arrow">
                                         <div class="text-[10px] text-[#7d9d85] font-bold mb-2">ステップ 02</div>
-                                        <p class="text-[11px] font-bold text-gray-700">エネルギーの変化</p>
+                                        <p class="text-[11px] font-bold text-gray-700">天干・地支の五行変化</p>
                                     </div>
                                     <div class="p-5 bg-gray-50 rounded-2xl relative step-arrow text-center">
                                         <div class="text-[10px] text-[#7d9d85] font-bold mb-2 text-center">ステップ 03</div>
-                                        <p class="text-[11px] font-bold text-gray-700">格付け・用神導出</p>
+                                        <p class="text-[11px] font-bold text-gray-700">身旺・身弱、用神選定</p>
                                     </div>
                                     <div class="p-5 bg-gray-50 rounded-2xl">
                                         <div class="text-[10px] text-[#7d9d85] font-bold mb-2">ステップ 04</div>
-                                        <p class="text-[11px] font-bold text-gray-700">大運・年運解読</p>
+                                        <p class="text-[11px] font-bold text-gray-700">大運・年運の解読</p>
                                     </div>
                                 </div>
                             </div>
@@ -684,16 +685,16 @@ function renderKouzaCoursePage() {
                     <div class="flex flex-col lg:flex-row gap-12 md:gap-16">
                         <div class="w-full lg:w-1/3 shrink-0">
                             <div class="flex items-center gap-4 mb-6">
-                                <span class="bg-[#2d3a32] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ステップ 03</span>
+                                <span class="bg-[#2d3a32] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">レベル 03</span>
                             </div>
                             <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">上級講座</h3>
                             <p class="text-[#7d9d85] font-bold mb-4 text-left">鑑定を「生き方の戦略」へと昇華させる</p>
                             <p class="text-gray-500 text-sm leading-relaxed mb-8 text-left">
-                                景色をさらに深掘りし、仕事・恋愛・相性など、具体的な悩みに対応できるプロの視点を養うコースです。
+                                「五行バランス」×「命式の景色」を統合し、より深い鑑定へ。仕事・恋愛・相性など具体的テーマも扱いながら、実践力を高めます。
                             </p>
                             <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
                                 <div class="text-[10px] text-[#2d3a32]/60 mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 18回 ＋ 質問会 / 個人指導</div>
+                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 18回 ＋ 質問会（60分）／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br><span class="text-red-600 text-xs font-bold">※本講座は「中級講座」受講者が対象です</span></div>
                             </div>
                         </div>
 
@@ -701,19 +702,20 @@ function renderKouzaCoursePage() {
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
                                 <div class="bg-gray-50 p-8 rounded-3xl text-left">
                                     <h4 class="font-bold text-sm text-[#2d3a32] mb-4 uppercase tracking-widest italic text-left">目指すゴール</h4>
-                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-left">「五行バランス×命式の景色」を融合させ、深い次元での鑑定と戦略的開運が可能になる。</p>
+                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-left">「五行バランス」×「命式の景色」で原命式・運気の流れを見ることで、より深い鑑定ができるようになる。</p>
                                 </div>
                                 <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
                                     <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic text-left">受講特典</h4>
                                     <ul class="text-sm text-gray-700 space-y-2 font-bold text-left text-left text-left">
-                                        <li>・毎月開催されるオンライン勉強会への参加権</li>
-                                        <li class="text-[#7d9d85]">・LINEによる無期限の質問・相談サポート</li>
+                                        <li>・LINEでの質問無制限</li>
+                                        <li>・月1オンライン勉強会に参加（毎月第3土曜 21:00-22:30／アーカイブあり）</li>
+                                        <li>・各回ごとのワーク（宿題）付き</li>
                                     </ul>
                                 </div>
                             </div>
                             
                             <div class="border-t border-gray-100 pt-8">
-                                <h4 class="text-xs text-gray-400 mb-6 uppercase tracking-widest text-left text-left">専門カリキュラムの内容</h4>
+                                <h4 class="text-xs text-gray-400 mb-6 uppercase tracking-widest text-left text-left">カリキュラムのポイント</h4>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                                     <div class="bg-gray-50/50 p-5 rounded-2xl text-left text-left">
                                         <div class="font-bold mb-2 text-[#2d3a32] text-sm underline decoration-[#7d9d85]/30 text-left">高度な推命理論</div>
