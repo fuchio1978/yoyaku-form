@@ -633,9 +633,9 @@ function renderKouzaCoursePage() {
                             <p class="text-gray-500 text-sm leading-relaxed mb-8 text-balance">
                                 木火土金水の五行バランスを軸に、原命式の傾向と運気の流れを捉える力を育てます。鑑定の基本ステップから、通変・用神・巡運までを体系的に学びます。
                             </p>
-                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
-                                <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 15回 ＋ 質問会（60分）<br>Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
+                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100">
+                                <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest">受講形式</div>
+                                <div class="text-[#334139] font-bold text-sm">2時間 × 15回 ＋ 質問会（60分）<br>Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
                             </div>
                         </div>
 
@@ -692,9 +692,9 @@ function renderKouzaCoursePage() {
                             <p class="text-gray-500 text-sm leading-relaxed mb-8 text-left">
                                 「五行バランス」×「命式の景色」を統合し、より深い鑑定へ。仕事・恋愛・相性など具体的テーマも扱いながら、実践力を高めます。
                             </p>
-                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
-                                <div class="text-[10px] text-[#2d3a32]/60 mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 18回 ＋ 質問会（60分）<br>Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br><span class="text-red-600 text-xs font-bold">※本講座は「中級講座」受講者が対象です</span></div>
+                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100">
+                                <div class="text-[10px] text-[#2d3a32]/60 mb-2 font-bold uppercase tracking-widest">受講形式</div>
+                                <div class="text-[#334139] font-bold text-sm">2時間 × 18回 ＋ 質問会（60分）<br>Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br><span class="text-red-600 text-xs font-bold">※本講座は「中級講座」受講者が対象です</span></div>
                             </div>
                         </div>
 
