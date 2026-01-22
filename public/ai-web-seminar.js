@@ -313,18 +313,18 @@ const App = () => {
           <div className="text-md md:text-xl font-serif tracking-widest font-bold text-[#2d3a3a]">
             知識ゼロからAIで創る WEBサイト構築セミナー
           </div>
-          <div className="hidden md:flex space-x-6 text-sm font-bold uppercase tracking-wider">
+          <div className="hidden md:flex items-center space-x-6 text-sm font-bold uppercase tracking-wider">
             <button onClick={() => scrollToId('problem')} className="hover:text-emerald-700 transition">お悩み</button>
             <button onClick={() => scrollToId('works')} className="hover:text-emerald-700 transition">事例</button>
             <button onClick={() => scrollToId('method')} className="hover:text-emerald-700 transition">方法</button>
             <button onClick={() => scrollToId('details')} className="hover:text-emerald-700 transition">概要</button>
+            <button 
+              onClick={() => scrollToId('apply')}
+              className="bg-[#2d3a3a] text-white px-8 py-2 rounded-full text-sm hover:bg-emerald-900 transition shadow-lg font-bold"
+            >
+              申込
+            </button>
           </div>
-          <button 
-            onClick={() => scrollToId('apply')}
-            className="hidden md:block bg-[#2d3a3a] text-white px-8 py-2 rounded-full text-sm hover:bg-emerald-900 transition shadow-lg font-bold"
-          >
-            申込
-          </button>
           <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <XIcon size={24} /> : <MenuIcon />}
           </button>
@@ -354,17 +354,18 @@ const App = () => {
             鑑定士・講師のための特別講座
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#1a2e2e] leading-tight mb-10">
-            知識ゼロ。無料で始める、<br className="hidden md:block" />
-            あなただけのLP。
+            知識ゼロ。<br className="hidden md:block" />
+            無料で始める<br className="hidden md:block" />
+            あなただけのLP
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto font-bold">
-            WEBページ構築→公開までを実演する90分。
+            「WEBページ構築→公開」までを実演する90分。
           </p>
           <button 
             onClick={goToContact}
             className="bg-[#2d3a3a] text-white px-12 py-4 rounded-full text-lg font-bold hover:bg-emerald-900 transition transform hover:scale-105 shadow-2xl flex items-center mx-auto"
           >
-            LP1枚を公開する90分に参加する → <span className="ml-3"><ArrowRightIcon /></span>
+            LPづくりを目撃する90分に参加する <span className="ml-3"><ArrowRightIcon /></span>
           </button>
           <p className="mt-4 text-xs text-gray-600 font-normal">
             ※PCが苦手でも大丈夫／見るだけ参加OK
