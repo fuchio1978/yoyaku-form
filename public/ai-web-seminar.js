@@ -354,8 +354,7 @@ const App = () => {
             鑑定士・講師のための特別講座
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#1a2e2e] leading-tight mb-10">
-            知識ゼロ。<br className="hidden md:block" />
-            無料で始める<br className="hidden md:block" />
+            知識ゼロ、無料で始める<br className="hidden md:block" />
             あなただけのLP
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto font-bold">
