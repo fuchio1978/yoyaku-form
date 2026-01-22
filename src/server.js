@@ -583,7 +583,7 @@ function renderKouzaCoursePage() {
                             </p>
                             <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100">
                                 <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm">90分 × 2回／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br>事前課題：「四柱推命完全マニュアル」第2章まで</div>
+                                <div class="text-[#334139] font-bold text-sm">90分 × 2回／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br>※事前課題：「四柱推命完全マニュアル」第2章まで</div>
                             </div>
                         </div>
 
@@ -635,7 +635,7 @@ function renderKouzaCoursePage() {
                             </p>
                             <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
                                 <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 15回 ＋ 質問会（60分）／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
+                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 15回 ＋ 質問会（60分）<br>Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
                             </div>
                         </div>
 
@@ -649,7 +649,7 @@ function renderKouzaCoursePage() {
                                     <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
                                     <ul class="text-sm text-gray-700 space-y-2 font-bold text-left">
                                         <li>・LINEでの質問無制限</li>
-                                        <li>・月1オンライン勉強会に参加（毎月第3土曜 21:00-22:30／アーカイブあり）</li>
+                                        <li>・月1オンライン勉強会に参加</li>
                                         <li>・各回ごとのワーク（宿題）付き</li>
                                     </ul>
                                 </div>
@@ -694,7 +694,7 @@ function renderKouzaCoursePage() {
                             </p>
                             <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100 text-center">
                                 <div class="text-[10px] text-[#2d3a32]/60 mb-2 font-bold uppercase tracking-widest text-center">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 18回 ＋ 質問会（60分）／Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br><span class="text-red-600 text-xs font-bold">※本講座は「中級講座」受講者が対象です</span></div>
+                                <div class="text-[#334139] font-bold text-sm text-center">2時間 × 18回 ＋ 質問会（60分）<br>Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします<br><span class="text-red-600 text-xs font-bold">※本講座は「中級講座」受講者が対象です</span></div>
                             </div>
                         </div>
 
@@ -708,7 +708,7 @@ function renderKouzaCoursePage() {
                                     <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic text-left">受講特典</h4>
                                     <ul class="text-sm text-gray-700 space-y-2 font-bold text-left text-left text-left">
                                         <li>・LINEでの質問無制限</li>
-                                        <li>・月1オンライン勉強会に参加（毎月第3土曜 21:00-22:30／アーカイブあり）</li>
+                                        <li>・月1オンライン勉強会に参加</li>
                                         <li>・各回ごとのワーク（宿題）付き</li>
                                     </ul>
                                 </div>
