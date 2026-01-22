@@ -354,20 +354,21 @@ const App = () => {
             鑑定士・講師のための特別講座
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#1a2e2e] leading-tight mb-10">
-            「IT知識ゼロ」は<br className="hidden md:block" />
-            もはや武器になる。
+            知識ゼロ。無料で始める、<br className="hidden md:block" />
+            あなただけのLP。
           </h1>
-          <p className="text-lg md:text-xl text-gray-700 mb-12 leading-relaxed max-w-2xl mx-auto font-bold">
-            プログラミング不要・月3000円のAI投資で<br />
-            あなたの「世界観」を表現する Webサイトを<br />
-            90分で構築しませんか？
+          <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto font-bold">
+            WEBページ構築→公開までを実演する90分。
           </p>
           <button 
             onClick={goToContact}
             className="bg-[#2d3a3a] text-white px-12 py-4 rounded-full text-lg font-bold hover:bg-emerald-900 transition transform hover:scale-105 shadow-2xl flex items-center mx-auto"
           >
-            セミナーに参加する <span className="ml-3"><ArrowRightIcon /></span>
+            LP1枚を公開する90分に参加する → <span className="ml-3"><ArrowRightIcon /></span>
           </button>
+          <p className="mt-4 text-xs text-gray-600 font-normal">
+            ※PCが苦手でも大丈夫／見るだけ参加OK
+          </p>
         </div>
       </header>
 
