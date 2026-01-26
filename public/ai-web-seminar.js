@@ -632,9 +632,13 @@ const App = () => {
                       <p className="text-xs md:text-sm text-emerald-800 font-bold mb-1">受付中枠（追加日程）</p>
                       <p className="text-lg md:text-xl text-emerald-900 font-bold leading-snug">2026年2月24日（火） 9:30〜11:00</p>
                       <p className="mt-1 text-xs md:text-sm text-emerald-700 font-bold">状態：追加日程／受付中</p>
-                      <a href="#apply" className="mt-3 inline-flex items-center text-xs md:text-sm text-emerald-800 font-bold underline underline-offset-4 decoration-emerald-500 hover:text-emerald-900">
+                      <button
+                        type="button"
+                        onClick={goToContact}
+                        className="mt-3 inline-flex items-center text-xs md:text-sm text-emerald-800 font-bold underline underline-offset-4 decoration-emerald-500 hover:text-emerald-900"
+                      >
                         この日程に申し込む →
-                      </a>
+                      </button>
                     </div>
                   </div>
 
