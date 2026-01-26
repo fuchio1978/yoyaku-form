@@ -622,7 +622,8 @@ const App = () => {
               <span className="text-emerald-800"><ClockIcon size={32} /></span>
               <div>
                 <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">開催日時</p>
-                <p>2026年2月15日（日） 21:00 ～ 22:30</p>
+                <p>2026年2月15日（日） 21:00 ～ 22:30【満員御礼】</p>
+                <p className="mt-2 text-base">2026年2月24日（火） 9:30 ～ 11:00</p>
               </div>
             </div>
             <div className="flex items-center space-x-6 pb-6 border-b border-gray-50 text-lg">
