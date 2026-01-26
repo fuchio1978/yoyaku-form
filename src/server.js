@@ -198,7 +198,11 @@ function renderPersonProductsPage(personId) {
         <img src="${product.image}" alt="${product.title}" loading="lazy" />
         <div class="card-body">
           <div class="badge">${product.typeLabel}</div>
-          <div class="price">${formatCurrency(product.currency, product.price)}</div>
+          <div class="price">${
+            (typeof product.price === 'number' ? product.price : Number(product.price || 0)) === 0
+              ? '無料イベント'
+              : formatCurrency(product.currency, product.price)
+          }</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
           <div class="title"><strong>${product.title}</strong></div>
           <p class="subtitle">${product.summary}</p>
