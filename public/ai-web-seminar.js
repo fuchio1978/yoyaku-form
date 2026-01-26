@@ -618,12 +618,38 @@ const App = () => {
             <h3 className="text-2xl md:text-4xl font-serif font-bold leading-tight">知識ゼロからAIで創る<br />WEBサイト構築セミナー</h3>
           </div>
           <div className="p-10 md:p-20 space-y-10 font-bold">
-            <div className="flex items-center space-x-6 pb-6 border-b border-gray-50 text-lg">
-              <span className="text-emerald-800"><ClockIcon size={32} /></span>
-              <div>
-                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">開催日時</p>
-                <p>2026年2月15日（日） 21:00 ～ 22:30【満員御礼】</p>
-                <p className="mt-2 text-base">2026年2月24日（火） 9:30 ～ 11:00</p>
+            <div className="flex items-start space-x-6 pb-6 border-b border-gray-50">
+              <span className="text-emerald-800 flex-shrink-0"><ClockIcon size={32} /></span>
+              <div className="flex-1">
+                <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">開催日時（各回90分／オンライン）</p>
+                <div className="grid gap-4 md:gap-6 md:grid-cols-1 lg:grid-cols-2 mt-4">
+                  {/* 受付中枠（追加日程） */}
+                  <div className="relative bg-emerald-50 border border-emerald-300 rounded-2xl px-5 py-4 md:px-6 md:py-5 shadow-sm">
+                    <div className="absolute -top-2 left-4">
+                      <span className="inline-flex items-center px-3 py-1 text-[10px] md:text-xs font-bold rounded-full bg-emerald-700 text-white tracking-wider">追加日程</span>
+                    </div>
+                    <div className="mt-4 md:mt-5">
+                      <p className="text-xs md:text-sm text-emerald-800 font-bold mb-1">受付中枠（追加日程）</p>
+                      <p className="text-lg md:text-xl text-emerald-900 font-bold leading-snug">2026年2月24日（火） 9:30〜11:00</p>
+                      <p className="mt-1 text-xs md:text-sm text-emerald-700 font-bold">状態：追加日程／受付中</p>
+                      <a href="#apply" className="mt-3 inline-flex items-center text-xs md:text-sm text-emerald-800 font-bold underline underline-offset-4 decoration-emerald-500 hover:text-emerald-900">
+                        この日程に申し込む →
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* 受付終了枠 */}
+                  <div className="relative bg-white border border-gray-200 rounded-2xl px-5 py-4 md:px-6 md:py-5 opacity-60">
+                    <div className="absolute -top-2 right-4 rotate-[-8deg]">
+                      <span className="inline-block px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest text-red-600 border border-red-500 rounded-md bg-white/90">満員御礼</span>
+                    </div>
+                    <div className="mt-2 md:mt-3">
+                      <p className="text-xs md:text-sm text-gray-500 font-bold mb-1">受付終了枠</p>
+                      <p className="text-base md:text-lg text-gray-500 font-bold line-through leading-snug">2026年2月15日（日） 21:00〜22:30</p>
+                      <p className="mt-1 text-xs md:text-sm text-gray-500 font-bold">状態：満員御礼（受付終了）</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex items-center space-x-6 pb-6 border-b border-gray-50 text-lg">
