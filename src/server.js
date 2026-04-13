@@ -178,6 +178,56 @@ function parseMultipartImage(req) {
   });
 }
 
+function parseMultipartPdf(req) {
+  return new Promise((resolve, reject) => {
+    const contentType = req.headers['content-type'] || '';
+    const boundaryMatch = contentType.match(/boundary=(.+)$/);
+    if (!boundaryMatch) {
+      return reject(new Error('Missing multipart boundary'));
+    }
+    const boundaryStr = `--${boundaryMatch[1]}`;
+
+    const chunks = [];
+    let totalLength = 0;
+    req.on('data', (chunk) => {
+      chunks.push(chunk);
+      totalLength += chunk.length;
+      if (totalLength > 50 * 1024 * 1024) {
+        // 50MB 超は拒否
+        reject(new Error('File too large')); 
+        req.destroy();
+      }
+    });
+    req.on('end', () => {
+      try {
+        const buffer = Buffer.concat(chunks);
+        const all = buffer.toString('binary');
+        const rawParts = all.split(boundaryStr).slice(1, -1);
+        for (const rawPart of rawParts) {
+          const part = Buffer.from(rawPart, 'binary');
+          const idx = part.indexOf('\r\n\r\n');
+          if (idx === -1) continue;
+          const headerBuf = part.slice(0, idx).toString('utf8');
+          const body = part.slice(idx + 4, part.length - 2);
+
+          if (!/name="pdf"/i.test(headerBuf)) continue;
+          const fileNameMatch = headerBuf.match(/filename="([^"\\]+)"/i);
+          if (!fileNameMatch || !fileNameMatch[1]) continue;
+          let fileName = path.basename(fileNameMatch[1]);
+          if (!/\.(pdf)$/i.test(fileName)) {
+            throw new Error('Unsupported file type');
+          }
+          return resolve({ fileName, data: body });
+        }
+        reject(new Error('No pdf file field'));
+      } catch (e) {
+        reject(e);
+      }
+    });
+    req.on('error', reject);
+  });
+}
+
 function renderPersonProductsPage(personId) {
   const products = getProducts()
     .slice()
@@ -1705,7 +1755,7 @@ function renderAboutPage() {
   });
 }
 
-function renderAdminHome() {
+function renderAdminHome(message) {
   const products = getProducts()
     .slice()
     .sort((a, b) => {
@@ -1735,8 +1785,22 @@ function renderAdminHome() {
     )
     .join('');
 
+  const notice = message ? `<p style="color:#16a34a; margin-bottom:1rem; font-weight:bold;">${message}</p>` : '';
+
   const content = `
     <div class="panel">
+      ${notice}
+      <h3>配布用PDFのアップロード</h3>
+      <p><code>/haifu-PDF</code> で配信されるPDFファイルを差し替えることができます。</p>
+      <form method="POST" action="/admin/upload-haifu-pdf" enctype="multipart/form-data" class="reservation-form" style="display:flex; gap:1rem; align-items:center;">
+        <div>
+          <input type="file" name="pdf" accept="application/pdf" required />
+        </div>
+        <button class="button" type="submit" style="margin:0;">PDFをアップロード</button>
+      </form>
+
+      <hr style="margin: 2rem 0;" />
+
       <h3>商品一覧（管理画面）</h3>
       <p>商品を編集するとトップページと商品ページに反映されます。</p>
       <div class="admin-actions">
@@ -2646,7 +2710,8 @@ const server = http.createServer(async (req, res) => {
 
   if (isReadMethod && parsedUrl.pathname === '/admin') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(req.method === 'HEAD' ? undefined : renderAdminHome());
+    const msg = parsedUrl.query && parsedUrl.query.msg;
+    res.end(req.method === 'HEAD' ? undefined : renderAdminHome(msg));
     return;
   }
 
@@ -2674,6 +2739,22 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && (parsedUrl.pathname === '/' || parsedUrl.pathname === '/index.html')) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderHomePage());
+    return;
+  }
+
+  //配布用PDF配信
+  if (isReadMethod && parsedUrl.pathname === '/haifu-PDF') {
+    const pdfPath = path.join(storageRoot, 'haifu-PDF.pdf');
+    if (fs.existsSync(pdfPath)) {
+      res.writeHead(200, {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'inline; filename="haifu-PDF.pdf"'
+      });
+      fs.createReadStream(pdfPath).pipe(res);
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('PDF not found');
+    }
     return;
   }
 
@@ -2821,6 +2902,22 @@ const server = http.createServer(async (req, res) => {
       console.error('Failed to delete image', error);
       res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(renderAdminImagesPage('画像の削除に失敗しました。もう一度お試しください。'));
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/upload-haifu-pdf') {
+    try {
+      const { data } = await parseMultipartPdf(req);
+      const targetPath = path.join(storageRoot, 'haifu-PDF.pdf');
+      fs.writeFileSync(targetPath, data, 'binary');
+
+      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent('PDFをアップロードしました。すぐに反映されます。') });
+      res.end();
+    } catch (error) {
+      console.error('Failed to upload PDF', error);
+      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent('PDFのアップロードに失敗しました。ファイル形式とサイズをご確認ください。') });
+      res.end();
     }
     return;
   }
