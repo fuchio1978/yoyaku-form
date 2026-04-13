@@ -1790,17 +1790,6 @@ function renderAdminHome(message) {
   const content = `
     <div class="panel">
       ${notice}
-      <h3>配布用PDFのアップロード</h3>
-      <p><code>/haifu-PDF</code> で配信されるPDFファイルを差し替えることができます。</p>
-      <form method="POST" action="/admin/upload-haifu-pdf" enctype="multipart/form-data" class="reservation-form" style="display:flex; gap:1rem; align-items:center;">
-        <div>
-          <input type="file" name="pdf" accept="application/pdf" required />
-        </div>
-        <button class="button" type="submit" style="margin:0;">PDFをアップロード</button>
-      </form>
-
-      <hr style="margin: 2rem 0;" />
-
       <h3>商品一覧（管理画面）</h3>
       <p>商品を編集するとトップページと商品ページに反映されます。</p>
       <div class="admin-actions">
@@ -1817,6 +1806,17 @@ function renderAdminHome(message) {
       <form id="reorderForm" method="POST" action="/admin/reorder-products" style="margin-top:1rem;">
         <input type="hidden" name="order" id="reorderOrderInput" />
         <button class="button" type="button" id="saveOrderButton">並び順を保存</button>
+      </form>
+
+      <hr style="margin: 2rem 0;" />
+
+      <h3>配布用PDFのアップロード</h3>
+      <p><code>/haifu-PDF</code> で配信されるPDFファイルを差し替えることができます。</p>
+      <form method="POST" action="/admin/upload-haifu-pdf" enctype="multipart/form-data" class="reservation-form" style="display:flex; gap:1rem; align-items:center;">
+        <div>
+          <input type="file" name="pdf" accept="application/pdf" required />
+        </div>
+        <button class="button" type="submit" style="margin:0;">PDFをアップロード</button>
       </form>
     </div>
     <script>
