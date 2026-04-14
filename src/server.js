@@ -1958,8 +1958,7 @@ function renderVoicePage() {
         border-radius: 999px;
         background: #fffbeb;
         color: #b45309;
-        font-size: 0.9rem;
-        font-weight: 700;
+        border: 1px solid #fde68a;
       }
       .voice-summary-item p {
         margin: 0;
@@ -2210,10 +2209,10 @@ function renderVoicePage() {
         <div class="voice-container">
           <h2>この講座が選ばれる理由</h2>
           <div class="voice-summary-list">
-            <div class="voice-summary-item"><span class="voice-summary-number">1</span><p>難しい四柱推命を、わかりやすく本質から学べること。</p></div>
-            <div class="voice-summary-item"><span class="voice-summary-number">2</span><p>「景色で読み解く」という自然派ならではの視点で、命式を立体的に理解できること。</p></div>
-            <div class="voice-summary-item"><span class="voice-summary-number">3</span><p>過去の学びで自信を持てなかった方が、実践で使える鑑定力を身につけていけること。</p></div>
-            <div class="voice-summary-item"><span class="voice-summary-number">4</span><p>そして、学んで終わりではなく、講座後のフォローまで含めて安心して学べること。</p></div>
+            <div class="voice-summary-item"><span class="voice-summary-number"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p>難しい四柱推命を、わかりやすく本質から学べること。</p></div>
+            <div class="voice-summary-item"><span class="voice-summary-number"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p>「景色で読み解く」という自然派ならではの視点で、命式を立体的に理解できること。</p></div>
+            <div class="voice-summary-item"><span class="voice-summary-number"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p>過去の学びで自信を持てなかった方が、実践で使える鑑定力を身につけていけること。</p></div>
+            <div class="voice-summary-item"><span class="voice-summary-number"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><p>そして、学んで終わりではなく、講座後のフォローまで含めて安心して学べること。</p></div>
           </div>
         </div>
       </section>
