@@ -1895,22 +1895,6 @@ function renderVoicePage() {
         transform: translateY(-2px);
         box-shadow: 0 18px 40px rgba(41, 37, 36, 0.08);
       }
-      .voice-card.voice-card-new {
-        background: #fffdf9;
-        border-color: #fde68a;
-        box-shadow: 0 16px 34px rgba(217, 119, 6, 0.08);
-      }
-      .voice-badge {
-        display: inline-block;
-        margin-bottom: 1rem;
-        padding: 0.35rem 0.8rem;
-        border-radius: 999px;
-        background: #d97706;
-        color: #ffffff;
-        font-size: 0.65rem;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-      }
       .voice-card h4 {
         font-size: 1.35rem;
         color: #292524;
@@ -2128,11 +2112,8 @@ function renderVoicePage() {
               <div class="voice-meta">40代女性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">いくつか講座を受けても自信が持てなかった四柱推命ですが、てつ先生に教えていただき、「景色で読み解く」ことで、命式を見てその人に合った開運方法や運気が分かり、四柱推命の捉え方が掴めるようになりました。
-
 奥深さや終わりのない学びへの理解も深まり、学ぶことが楽しいだけでなく、実際に使える力へと変わっていく感覚も得られました。
-
 基本を深く丁寧に学べる上に、アフターフォローも充実しており、お人柄の温かさにも支えられながら、実践で使える鑑定力が身についたと実感しています。
-
 講座難民だった私が、ようやく納得できる講座に出会えました。</div>
             </article>
 
@@ -2141,13 +2122,9 @@ function renderVoicePage() {
               <div class="voice-meta">30代女性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">四柱推命の多くの講座を受けてきましたが、鑑定に自信が持てず足踏みしていた私。
-
 てつ先生の講座を受けて、お客様に寄り添いながら、自信を持って鑑定できるようになりました。
-
 知識はとても深く、難しい話も分かりやすく教えてくださいます。
-
 講座生の意見を否定せず、疑問には最後まで向き合ってくださいます。
-
 また、講座が終わって終了ではなく、フォローも充実しているので安心です。</div>
             </article>
 
@@ -2156,7 +2133,6 @@ function renderVoicePage() {
               <div class="voice-meta">40代女性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">他の講座では難しくて挫折しかけていたのですが、てつ先生のLIVEを見て、「なんて分かりやすいの。私の目指す鑑定はこれだ」と確信して即申し込みました。
-
 てつ先生の教えのおかげで、今では心から楽しく、本質的な鑑定ができるようになりました。</div>
             </article>
           </div>
@@ -2172,17 +2148,11 @@ function renderVoicePage() {
               <div class="voice-meta">30代女性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">四柱推命経験者で受講させていただきました。
-
 まず、四柱推命をこんなに分かりやすく教えてくれる先生は、てつ先生だけでした。
-
 これまで単発講座も合わせてさまざまな講座を受講してきましたが、こんなに分かりやすく、親身になってくれる先生はいませんでした。
-
 分からないを分かるまでとことん教えてくださり、講座外のフォローも手厚すぎて感謝の気持ちでいっぱいです。
-
 四柱推命は中国から流れてきているので、講座外で気になった歴史のことなども詳しく教えてくださり、何を聞いても答えてくれるドラえもんのような先生でした。
-
 今後は、てつ先生が自然派四柱推命を広げていきたいという夢の力になれたらと思っております。
-
 ほんとうにありがとうございました。</div>
             </article>
 
@@ -2191,11 +2161,8 @@ function renderVoicePage() {
               <div class="voice-meta">40代女性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">てつ先生の講座は、丁寧に難しい四柱推命をわかりやすく教えて頂けます。
-
 塾講師をされていただけあって、教え方や覚え方の工夫はとてもされていると思います。
-
 わからない所や質問も細かく丁寧に説明して頂けるので、独学でしていた頃に比べると本当に有り難く、安心です。
-
 講座もあっという間に時間が過ぎますし、持ってる知識を惜しみなく教えて下さるので、次の講座が待ち遠しいです。</div>
             </article>
 
@@ -2204,9 +2171,7 @@ function renderVoicePage() {
               <div class="voice-meta">40代女性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">インスタでてつ先生を見つけて、とても優しそうな印象と安心感、説明がわかりやすかったので受講を決めました。
-
 授業は自分の命式を使って説明をしてくれるので、難しい話も頭に入りやすく、自分の深掘りもできます。
-
 優しく丁寧に学びたい人にはおすすめです。</div>
             </article>
           </div>
@@ -2217,19 +2182,14 @@ function renderVoicePage() {
         <div class="voice-container">
           <div class="voice-section-title"><span>「景色で読み解く」自然派四柱推命への声</span></div>
           <div class="voice-cards voice-cards-compact">
-            <article class="voice-card voice-card-new">
-              <div class="voice-badge">NEW MESSAGE</div>
+            <article class="voice-card">
               <h4>公開鑑定で出会った「自然の景色」が、学びたい気持ちの入口になりました</h4>
               <div class="voice-meta">30代女性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">てつ先生の公開鑑定を受けた際に、自分の中にある「自然の景色」に初めて触れ、とても嬉しかったのを覚えています。
-
 そこから、「学んでみたい」という気持ちが大きくなり、勇気を出して飛び込んでみました。
-
 てつ先生は、深い知識はもちろんのこと、講座中の小さな疑問にもすぐ応えてくださいます。
-
 なおかつ、理解しやすい言葉を選んで話してくださるので、イメージもつくし、スッと頭に入ってくるのです。
-
 毎回、「難しい。でもすごく楽しい」と思いながら受講させて頂いています。</div>
             </article>
 
@@ -2238,11 +2198,8 @@ function renderVoicePage() {
               <div class="voice-meta">40代男性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
               <div class="voice-text">YouTubeの実践鑑定Liveを観て講座に応募しました。
-
 命式を自然の風景として実際に画像に起こして、命式をより直感的に理解できる鑑定はとても分かりやすいです。
-
 自分もこのスタイルで命式を見られるようになりたいと思い応募しました。
-
 実際の講義もマンツーマンで、どんな疑問にも答えてくれるというスタンスで、毎回の講義が楽しみです。</div>
             </article>
           </div>
