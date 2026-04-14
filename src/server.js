@@ -1755,6 +1755,330 @@ function renderAboutPage() {
   });
 }
 
+function renderVoicePage() {
+  const content = `
+    <style>
+      .voice-page {
+        max-width: 860px;
+        margin: 0 auto;
+        color: #2d3a32;
+        line-height: 1.8;
+      }
+      .voice-intro {
+        text-align: center;
+        margin-bottom: 3.5rem;
+      }
+      .voice-intro h2 {
+        font-size: 1.85rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+      }
+      .voice-intro p {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+        color: #4a554e;
+      }
+      .voice-checklist {
+        background: #f4f7f2;
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin: 2.5rem 0 4rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      }
+      .voice-checklist h3 {
+        color: #7d9d85;
+        font-size: 1.25rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+      }
+      .voice-checklist ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-width: 580px;
+        margin: 0 auto;
+      }
+      .voice-checklist li {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        color: #3e4d44;
+      }
+      .voice-checklist li::before {
+        content: '・';
+        position: absolute;
+        left: 0;
+        color: #7d9d85;
+        font-weight: bold;
+      }
+      .voice-section {
+        margin-bottom: 4rem;
+      }
+      .voice-section-title {
+        font-size: 1.4rem;
+        border-bottom: 2px solid #e8f0e9;
+        padding-bottom: 0.75rem;
+        margin-bottom: 2rem;
+        color: #2d3a32;
+        font-weight: bold;
+      }
+      .voice-card {
+        background: #ffffff;
+        border: 1px solid #e8f0e9;
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .voice-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+      }
+      .voice-card h4 {
+        font-size: 1.2rem;
+        color: #7d9d85;
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+        font-weight: bold;
+      }
+      .voice-meta {
+        font-size: 0.9rem;
+        color: #8c9b91;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+        display: inline-block;
+        background: #f8fbf9;
+        padding: 0.2rem 0.8rem;
+        border-radius: 999px;
+      }
+      .voice-text {
+        font-size: 0.95rem;
+        color: #4a554e;
+        white-space: pre-line;
+      }
+      .voice-summary {
+        background: #334139;
+        color: #ffffff;
+        border-radius: 24px;
+        padding: 3.5rem 2rem;
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+      .voice-summary h3 {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+        color: #f4f7f2;
+        font-weight: bold;
+      }
+      .voice-summary p {
+        margin-bottom: 1.25rem;
+        font-size: 1.05rem;
+        opacity: 0.9;
+        line-height: 1.9;
+      }
+      .voice-cta {
+        text-align: center;
+        background: #f4f7f2;
+        padding: 4rem 2rem;
+        border-radius: 24px;
+      }
+      .voice-cta h3 {
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+      }
+      .voice-cta p {
+        margin-bottom: 2.5rem;
+        color: #4a554e;
+        line-height: 2;
+      }
+      .cta-button {
+        display: inline-block;
+        background: #2d3a32;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 1.25rem 3rem;
+        border-radius: 999px;
+        font-weight: bold;
+        font-size: 1.15rem;
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 12px rgba(45, 58, 50, 0.2);
+      }
+      .cta-button:hover {
+        background: #7d9d85;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(45, 58, 50, 0.3);
+      }
+      @media (max-width: 640px) {
+        .voice-card {
+          padding: 1.5rem;
+        }
+        .voice-checklist {
+          padding: 1.75rem 1.25rem;
+        }
+        .voice-summary {
+          padding: 2.5rem 1.25rem;
+        }
+        .voice-cta {
+          padding: 2.5rem 1.25rem;
+        }
+      }
+    </style>
+    <div class="voice-page">
+      <div class="voice-intro">
+        <h2>受講生の声</h2>
+        <p>自然派四柱推命講座を受講された方のご感想です。</p>
+        <p>他の講座で学んでも鑑定に自信が持てなかった方や、<br>もっと本質的に命式を読みたい方から、こうした声をいただいています。</p>
+      </div>
+
+      <div class="voice-checklist">
+        <h3>こんな方に選ばれています</h3>
+        <ul>
+          <li>他の流派や講座で学んだけれど、鑑定に自信が持てなかった方。</li>
+          <li>難しい理論を、わかりやすく本質から学びたい方。</li>
+          <li>「景色で読み解く」自然派四柱推命に惹かれた方。</li>
+          <li>学んで終わりではなく、実践で使える鑑定力を身につけたい方。</li>
+          <li>講座後のフォローまで含めて、安心して学びたい方。</li>
+        </ul>
+      </div>
+
+      <div class="voice-section">
+        <h3 class="voice-section-title">他で学んだけれど、自信が持てなかった方の声</h3>
+        
+        <div class="voice-card">
+          <h4>講座難民だった私が、ようやく納得できる講座に出会えました</h4>
+          <div class="voice-meta">40代女性</div>
+          <div class="voice-text">いくつか講座を受けても自信が持てなかった四柱推命ですが、てつ先生に教えていただき、「景色で読み解く」ことで、命式を見てその人に合った開運方法や運気が分かり、四柱推命の捉え方が掴めるようになりました。
+
+奥深さや終わりのない学びへの理解も深まり、学ぶことが楽しいだけでなく、実際に使える力へと変わっていく感覚も得られました。
+
+基本を深く丁寧に学べる上に、アフターフォローも充実しており、お人柄の温かさにも支えられながら、実践で使える鑑定力が身についたと実感しています。
+
+講座難民だった私が、ようやく納得できる講座に出会えました。</div>
+        </div>
+
+        <div class="voice-card">
+          <h4>自信を持って鑑定できるようになりました</h4>
+          <div class="voice-meta">30代女性</div>
+          <div class="voice-text">四柱推命の多くの講座を受けてきましたが、鑑定に自信が持てず足踏みしていた私。
+
+てつ先生の講座を受けて、お客様に寄り添いながら、自信を持って鑑定できるようになりました。
+
+知識はとても深く、難しい話も分かりやすく教えてくださいます。
+
+講座生の意見を否定せず、疑問には最後まで向き合ってくださいます。
+
+また、講座が終わって終了ではなく、フォローも充実しているので安心です。</div>
+        </div>
+
+        <div class="voice-card">
+          <h4>本質的な鑑定ができるようになりました</h4>
+          <div class="voice-meta">40代女性</div>
+          <div class="voice-text">他の講座では難しくて挫折しかけていたのですが、てつ先生のLIVEを見て、「なんて分かりやすいの。私の目指す鑑定はこれだ」と確信して即申し込みました。
+
+てつ先生の教えのおかげで、今では心から楽しく、本質的な鑑定ができるようになりました。</div>
+        </div>
+      </div>
+
+      <div class="voice-section">
+        <h3 class="voice-section-title">わかりやすさ、教え方への声</h3>
+        
+        <div class="voice-card">
+          <h4>ここまで分かりやすく教えてくれる先生は初めてでした</h4>
+          <div class="voice-meta">30代女性</div>
+          <div class="voice-text">四柱推命経験者で受講させていただきました。
+
+まず、四柱推命をこんなに分かりやすく教えてくれる先生は、てつ先生だけでした。
+
+これまで単発講座も合わせてさまざまな講座を受講してきましたが、こんなに分かりやすく、親身になってくれる先生はいませんでした。
+
+分からないを分かるまでとことん教えてくださり、講座外のフォローも手厚すぎて感謝の気持ちでいっぱいです。
+
+四柱推命は中国から流れてきているので、講座外で気になった歴史のことなども詳しく教えてくださり、何を聞いても答えてくれるドラえもんのような先生でした。
+
+今後は、てつ先生が自然派四柱推命を広げていきたいという夢の力になれたらと思っております。
+
+ほんとうにありがとうございました。</div>
+        </div>
+
+        <div class="voice-card">
+          <h4>難しい四柱推命を、丁寧にわかりやすく教えてもらえます</h4>
+          <div class="voice-meta">40代女性</div>
+          <div class="voice-text">てつ先生の講座は、丁寧に難しい四柱推命をわかりやすく教えて頂けます。
+
+塾講師をされていただけあって、教え方や覚え方の工夫はとてもされていると思います。
+
+わからない所や質問も細かく丁寧に説明して頂けるので、独学でしていた頃に比べると本当に有り難く、安心です。
+
+講座もあっという間に時間が過ぎますし、持ってる知識を惜しみなく教えて下さるので、次の講座が待ち遠しいです。</div>
+        </div>
+
+        <div class="voice-card">
+          <h4>優しく丁寧に学びたい人にはおすすめです</h4>
+          <div class="voice-meta">40代女性</div>
+          <div class="voice-text">インスタでてつ先生を見つけて、とても優しそうな印象と安心感、説明がわかりやすかったので受講を決めました。
+
+授業は自分の命式を使って説明をしてくれるので、難しい話も頭に入りやすく、自分の深掘りもできます。
+
+優しく丁寧に学びたい人にはおすすめです。</div>
+        </div>
+      </div>
+
+      <div class="voice-section">
+        <h3 class="voice-section-title">「景色で読み解く」自然派四柱推命への声</h3>
+        
+        <div class="voice-card">
+          <h4>命式を自然の風景として理解できる鑑定に惹かれました</h4>
+          <div class="voice-meta">40代男性</div>
+          <div class="voice-text">YouTubeの鑑定Liveを観て講座に応募しました。
+
+命式を自然の風景として実際に画像に起こして、命式をより直感的に理解できる鑑定はとても分かりやすいです。
+
+自分もこのスタイルで命式を見られるようになりたいと思い応募しました。
+
+実際の講義もマンツーマンで、どんな疑問にも答えてくれるというスタンスで、毎回の講義が楽しみです。</div>
+        </div>
+      </div>
+
+      <div class="voice-summary">
+        <h3>てつ先生の講座が選ばれる理由</h3>
+        <p>受講生の声を通して見えてくるのは、次のような点です。</p>
+        <p>難しい四柱推命を、わかりやすく本質から学べること。<br>
+        「景色で読み解く」という自然派ならではの視点で、命式を立体的に理解できること。<br>
+        他で学んでも自信が持てなかった方が、実践で使える鑑定力を身につけていけること。<br>
+        そして、学んで終わりではなく、講座後のフォローまで含めて安心して学べることです。</p>
+      </div>
+
+      <div class="voice-cta">
+        <h3>もっと詳しく知りたい方へ</h3>
+        <p>無料講座説明会では、自然派四柱推命の学び方や、講座の進め方、どんな方に向いているかを詳しくお伝えしています。<br><br>
+        「自分にも合う講座なのか知りたい」<br>
+        「他の講座との違いを聞いてみたい」<br>
+        「景色で読み解く四柱推命をもっと知りたい」<br><br>
+        そのような方は、まずは無料講座説明会にお越しください。</p>
+        <a href="https://www.fuchilabo.com/products/kouzasetumei" class="cta-button">無料講座説明会はこちら</a>
+      </div>
+    </div>
+  `;
+
+  return renderPage({
+    title: '',
+    subtitle: '',
+    content,
+    backLink: '/',
+    hideHeading: true,
+  });
+}
+
 function renderAdminHome(message) {
   const products = getProducts()
     .slice()
@@ -2675,6 +2999,12 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && parsedUrl.pathname === '/about') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderAboutPage());
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/voice') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderVoicePage());
     return;
   }
 
