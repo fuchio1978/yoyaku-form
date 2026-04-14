@@ -281,6 +281,74 @@ function renderPersonProductsPage(personId) {
   });
 }
 
+function getVoiceTestimonials() {
+  return [
+    {
+      title: '講座難民だった私が、ようやく納得できる講座に出会えました',
+      meta: '40代女性',
+      content:
+        'いくつか講座を受けても自信が持てなかった四柱推命ですが、てつ先生に教えていただき、「景色で読み解く」ことで、命式を見てその人に合った開運方法や運気が分かり、四柱推命の捉え方が掴めるようになりました。奥深さや終わりのない学びへの理解も深まり、学ぶことが楽しいだけでなく、実際に使える力へと変わっていく感覚も得られました。基本を深く丁寧に学べる上に、アフターフォローも充実しており、お人柄の温かさにも支えられながら、実践で使える鑑定力が身についたと実感しています。講座難民だった私が、ようやく納得できる講座に出会えました。',
+    },
+    {
+      title: '自信を持って鑑定できるようになりました',
+      meta: '30代女性',
+      content:
+        '四柱推命の多くの講座を受けてきましたが、鑑定に自信が持てず足踏みしていた私。てつ先生の講座を受けて、お客様に寄り添いながら、自信を持って鑑定できるようになりました。知識はとても深く、難しい話も分かりやすく教えてくださいます。講座生の意見を否定せず、疑問には最後まで向き合ってくださいます。また、講座が終わって終了ではなく、フォローも充実しているので安心です。',
+    },
+    {
+      title: '本質的な鑑定ができるようになりました',
+      meta: '40代女性',
+      content:
+        '他の講座では難しくて挫折しかけていたのですが、てつ先生のLIVEを見て、「なんて分かりやすいの。私の目指す鑑定はこれだ」と確信して即申し込みました。てつ先生の教えのおかげで、今では心から楽しく、本質的な鑑定ができるようになりました。',
+    },
+    {
+      title: 'ここまで分かりやすく教えてくれる先生は初めてでした',
+      meta: '30代女性',
+      content:
+        '四柱推命経験者で受講させていただきました。まず、四柱推命をこんなに分かりやすく教えてくれる先生は、てつ先生だけでした。これまで単発講座も合わせてさまざまな講座を受講してきましたが、こんなに分かりやすく、親身になってくれる先生はいませんでした。分からないを分かるまでとことん教えてくださり、講座外のフォローも手厚すぎて感謝の気持ちでいっぱいです。四柱推命は中国から流れてきているので、講座外で気になった歴史のことなども詳しく教えてくださり、何を聞いても答えてくれるドラえもんのような先生でした。今後は、てつ先生が自然派四柱推命を広げていきたいという夢の力になれたらと思っております。ほんとうにありがとうございました。',
+    },
+    {
+      title: '難しい四柱推命を、丁寧にわかりやすく教えてもらえます',
+      meta: '40代女性',
+      content:
+        'てつ先生の講座は、丁寧に難しい四柱推命をわかりやすく教えて頂けます。塾講師をされていただけあって、教え方や覚え方の工夫はとてもされていると思います。わからない所や質問も細かく丁寧に説明して頂けるので、独学でしていた頃に比べると本当に有り難く、安心です。講座もあっという間に時間が過ぎますし、持ってる知識を惜しみなく教えて下さるので、次の講座が待ち遠しいです。',
+    },
+    {
+      title: '優しく丁寧に学びたい人にはおすすめです',
+      meta: '40代女性',
+      content:
+        'インスタでてつ先生を見つけて、とても優しそうな印象と安心感、説明がわかりやすかったので受講を決めました。授業は自分の命式を使って説明をしてくれるので、難しい話も頭に入りやすく、自分の深掘りもできます。優しく丁寧に学びたい人にはおすすめです。',
+    },
+    {
+      title: '公開鑑定で出会った「自然の景色」が、学びたい気持ちの入口になりました',
+      meta: '30代女性',
+      content:
+        'てつ先生の公開鑑定を受けた際に、自分の中にある「自然の景色」に初めて触れ、とても嬉しかったのを覚えています。そこから、「学んでみたい」という気持ちが大きくなり、勇気を出して飛び込んでみました。てつ先生は、深い知識はもちろんのこと、講座中の小さな疑問にもすぐ応えてくださいます。なおかつ、理解しやすい言葉を選んで話してくださるので、イメージもつくし、スッと頭に入ってくるのです。毎回、「難しい。でもすごく楽しい」と思いながら受講させて頂いています。',
+    },
+    {
+      title: '命式を自然の風景として理解できる鑑定に惹かれました',
+      meta: '40代男性',
+      content:
+        'YouTubeの実践鑑定Liveを観て講座に応募しました。命式を自然の風景として実際に画像に起こして、命式をより直感的に理解できる鑑定はとても分かりやすいです。自分もこのスタイルで命式を見られるようになりたいと思い応募しました。実際の講義もマンツーマンで、どんな疑問にも答えてくれるというスタンスで、毎回の講義が楽しみです。',
+    },
+  ];
+}
+
+function pickRandomItems(items, count) {
+  const shuffled = items.slice();
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+function makeExcerpt(text, maxLength = 96) {
+  const normalized = String(text || '').replace(/\s+/g, ' ').trim();
+  if (normalized.length <= maxLength) return normalized;
+  return `${normalized.slice(0, maxLength).trim()}...`;
+}
+
 // 講座紹介LP専用ページ（/kouza）: Tailwind付きのフルHTMLをそのまま返す
 function renderKouzaCoursePage() {
   // 森林系の背景画像候補（白文字でも読みやすい、やや暗め〜中間トーン）
@@ -341,6 +409,29 @@ function renderKouzaCoursePage() {
   const woodSrc = woodImages[Math.floor(Math.random() * woodImages.length)] || woodImages[0];
   const fireSrc = fireImages[Math.floor(Math.random() * fireImages.length)] || fireImages[0];
   const metalSrc = metalImages[Math.floor(Math.random() * metalImages.length)] || metalImages[0];
+  const featuredVoices = pickRandomItems(getVoiceTestimonials(), 3);
+  const featuredVoicesHtml = featuredVoices
+    .map(
+      (voice) => `
+                <article class="group rounded-[2rem] bg-white/90 border border-[#7d9d85]/10 shadow-lg shadow-[#2d3a32]/5 overflow-hidden transition duration-500 hover:-translate-y-1 hover:shadow-2xl">
+                    <div class="p-8 md:p-10">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-[#f4f7f2] text-[#7d9d85]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg>
+                            </span>
+                            <div class="text-[11px] tracking-[0.18em] uppercase font-bold text-[#7d9d85]">${voice.meta}</div>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-[#2d3a32] leading-relaxed mb-5 text-balance">${voice.title}</h3>
+                        <p class="text-sm md:text-base leading-loose text-gray-600 mb-8">${makeExcerpt(voice.content)}</p>
+                        <a href="/voice" class="inline-flex items-center gap-3 text-sm font-bold tracking-[0.14em] text-[#2d3a32] hover:text-[#7d9d85] transition duration-300">
+                            受講生の声をもっと見る
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                        </a>
+                    </div>
+                </article>
+      `
+    )
+    .join('');
 
   return `<!DOCTYPE html>
 <html lang="ja">
@@ -787,6 +878,18 @@ function renderKouzaCoursePage() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- 受講生の声 -->
+            <div class="mt-20 md:mt-24 p-10 md:p-16 bg-[linear-gradient(135deg,#fcfdfc_0%,#f4f7f2_100%)] rounded-[3rem] border border-[#7d9d85]/10 shadow-xl">
+                <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+                    <div class="text-[#7d9d85] font-bold tracking-[0.24em] text-xs md:text-sm uppercase mb-5">Voice</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#2d3a32] tracking-[0.08em] leading-relaxed mb-6 text-balance">受講生の声</h2>
+                    <p class="text-gray-600 leading-loose md:text-lg">実際に学ばれた方のご感想から、講座の雰囲気や変化の実感を少しだけご紹介します。<br class="hidden md:block">表示内容は、ページを更新するたびにランダムで切り替わります。</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    ${featuredVoicesHtml}
                 </div>
             </div>
 
