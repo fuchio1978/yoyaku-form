@@ -2237,7 +2237,7 @@ function renderVoicePage() {
               <h4>命式を自然の風景として理解できる鑑定に惹かれました</h4>
               <div class="voice-meta">40代男性</div>
               <div class="voice-quote"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path></svg></div>
-              <div class="voice-text">YouTubeの鑑定Liveを観て講座に応募しました。
+              <div class="voice-text">YouTubeの実践鑑定Liveを観て講座に応募しました。
 
 命式を自然の風景として実際に画像に起こして、命式をより直感的に理解できる鑑定はとても分かりやすいです。
 
@@ -2255,8 +2255,8 @@ function renderVoicePage() {
           <div class="voice-summary-list">
             <div class="voice-summary-item"><span class="voice-summary-number">1</span><p>難しい四柱推命を、わかりやすく本質から学べること。</p></div>
             <div class="voice-summary-item"><span class="voice-summary-number">2</span><p>「景色で読み解く」という自然派ならではの視点で、命式を立体的に理解できること。</p></div>
-            <div class="voice-summary-item"><span class="voice-summary-number">3</span><p>他で学んでも自信が持てなかった方が、実践で使える鑑定力を身につけていけること。</p></div>
-            <div class="voice-summary-item"><span class="voice-summary-number">4</span><p>そして、学んで終わりではなく、講座後のフォローまで含めて安心して学べることです。</p></div>
+            <div class="voice-summary-item"><span class="voice-summary-number">3</span><p>過去の学びで自信を持てなかった方が、実践で使える鑑定力を身につけていけること。</p></div>
+            <div class="voice-summary-item"><span class="voice-summary-number">4</span><p>そして、学んで終わりではなく、講座後のフォローまで含めて安心して学べること。</p></div>
           </div>
         </div>
       </section>
