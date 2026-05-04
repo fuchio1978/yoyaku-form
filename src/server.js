@@ -1136,6 +1136,49 @@ async function sendContactToSheets(contact) {
   }
 }
 
+function isLikelySpamContact(body) {
+  const honeypot = String((body && body.website) || '').trim();
+  if (honeypot) {
+    return true;
+  }
+
+  const startedAtRaw = Number((body && body.contactFormStartedAt) || 0);
+  if (Number.isFinite(startedAtRaw) && startedAtRaw > 0) {
+    const elapsedMs = Date.now() - startedAtRaw;
+    if (elapsedMs >= 0 && elapsedMs < 2000) {
+      return true;
+    }
+  }
+
+  const name = String((body && body.name) || '').trim();
+  const email = String((body && body.email) || '').trim().toLowerCase();
+  const message = String((body && body.message) || '').trim();
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return true;
+  }
+
+  const japaneseChars = (message.match(/[ぁ-んァ-ヶ一-龠々ー]/g) || []).length;
+  const urlCount = (message.match(/https?:\/\/|www\./gi) || []).length;
+  const condensedMessage = message.replace(/\s+/g, '');
+  const isAsciiOnlyLongToken = /^[A-Za-z0-9_-]+$/.test(condensedMessage) && condensedMessage.length >= 20;
+  const asciiOnlyName = /^[A-Za-z0-9_-]{8,}$/.test(name);
+
+  if (urlCount >= 2) {
+    return true;
+  }
+
+  if (japaneseChars === 0 && isAsciiOnlyLongToken) {
+    return true;
+  }
+
+  if (japaneseChars === 0 && asciiOnlyName && isAsciiOnlyLongToken) {
+    return true;
+  }
+
+  return false;
+}
+
 // /admin 配下を保護するための簡易Basic認証
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'fuchilabo2025';
@@ -1357,6 +1400,8 @@ function renderContactPage(errors, body) {
   const phone = safe(body && body.phone);
   const orderNumber = safe(body && body.orderNumber);
   const message = safe(body && body.message);
+  const contactFormStartedAt =
+    body && body.contactFormStartedAt ? safe(body.contactFormStartedAt) : String(Date.now());
 
   const errorText = errors && errors.length ? `<p style="color:#dc2626;">入力内容をご確認ください。</p>` : '';
 
@@ -1367,6 +1412,11 @@ function renderContactPage(errors, body) {
         <p>鑑定や講座に関するご質問、ご不明点などがありましたら、こちらのフォームからお送りください。</p>
         ${errorText}
         <form class="reservation-form" method="POST" action="/contact">
+          <input type="hidden" name="contactFormStartedAt" value="${contactFormStartedAt}" />
+          <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+            <label for="website">Webサイト</label>
+            <input id="website" name="website" type="text" value="" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="field">
             <label for="name">お名前<span style="color:#dc2626;">（必須）</span></label>
             <input id="name" name="name" type="text" value="${name}" required />
@@ -3692,6 +3742,16 @@ const server = http.createServer(async (req, res) => {
       if (missing.length > 0) {
         res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
         res.end(renderContactPage(missing, body));
+        return;
+      }
+
+      if (isLikelySpamContact(body)) {
+        console.warn('Blocked spam contact submission', {
+          email: body.email || '',
+          name: body.name || '',
+        });
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(renderContactComplete(body));
         return;
       }
 
