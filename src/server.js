@@ -278,6 +278,7 @@ function renderPersonProductsPage(personId) {
     content,
     backLink: '/',
     hideHeading: true,
+    navVariant: personId === 'chigusa' ? 'chigusa' : 'default',
   });
 }
 
@@ -3141,6 +3142,7 @@ function renderProductPage(product) {
     content,
     backLink: '/',
     hideHeading: true,
+    navVariant: product.personId === 'chigusa' ? 'chigusa' : 'default',
   });
 }
 
