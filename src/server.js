@@ -1391,6 +1391,7 @@ function renderHomePage() {
     content,
     backLink: '/',
     hideHeading: true,
+    navVariant: 'chigusa',
   });
 }
 
