@@ -1141,10 +1141,9 @@ textarea {
 
 .touyou-hero-bg {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(246, 241, 235, 0.88) 100%),
-    url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=80')
-      center/cover no-repeat;
-  transform: scale(1.04);
+    linear-gradient(135deg, rgba(15, 44, 89, 0.14) 0%, rgba(15, 44, 89, 0.08) 100%),
+    url('/touyou-hero.png') center/cover no-repeat;
+  transform: scale(1.01);
 }
 
 .touyou-hero-inner {
