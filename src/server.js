@@ -1120,53 +1120,13 @@ function renderTouyouPage() {
 
   const content = `
     <section class="touyou-hero">
-      <div class="touyou-hero-bg"></div>
       <div class="touyou-container">
-        <div class="touyou-hero-inner">
-          <div class="touyou-pill">
-            <span class="touyou-pill-dot"></span>
-            <span>星の意味を覚えても、鑑定できないあなたへ</span>
-          </div>
-          <h1 class="touyou-title">
-            <span class="touyou-title-sub">四柱推命鑑定士のための</span>
-            <span class="touyou-title-main">東洋思想入門</span>
-          </h1>
-          <div class="touyou-subline">根っこを知ると、命式の見え方が変わる</div>
-
-          <div>
-            <p class="touyou-kicker">四柱推命が内包する3つの思想</p>
-            <div class="touyou-concepts">
-              <div class="touyou-concept-card">自然観察</div>
-              <div class="touyou-concept-plus">＋</div>
-              <div class="touyou-concept-card">陰陽五行</div>
-              <div class="touyou-concept-plus">＋</div>
-              <div class="touyou-concept-card">儒教的理解</div>
-              <div class="touyou-concept-plus">＝</div>
-              <div class="touyou-concept-result">思想の結晶</div>
-            </div>
-          </div>
-
-          <div class="touyou-meta-grid">
-            <div class="touyou-meta-item">
-              <div class="touyou-meta-icon">◷</div>
-              <div>
-                <span class="touyou-meta-label">開催日程</span>
-                <div class="touyou-meta-value">2026年6月4日(木) 21:00〜22:30<br />2026年6月14日(日) 21:00〜22:30</div>
-              </div>
-            </div>
-            <div class="touyou-meta-item">
-              <div class="touyou-meta-icon">¥</div>
-              <div>
-                <span class="touyou-meta-label">受講料</span>
-                <div class="touyou-meta-value touyou-meta-price">3,980円 <span style="font-size:0.8rem; font-weight:500; color:rgba(15,44,89,0.58);">(税込)</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="touyou-cta-row">
-            <a class="touyou-button" href="#register">セミナーに申し込む</a>
-            <a class="touyou-button-secondary" href="#agenda">学習内容を見る</a>
-          </div>
+        <div class="touyou-hero-card">
+          <img src="/touyou-hero.png" alt="四柱推命鑑定士のための東洋思想入門セミナー" class="touyou-hero-image" />
+        </div>
+        <div class="touyou-hero-cta">
+          <a class="touyou-button" href="#register">セミナーに申し込む</a>
+          <a class="touyou-button-secondary" href="#agenda">学習内容を見る</a>
         </div>
       </div>
     </section>

@@ -1125,33 +1125,31 @@ textarea {
 }
 
 .touyou-hero {
-  min-height: calc(100vh - 120px);
-  display: flex;
-  align-items: center;
-  padding: 5rem 0;
-  overflow: hidden;
+  padding: 2rem 0 3rem;
   border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
 }
 
-.touyou-hero-bg,
-.touyou-hero-overlay {
-  position: absolute;
-  inset: 0;
+.touyou-hero-card {
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(15, 44, 89, 0.08);
+  box-shadow: 0 20px 50px rgba(15, 44, 89, 0.12);
+  background: #ffffff;
 }
 
-.touyou-hero-bg {
-  background:
-    linear-gradient(135deg, rgba(15, 44, 89, 0.14) 0%, rgba(15, 44, 89, 0.08) 100%),
-    url('/touyou-hero.png') center/cover no-repeat;
-  transform: scale(1.01);
+.touyou-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.touyou-hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-  display: grid;
-  gap: 1.5rem;
+.touyou-hero-cta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .touyou-pill {
@@ -1839,8 +1837,7 @@ textarea {
   }
 
   .touyou-hero {
-    min-height: auto;
-    padding: 3.5rem 0 4rem;
+    padding: 1rem 0 2.25rem;
   }
 
   .touyou-meta-grid {
@@ -1848,6 +1845,7 @@ textarea {
   }
 
   .touyou-cta-row,
+  .touyou-hero-cta,
   .touyou-button,
   .touyou-button-secondary {
     width: 100%;
