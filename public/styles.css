@@ -1093,8 +1093,791 @@ textarea {
     margin-top: -6.6rem;
   }
 
-  .ai-course-cta-image img {
+.ai-course-cta-image img {
     max-width: 50%;
+  }
+}
+
+/* 東洋思想セミナーLP */
+.touyou-body {
+  background: #ffffff;
+}
+
+.page.touyou-page {
+  max-width: 100%;
+  padding: 0;
+}
+
+.touyou-page .panel {
+  margin: 0;
+}
+
+.touyou-hero,
+.touyou-section {
+  position: relative;
+  width: 100%;
+}
+
+.touyou-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.touyou-hero {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.touyou-hero-bg,
+.touyou-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.touyou-hero-bg {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(246, 241, 235, 0.88) 100%),
+    url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=80')
+      center/cover no-repeat;
+  transform: scale(1.04);
+}
+
+.touyou-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.touyou-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(197, 168, 128, 0.45);
+  color: #0f2c59;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.touyou-pill-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: #c5a880;
+}
+
+.touyou-kicker,
+.touyou-eyebrow {
+  color: #c5a880;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.touyou-title {
+  margin: 0;
+  color: #0f2c59;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+}
+
+.touyou-title span {
+  display: block;
+}
+
+.touyou-title-main {
+  font-size: clamp(2.7rem, 6vw, 4.8rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.touyou-title-sub {
+  font-size: clamp(1rem, 2.4vw, 1.7rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+
+.touyou-subline {
+  border-left: 2px solid #c5a880;
+  padding-left: 1rem;
+  color: rgba(15, 44, 89, 0.8);
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+}
+
+.touyou-concepts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.touyou-concept-card,
+.touyou-concept-result {
+  padding: 0.85rem 1rem;
+  border-radius: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.touyou-concept-card {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  color: #0f2c59;
+  box-shadow: 0 8px 20px rgba(15, 44, 89, 0.05);
+}
+
+.touyou-concept-result {
+  background: #0f2c59;
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(15, 44, 89, 0.16);
+}
+
+.touyou-concept-plus {
+  color: #c5a880;
+  font-weight: 700;
+}
+
+.touyou-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  max-width: 640px;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(197, 168, 128, 0.25);
+}
+
+.touyou-meta-item {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.touyou-meta-icon {
+  color: #c5a880;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.touyou-meta-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: rgba(15, 44, 89, 0.5);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.touyou-meta-value {
+  color: #0f2c59;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.touyou-meta-price {
+  font-size: 1.5rem;
+}
+
+.touyou-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.touyou-button,
+.touyou-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 56px;
+  padding: 0.95rem 2rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.touyou-button {
+  background: #0f2c59;
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(15, 44, 89, 0.18);
+}
+
+.touyou-button:hover,
+.touyou-button:focus-visible {
+  transform: translateY(-1px);
+  background: #1e3e62;
+}
+
+.touyou-button-secondary {
+  border: 1px solid rgba(15, 44, 89, 0.25);
+  color: #0f2c59;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.touyou-button-secondary:hover,
+.touyou-button-secondary:focus-visible {
+  transform: translateY(-1px);
+  border-color: #0f2c59;
+  background: #ffffff;
+}
+
+.touyou-section {
+  padding: 6rem 0;
+}
+
+.touyou-section-muted {
+  background: #f9fafb;
+}
+
+.touyou-section-title {
+  margin: 0 auto 4rem;
+  text-align: center;
+  max-width: 880px;
+}
+
+.touyou-section-number {
+  color: rgba(197, 168, 128, 0.2);
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: clamp(3.8rem, 8vw, 6.4rem);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.touyou-section-heading {
+  margin: 0.6rem 0 0;
+  color: #0f2c59;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+}
+
+.touyou-divider {
+  width: 52px;
+  height: 1px;
+  margin: 1.5rem auto 0;
+  background: #c5a880;
+}
+
+.touyou-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.touyou-card {
+  background: #ffffff;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(197, 168, 128, 0.12);
+}
+
+.touyou-card-muted {
+  background: #f9fafb;
+}
+
+.touyou-card-number {
+  color: #c5a880;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.touyou-card h3,
+.touyou-card h4 {
+  margin: 0.8rem 0;
+  color: #0f2c59;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.touyou-card p,
+.touyou-lead-copy,
+.touyou-copy {
+  margin: 0;
+  color: rgba(15, 44, 89, 0.78);
+  line-height: 2;
+}
+
+.touyou-image-text {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
+  gap: 2rem;
+  align-items: center;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(249, 250, 251, 0.62);
+  box-shadow: 0 20px 50px rgba(15, 44, 89, 0.06);
+}
+
+.touyou-image-frame {
+  border-radius: 1.15rem;
+  overflow: hidden;
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  background: #ffffff;
+  padding: 0.45rem;
+}
+
+.touyou-image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  border-radius: 0.9rem;
+}
+
+.touyou-highlight-box {
+  background: #ffffff;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1rem;
+  padding: 1.2rem 1.3rem;
+}
+
+.touyou-highlight-box strong {
+  color: #0f2c59;
+}
+
+.touyou-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.6rem;
+  min-height: 320px;
+  border: 1px solid rgba(197, 168, 128, 0.3);
+}
+
+.touyou-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(15, 44, 89, 0.9), rgba(15, 44, 89, 0.35)),
+    url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80')
+      center/cover no-repeat;
+}
+
+.touyou-banner-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  padding: 2rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.touyou-banner-content p,
+.touyou-banner-content h3 {
+  max-width: 760px;
+}
+
+.touyou-banner-content h3 {
+  margin: 0.75rem 0 1rem;
+  color: #f6f1eb;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+
+.touyou-solution-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.touyou-solution-card {
+  background: #ffffff;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 28px rgba(15, 44, 89, 0.05);
+}
+
+.touyou-gogyo-diagram {
+  position: relative;
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.touyou-gogyo-diagram svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.touyou-gogyo-node {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.touyou-gogyo-dot {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 44, 89, 0.08);
+}
+
+.touyou-wood {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #047857;
+}
+
+.touyou-fire {
+  top: 18%;
+  right: 0;
+  color: #be123c;
+}
+
+.touyou-earth {
+  right: 9%;
+  bottom: 7%;
+  color: #b45309;
+}
+
+.touyou-metal {
+  left: 9%;
+  bottom: 7%;
+  color: #475569;
+}
+
+.touyou-water {
+  top: 18%;
+  left: 0;
+  color: #2563eb;
+}
+
+.touyou-program-grid,
+.touyou-compare-grid,
+.touyou-info-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.touyou-program-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.touyou-program-card {
+  background: #f9fafb;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1.2rem;
+  padding: 2rem;
+}
+
+.touyou-program-top {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.touyou-mini-label {
+  color: #c5a880;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.touyou-compare-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.touyou-compare-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1.2rem;
+  padding: 2rem;
+}
+
+.touyou-compare-card.after {
+  border-color: rgba(197, 168, 128, 0.4);
+  box-shadow: 0 20px 50px rgba(15, 44, 89, 0.06);
+}
+
+.touyou-compare-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.45rem 0.8rem;
+  border-radius: 0 1.2rem 0 0.9rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.touyou-compare-tag.before {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.touyou-compare-tag.after {
+  background: rgba(197, 168, 128, 0.2);
+  color: #0f2c59;
+}
+
+.touyou-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.touyou-list li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  line-height: 1.8;
+}
+
+.touyou-list-icon {
+  flex: 0 0 auto;
+  color: #c5a880;
+  font-weight: 800;
+}
+
+.touyou-instructor-grid,
+.touyou-register-hero {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.touyou-instructor-grid {
+  grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
+}
+
+.touyou-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.touyou-photo-grid .touyou-image-frame img {
+  min-height: 240px;
+}
+
+.touyou-register-hero {
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+  background: #ffffff;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+}
+
+.touyou-outline-card {
+  background: #ffffff;
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  border-radius: 1.6rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(15, 44, 89, 0.05);
+}
+
+.touyou-outline-heading {
+  margin: 0 0 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+  color: #0f2c59;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+}
+
+.touyou-info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.touyou-info-row:last-child {
+  border-bottom: none;
+}
+
+.touyou-info-label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 220px;
+  color: #0f2c59;
+  font-weight: 800;
+}
+
+.touyou-info-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: #f6f1eb;
+  color: #0f2c59;
+}
+
+.touyou-info-value {
+  color: rgba(15, 44, 89, 0.8);
+  line-height: 1.9;
+  text-align: right;
+}
+
+.touyou-date-chip,
+.touyou-gift-chip {
+  display: inline-block;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #0f2c59;
+  font-weight: 700;
+}
+
+.touyou-step-box {
+  margin-top: 1.5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.3rem;
+  text-align: center;
+}
+
+.touyou-register-button-wrap {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.touyou-register-note {
+  margin-top: 0.9rem;
+  color: rgba(15, 44, 89, 0.5);
+  font-size: 0.74rem;
+}
+
+.touyou-faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.touyou-faq-item {
+  background: #f9fafb;
+  border: 1px solid rgba(229, 231, 235, 0.95);
+  border-radius: 1.1rem;
+  padding: 1.5rem;
+}
+
+.touyou-faq-head {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.touyou-qmark {
+  color: #c5a880;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+@media (max-width: 960px) {
+  .touyou-card-grid,
+  .touyou-program-grid,
+  .touyou-compare-grid,
+  .touyou-instructor-grid,
+  .touyou-register-hero,
+  .touyou-solution-grid,
+  .touyou-image-text {
+    grid-template-columns: 1fr;
+  }
+
+  .touyou-info-row {
+    flex-direction: column;
+  }
+
+  .touyou-info-value {
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .page.touyou-page {
+    padding: 0;
+  }
+
+  .touyou-container {
+    padding: 0 1rem;
+  }
+
+  .touyou-hero {
+    min-height: auto;
+    padding: 3.5rem 0 4rem;
+  }
+
+  .touyou-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .touyou-cta-row,
+  .touyou-button,
+  .touyou-button-secondary {
+    width: 100%;
+  }
+
+  .touyou-button,
+  .touyou-button-secondary {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .touyou-section {
+    padding: 4rem 0;
+  }
+
+  .touyou-card,
+  .touyou-program-card,
+  .touyou-compare-card,
+  .touyou-outline-card {
+    padding: 1.5rem;
+  }
+
+  .touyou-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .touyou-banner,
+  .touyou-banner-content {
+    min-height: 260px;
   }
 }
 

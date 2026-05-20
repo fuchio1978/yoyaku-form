@@ -1111,6 +1111,393 @@ function renderCanvaAiCoursePage() {
   });
 }
 
+function renderTouyouPage() {
+  const headExtras = `
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;600;800&display=swap" rel="stylesheet" />
+  `;
+
+  const content = `
+    <section class="touyou-hero">
+      <div class="touyou-hero-bg"></div>
+      <div class="touyou-container">
+        <div class="touyou-hero-inner">
+          <div class="touyou-pill">
+            <span class="touyou-pill-dot"></span>
+            <span>星の意味を覚えても、鑑定できないあなたへ</span>
+          </div>
+          <h1 class="touyou-title">
+            <span class="touyou-title-sub">四柱推命鑑定士のための</span>
+            <span class="touyou-title-main">東洋思想入門</span>
+          </h1>
+          <div class="touyou-subline">根っこを知ると、命式の見え方が変わる</div>
+
+          <div>
+            <p class="touyou-kicker">四柱推命が内包する3つの思想</p>
+            <div class="touyou-concepts">
+              <div class="touyou-concept-card">自然観察</div>
+              <div class="touyou-concept-plus">＋</div>
+              <div class="touyou-concept-card">陰陽五行</div>
+              <div class="touyou-concept-plus">＋</div>
+              <div class="touyou-concept-card">儒教的理解</div>
+              <div class="touyou-concept-plus">＝</div>
+              <div class="touyou-concept-result">思想の結晶</div>
+            </div>
+          </div>
+
+          <div class="touyou-meta-grid">
+            <div class="touyou-meta-item">
+              <div class="touyou-meta-icon">◷</div>
+              <div>
+                <span class="touyou-meta-label">開催日程</span>
+                <div class="touyou-meta-value">2026年6月4日(木) 21:00〜22:30<br />2026年6月14日(日) 21:00〜22:30</div>
+              </div>
+            </div>
+            <div class="touyou-meta-item">
+              <div class="touyou-meta-icon">¥</div>
+              <div>
+                <span class="touyou-meta-label">受講料</span>
+                <div class="touyou-meta-value touyou-meta-price">3,980円 <span style="font-size:0.8rem; font-weight:500; color:rgba(15,44,89,0.58);">(税込)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="touyou-cta-row">
+            <a class="touyou-button" href="#register">セミナーに申し込む</a>
+            <a class="touyou-button-secondary" href="#agenda">学習内容を見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="touyou-section">
+      <div class="touyou-container">
+        <div class="touyou-section-title">
+          <div class="touyou-section-number">01</div>
+          <div class="touyou-eyebrow">こんな経験、ありませんか？</div>
+          <h2 class="touyou-section-heading">星の意味を暗記したのに、<br />なぜか鑑定現場で言葉が詰まってしまう</h2>
+          <div class="touyou-divider"></div>
+        </div>
+
+        <div class="touyou-card-grid">
+          <article class="touyou-card touyou-card-muted">
+            <div class="touyou-card-number">01</div>
+            <h3>命式全体になると<br />急に読めなくなる</h3>
+            <p>「比肩は自立、食神は表現、正官は責任…」と単語を覚えたのに、それらが混ざり合うと、どう解釈すべきか分からなくなってしまう。</p>
+          </article>
+          <article class="touyou-card touyou-card-muted">
+            <div class="touyou-card-number">02</div>
+            <h3>お客様に何を伝えたら<br />いいか迷ってしまう</h3>
+            <p>知識はあるはずなのに、実際の鑑定現場になると適切なアドバイスが出ない。単なる「星の説明」の読み上げで終わってしまう。</p>
+          </article>
+          <article class="touyou-card touyou-card-muted">
+            <div class="touyou-card-number">03</div>
+            <h3>別の占術を学び直そうかと<br />思ってしまう</h3>
+            <p>今の知識量に限界を感じてしまい、「やっぱりタロットや西洋占星術など、別の占術も手を出さないといけないのか」と焦ってしまう。</p>
+          </article>
+        </div>
+
+        <div class="touyou-image-text" style="margin-top:4rem;">
+          <div class="touyou-image-frame">
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80" alt="書物を開いて深く思考する様子" />
+          </div>
+          <div style="display:grid; gap:1rem;">
+            <div class="touyou-eyebrow">なぜそうなってしまうのか？</div>
+            <h3 class="touyou-section-heading" style="font-size:1.7rem; text-align:left;">星の単語だけを追うと、言葉が「説明」で止まる</h3>
+            <p class="touyou-copy">四柱推命の根っこにある「東洋思想」を押さえないまま、星の辞書的な意味だけを記憶して使っていると、状況に合わせた応用ができなくなります。</p>
+            <p class="touyou-copy">命式は単語帳ではなく、<strong>「自然の景色」</strong>。山の景色を色の名前だけで記憶するのが不可能なのと同じで、根底にある思想を理解して初めて、一つのストーリーとして相手に伝えられるようになります。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="touyou-section touyou-section-muted">
+      <div class="touyou-container">
+        <div class="touyou-section-title">
+          <div class="touyou-section-number">02</div>
+          <div class="touyou-eyebrow">星の意味ではなく、なぜその意味が宿るのかを学ぶ</div>
+          <h2 class="touyou-section-heading">東洋思想という「根っこ」に触れることで、<br />鑑定の言葉が深く、優しく、力強くなる。</h2>
+          <div class="touyou-divider"></div>
+        </div>
+
+        <div class="touyou-banner">
+          <div class="touyou-banner-content">
+            <div>
+              <div class="touyou-eyebrow" style="color:#f6f1eb;">命式は、自然の縮図</div>
+              <h3>暗記した表として分類するのをやめて、<br />その奥にある自然の循環と人間理解に目を向ける。</h3>
+              <p class="touyou-copy" style="color:rgba(255,255,255,0.84);">そこが「景色で読む」入り口です。壮大な自然の流れや季節の巡り、そして人がどう在るかという思想に触れることで、鑑定の言葉に厚みが生まれます。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="touyou-solution-grid" style="margin-top:4rem;">
+          <div style="display:grid; gap:1.2rem;">
+            <h3 class="touyou-section-heading" style="font-size:1.8rem; text-align:left;">陰陽五行は「分類」ではなく<br />「関係性と変化」を読むレンズ</h3>
+            <p class="touyou-copy">多くの人が、陰陽五行を「木火土金水に物事を分けるための暗記表」だと誤解しています。</p>
+            <p class="touyou-copy">本来の陰陽五行は、固定的な分類ではなく、五行どうしの<strong>関係性（相生・相剋）</strong>と<strong>変化（季節・時間の流れ）</strong>を見るための動的な思想です。</p>
+            <div class="touyou-highlight-box">
+              <strong>「分類を覚える」から「景色を読む」へ。</strong><br />
+              日干が「木」の人は、ただの「木の人」ではありません。それは「上へ、外へと伸びようとする力を持っている人」という意味。その根っこを知ると、鑑定の言葉が自然と溢れ出てきます。
+            </div>
+          </div>
+          <div class="touyou-solution-card">
+            <div class="touyou-eyebrow" style="text-align:center;">五行の「動き」と「関係性」</div>
+            <div class="touyou-gogyo-diagram" aria-hidden="true">
+              <svg viewBox="0 0 100 100" role="presentation">
+                <polygon points="50,15 80,75 20,40 80,40 20,75" fill="none" stroke="rgba(197, 168, 128, 0.35)" stroke-width="0.8" stroke-dasharray="2,2"></polygon>
+                <circle cx="50" cy="50" r="33" fill="none" stroke="rgba(15, 44, 89, 0.12)" stroke-width="1"></circle>
+              </svg>
+              <div class="touyou-gogyo-node touyou-wood"><div class="touyou-gogyo-dot">木</div><span>伸びる</span></div>
+              <div class="touyou-gogyo-node touyou-fire"><div class="touyou-gogyo-dot">火</div><span>広がる</span></div>
+              <div class="touyou-gogyo-node touyou-earth"><div class="touyou-gogyo-dot">土</div><span>受けとめる</span></div>
+              <div class="touyou-gogyo-node touyou-metal"><div class="touyou-gogyo-dot">金</div><span>収束する</span></div>
+              <div class="touyou-gogyo-node touyou-water"><div class="touyou-gogyo-dot">水</div><span>蓄える</span></div>
+            </div>
+            <p class="touyou-copy" style="margin-top:1.5rem; text-align:center;">静止した分類ではなく、五行が互いに補い合い循環する「動き」そのものが本来の景色です。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="agenda" class="touyou-section">
+      <div class="touyou-container">
+        <div class="touyou-section-title">
+          <div class="touyou-section-number">03</div>
+          <div class="touyou-eyebrow">セミナープログラム</div>
+          <h2 class="touyou-section-heading">本セミナーで学べる4つの主要アジェンダ</h2>
+          <div class="touyou-divider"></div>
+        </div>
+
+        <div class="touyou-program-grid">
+          <article class="touyou-program-card">
+            <div class="touyou-program-top">
+              <div class="touyou-card-number">01</div>
+              <div>
+                <h3 style="margin-top:0;">四柱推命はどこから来たのか</h3>
+                <div class="touyou-mini-label">歴史・ルーツから理解する</div>
+              </div>
+            </div>
+            <p class="touyou-copy" style="margin-top:1rem;">四柱推命が占いとして突然発生したのではないこと。古代中国における自然観察・陰陽五行・儒教的人間理解が積み重なって出来た「思想の結晶」であることを紐解きます。</p>
+          </article>
+          <article class="touyou-program-card">
+            <div class="touyou-program-top">
+              <div class="touyou-card-number">02</div>
+              <div>
+                <h3 style="margin-top:0;">陰陽五行は「関係性と変化」</h3>
+                <div class="touyou-mini-label">思想のレンズへアップデート</div>
+              </div>
+            </div>
+            <p class="touyou-copy" style="margin-top:1rem;">単なる「分類表」の暗記から脱却し、相生・相剋の関係性や時間の流れとして命式を捉えるトレーニング。命式を静止した表ではなく、流動的な「景色」として捉え直します。</p>
+          </article>
+          <article class="touyou-program-card">
+            <div class="touyou-program-top">
+              <div class="touyou-card-number">03</div>
+              <div>
+                <h3 style="margin-top:0;">仁義礼智信が鑑定の言葉を深くする</h3>
+                <div class="touyou-mini-label">儒教の徳目と通変星の関係</div>
+              </div>
+            </div>
+            <p class="touyou-copy" style="margin-top:1rem;">儒教における人間の徳目である「五常」を五行・通変星と重ね、より精確で知的な解釈方法を伝授。なぜその五行にその徳が重ねられたのか、思想史の正確さも解説します。</p>
+          </article>
+          <article class="touyou-program-card">
+            <div class="touyou-program-top">
+              <div class="touyou-card-number">04</div>
+              <div>
+                <h3 style="margin-top:0;">思想を知ると、行動提案ができる</h3>
+                <div class="touyou-mini-label">鑑定から人生の「指針」へ</div>
+              </div>
+            </div>
+            <p class="touyou-copy" style="margin-top:1rem;">命式の単なる「解説・説明」で終わる鑑定から、お客様の未来を具体的に切り開く「人生の行動指針」を提示するための、具体的かつ深みのある言葉の紡ぎ方を伝えます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="touyou-section touyou-section-muted">
+      <div class="touyou-container">
+        <div class="touyou-section-title">
+          <div class="touyou-section-number">04</div>
+          <div class="touyou-eyebrow">ビフォー・アフター</div>
+          <h2 class="touyou-section-heading">思想を背景に持つことで、<br />あなたの鑑定の言葉はここまで変わる。</h2>
+          <div class="touyou-divider"></div>
+        </div>
+
+        <div class="touyou-compare-grid">
+          <article class="touyou-compare-card">
+            <div class="touyou-compare-tag before">BEFORE</div>
+            <div class="touyou-mini-label" style="color:#6b7280; margin-top:0.25rem;">従来の暗記スタイル</div>
+            <h3 style="color:#6b7280;">「木が強い人ですね」</h3>
+            <ul class="touyou-list" style="color:#6b7280;">
+              <li><span class="touyou-list-icon" style="color:#9ca3af;">×</span><span>星の表面的な性質をただ「読み上げる」だけ。</span></li>
+              <li><span class="touyou-list-icon" style="color:#9ca3af;">×</span><span>言葉が「性質の説明」で止まってしまう。</span></li>
+              <li><span class="touyou-list-icon" style="color:#9ca3af;">×</span><span>お客様が「で、結局どうすればいいの？」と感じる。</span></li>
+            </ul>
+          </article>
+          <article class="touyou-compare-card after">
+            <div class="touyou-compare-tag after">AFTER</div>
+            <div class="touyou-mini-label">これからの思想スタイル</div>
+            <h3>「伸びようとする力（仁）が非常に強い方です。ですが…」</h3>
+            <ul class="touyou-list">
+              <li><span class="touyou-list-icon">○</span><span>「なぜその星にその意味があるのか」を人間の在り方から説明。</span></li>
+              <li><span class="touyou-list-icon">○</span><span>お客様の状況に合わせた具体的な行動提案が自然とできる。</span></li>
+              <li><span class="touyou-list-icon">○</span><span>お客様が言葉を「人生の指針」として深く納得し、受け取る。</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="touyou-section">
+      <div class="touyou-container">
+        <div class="touyou-section-title">
+          <div class="touyou-section-number">05</div>
+          <div class="touyou-eyebrow">講師紹介</div>
+          <h2 class="touyou-section-heading">「思想から四柱推命を教える」講師</h2>
+          <div class="touyou-divider"></div>
+        </div>
+
+        <div class="touyou-instructor-grid">
+          <div class="touyou-photo-grid">
+            <div class="touyou-image-frame">
+              <img src="/kantei1.jpg" alt="大渕哲也" />
+            </div>
+            <div class="touyou-image-frame">
+              <img src="/kantei2.jpg" alt="書斎と古書のイメージ" />
+            </div>
+          </div>
+          <div style="display:grid; gap:1rem;">
+            <div class="touyou-mini-label">ふちLABO. 主宰</div>
+            <h3 class="touyou-section-heading" style="font-size:2rem; text-align:left; margin:0;">大渕 哲也 <span style="font-size:0.9rem; font-family:'Noto Sans JP', sans-serif; font-weight:500; color:rgba(15,44,89,0.58);">（Tetsuya Obuchi）</span></h3>
+            <p class="touyou-copy" style="font-weight:700; padding-bottom:0.8rem; border-bottom:1px solid #e5e7eb;">四柱推命講師・ポッドキャスター / 文学部・哲学科（ドイツ観念論）出身</p>
+            <p class="touyou-copy">大学時代に哲学を専攻し、人間の知恵や思想史を研究。その後、四柱推命が持つ「深み」に魅了される。しかし、世の中の多くの四柱推命の学び方が「表面的な星のキーワード暗記」で終わっていることに強い疑問を抱く。</p>
+            <p class="touyou-copy">「思想から四柱推命を教える」をコンセプトに、単なる単語帳ではなく、なぜその意味が宿るのかを陰陽五行思想、儒教的人間理解を踏まえて解説。本質を学び、言葉に深みを持たせたいプロ鑑定士たちから「圧倒的に分かりやすい」「これこそ求めていた講義だ」と強い信頼を得ている。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="register" class="touyou-section touyou-section-muted" style="border-top:1px solid #e5e7eb; border-bottom:1px solid #e5e7eb;">
+      <div class="touyou-container">
+        <div class="touyou-section-title">
+          <div class="touyou-section-number">06</div>
+          <div class="touyou-eyebrow">セミナー開催情報</div>
+          <h2 class="touyou-section-heading">あなたの鑑定が、説明から<br />人生の指針に変わる時間。</h2>
+          <div class="touyou-divider"></div>
+        </div>
+
+        <div class="touyou-register-hero">
+          <div class="touyou-image-frame">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="自宅でのオンラインセミナー受講イメージ" />
+          </div>
+          <div style="display:grid; gap:1rem;">
+            <h3 style="margin:0; color:#0f2c59; font-family:'Noto Serif JP', 'Hiragino Mincho ProN', serif;">ご自宅から、リラックスして参加できます</h3>
+            <p class="touyou-copy">セミナーはZoomによるオンライン形式で行われます。双方向のワークやチャットなどを交えながら、温かくリラックスした雰囲気で東洋思想の根っこに触れていきます。</p>
+            <p class="touyou-copy">当日参加できない場合や、もう一度深く見直したい場合でも、<strong>アーカイブ録画動画</strong>を全員にお送りしますので安心してご都合の良いタイミングでお申し込みください。</p>
+          </div>
+        </div>
+
+        <div class="touyou-outline-card" style="margin-top:2rem;">
+          <h3 class="touyou-outline-heading">四柱推命鑑定士のための東洋思想入門セミナー</h3>
+          <div class="touyou-info-list">
+            <div class="touyou-info-row">
+              <div class="touyou-info-label"><span class="touyou-info-badge">日</span><span>開催日時</span></div>
+              <div class="touyou-info-value">
+                <div class="touyou-date-chip">【日程A】2026年6月4日(木) 21:00〜22:30</div>
+                <div style="height:0.6rem;"></div>
+                <div class="touyou-date-chip">【日程B】2026年6月14日(日) 21:00〜22:30</div>
+              </div>
+            </div>
+            <div class="touyou-info-row">
+              <div class="touyou-info-label"><span class="touyou-info-badge">配</span><span>開催方法</span></div>
+              <div class="touyou-info-value">
+                <div style="font-weight:800; color:#0f2c59;">Zoomによるオンラインリアルタイム配信</div>
+                <div style="font-size:0.75rem; color:rgba(15,44,89,0.58);">※お申し込み後、自動送信メッセージにてリンクをお送りします</div>
+              </div>
+            </div>
+            <div class="touyou-info-row">
+              <div class="touyou-info-label"><span class="touyou-info-badge">費</span><span>参加費</span></div>
+              <div class="touyou-info-value" style="font-size:1.4rem; font-weight:800; color:#0f2c59;">
+                特別優待価格 3,980円 <span style="font-size:0.78rem; font-weight:500; color:rgba(15,44,89,0.58);">(税込)</span>
+              </div>
+            </div>
+            <div class="touyou-info-row">
+              <div class="touyou-info-label"><span class="touyou-info-badge">特</span><span>豪華セミナー参加特典</span></div>
+              <div class="touyou-info-value">
+                <div><span class="touyou-gift-chip">特典① セミナーで使用する講義資料（PDF）</span></div>
+                <div style="height:0.6rem;"></div>
+                <div><span class="touyou-gift-chip">特典② セミナーのアーカイブ録画動画</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="touyou-step-box">
+            <div class="touyou-mini-label" style="margin-bottom:0.6rem;">お申し込みステップ</div>
+            <p class="touyou-copy">下記のお申し込みボタン（Googleフォーム）をクリックし、日程の選択と必要事項のご記入・決済をお願いいたします。完了後、Zoom参加リンクがご登録のメールアドレスに届きます。</p>
+          </div>
+
+          <div class="touyou-register-button-wrap">
+            <a class="touyou-button" href="https://docs.google.com/forms/" target="_blank" rel="noopener noreferrer">Googleフォームから申し込む</a>
+            <p class="touyou-register-note">ご入力いただいた個人情報は適切に管理されます</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="touyou-section">
+      <div class="touyou-container" style="max-width:920px;">
+        <div class="touyou-section-title">
+          <div class="touyou-section-number">07</div>
+          <div class="touyou-eyebrow">よくある質問</div>
+          <h2 class="touyou-section-heading">疑問にお答えします</h2>
+          <div class="touyou-divider"></div>
+        </div>
+
+        <div class="touyou-faq-list">
+          <article class="touyou-faq-item">
+            <div class="touyou-faq-head">
+              <div class="touyou-qmark">Q.</div>
+              <div>
+                <h3 style="margin:0; font-size:1.05rem;">四柱推命を始めたばかりの初心者ですが、参加しても大丈夫でしょうか？</h3>
+                <p class="touyou-copy" style="margin-top:0.8rem;">はい、大歓迎です。難しい専門用語や複雑なロジックを深追いするセミナーではありません。むしろ、最初に東洋思想という大原則を押さえておくと、今後の学習スピードと理解度が何倍も早くなるという内容です。まだご自身の鑑定に自信がない方にこそおすすめです。</p>
+              </div>
+            </div>
+          </article>
+          <article class="touyou-faq-item">
+            <div class="touyou-faq-head">
+              <div class="touyou-qmark">Q.</div>
+              <div>
+                <h3 style="margin:0; font-size:1.05rem;">プロの鑑定士として既に活動していますが、何か新しい学びはありますか？</h3>
+                <p class="touyou-copy" style="margin-top:0.8rem;">十分にございます。本セミナーでは、西洋・東洋の思想史に精通した講師が、陰陽五行説や儒教の五常（仁義礼智信）がどのように歴史の変遷の中で四柱推命の星と結びつけられたのかを正確に紐解きます。キーワードに歴史的・哲学的な裏付けが加わることで、お客様への提案力が格段に深まります。</p>
+              </div>
+            </div>
+          </article>
+          <article class="touyou-faq-item">
+            <div class="touyou-faq-head">
+              <div class="touyou-qmark">Q.</div>
+              <div>
+                <h3 style="margin:0; font-size:1.05rem;">当日、急に都合が悪くなってしまった場合のキャンセルは可能ですか？</h3>
+                <p class="touyou-copy" style="margin-top:0.8rem;">キャンセルの場合は、お申し込み後に送られる確認メールに記載されたお問い合わせ連絡先、または事務局までセミナー前日までにご連絡ください。なお、別日程への振り替えも柔軟に対応いたします。</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  `;
+
+  return renderPage({
+    title: '四柱推命鑑定士のための東洋思想入門セミナー',
+    subtitle: '',
+    content,
+    backLink: '/',
+    hideHeading: true,
+    bodyClass: 'touyou-body',
+    pageClass: 'touyou-page',
+    headExtras,
+  });
+}
+
 async function sendContactToSheets(contact) {
   if (!sheetsWebhookUrl) return;
 
@@ -3415,6 +3802,12 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && parsedUrl.pathname === '/kouza') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderKouzaCoursePage());
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/touyou') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderTouyouPage());
     return;
   }
 

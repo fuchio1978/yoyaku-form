@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
     <link rel="stylesheet" href="/styles.css?v=20260116-4" />
+    {{headExtras}}
   </head>
-  <body>
+  <body class="{{bodyClass}}">
     <header class="site-header">
       <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav">
         <span></span>
@@ -23,7 +24,7 @@
       </nav>
     </header>
 
-    <main class="page">
+    <main class="page {{pageClass}}">
       <section class="page-heading">
         <a class="back-link" href="{{backLink}}">← 戻る</a>
         <h1>{{title}}</h1>

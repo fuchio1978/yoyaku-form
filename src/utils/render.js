@@ -28,6 +28,9 @@ function renderPage({
   backLink = '/',
   hideHeading = false,
   navVariant = 'default',
+  bodyClass = '',
+  pageClass = '',
+  headExtras = '',
 }) {
   const layoutPath = path.join(__dirname, '..', 'templates', 'layout.html');
   let layout = fs.readFileSync(layoutPath, 'utf-8');
@@ -42,10 +45,13 @@ function renderPage({
 
   return layout
     .replace('{{title}}', title)
+    .replace('{{headExtras}}', headExtras)
+    .replace('{{bodyClass}}', bodyClass)
     .replace('{{desktopNav}}', navHtml)
     .replace('{{mobileNav}}', navHtml)
     .replace('{{subtitle}}', subtitle)
     .replace('{{backLink}}', backLink)
+    .replace('{{pageClass}}', pageClass)
     .replace('{{content}}', content);
 }
 
