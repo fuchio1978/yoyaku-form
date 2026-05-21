@@ -1139,6 +1139,7 @@ textarea {
   border: 1px solid rgba(197, 168, 128, 0.42);
   box-shadow: 0 28px 64px rgba(6, 16, 41, 0.35);
   background: #0d2347;
+  min-height: 220px;
 }
 
 .touyou-hero-image {
@@ -1362,7 +1363,7 @@ textarea {
 }
 
 .touyou-section-number {
-  color: rgba(197, 168, 128, 0.2);
+  color: rgba(197, 168, 128, 0.32);
   font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
   font-size: clamp(3.8rem, 8vw, 6.4rem);
   font-weight: 300;
@@ -1376,6 +1377,10 @@ textarea {
   font-size: clamp(1.8rem, 3.4vw, 2.6rem);
   line-height: 1.45;
   letter-spacing: 0.04em;
+}
+
+.touyou-section-title .touyou-eyebrow {
+  color: #c39a5b;
 }
 
 .touyou-divider {
