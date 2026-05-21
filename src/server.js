@@ -1144,7 +1144,7 @@ function renderTouyouPage() {
           <article class="touyou-card touyou-card-muted">
             <div class="touyou-card-number">01</div>
             <h3>命式全体になると<br />急に読めなくなる</h3>
-            <p>「比肩は自立、食神は表現、正官は責任…」と単語を覚えたのに、それらが混ざり合うと、どう解釈すべきか分からなくなってしまう。</p>
+            <p>「比肩は自立、食神は表現、正官は真面目…」と単語を覚えたのに、それらが混ざり合うと、どう解釈すべきか分からなくなってしまう。</p>
           </article>
           <article class="touyou-card touyou-card-muted">
             <div class="touyou-card-number">02</div>
@@ -1164,9 +1164,9 @@ function renderTouyouPage() {
           </div>
           <div style="display:grid; gap:1rem;">
             <div class="touyou-eyebrow">なぜそうなってしまうのか？</div>
-            <h3 class="touyou-section-heading" style="font-size:1.7rem; text-align:left;">星の単語だけを追うと、言葉が「説明」で止まる</h3>
-            <p class="touyou-copy">四柱推命の根っこにある「東洋思想」を押さえないまま、星の辞書的な意味だけを記憶して使っていると、状況に合わせた応用ができなくなります。</p>
-            <p class="touyou-copy">命式は単語帳ではなく、<strong>「自然の景色」</strong>。山の景色を色の名前だけで記憶するのが不可能なのと同じで、根底にある思想を理解して初めて、一つのストーリーとして相手に伝えられるようになります。</p>
+            <h3 class="touyou-section-heading" style="font-size:1.7rem; text-align:left;">通変星の単語だけを追うと、言葉が「説明」で止まる</h3>
+            <p class="touyou-copy">四柱推命の根っこにある「東洋思想」を押さえないまま、通変星や十二運の辞書的な意味だけを記憶して使っていると、状況に合わせた応用ができなくなります。</p>
+            <p class="touyou-copy">命式は単語帳ではなく、<strong>「自然の景色」</strong>。山にも「鉱山」「緑あふれる山」「禿山」と色々あります。根底にある思想を理解して初めて、一つのストーリーとして相手に伝えられるようになります。</p>
           </div>
         </div>
       </div>
@@ -1185,7 +1185,7 @@ function renderTouyouPage() {
           <div class="touyou-banner-content">
             <div>
               <div class="touyou-eyebrow" style="color:#f6f1eb;">命式は、自然の縮図</div>
-              <h3>暗記した表として分類するのをやめて、<br />その奥にある自然の循環と人間理解に目を向ける。</h3>
+              <h3>暗記を一度やめてみる。<br />その奥にある陰陽五行論に目を向ける。</h3>
               <p class="touyou-copy" style="color:rgba(255,255,255,0.84);">そこが「景色で読む」入り口です。壮大な自然の流れや季節の巡り、そして人がどう在るかという思想に触れることで、鑑定の言葉に厚みが生まれます。</p>
             </div>
           </div>
@@ -1195,7 +1195,7 @@ function renderTouyouPage() {
           <div style="display:grid; gap:1.2rem;">
             <h3 class="touyou-section-heading" style="font-size:1.8rem; text-align:left;">陰陽五行は「分類」ではなく<br />「関係性と変化」を読むレンズ</h3>
             <p class="touyou-copy">多くの人が、陰陽五行を「木火土金水に物事を分けるための暗記表」だと誤解しています。</p>
-            <p class="touyou-copy">本来の陰陽五行は、固定的な分類ではなく、五行どうしの<strong>関係性（相生・相剋）</strong>と<strong>変化（季節・時間の流れ）</strong>を見るための動的な思想です。</p>
+            <p class="touyou-copy">本来の陰陽五行は、固定的な分類ではなく、五行どうしの<strong>関係性（相生・相剋・比和）</strong>と<strong>変化（季節・時間の流れ）</strong>を見るための動的な思想です。</p>
             <div class="touyou-highlight-box">
               <strong>「分類を覚える」から「景色を読む」へ。</strong><br />
               日干が「木」の人は、ただの「木の人」ではありません。それは「上へ、外へと伸びようとする力を持っている人」という意味。その根っこを知ると、鑑定の言葉が自然と溢れ出てきます。
@@ -1209,12 +1209,12 @@ function renderTouyouPage() {
                 <circle cx="50" cy="50" r="33" fill="none" stroke="rgba(15, 44, 89, 0.12)" stroke-width="1"></circle>
               </svg>
               <div class="touyou-gogyo-node touyou-wood"><div class="touyou-gogyo-dot">木</div><span>伸びる</span></div>
-              <div class="touyou-gogyo-node touyou-fire"><div class="touyou-gogyo-dot">火</div><span>広がる</span></div>
+              <div class="touyou-gogyo-node touyou-fire"><div class="touyou-gogyo-dot">火</div><span>燃え上がる</span></div>
               <div class="touyou-gogyo-node touyou-earth"><div class="touyou-gogyo-dot">土</div><span>受けとめる</span></div>
               <div class="touyou-gogyo-node touyou-metal"><div class="touyou-gogyo-dot">金</div><span>収束する</span></div>
-              <div class="touyou-gogyo-node touyou-water"><div class="touyou-gogyo-dot">水</div><span>蓄える</span></div>
+              <div class="touyou-gogyo-node touyou-water"><div class="touyou-gogyo-dot">水</div><span>浸透する</span></div>
             </div>
-            <p class="touyou-copy" style="margin-top:1.5rem; text-align:center;">静止した分類ではなく、五行が互いに補い合い循環する「動き」そのものが本来の景色です。</p>
+            <p class="touyou-copy" style="margin-top:1.5rem; text-align:center;">静止した分類ではなく、五行が互いに補い合い循環する「動き」そのものが本来の陰陽五行論です。</p>
           </div>
         </div>
       </div>
