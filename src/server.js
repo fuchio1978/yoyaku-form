@@ -1313,22 +1313,19 @@ function renderTouyouPage() {
         <div class="touyou-section-title">
           <div class="touyou-section-number">05</div>
           <div class="touyou-eyebrow">講師紹介</div>
-          <h2 class="touyou-section-heading">「思想から四柱推命を教える」講師</h2>
+          <h2 class="touyou-section-heading">「東洋思想を踏まえて四柱推命を伝える」講師</h2>
           <div class="touyou-divider"></div>
         </div>
 
         <div class="touyou-instructor-grid">
-          <div class="touyou-photo-grid">
+          <div class="touyou-instructor-photo">
             <div class="touyou-image-frame">
-              <img src="/kantei1.jpg" alt="大渕哲也" />
-            </div>
-            <div class="touyou-image-frame">
-              <img src="/kantei2.jpg" alt="書斎と古書のイメージ" />
+              <img src="/touyou-instructor.jpg" alt="てつ先生" />
             </div>
           </div>
           <div style="display:grid; gap:1rem;">
             <div class="touyou-mini-label">ふちLABO. 主宰</div>
-            <h3 class="touyou-section-heading" style="font-size:2rem; text-align:left; margin:0;">大渕 哲也 <span style="font-size:0.9rem; font-family:'Noto Sans JP', sans-serif; font-weight:500; color:rgba(15,44,89,0.58);">（Tetsuya Obuchi）</span></h3>
+            <h3 class="touyou-section-heading" style="font-size:2rem; text-align:left; margin:0;">てつ先生</h3>
             <p class="touyou-copy" style="font-weight:700; padding-bottom:0.8rem; border-bottom:1px solid #e5e7eb;">四柱推命講師・ポッドキャスター / 文学部・哲学科（ドイツ観念論）出身</p>
             <p class="touyou-copy">大学時代に哲学を専攻し、人間の知恵や思想史を研究。その後、四柱推命が持つ「深み」に魅了される。しかし、世の中の多くの四柱推命の学び方が「表面的な星のキーワード暗記」で終わっていることに強い疑問を抱く。</p>
             <p class="touyou-copy">「思想から四柱推命を教える」をコンセプトに、単なる単語帳ではなく、なぜその意味が宿るのかを陰陽五行思想、儒教的人間理解を踏まえて解説。本質を学び、言葉に深みを持たせたいプロ鑑定士たちから「圧倒的に分かりやすい」「これこそ求めていた講義だ」と強い信頼を得ている。</p>

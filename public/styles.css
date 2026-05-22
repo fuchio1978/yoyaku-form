@@ -1709,6 +1709,11 @@ textarea {
   min-height: 240px;
 }
 
+.touyou-instructor-photo .touyou-image-frame img {
+  min-height: 420px;
+  object-position: center top;
+}
+
 .touyou-register-hero {
   grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(246, 240, 231, 0.93) 100%);
@@ -1940,6 +1945,10 @@ textarea {
 
   .touyou-photo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .touyou-instructor-photo .touyou-image-frame img {
+    min-height: 320px;
   }
 
   .touyou-banner,
