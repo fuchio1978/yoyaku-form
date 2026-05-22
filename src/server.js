@@ -1313,7 +1313,7 @@ function renderTouyouPage() {
         <div class="touyou-section-title">
           <div class="touyou-section-number">05</div>
           <div class="touyou-eyebrow">講師紹介</div>
-          <h2 class="touyou-section-heading">「東洋思想を踏まえて四柱推命を伝える」講師</h2>
+          <h2 class="touyou-section-heading">「東洋思想を踏まえて四柱推命を伝える」</h2>
           <div class="touyou-divider"></div>
         </div>
 
@@ -1326,9 +1326,11 @@ function renderTouyouPage() {
           <div style="display:grid; gap:1rem;">
             <div class="touyou-mini-label">ふちLABO. 主宰</div>
             <h3 class="touyou-section-heading" style="font-size:2rem; text-align:left; margin:0;">てつ先生</h3>
-            <p class="touyou-copy" style="font-weight:700; padding-bottom:0.8rem; border-bottom:1px solid #e5e7eb;">四柱推命講師・ポッドキャスター / 文学部・哲学科（ドイツ観念論）出身</p>
-            <p class="touyou-copy">大学時代に哲学を専攻し、人間の知恵や思想史を研究。その後、四柱推命が持つ「深み」に魅了される。しかし、世の中の多くの四柱推命の学び方が「表面的な星のキーワード暗記」で終わっていることに強い疑問を抱く。</p>
-            <p class="touyou-copy">「思想から四柱推命を教える」をコンセプトに、単なる単語帳ではなく、なぜその意味が宿るのかを陰陽五行思想、儒教的人間理解を踏まえて解説。本質を学び、言葉に深みを持たせたいプロ鑑定士たちから「圧倒的に分かりやすい」「これこそ求めていた講義だ」と強い信頼を得ている。</p>
+            <p class="touyou-copy" style="font-weight:700; padding-bottom:0.8rem; border-bottom:1px solid #e5e7eb;">自然派四柱推命講師・鑑定士</p>
+            <p class="touyou-copy">大学時代に哲学を専攻し、ドイツ観念論を中心に、人間の知恵や思想史を学ぶ。</p>
+            <p class="touyou-copy">その後、四柱推命と出会い、命式の奥にある陰陽五行、自然観察、儒教的人間理解の深みに魅了される。</p>
+            <p class="touyou-copy">一方で、一般的な四柱推命の学びが「星のキーワード暗記」に偏りがちなことに違和感を抱き、「東洋思想から四柱推命を伝える」という独自のスタイルを確立。</p>
+            <p class="touyou-copy">単語の丸暗記ではなく、「なぜその意味が宿るのか」を根っこから解説する講義は、本質を学びたい鑑定士から「圧倒的に分かりやすい」「これこそ求めていた講義だ」と支持されている。</p>
           </div>
         </div>
       </div>
