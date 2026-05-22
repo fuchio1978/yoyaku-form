@@ -1122,7 +1122,7 @@ function renderTouyouPage() {
     <section class="touyou-hero">
       <div class="touyou-container">
         <div class="touyou-hero-card">
-          <img src="/touyou-hero.png?v=20260521-2257" alt="四柱推命鑑定士のための東洋思想入門セミナー" class="touyou-hero-image" />
+          <img src="/touyou-hero.jpg?v=20260522-1720" alt="四柱推命鑑定士のための東洋思想入門セミナー" class="touyou-hero-image" />
         </div>
         <div class="touyou-hero-cta">
           <a class="touyou-button" href="https://forms.gle/e3thGgqkCQPRi5AP8" target="_blank" rel="noopener noreferrer">四柱推命の“根っこ”を学んでみる</a>
