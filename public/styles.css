@@ -1800,6 +1800,53 @@ textarea {
   text-align: center;
 }
 
+.touyou-flow-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: center;
+  margin-top: 1.1rem;
+}
+
+.touyou-flow-card {
+  background: linear-gradient(180deg, #fffefe 0%, #f5ede1 100%);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: 0.95rem;
+  padding: 1rem 0.9rem;
+  box-shadow: 0 10px 24px rgba(15, 44, 89, 0.06);
+}
+
+.touyou-flow-step {
+  display: inline-block;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0d2347 0%, #1a3f76 100%);
+  color: #f4d7a8;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.touyou-flow-card h4 {
+  margin: 0.8rem 0 0.45rem;
+  color: #0f2c59;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-size: 1.05rem;
+}
+
+.touyou-flow-card p {
+  margin: 0;
+  color: rgba(15, 44, 89, 0.8);
+  line-height: 1.8;
+  font-size: 0.9rem;
+}
+
+.touyou-flow-arrow {
+  color: #c39a5b;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
 .touyou-register-button-wrap {
   padding-top: 1rem;
   text-align: center;
@@ -1949,6 +1996,15 @@ textarea {
 
   .touyou-instructor-photo .touyou-image-frame img {
     min-height: 320px;
+  }
+
+  .touyou-flow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .touyou-flow-arrow {
+    transform: rotate(90deg);
+    margin: -0.15rem auto;
   }
 
   .touyou-banner,

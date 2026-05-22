@@ -1341,7 +1341,7 @@ function renderTouyouPage() {
         <div class="touyou-section-title">
           <div class="touyou-section-number">06</div>
           <div class="touyou-eyebrow">セミナー開催情報</div>
-          <h2 class="touyou-section-heading">あなたの鑑定が、説明から<br />人生の指針に変わる時間。</h2>
+          <h2 class="touyou-section-heading">あなたの鑑定が、<br />説明から<br />人生の指針に変わる時間。</h2>
           <div class="touyou-divider"></div>
         </div>
 
@@ -1350,9 +1350,10 @@ function renderTouyouPage() {
             <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="自宅でのオンラインセミナー受講イメージ" />
           </div>
           <div style="display:grid; gap:1rem;">
-            <h3 style="margin:0; color:#0f2c59; font-family:'Noto Serif JP', 'Hiragino Mincho ProN', serif;">ご自宅から、リラックスして参加できます</h3>
-            <p class="touyou-copy">セミナーはZoomによるオンライン形式で行われます。双方向のワークやチャットなどを交えながら、温かくリラックスした雰囲気で東洋思想の根っこに触れていきます。</p>
-            <p class="touyou-copy">当日参加できない場合や、もう一度深く見直したい場合でも、<strong>アーカイブ録画動画</strong>を全員にお送りしますので安心してご都合の良いタイミングでお申し込みください。</p>
+            <h3 style="margin:0; color:#0f2c59; font-family:'Noto Serif JP', 'Hiragino Mincho ProN', serif;">ご自宅で、リラックスしてご参加いただけます</h3>
+            <p class="touyou-copy">セミナーはZoomによるオンライン形式です。温かくリラックスした雰囲気の中で、東洋思想の根っこにじっくり触れていただけます。</p>
+            <p class="touyou-copy">当日参加できない場合や、改めてじっくり見直したい場合も、<strong>アーカイブ動画</strong>を参加者全員にお届けします。どうぞ安心してお申し込みください。</p>
+            <p class="touyou-copy" style="font-size:0.92rem;">※アーカイブ動画に参加者の皆さまのお顔・お姿は映りませんので、ご安心ください。</p>
           </div>
         </div>
 
@@ -1392,7 +1393,26 @@ function renderTouyouPage() {
 
           <div class="touyou-step-box">
             <div class="touyou-mini-label" style="margin-bottom:0.6rem;">お申し込みステップ</div>
-            <p class="touyou-copy">下記のお申し込みボタン（Googleフォーム）をクリックし、日程の選択と必要事項のご記入・決済をお願いいたします。完了後、Zoom参加リンクがご登録のメールアドレスに届きます。</p>
+            <p class="touyou-copy">下記のボタン（Googleフォーム）より、日程・決済方法を選択してお申し込みください。</p>
+            <div class="touyou-flow-grid">
+              <div class="touyou-flow-card">
+                <div class="touyou-flow-step">STEP 1</div>
+                <h4>ご案内メール</h4>
+                <p>お申し込み後、決済方法のご案内メールをお送りします。</p>
+              </div>
+              <div class="touyou-flow-arrow">→</div>
+              <div class="touyou-flow-card">
+                <div class="touyou-flow-step">STEP 2</div>
+                <h4>決済確認</h4>
+                <p>ご案内に沿ってお手続きいただき、こちらで決済確認を行います。</p>
+              </div>
+              <div class="touyou-flow-arrow">→</div>
+              <div class="touyou-flow-card">
+                <div class="touyou-flow-step">STEP 3</div>
+                <h4>Zoomリンク送付</h4>
+                <p>確認完了後、当日のZoom参加リンクをお届けします。</p>
+              </div>
+            </div>
           </div>
 
           <div class="touyou-register-button-wrap">
