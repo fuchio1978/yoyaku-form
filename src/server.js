@@ -1372,21 +1372,20 @@ function renderTouyouPage() {
               <div class="touyou-info-label"><span class="touyou-info-badge">配</span><span>開催方法</span></div>
               <div class="touyou-info-value">
                 <div style="font-weight:800; color:#0f2c59;">Zoomによるオンラインリアルタイム配信</div>
-                <div style="font-size:0.75rem; color:rgba(15,44,89,0.58);">※お申し込み後、自動送信メッセージにてリンクをお送りします</div>
               </div>
             </div>
             <div class="touyou-info-row">
               <div class="touyou-info-label"><span class="touyou-info-badge">費</span><span>参加費</span></div>
               <div class="touyou-info-value" style="font-size:1.4rem; font-weight:800; color:#0f2c59;">
-                特別優待価格 3,980円 <span style="font-size:0.78rem; font-weight:500; color:rgba(15,44,89,0.58);">(税込)</span>
+                3,980円 <span style="font-size:0.78rem; font-weight:500; color:rgba(15,44,89,0.58);">(税込)</span>
               </div>
             </div>
             <div class="touyou-info-row">
               <div class="touyou-info-label"><span class="touyou-info-badge">特</span><span>豪華セミナー参加特典</span></div>
               <div class="touyou-info-value">
-                <div><span class="touyou-gift-chip">特典① セミナーで使用する講義資料（PDF）</span></div>
+                <div><span class="touyou-gift-chip">特典① 講義資料（PDF）</span></div>
                 <div style="height:0.6rem;"></div>
-                <div><span class="touyou-gift-chip">特典② セミナーのアーカイブ録画動画</span></div>
+                <div><span class="touyou-gift-chip">特典② アーカイブ録画動画</span></div>
               </div>
             </div>
           </div>
