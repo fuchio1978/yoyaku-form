@@ -1166,7 +1166,7 @@ function renderTouyouPage() {
             <div class="touyou-eyebrow">なぜそうなってしまうのか？</div>
             <h3 class="touyou-section-heading" style="font-size:1.7rem; text-align:left;">通変星の単語だけを追うと、言葉が「説明」で止まる</h3>
             <p class="touyou-copy">四柱推命の根っこにある「東洋思想」を押さえないまま、通変星や十二運の辞書的な意味だけを記憶して使っていると、状況に合わせた応用ができなくなります。</p>
-            <p class="touyou-copy">命式は単語帳ではなく、<strong>「自然の景色」</strong>。山にも「鉱山」「緑あふれる山」「禿山」と色々あります。根底にある思想を理解して初めて、一つのストーリーとして相手に伝えられるようになります。</p>
+            <p class="touyou-copy">命式は単語帳ではなく、<strong>「自然の景色」</strong>。山を「緑・茶・白」という色の名前だけで覚えようとしても、その山の美しさは伝えられません。根底にある思想を理解して初めて、命式が一つの生きたストーリーとして相手に伝えられるようになります。</p>
           </div>
         </div>
       </div>
@@ -1185,8 +1185,8 @@ function renderTouyouPage() {
           <div class="touyou-banner-content">
             <div>
               <div class="touyou-eyebrow" style="color:#f6f1eb;">命式は、自然の縮図</div>
-              <h3>暗記を一度やめてみる。<br />その奥にある陰陽五行論に目を向ける。</h3>
-              <p class="touyou-copy" style="color:rgba(255,255,255,0.84);">そこが「景色で読む」入り口です。壮大な自然の流れや季節の巡り、そして人がどう在るかという思想に触れることで、鑑定の言葉に厚みが生まれます。</p>
+              <h3>暗記を一度やめてみる。<br />その奥にある陰陽五行思想に目を向ける。</h3>
+              <p class="touyou-copy" style="color:rgba(255,255,255,0.84);">その先に見えてくるのは、自然の循環、季節の巡り、そして人がどう在るかという深い思想。それらに触れたとき、鑑定の言葉は初めて、相手の心に届く厚みを持ちます。</p>
             </div>
           </div>
         </div>
@@ -1198,7 +1198,7 @@ function renderTouyouPage() {
             <p class="touyou-copy">本来の陰陽五行は、固定的な分類ではなく、五行どうしの<strong>関係性（相生・相剋・比和）</strong>と<strong>変化（季節・時間の流れ）</strong>を見るための動的な思想です。</p>
             <div class="touyou-highlight-box">
               <strong>「分類を覚える」から「景色を読む」へ。</strong><br />
-              日干が「木」の人は、ただの「木の人」ではありません。それは「上へ、外へと伸びようとする力を持っている人」という意味。その根っこを知ると、鑑定の言葉が自然と溢れ出てきます。
+              日干「木」は、ただの木ではありません。「上へ、外へと伸びようとする力」そのもの。その根っこが見えると、言葉は探さなくても自然と出てきます。
             </div>
           </div>
           <div class="touyou-solution-card">
@@ -1258,7 +1258,7 @@ function renderTouyouPage() {
                 <div class="touyou-mini-label">儒教の徳目と通変星の関係</div>
               </div>
             </div>
-            <p class="touyou-copy" style="margin-top:1rem;">儒教における人間の徳目である「五常」を五行・通変星と重ね、より精確で知的な解釈方法を伝授。なぜその五行にその徳が重ねられたのか、思想史の正確さも解説します。</p>
+            <p class="touyou-copy" style="margin-top:1rem;">儒教の徳目「五常」を五行・通変星と重ねて解釈する方法をお伝えします。「なぜその五行にその徳なのか」――思想史の根拠まで考えることで、鑑定の言葉に知的な確かさが加わります。</p>
           </article>
           <article class="touyou-program-card">
             <div class="touyou-program-top">
@@ -1297,7 +1297,7 @@ function renderTouyouPage() {
           <article class="touyou-compare-card after">
             <div class="touyou-compare-tag after">AFTER</div>
             <div class="touyou-mini-label">これからの思想スタイル</div>
-            <h3>「伸びようとする力（仁）が非常に強い方です。ですが…」</h3>
+            <h3>「伸びようとする力（曲直）がとても強い方です。ですので…」</h3>
             <ul class="touyou-list">
               <li><span class="touyou-list-icon">○</span><span>「なぜその星にその意味があるのか」を人間の在り方から説明。</span></li>
               <li><span class="touyou-list-icon">○</span><span>お客様の状況に合わせた具体的な行動提案が自然とできる。</span></li>
