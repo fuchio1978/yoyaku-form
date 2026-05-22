@@ -1381,6 +1381,14 @@ function renderTouyouPage() {
               </div>
             </div>
             <div class="touyou-info-row">
+              <div class="touyou-info-label"><span class="touyou-info-badge">支</span><span>支払方法</span></div>
+              <div class="touyou-info-value" style="font-weight:800; color:#0f2c59;">
+                <div>銀行振込</div>
+                <div style="height:0.4rem;"></div>
+                <div>クレジットカード（PayPal）</div>
+              </div>
+            </div>
+            <div class="touyou-info-row">
               <div class="touyou-info-label"><span class="touyou-info-badge">特</span><span>豪華セミナー参加特典</span></div>
               <div class="touyou-info-value">
                 <div><span class="touyou-gift-chip">特典① 講義資料（PDF）</span></div>
