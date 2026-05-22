@@ -1801,7 +1801,7 @@ textarea {
 }
 
 .touyou-step-box .touyou-mini-label {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   letter-spacing: 0.14em;
   margin-bottom: 0.8rem;
   font-weight: 800;
@@ -1995,6 +1995,10 @@ textarea {
 
   .touyou-section {
     padding: 4rem 0;
+  }
+
+  .touyou-section-title .touyou-section-heading {
+    font-size: clamp(1.53rem, 2.89vw, 2.21rem);
   }
 
   .touyou-card,
