@@ -1194,7 +1194,7 @@ function renderTouyouPage() {
         <div class="touyou-solution-grid" style="margin-top:4rem;">
           <div style="display:grid; gap:1.2rem;">
             <h3 class="touyou-section-heading" style="font-size:1.8rem; text-align:left;">陰陽五行は「分類」ではなく<br />「関係性と変化」を読むレンズ</h3>
-            <p class="touyou-copy">多くの人が、陰陽五行を<br />「木火土金水に物事を分けるための暗記表」だと<br />誤解しています。</p>
+            <p class="touyou-copy">多くの人が、五行を「木火土金水に物事を分けるための暗記表」だと誤解しています。</p>
             <p class="touyou-copy">本来の陰陽五行は、固定的な分類ではなく、五行どうしの<strong>関係性（相生・相剋・比和）</strong>と<strong>変化（季節・時間の流れ）</strong>を見るための動的な思想です。</p>
             <div class="touyou-highlight-box">
               <strong>「分類を覚える」から「景色を読む」へ。</strong><br />
@@ -1214,7 +1214,7 @@ function renderTouyouPage() {
               <div class="touyou-gogyo-node touyou-metal"><div class="touyou-gogyo-dot">金</div><span>収束する</span></div>
               <div class="touyou-gogyo-node touyou-water"><div class="touyou-gogyo-dot">水</div><span>浸透する</span></div>
             </div>
-            <p class="touyou-copy" style="margin-top:1.5rem; text-align:center;">静止した分類ではなく、<br />五行が互いに補い合い循環する「動き」そのものが<br />本来の陰陽五行論です。</p>
+            <p class="touyou-copy" style="margin-top:1.5rem; text-align:center;">五行が互いに関係し合う「動き」そのものが本来の陰陽五行論です。</p>
           </div>
         </div>
       </div>
