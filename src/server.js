@@ -1125,7 +1125,7 @@ function renderTouyouPage() {
           <img src="/touyou-hero.png?v=20260521-2257" alt="四柱推命鑑定士のための東洋思想入門セミナー" class="touyou-hero-image" />
         </div>
         <div class="touyou-hero-cta">
-          <a class="touyou-button" href="https://forms.gle/e3thGgqkCQPRi5AP8" target="_blank" rel="noopener noreferrer">セミナーに申し込む</a>
+          <a class="touyou-button" href="https://forms.gle/e3thGgqkCQPRi5AP8" target="_blank" rel="noopener noreferrer">四柱推命の“根っこ”を学んでみる</a>
           <a class="touyou-button-secondary" href="#agenda">学習内容を見る</a>
         </div>
       </div>
@@ -1423,7 +1423,7 @@ function renderTouyouPage() {
           </div>
 
           <div class="touyou-register-button-wrap">
-            <a class="touyou-button" href="https://forms.gle/e3thGgqkCQPRi5AP8" target="_blank" rel="noopener noreferrer">Googleフォームから申し込む</a>
+            <a class="touyou-button" href="https://forms.gle/e3thGgqkCQPRi5AP8" target="_blank" rel="noopener noreferrer">希望日程を選んで申し込む</a>
             <p class="touyou-register-note">ご入力いただいた個人情報は適切に管理されます</p>
           </div>
         </div>
