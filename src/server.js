@@ -1363,9 +1363,9 @@ function renderTouyouPage() {
             <div class="touyou-info-row">
               <div class="touyou-info-label"><span class="touyou-info-badge">日</span><span>開催日時</span></div>
               <div class="touyou-info-value">
-                <div class="touyou-date-chip">【日程A】2026年6月4日(木) 21:00〜22:30</div>
+                <div class="touyou-date-chip">【日程A】2026年6月4日(木) 21:00〜22:30 <span class="touyou-status-badge touyou-status-full">満員御礼</span></div>
                 <div style="height:0.6rem;"></div>
-                <div class="touyou-date-chip">【日程B】2026年6月14日(日) 21:00〜22:30</div>
+                <div class="touyou-date-chip">【日程B】2026年6月14日(日) 21:00〜22:30 <span class="touyou-status-badge touyou-status-open">若干名受付可能</span></div>
               </div>
             </div>
             <div class="touyou-info-row">

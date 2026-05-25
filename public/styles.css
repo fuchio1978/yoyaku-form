@@ -1791,6 +1791,27 @@ textarea {
   box-shadow: 0 8px 20px rgba(15, 44, 89, 0.06);
 }
 
+.touyou-status-badge {
+  display: inline-block;
+  margin-left: 0.55rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+
+.touyou-status-full {
+  background: #b91c1c;
+  color: #ffffff;
+}
+
+.touyou-status-open {
+  background: #0f2c59;
+  color: #f4d7a8;
+}
+
 .touyou-step-box {
   margin-top: 1.5rem;
   background: linear-gradient(180deg, #fffdfa 0%, #f7f1e8 100%);
