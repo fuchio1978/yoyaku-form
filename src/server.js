@@ -797,186 +797,291 @@ function renderKouzaCoursePage() {
                 <!-- 2. 中級講座 -->
                 <div class="plan-card bg-white p-8 md:p-16 rounded-[2.5rem] shadow-xl border-2 border-[#7d9d85]/10 relative overflow-hidden group">
                     <div class="absolute top-0 right-0 bg-[#7d9d85] text-white text-[10px] md:text-xs font-bold px-10 py-3 tracking-widest rounded-bl-3xl uppercase">おすすめのコース</div>
-                    
-                    <div class="flex flex-col lg:flex-row gap-12 md:gap-16">
-                        <div class="w-full lg:w-1/3 shrink-0 relative">
-                            <div class="flex items-center gap-4 mb-6">
-                                <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">レベル 02</span>
+
+                    <div class="max-w-5xl">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="bg-[#7d9d85] text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">レベル 02</span>
+                            <span class="text-[11px] tracking-[0.35em] text-[#7d9d85] font-bold uppercase">Course Detail</span>
+                        </div>
+
+                        <h3 class="text-3xl md:text-4xl font-bold mb-3 text-[#2d3a32] tracking-[0.18em]">中 級 講 座</h3>
+                        <p class="text-[#7d9d85] font-bold text-lg mb-8">五行バランスから「原命式」と「運気の流れ」を読み解く</p>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 mb-10">
+                            <div class="space-y-4 text-sm md:text-[15px] leading-loose text-gray-600">
+                                <p>
+                                    木火土金水の五行バランスを軸に、原命式の傾向と運気の流れを捉える力を育てます。四柱推命の基本から、十干・十二支、通変、身旺身弱、内格・外格、用神、そして大運年運までを順序立てて学べる中核講座です。
+                                </p>
+                                <p>
+                                    参考サイトのように「講座の全体像」と「各回で何を学ぶか」がすぐ見える構成に寄せつつ、ふちLABO.の中級講座では、全39項目を15回に整理して、実際の鑑定につながる理解へ落とし込めるようにしています。
+                                </p>
                             </div>
-                            <h3 class="text-3xl font-bold mb-6 text-[#2d3a32]">中級講座</h3>
-                            <p class="text-[#7d9d85] font-bold mb-4">五行バランスから「原命式」と「運気の流れ」を読み解く</p>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-8 text-balance">
-                                木火土金水の五行バランスを軸に、原命式の傾向と運気の流れを捉える力を育てます。鑑定の基本ステップから、通変・用神・巡運までを体系的に学びます。
-                            </p>
-                            <div class="p-6 bg-[#fcfdfc] rounded-2xl border border-gray-100">
-                                <div class="text-[10px] text-[#7d9d85] mb-2 font-bold uppercase tracking-widest">受講形式</div>
-                                <div class="text-[#334139] font-bold text-sm">2時間 × 15回 ＋ 質問会（60分）<br>Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
+
+                            <div class="bg-[#f8fbf8] rounded-[2rem] border border-[#7d9d85]/15 p-6">
+                                <div class="space-y-5 text-left">
+                                    <div class="border-b border-[#7d9d85]/10 pb-4">
+                                        <div class="text-[10px] text-[#7d9d85] mb-1 font-bold uppercase tracking-[0.25em]">受講時間</div>
+                                        <div class="text-[#334139] font-bold text-sm leading-relaxed">2時間 × 15回 ＋ 質問会（60分）</div>
+                                    </div>
+                                    <div class="border-b border-[#7d9d85]/10 pb-4">
+                                        <div class="text-[10px] text-[#7d9d85] mb-1 font-bold uppercase tracking-[0.25em]">受講形式</div>
+                                        <div class="text-[#334139] font-bold text-sm leading-relaxed">Zoom（マンツーマン）<br>※講座後に動画アーカイブをお渡しします</div>
+                                    </div>
+                                    <div class="border-b border-[#7d9d85]/10 pb-4">
+                                        <div class="text-[10px] text-[#7d9d85] mb-1 font-bold uppercase tracking-[0.25em]">学習範囲</div>
+                                        <div class="text-[#334139] font-bold text-sm leading-relaxed">8テーマ・全39項目</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-[#7d9d85] mb-1 font-bold uppercase tracking-[0.25em]">対象</div>
+                                        <div class="text-[#334139] font-bold text-sm leading-relaxed">基礎を踏まえた上で、命式全体の見方と運気の流れまで深めたい方</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="w-full lg:w-2/3 space-y-12">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
-                                <div class="bg-green-50/50 p-8 rounded-3xl text-left">
-                                    <h4 class="font-bold text-sm text-[#7d9d85] mb-4 uppercase tracking-widest italic">目指すゴール</h4>
-                                    <p class="text-gray-700 leading-relaxed font-bold text-sm text-balance text-left text-left">五行バランスから、原命式・運気の流れを見ることができるようになる。</p>
-                                </div>
-                                <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
-                                    <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
-                                    <ul class="text-sm text-gray-700 space-y-2 font-bold text-left">
-                                        <li>・LINEでの質問無制限</li>
-                                        <li>・月1オンライン勉強会に参加</li>
-                                        <li>・各回ごとのワーク（宿題）付き</li>
-                                    </ul>
-                                </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left mb-12">
+                            <div class="bg-green-50/50 p-8 rounded-3xl text-left">
+                                <h4 class="font-bold text-sm text-[#7d9d85] mb-4 uppercase tracking-widest italic">目指すゴール</h4>
+                                <p class="text-gray-700 leading-relaxed font-bold text-sm text-left">五行バランスから、原命式・運気の流れを見ることができるようになる。</p>
                             </div>
-                            
-                            <div class="border-t border-gray-100 pt-8">
-                                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
-                                    <div>
-                                        <h4 class="text-xs text-gray-400 uppercase tracking-widest text-left">カリキュラム詳細</h4>
-                                        <p class="text-sm text-gray-500 leading-relaxed mt-2 text-left">全39項目を、土台づくりから用神・大運年運まで順序立てて学びます。</p>
-                                    </div>
-                                    <div class="flex flex-wrap gap-2 text-left">
-                                        <span class="inline-flex items-center rounded-full bg-[#7d9d85]/10 px-4 py-2 text-[11px] font-bold tracking-widest text-[#5c7c65]">8テーマ</span>
-                                        <span class="inline-flex items-center rounded-full bg-[#7d9d85]/10 px-4 py-2 text-[11px] font-bold tracking-widest text-[#5c7c65]">39項目</span>
-                                        <span class="inline-flex items-center rounded-full bg-[#7d9d85]/10 px-4 py-2 text-[11px] font-bold tracking-widest text-[#5c7c65]">15回＋質問会</span>
+                            <div class="bg-amber-50/30 p-8 rounded-3xl text-left">
+                                <h4 class="font-bold text-sm text-amber-700 mb-4 uppercase tracking-widest italic">受講特典</h4>
+                                <ul class="text-sm text-gray-700 space-y-2 font-bold text-left">
+                                    <li>・LINEでの質問無制限</li>
+                                    <li>・月1オンライン勉強会に参加</li>
+                                    <li>・各回ごとのワーク（宿題）付き</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-100 pt-10">
+                            <div class="mb-8">
+                                <h4 class="text-xl md:text-2xl font-bold text-[#2d3a32] tracking-[0.12em] mb-3">講座カリキュラム</h4>
+                                <p class="text-sm text-gray-500 leading-relaxed">参考サイトの「日ごとの講座紹介」に寄せて、中級講座の学習内容を回ごとに整理しています。</p>
+                            </div>
+
+                            <div class="space-y-5">
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第1回</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">四柱推命の基本</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>01. 四柱推命とは</li>
+                                                <li>02. 大自然のイメージで</li>
+                                                <li>03. 八文字だけシンプルに</li>
+                                                <li>04. 基本的な鑑定方法</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="grid grid-cols-1 xl:grid-cols-2 gap-5 text-left">
-                                    <div class="bg-[#f8fbf8] border border-[#7d9d85]/10 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#7d9d85] text-white text-xs font-bold">01</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">四柱推命の基本</h5>
-                                                <p class="text-xs text-gray-500">四柱推命の全体像と、読み解きの入口を整えるパートです。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第2回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>01. 四柱推命とは</li>
-                                            <li>02. 大自然のイメージで</li>
-                                            <li>03. 八文字だけシンプルに</li>
-                                            <li>04. 基本的な鑑定方法</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">十干と十二支の概略</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>05. 五行がもつ特性</li>
+                                                <li>06. 日主がもつ特性</li>
+                                                <li>07. 十干の字義</li>
+                                                <li>08. 十二支の字義</li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="bg-[#f8fbf8] border border-[#7d9d85]/10 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#7d9d85] text-white text-xs font-bold">02</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">十干と十二支の概略</h5>
-                                                <p class="text-xs text-gray-500">五行の性質と、日主・十干・十二支の見方を整理します。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第3回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>05. 五行がもつ特性</li>
-                                            <li>06. 日主がもつ特性</li>
-                                            <li>07. 十干の字義</li>
-                                            <li>08. 十二支の字義</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">命式の算出と時柱</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>09. 干支の世界の時間概念</li>
+                                                <li>10. 命式の算出方法</li>
+                                                <li>11. 出生時間不明の場合</li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="bg-white border border-gray-100 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d9e7d8] text-[#2d3a32] text-xs font-bold">03</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">命式の算出と時柱</h5>
-                                                <p class="text-xs text-gray-500">干支の時間概念と、命式を算出する実務的な基礎を学びます。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第4回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>09. 干支の世界の時間概念</li>
-                                            <li>10. 命式の算出方法</li>
-                                            <li>11. 出生時間不明の場合</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">陰陽五行・十二支と蔵干 1</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>12. 陰陽論</li>
+                                                <li>13. 五行論</li>
+                                                <li>14. 五行の関係性</li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="bg-white border border-gray-100 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d9e7d8] text-[#2d3a32] text-xs font-bold">04</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">陰陽五行・十二支と蔵干</h5>
-                                                <p class="text-xs text-gray-500">陰陽論から同命式・同根まで、命式理解を一段深める中核パートです。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第5回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>12. 陰陽論</li>
-                                            <li>13. 五行論</li>
-                                            <li>14. 五行の関係性</li>
-                                            <li>15. 生支・正支・墓支</li>
-                                            <li>16. 十二支の実態</li>
-                                            <li>17. 土の十二支（墓支）</li>
-                                            <li>18. 同命式について</li>
-                                            <li>19. 火土同根</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">陰陽五行・十二支と蔵干 2</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>15. 生支・正支・墓支</li>
+                                                <li>16. 十二支の実態</li>
+                                                <li>17. 土の十二支（墓支）</li>
+                                                <li>18. 同命式について</li>
+                                                <li>19. 火土同根</li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="bg-white border border-gray-100 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d9e7d8] text-[#2d3a32] text-xs font-bold">05</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">五行属性の変化・五行鑑定</h5>
-                                                <p class="text-xs text-gray-500">命式内の五行変化を読み取り、性格理解へつなげる視点を育てます。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第6回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>20. 十二支の法則</li>
-                                            <li>21. 十干の法則</li>
-                                            <li>22. 五行による性格</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">五行属性の変化・五行鑑定</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>20. 十二支の法則</li>
+                                                <li>21. 十干の法則</li>
+                                                <li>22. 五行による性格</li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="bg-white border border-gray-100 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d9e7d8] text-[#2d3a32] text-xs font-bold">06</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">通変五種・身旺身弱論</h5>
-                                                <p class="text-xs text-gray-500">通変の定義から、命式の定位・通根・身旺身弱の判断へ進みます。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第7回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>23. 通変五種の定義</li>
-                                            <li>24. 通変五種の解説</li>
-                                            <li>25. 命式の定位</li>
-                                            <li>26. 通根</li>
-                                            <li>27. 身旺・身弱</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">通変五種の理解</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>23. 通変五種の定義</li>
+                                                <li>24. 通変五種の解説</li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="bg-[#fffaf2] border border-amber-100 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-white text-xs font-bold">07</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">内格・外格・用神</h5>
-                                                <p class="text-xs text-gray-500">命式の区分と用神・喜神の考え方を整理し、鑑定の軸を作ります。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fcfdfc] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第8回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>28. 命式の区分</li>
-                                            <li>29. 内格の鑑定</li>
-                                            <li>30. 外格の鑑定</li>
-                                            <li>31. 用いるとは</li>
-                                            <li>32. 用神・喜神</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">命式の定位・通根・身旺身弱</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>25. 命式の定位</li>
+                                                <li>26. 通根</li>
+                                                <li>27. 身旺・身弱</li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="bg-[#fffaf2] border border-amber-100 rounded-3xl p-6">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-white text-xs font-bold">08</span>
-                                            <div>
-                                                <h5 class="font-bold text-base text-[#2d3a32]">命式のスタイル・大運年運</h5>
-                                                <p class="text-xs text-gray-500">外格・流動型スタイルから、立運・大運・年運まで運気の流れを読みます。</p>
-                                            </div>
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fffaf2] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-amber-700">第9回</div>
                                         </div>
-                                        <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
-                                            <li>33. 外格スタイルと流動型スタイル</li>
-                                            <li>34. 外格スタイル</li>
-                                            <li>35. 流動型スタイル</li>
-                                            <li>36. 立運</li>
-                                            <li>37. 大運</li>
-                                            <li>38. それぞれの通変が巡る運勢</li>
-                                            <li>39. 接木運・大運・年運</li>
-                                        </ul>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">内格・外格・用神 1</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>28. 命式の区分</li>
+                                                <li>29. 内格の鑑定</li>
+                                                <li>30. 外格の鑑定</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fffaf2] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-amber-700">第10回</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">内格・外格・用神 2</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>31. 用いるとは</li>
+                                                <li>32. 用神・喜神</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fffaf2] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-amber-700">第11回</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">命式のスタイル</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>33. 外格スタイルと流動型スタイル</li>
+                                                <li>34. 外格スタイル</li>
+                                                <li>35. 流動型スタイル</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fffaf2] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-amber-700">第12回</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">立運と大運</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>36. 立運</li>
+                                                <li>37. 大運</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-[2rem] border border-gray-100 bg-[#fffaf2] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-amber-700">第13回</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">通変が巡る運勢の見方</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>38. それぞれの通変が巡る運勢</li>
+                                                <li>39. 接木運・大運・年運</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-[2rem] border border-dashed border-[#7d9d85]/30 bg-[#f8fbf8] p-6 md:p-8">
+                                    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                                        <div class="md:w-28 shrink-0">
+                                            <div class="text-sm font-bold tracking-[0.2em] text-[#7d9d85]">第14-15回</div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h5 class="text-lg font-bold text-[#2d3a32] mb-3">実践整理・ワーク・質問会</h5>
+                                            <ul class="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                                <li>学んだ理論を命式読解へ落とし込むワーク</li>
+                                                <li>苦手分野の整理と理解の定着</li>
+                                                <li>質問会（60分）で疑問点を解消</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
