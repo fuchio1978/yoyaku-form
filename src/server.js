@@ -1823,6 +1823,220 @@ function renderTouyouPage() {
   });
 }
 
+function renderYobikouPage() {
+  const headExtras = `
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  `;
+
+  const ctaUrl = 'https://www.fuchilabo.com/products/yobikou-tetsu';
+  const voices = getVoiceTestimonials().slice(0, 4);
+  const voiceCards = voices
+    .map(
+      (voice) => `
+        <article class="yobikou-voice-card">
+          <div class="yobikou-voice-mark">声</div>
+          <h3>${voice.title}</h3>
+          <p class="yobikou-voice-meta">${voice.meta}</p>
+          <p>${voice.content}</p>
+        </article>
+      `
+    )
+    .join('');
+
+  const content = `
+    <section class="yobikou-hero">
+      <div class="yobikou-hero-backdrop"></div>
+      <div class="yobikou-shell yobikou-hero-inner">
+        <div class="yobikou-hero-copy">
+          <div class="yobikou-kicker">Natural Suimei Prep School</div>
+          <div class="yobikou-hero-grid">
+            <div class="yobikou-vertical-wrap">
+              <div class="yobikou-writing-vertical">学んだ自然派四柱推命を、</div>
+              <div class="yobikou-writing-vertical yobikou-writing-accent">「鑑定で使える力」へ。</div>
+            </div>
+            <div class="yobikou-hero-textbox">
+              <h1>自然派四柱推命予備校</h1>
+              <p class="yobikou-hero-lead">「読める」を「届けられる」に変える、伴走型の実践サブスク。</p>
+              <p>知識を増やすだけでなく、お客様に届く言葉に変えるための練習と添削、そして継続の場をひとつにまとめました。</p>
+              <div class="yobikou-cta-row">
+                <a class="yobikou-button" href="${ctaUrl}">予備校の詳細を見る</a>
+                <a class="yobikou-button yobikou-button-secondary" href="#yobikou-program">学べる内容を見る</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">こんなお悩みはありませんか</div>
+          <h2>学んできたのに、<br />いざ鑑定になると不安になる。</h2>
+        </div>
+        <div class="yobikou-problem-grid">
+          <article class="yobikou-problem-card">
+            <span>01</span>
+            <h3>命式は読めるのに、<br />伝える言葉が出てこない</h3>
+            <p>知識はあるはずなのに、お客様の前で言葉が止まり、「説明」で終わってしまう。</p>
+          </article>
+          <article class="yobikou-problem-card">
+            <span>02</span>
+            <h3>鑑定練習の場がなく、<br />自信が育たない</h3>
+            <p>ひとりで復習しても、実践の手応えやフィードバックが得られず、前進している実感が持てない。</p>
+          </article>
+          <article class="yobikou-problem-card">
+            <span>03</span>
+            <h3>学びっぱなしで終わり、<br />仕事につながらない</h3>
+            <p>講座を受けたあとに日常へ戻ると、いつの間にか手が止まり、鑑定の筋力がつきにくい。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section yobikou-section-deep">
+      <div class="yobikou-shell">
+        <div class="yobikou-story-layout">
+          <div class="yobikou-story-copy">
+            <div class="yobikou-kicker">予備校という選択</div>
+            <h2>自然派四柱推命予備校は、<br />知識を現場の力へ変えるための場所です。</h2>
+            <p>自然の景色として命式を読む感覚を、実際の鑑定に落とし込むには、学び直しと実践の往復が欠かせません。</p>
+            <p>予備校では、理解を深めるインプットだけでなく、言語化・添削・質問・継続をひとつの流れにして、あなたの「わかる」を「使える」へ育てていきます。</p>
+            <div class="yobikou-highlight">
+              <strong>講座の続き</strong>ではなく、<strong>鑑定者として育っていくための伴走の場</strong>。
+            </div>
+          </div>
+          <div class="yobikou-story-panel">
+            <div class="yobikou-panel-label">変化のイメージ</div>
+            <div class="yobikou-flow">
+              <div class="yobikou-flow-box">学んだ知識</div>
+              <div class="yobikou-flow-arrow">→</div>
+              <div class="yobikou-flow-box">命式を景色で捉える</div>
+              <div class="yobikou-flow-arrow">→</div>
+              <div class="yobikou-flow-box">相手に届く言葉で伝える</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="yobikou-program" class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">学べること</div>
+          <h2>予備校で育てていく4つの力</h2>
+        </div>
+        <div class="yobikou-feature-grid">
+          <article class="yobikou-feature-card">
+            <div class="yobikou-feature-no">壱</div>
+            <h3>命式を立体で読む力</h3>
+            <p>単発の知識ではなく、全体の景色や流れとして命式をつかみ、解釈の軸を安定させます。</p>
+          </article>
+          <article class="yobikou-feature-card">
+            <div class="yobikou-feature-no">弐</div>
+            <h3>鑑定で届ける言語化力</h3>
+            <p>「知っている」を超えて、相手に安心と納得が届く伝え方へ整えていきます。</p>
+          </article>
+          <article class="yobikou-feature-card">
+            <div class="yobikou-feature-no">参</div>
+            <h3>質問しながら深める力</h3>
+            <p>わからない部分を抱えたままにせず、その都度ほどいて理解を積み上げられます。</p>
+          </article>
+          <article class="yobikou-feature-card">
+            <div class="yobikou-feature-no">四</div>
+            <h3>継続して鑑定筋を育てる力</h3>
+            <p>単発で終わらない環境の中で、日々の練習を無理なく習慣化し、自信へつなげます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">おすすめの方</div>
+          <h2>こんな方に、特にフィットします。</h2>
+        </div>
+        <div class="yobikou-fit-grid">
+          <article class="yobikou-fit-card">
+            <h3>講座は受けたけれど、まだ鑑定がこわい方</h3>
+            <p>最初の一歩を、ひとりで抱え込まずに進めたい方へ。</p>
+          </article>
+          <article class="yobikou-fit-card">
+            <h3>知識を増やすより、使える形に整えたい方</h3>
+            <p>学びを積み足すより、今ある理解を実践へ変えたい方へ。</p>
+          </article>
+          <article class="yobikou-fit-card">
+            <h3>自然派四柱推命を、自分の言葉で届けたい方</h3>
+            <p>ふちLABO.の世界観を土台に、自分らしい鑑定を育てたい方へ。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section yobikou-section-soft">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">受講生の声</div>
+          <h2>少しずつでも、確かな変化が積み上がっています。</h2>
+        </div>
+        <div class="yobikou-voice-grid">
+          ${voiceCards}
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-teacher-card">
+          <div class="yobikou-teacher-photo">
+            <img src="/touyou-instructor.jpg" alt="てつ先生" />
+          </div>
+          <div class="yobikou-teacher-copy">
+            <div class="yobikou-kicker">Teacher</div>
+            <h2>てつ先生</h2>
+            <p class="yobikou-teacher-role">自然派四柱推命講師・鑑定士</p>
+            <p>大学時代に哲学を学び、その後四柱推命の奥にある陰陽五行や自然観に魅了され、自然派四柱推命の世界を探究。</p>
+            <p>キーワードの丸暗記ではなく、「なぜその意味が宿るのか」を景色と思想から解きほぐす講義スタイルで、多くの受講生の実践力を支えてきました。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section yobikou-section-cta">
+      <div class="yobikou-shell">
+        <div class="yobikou-cta-panel">
+          <div class="yobikou-kicker">Final Call</div>
+          <h2>「もっと読めるようになりたい」から、<br />「ちゃんと届けられるようになりたい」へ。</h2>
+          <p>自然派四柱推命を学んだその先へ進みたい方のために、予備校という継続の場を用意しました。詳細は下記ページからご確認いただけます。</p>
+          <a class="yobikou-button" href="${ctaUrl}">自然派四柱推命予備校の詳細を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="yobikou-sticky-cta">
+      <a href="${ctaUrl}">予備校の詳細を見る</a>
+    </div>
+  `;
+
+  return renderPage({
+    title: '自然派四柱推命予備校',
+    subtitle: '',
+    content,
+    backLink: '/',
+    hideHeading: true,
+    bodyClass: 'yobikou-body',
+    pageClass: 'yobikou-page',
+    headExtras,
+  });
+}
+
 async function sendContactToSheets(contact) {
   if (!sheetsWebhookUrl) return;
 
@@ -4133,6 +4347,12 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && parsedUrl.pathname === '/touyou') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderTouyouPage());
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/yobikou') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderYobikouPage());
     return;
   }
 

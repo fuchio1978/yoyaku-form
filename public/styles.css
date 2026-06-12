@@ -2052,3 +2052,503 @@ textarea {
   }
 }
 
+/* 自然派四柱推命予備校 LP */
+.yobikou-body {
+  background:
+    radial-gradient(circle at top, rgba(212, 192, 151, 0.28), transparent 22%),
+    linear-gradient(180deg, #f4efe7 0%, #efe6d7 100%);
+  color: #2f3029;
+}
+
+.page.yobikou-page {
+  max-width: 100%;
+  padding: 0;
+}
+
+.yobikou-page > section,
+.yobikou-page .panel {
+  margin: 0;
+}
+
+.yobikou-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.yobikou-kicker {
+  color: #9d7b43;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.yobikou-line {
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(157, 123, 67, 0), #9d7b43, rgba(157, 123, 67, 0));
+  margin: 0 auto 1.25rem;
+}
+
+.yobikou-section {
+  position: relative;
+  padding: 6rem 0;
+}
+
+.yobikou-section-deep {
+  background:
+    linear-gradient(135deg, rgba(37, 51, 38, 0.96) 0%, rgba(25, 39, 30, 0.98) 100%);
+  color: #f8f2e8;
+}
+
+.yobikou-section-soft {
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.88) 0%, rgba(242, 234, 222, 0.96) 100%);
+}
+
+.yobikou-section-cta {
+  padding-top: 3rem;
+  padding-bottom: 7rem;
+}
+
+.yobikou-section-head {
+  max-width: 780px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.yobikou-section h2,
+.yobikou-hero h1,
+.yobikou-feature-card h3,
+.yobikou-problem-card h3,
+.yobikou-fit-card h3,
+.yobikou-voice-card h3,
+.yobikou-teacher-copy h2,
+.yobikou-cta-panel h2 {
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+}
+
+.yobikou-section h2,
+.yobikou-cta-panel h2 {
+  margin: 0.8rem 0 0;
+  color: #213227;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.55;
+}
+
+.yobikou-section-deep h2,
+.yobikou-section-deep p,
+.yobikou-section-deep .yobikou-kicker {
+  color: #f6f0e7;
+}
+
+.yobikou-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 0 5rem;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.8), transparent 30%),
+    linear-gradient(135deg, #24372a 0%, #17241b 62%, #0f1712 100%);
+}
+
+.yobikou-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 248, 238, 0.86) 0%, rgba(255, 248, 238, 0.28) 46%, rgba(12, 20, 15, 0.2) 100%),
+    radial-gradient(circle at top right, rgba(180, 151, 90, 0.22), transparent 30%);
+}
+
+.yobikou-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.yobikou-hero-copy {
+  padding: 1rem 0;
+}
+
+.yobikou-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.yobikou-vertical-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 480px;
+  padding: 1.5rem 1rem;
+  border: 1px solid rgba(180, 151, 90, 0.35);
+  background: rgba(255, 251, 245, 0.66);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 22px 44px rgba(8, 15, 11, 0.18);
+}
+
+.yobikou-writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.24em;
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-size: clamp(2rem, 4.4vw, 3.8rem);
+  color: #213227;
+  line-height: 1.55;
+}
+
+.yobikou-writing-accent {
+  color: #a9874f;
+}
+
+.yobikou-hero-textbox {
+  padding: 2.3rem;
+  background: rgba(255, 250, 243, 0.8);
+  border: 1px solid rgba(180, 151, 90, 0.32);
+  box-shadow: 0 26px 54px rgba(7, 14, 10, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.yobikou-hero h1 {
+  margin: 0;
+  color: #1d2d23;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.35;
+}
+
+.yobikou-hero p,
+.yobikou-section p,
+.yobikou-fit-card p,
+.yobikou-voice-card p,
+.yobikou-teacher-copy p,
+.yobikou-cta-panel p {
+  line-height: 2;
+  font-size: 1rem;
+}
+
+.yobikou-hero-lead {
+  margin: 1rem 0 0.8rem;
+  color: #1d2d23;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.yobikou-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.yobikou-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0.95rem 1.7rem;
+  border: 1px solid #1f3024;
+  background: #1f3024;
+  color: #fffdf8;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 0 18px 36px rgba(31, 48, 36, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.yobikou-button:hover,
+.yobikou-button:focus-visible {
+  transform: translateY(-1px);
+  background: #314637;
+  box-shadow: 0 22px 44px rgba(31, 48, 36, 0.32);
+}
+
+.yobikou-button-secondary {
+  background: transparent;
+  color: #1f3024;
+  box-shadow: none;
+}
+
+.yobikou-button-secondary:hover,
+.yobikou-button-secondary:focus-visible {
+  color: #fffdf8;
+}
+
+.yobikou-problem-grid,
+.yobikou-feature-grid,
+.yobikou-fit-grid,
+.yobikou-voice-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.yobikou-problem-grid,
+.yobikou-feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.yobikou-fit-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.yobikou-voice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.yobikou-problem-card,
+.yobikou-feature-card,
+.yobikou-fit-card,
+.yobikou-voice-card,
+.yobikou-story-panel,
+.yobikou-teacher-card,
+.yobikou-cta-panel {
+  border: 1px solid rgba(157, 123, 67, 0.22);
+  background: rgba(255, 251, 246, 0.86);
+  box-shadow: 0 18px 40px rgba(35, 50, 39, 0.08);
+}
+
+.yobikou-problem-card,
+.yobikou-feature-card,
+.yobikou-fit-card,
+.yobikou-voice-card {
+  padding: 2rem;
+}
+
+.yobikou-problem-card span,
+.yobikou-feature-no {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #a9874f;
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-size: 1.8rem;
+}
+
+.yobikou-problem-card h3,
+.yobikou-feature-card h3,
+.yobikou-fit-card h3,
+.yobikou-voice-card h3 {
+  margin: 0 0 0.9rem;
+  color: #213227;
+  font-size: 1.35rem;
+  line-height: 1.6;
+}
+
+.yobikou-story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.yobikou-highlight {
+  margin-top: 1.5rem;
+  padding: 1.2rem 1.3rem;
+  border-left: 2px solid #d8ba86;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.yobikou-story-panel {
+  padding: 2rem;
+  background: rgba(255, 247, 235, 0.1);
+  color: #f8f2e8;
+}
+
+.yobikou-panel-label {
+  margin-bottom: 1.25rem;
+  color: #dcc18f;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.yobikou-flow {
+  display: grid;
+  gap: 1rem;
+}
+
+.yobikou-flow-box {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(220, 193, 143, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+}
+
+.yobikou-flow-arrow {
+  text-align: center;
+  color: #dcc18f;
+  font-size: 1.5rem;
+}
+
+.yobikou-fit-card,
+.yobikou-voice-card {
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96) 0%, rgba(247, 240, 230, 0.94) 100%);
+}
+
+.yobikou-voice-card {
+  position: relative;
+}
+
+.yobikou-voice-mark {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: rgba(169, 135, 79, 0.22);
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+.yobikou-voice-meta {
+  margin: -0.3rem 0 1rem;
+  color: #816640;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.yobikou-teacher-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 1.4rem;
+}
+
+.yobikou-teacher-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.yobikou-teacher-copy {
+  align-self: center;
+}
+
+.yobikou-teacher-copy h2 {
+  margin: 0.5rem 0;
+  color: #213227;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.yobikou-teacher-role {
+  margin: 0 0 1rem;
+  color: #816640;
+  font-weight: 700;
+}
+
+.yobikou-cta-panel {
+  padding: 3rem;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(33, 50, 39, 0.96) 0%, rgba(28, 38, 31, 0.96) 100%);
+}
+
+.yobikou-cta-panel h2,
+.yobikou-cta-panel p {
+  color: #f9f4ea;
+}
+
+.yobikou-cta-panel .yobikou-button {
+  margin-top: 1.4rem;
+}
+
+.yobikou-sticky-cta {
+  display: none;
+}
+
+.yobikou-sticky-cta a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border: 1px solid rgba(220, 193, 143, 0.55);
+  background: linear-gradient(135deg, #d9bf8a 0%, #b5965d 100%);
+  color: #1f241d;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 960px) {
+  .yobikou-hero-grid,
+  .yobikou-story-layout,
+  .yobikou-teacher-card,
+  .yobikou-problem-grid,
+  .yobikou-fit-grid,
+  .yobikou-feature-grid,
+  .yobikou-voice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yobikou-vertical-wrap {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .page.yobikou-page {
+    padding: 0;
+  }
+
+  .yobikou-shell {
+    width: min(100%, calc(100% - 1.2rem));
+  }
+
+  .yobikou-hero {
+    padding: 1.25rem 0 3rem;
+  }
+
+  .yobikou-section {
+    padding: 4rem 0;
+  }
+
+  .yobikou-vertical-wrap {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .yobikou-writing-vertical {
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    font-size: clamp(1.6rem, 7vw, 2.25rem);
+  }
+
+  .yobikou-hero-textbox,
+  .yobikou-problem-card,
+  .yobikou-feature-card,
+  .yobikou-fit-card,
+  .yobikou-voice-card,
+  .yobikou-story-panel,
+  .yobikou-cta-panel {
+    padding: 1.4rem;
+  }
+
+  .yobikou-teacher-card {
+    padding: 1rem;
+  }
+
+  .yobikou-teacher-photo img {
+    min-height: 300px;
+  }
+
+  .yobikou-cta-row,
+  .yobikou-button,
+  .yobikou-button-secondary {
+    width: 100%;
+  }
+
+  .yobikou-sticky-cta {
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    display: block;
+    padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom));
+    background: rgba(20, 29, 23, 0.92);
+    backdrop-filter: blur(8px);
+  }
+}
+
