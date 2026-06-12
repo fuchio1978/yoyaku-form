@@ -194,6 +194,15 @@ body {
   border-color: #7d9d85;
 }
 
+.product-card-clickable {
+  cursor: pointer;
+}
+
+.product-card-clickable:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.35);
+  outline-offset: 3px;
+}
+
 .product-card img:not(.person-card-image) {
   width: 100%;
   height: 180px;

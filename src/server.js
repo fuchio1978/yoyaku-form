@@ -302,7 +302,7 @@ function renderPersonProductsPage(personId) {
     .map((product) => {
       const summary = String(product.summary || '');
       return `
-      <article class="product-card product-card-static">
+      <article class="product-card product-card-static product-card-clickable" data-href="/products/${product.id}" tabindex="0" role="link" aria-label="${escapeHtml(product.title)} の詳細を見る">
         <a class="product-card-media-link" href="/products/${product.id}" aria-label="${escapeHtml(product.title)} の詳細を見る">
           <img src="${product.image}" alt="${escapeHtml(product.title)}" loading="lazy" />
         </a>
@@ -335,6 +335,36 @@ function renderPersonProductsPage(personId) {
     <div style="margin-bottom: 0.75rem;"><a href="/" style="font-size: 0.85rem; color: #2563eb; text-decoration: none;">&larr; TOPに戻る</a></div>
     <h2 style="margin-bottom: 1rem;">${personLabel ? `${personLabel}のメニュー一覧` : 'メニュー一覧'}</h2>
     <div class="${gridClass}">${cards}</div>
+    <script>
+      (function () {
+        var cards = document.querySelectorAll('.product-card-clickable[data-href]');
+        if (!cards.length) return;
+
+        function isInteractiveTarget(target) {
+          return !!(target && target.closest('a, button, input, select, textarea, summary'));
+        }
+
+        function navigate(card) {
+          var href = card && card.getAttribute('data-href');
+          if (!href) return;
+          window.location.href = href;
+        }
+
+        Array.prototype.forEach.call(cards, function (card) {
+          card.addEventListener('click', function (event) {
+            if (isInteractiveTarget(event.target)) return;
+            navigate(card);
+          });
+
+          card.addEventListener('keydown', function (event) {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            if (isInteractiveTarget(event.target)) return;
+            event.preventDefault();
+            navigate(card);
+          });
+        });
+      })();
+    </script>
   `;
 
   return renderPage({
