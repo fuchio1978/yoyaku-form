@@ -301,7 +301,6 @@ function renderPersonProductsPage(personId) {
   const cards = products
     .map((product) => {
       const summary = String(product.summary || '');
-      const summaryLinks = renderExternalLinks(extractUrls(summary));
       return `
       <article class="product-card product-card-static">
         <a class="product-card-media-link" href="/products/${product.id}" aria-label="${escapeHtml(product.title)} の詳細を見る">
@@ -321,7 +320,6 @@ function renderPersonProductsPage(personId) {
             </a>
           </div>
           <p class="subtitle">${formatLinkedText(summary)}</p>
-          ${summaryLinks}
           <a class="product-card-detail-link" href="/products/${product.id}">詳細を見る</a>
         </div>
       </article>
