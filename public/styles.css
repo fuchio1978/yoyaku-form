@@ -2342,6 +2342,15 @@ textarea {
   font-weight: 700;
 }
 
+.yobikou-hero-note {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(29, 45, 35, 0.18);
+  color: #4d584f;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
 .yobikou-cta-row {
   display: flex;
   flex-wrap: wrap;
@@ -2396,8 +2405,16 @@ textarea {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.yobikou-feature-grid-triple {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .yobikou-fit-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.yobikou-fit-grid-double {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .yobikou-voice-grid {
@@ -2408,6 +2425,10 @@ textarea {
 .yobikou-feature-card,
 .yobikou-fit-card,
 .yobikou-voice-card,
+.yobikou-text-panel,
+.yobikou-register-card,
+.yobikou-pricing-card,
+.yobikou-faq-card,
 .yobikou-story-panel,
 .yobikou-teacher-card,
 .yobikou-cta-panel {
@@ -2421,6 +2442,45 @@ textarea {
 .yobikou-fit-card,
 .yobikou-voice-card {
   padding: 2rem;
+}
+
+.yobikou-text-panel,
+.yobikou-register-card,
+.yobikou-pricing-card,
+.yobikou-faq-card {
+  padding: 2rem;
+}
+
+.yobikou-text-panel {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.yobikou-text-panel-compact {
+  margin-top: 1.5rem;
+}
+
+.yobikou-check-list {
+  margin: 1.1rem 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.yobikou-check-list li {
+  position: relative;
+  padding-left: 1.7rem;
+  line-height: 1.9;
+}
+
+.yobikou-check-list li::before {
+  content: '・';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #a9874f;
+  font-weight: 800;
 }
 
 .yobikou-problem-card span,
@@ -2491,6 +2551,81 @@ textarea {
 .yobikou-fit-card,
 .yobikou-voice-card {
   background: linear-gradient(180deg, rgba(255, 252, 248, 0.96) 0%, rgba(247, 240, 230, 0.94) 100%);
+}
+
+.yobikou-register-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
+  gap: 1.5rem;
+}
+
+.yobikou-register-list h3,
+.yobikou-pricing-card h3,
+.yobikou-faq-card h3 {
+  margin: 0 0 1rem;
+  color: #213227;
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+  line-height: 1.6;
+}
+
+.yobikou-pricing-grid,
+.yobikou-faq-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.yobikou-pricing-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.yobikou-pricing-card {
+  position: relative;
+  text-align: center;
+}
+
+.yobikou-pricing-card-recommended {
+  border-color: rgba(169, 135, 79, 0.45);
+  box-shadow: 0 22px 44px rgba(35, 50, 39, 0.12);
+}
+
+.yobikou-pricing-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #1f3024;
+  color: #fffdf8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.yobikou-pricing-price {
+  margin: 0;
+  color: #213227;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.yobikou-pricing-price span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #5b665d;
+}
+
+.yobikou-pricing-note {
+  margin-top: 0.8rem;
+  color: #816640;
+  font-weight: 700;
+}
+
+.yobikou-faq-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.yobikou-faq-card p {
+  margin: 0;
 }
 
 .yobikou-voice-card {
@@ -2582,6 +2717,9 @@ textarea {
 @media (max-width: 960px) {
   .yobikou-hero-grid,
   .yobikou-story-layout,
+  .yobikou-register-card,
+  .yobikou-pricing-grid,
+  .yobikou-faq-list,
   .yobikou-teacher-card,
   .yobikou-problem-grid,
   .yobikou-fit-grid,
@@ -2626,6 +2764,10 @@ textarea {
   }
 
   .yobikou-hero-textbox,
+  .yobikou-text-panel,
+  .yobikou-register-card,
+  .yobikou-pricing-card,
+  .yobikou-faq-card,
   .yobikou-problem-card,
   .yobikou-feature-card,
   .yobikou-fit-card,

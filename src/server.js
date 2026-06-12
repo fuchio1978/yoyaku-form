@@ -1953,11 +1953,15 @@ function renderYobikouPage() {
             </div>
             <div class="yobikou-hero-textbox">
               <h1>自然派四柱推命予備校</h1>
-              <p class="yobikou-hero-lead">「読める」を「届けられる」に変える、伴走型の実践サブスク。</p>
-              <p>知識を増やすだけでなく、お客様に届く言葉に変えるための練習と添削、そして継続の場をひとつにまとめました。</p>
+              <p class="yobikou-hero-lead">自然派四柱推命を学んだけれど、命式を前にすると言葉が止まる方へ。</p>
+              <p>質問LINE、月2回の個別Zoom、月1回のグループ勉強会で、あなたの鑑定力を実践レベルまで育てる継続フォロー型サブスクです。</p>
               <div class="yobikou-cta-row">
-                <a class="yobikou-button" href="${ctaUrl}">予備校の詳細を見る</a>
-                <a class="yobikou-button yobikou-button-secondary" href="#yobikou-program">学べる内容を見る</a>
+                <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
+                <a class="yobikou-button yobikou-button-secondary" href="#yobikou-program">予備校でできることを見る</a>
+              </div>
+              <div class="yobikou-hero-note">
+                <strong>60分／無料</strong><br />
+                学習歴の確認・模擬鑑定・講座内容の説明を行います。
               </div>
             </div>
           </div>
@@ -1969,25 +1973,20 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">こんなお悩みはありませんか</div>
-          <h2>学んできたのに、<br />いざ鑑定になると不安になる。</h2>
+          <div class="yobikou-kicker">共感パート</div>
+          <h2>自然派四柱推命を学んだのに、<br />鑑定で手が止まっていませんか。</h2>
         </div>
-        <div class="yobikou-problem-grid">
-          <article class="yobikou-problem-card">
-            <span>01</span>
-            <h3>命式は読めるのに、<br />伝える言葉が出てこない</h3>
-            <p>知識はあるはずなのに、お客様の前で言葉が止まり、「説明」で終わってしまう。</p>
-          </article>
-          <article class="yobikou-problem-card">
-            <span>02</span>
-            <h3>鑑定練習の場がなく、<br />自信が育たない</h3>
-            <p>ひとりで復習しても、実践の手応えやフィードバックが得られず、前進している実感が持てない。</p>
-          </article>
-          <article class="yobikou-problem-card">
-            <span>03</span>
-            <h3>学びっぱなしで終わり、<br />仕事につながらない</h3>
-            <p>講座を受けたあとに日常へ戻ると、いつの間にか手が止まり、鑑定の筋力がつきにくい。</p>
-          </article>
+        <div class="yobikou-text-panel">
+          <p>自然派四柱推命は、命式を自然の景色として読む、とても奥深い鑑定法です。</p>
+          <p>ただ、学び始めると多くの方が、ある壁にぶつかります。</p>
+          <ul class="yobikou-check-list">
+            <li>五行バランスの出し方は学んだのに、実際の命式でどう読めばいいかわからない</li>
+            <li>干合、会局、通変星、用神などの知識がバラバラで、鑑定の言葉にならない</li>
+            <li>お客様に何を伝えればよいのか迷ってしまう</li>
+            <li>自分の読み方が合っているのか確認できる場所がない</li>
+            <li>講座で学んだことを、実際の鑑定にどう活かせばよいかわからない</li>
+          </ul>
+          <p>知識を学んだ人ほど、「わかる」と「できる」の差に苦しみます。</p>
         </div>
       </div>
     </section>
@@ -1996,22 +1995,24 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-story-layout">
           <div class="yobikou-story-copy">
-            <div class="yobikou-kicker">予備校という選択</div>
-            <h2>自然派四柱推命予備校は、<br />知識を現場の力へ変えるための場所です。</h2>
-            <p>自然の景色として命式を読む感覚を、実際の鑑定に落とし込むには、学び直しと実践の往復が欠かせません。</p>
-            <p>予備校では、理解を深めるインプットだけでなく、言語化・添削・質問・継続をひとつの流れにして、あなたの「わかる」を「使える」へ育てていきます。</p>
+            <div class="yobikou-kicker">問題提起</div>
+            <h2>鑑定力は、<br />知識を増やすだけでは育ちません。</h2>
+            <p>四柱推命の知識は、学べば学ぶほど増えていきます。</p>
+            <p>でも、鑑定の現場で必要なのは、知識の量だけではありません。目の前の命式をどう読み、どの順番で整理し、どんな言葉でお客様に伝えるのか。ここには「実践」と「添削」と「場数」が必要です。</p>
+            <p>本を読むだけ、動画を見るだけ、講座を受けるだけでは、どうしても越えにくい壁があります。自然派四柱推命予備校は、その壁を越えるための場所です。</p>
             <div class="yobikou-highlight">
-              <strong>講座の続き</strong>ではなく、<strong>鑑定者として育っていくための伴走の場</strong>。
+              <strong>「学んだ知識を、鑑定で使える力へ。」</strong><br />
+              そのど真ん中の課題に向き合うための、継続フォロー講座です。
             </div>
           </div>
           <div class="yobikou-story-panel">
-            <div class="yobikou-panel-label">変化のイメージ</div>
+            <div class="yobikou-panel-label">越えたい谷</div>
             <div class="yobikou-flow">
               <div class="yobikou-flow-box">学んだ知識</div>
               <div class="yobikou-flow-arrow">→</div>
-              <div class="yobikou-flow-box">命式を景色で捉える</div>
+              <div class="yobikou-flow-box">実際の命式を前にすると止まる</div>
               <div class="yobikou-flow-arrow">→</div>
-              <div class="yobikou-flow-box">相手に届く言葉で伝える</div>
+              <div class="yobikou-flow-box">相手に届く言葉で伝えられる</div>
             </div>
           </div>
         </div>
@@ -2022,29 +2023,42 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">学べること</div>
-          <h2>予備校で育てていく4つの力</h2>
+          <div class="yobikou-kicker">商品紹介</div>
+          <h2>自然派四柱推命予備校とは</h2>
         </div>
-        <div class="yobikou-feature-grid">
+        <div class="yobikou-text-panel">
+          <p>自然派四柱推命予備校は、自然派四柱推命を学んだことのある方限定の継続フォロー講座です。</p>
+          <p>目的は、新しい知識をただ増やすことではありません。すでに学んだ知識を、実際の鑑定で「使える」レベルに育てることです。</p>
+          <p>質問用LINE、月2回の個別Zoom、月1回のグループ勉強会を通じて、わからない箇所の解消、命式の読み方の確認、鑑定ロープレ、伝え方の練習を行います。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">できること</div>
+          <h2>自然派四柱推命予備校でできること</h2>
+        </div>
+        <div class="yobikou-feature-grid yobikou-feature-grid-triple">
           <article class="yobikou-feature-card">
             <div class="yobikou-feature-no">壱</div>
-            <h3>命式を立体で読む力</h3>
-            <p>単発の知識ではなく、全体の景色や流れとして命式をつかみ、解釈の軸を安定させます。</p>
+            <h3>質問用LINEで、<br />わからないところを確認できます</h3>
+            <p>命式の読み方、五行バランス、干合、会局、通変星、用神の取り方など、学習中に出てきた疑問をLINEで質問できます。</p>
+            <p>いただいた質問や命式については、毎回の勉強会で取り上げて解説します。すぐにお答えできる内容については、3日以内に返信します。</p>
           </article>
           <article class="yobikou-feature-card">
             <div class="yobikou-feature-no">弐</div>
-            <h3>鑑定で届ける言語化力</h3>
-            <p>「知っている」を超えて、相手に安心と納得が届く伝え方へ整えていきます。</p>
+            <h3>月2回の個別Zoomで、<br />鑑定の実践力を磨きます</h3>
+            <p>2週間に1回、60分のマンツーマンZoomを行います。内容は、受講生の状況に合わせて進めます。</p>
+            <p>鑑定ロープレ、命式の五行読み、事前に送っていただいた命式の解説、苦手な箇所のプチ講義などを行い、「知っている」から「お客様に伝えられる」状態を目指します。</p>
           </article>
           <article class="yobikou-feature-card">
             <div class="yobikou-feature-no">参</div>
-            <h3>質問しながら深める力</h3>
-            <p>わからない部分を抱えたままにせず、その都度ほどいて理解を積み上げられます。</p>
-          </article>
-          <article class="yobikou-feature-card">
-            <div class="yobikou-feature-no">四</div>
-            <h3>継続して鑑定筋を育てる力</h3>
-            <p>単発で終わらない環境の中で、日々の練習を無理なく習慣化し、自信へつなげます。</p>
+            <h3>月1回のグループ勉強会で、<br />他の人の命式からも学べます</h3>
+            <p>毎月第3土曜日の21:00〜22:30に、グループ勉強会を行います。他の受講生の質問や命式を見ることで、自分だけでは気づけない読み方に出会えます。</p>
+            <p>アーカイブもあるため、リアルタイム参加が難しい場合も学習を止めずに進められます。</p>
           </article>
         </div>
       </div>
@@ -2054,22 +2068,118 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">おすすめの方</div>
-          <h2>こんな方に、特にフィットします。</h2>
+          <div class="yobikou-kicker">対象者</div>
+          <h2>この予備校は、<br />自然派四柱推命を学んだことのある方限定です。</h2>
         </div>
-        <div class="yobikou-fit-grid">
+        <div class="yobikou-text-panel">
+          <p>自然派四柱推命予備校は、まったく初めて四柱推命を学ぶ方向けの商品ではありません。自然派四柱推命を学んだことがあり、基礎知識を持っている方が対象です。</p>
+          <ul class="yobikou-check-list">
+            <li>学んだ内容を復習したい方</li>
+            <li>命式の読み方に自信をつけたい方</li>
+            <li>実際の鑑定で言葉が出るようになりたい方</li>
+            <li>お客様への伝え方を練習したい方</li>
+            <li>一人で学び続けることに限界を感じている方</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">おすすめの方</div>
+          <h2>こんな方におすすめです</h2>
+        </div>
+        <div class="yobikou-fit-grid yobikou-fit-grid-double">
           <article class="yobikou-fit-card">
-            <h3>講座は受けたけれど、まだ鑑定がこわい方</h3>
-            <p>最初の一歩を、ひとりで抱え込まずに進めたい方へ。</p>
+            <ul class="yobikou-check-list">
+              <li>自然派四柱推命を学んだものの、鑑定でどう使えばよいか迷っている方</li>
+              <li>命式を前にすると、どこから読めばよいかわからなくなる方</li>
+              <li>五行バランスを出しても、鑑定の言葉に変換できない方</li>
+              <li>お客様に伝える練習をしたい方</li>
+            </ul>
           </article>
           <article class="yobikou-fit-card">
-            <h3>知識を増やすより、使える形に整えたい方</h3>
-            <p>学びを積み足すより、今ある理解を実践へ変えたい方へ。</p>
+            <ul class="yobikou-check-list">
+              <li>自分の読み方を確認できる場所がほしい方</li>
+              <li>有料鑑定に向けて、実践力を高めたい方</li>
+              <li>学びっぱなしではなく、使えるレベルまで進みたい方</li>
+            </ul>
           </article>
-          <article class="yobikou-fit-card">
-            <h3>自然派四柱推命を、自分の言葉で届けたい方</h3>
-            <p>ふちLABO.の世界観を土台に、自分らしい鑑定を育てたい方へ。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section yobikou-section-soft">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">無料説明会</div>
+          <h2>まずは無料の個別説明会にご参加ください</h2>
+        </div>
+        <div class="yobikou-register-card">
+          <div class="yobikou-register-copy">
+            <p>自然派四柱推命予備校は、自然派四柱推命を学んだことのある方限定の講座です。そのため、いきなりお申し込みではなく、まずは無料の個別説明会を行います。</p>
+            <p>説明会では、学習歴の確認、模擬鑑定、講座内容の説明を行います。受講を迷っている方も、まずはお気軽にご相談ください。<strong>無理な勧誘は行いません。</strong></p>
+          </div>
+          <div class="yobikou-register-list">
+            <h3>説明会で行うこと</h3>
+            <ul class="yobikou-check-list">
+              <li>自然派四柱推命の学習歴の確認</li>
+              <li>現在のお悩みや課題のヒアリング</li>
+              <li>模擬鑑定</li>
+              <li>予備校の内容説明</li>
+              <li>受講プランのご案内</li>
+              <li>質疑応答</li>
+            </ul>
+            <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">受講料</div>
+          <h2>料金プラン</h2>
+        </div>
+        <div class="yobikou-pricing-grid">
+          <article class="yobikou-pricing-card">
+            <h3>1カ月プラン</h3>
+            <p class="yobikou-pricing-price">12,000円<span>／月／税込</span></p>
           </article>
+          <article class="yobikou-pricing-card yobikou-pricing-card-recommended">
+            <div class="yobikou-pricing-badge">おすすめ</div>
+            <h3>3カ月プラン</h3>
+            <p class="yobikou-pricing-price">11,500円<span>／月／税込</span></p>
+            <p class="yobikou-pricing-note">34,500円 一括払い</p>
+          </article>
+          <article class="yobikou-pricing-card">
+            <h3>6カ月プラン</h3>
+            <p class="yobikou-pricing-price">11,000円<span>／月／税込</span></p>
+            <p class="yobikou-pricing-note">66,000円 一括払い</p>
+          </article>
+        </div>
+        <div class="yobikou-text-panel yobikou-text-panel-compact">
+          <p>お支払い方法は、銀行振込またはPayPalでのカード払いです。</p>
+          <p>銀行振込の場合、振込手数料はお客様のご負担となります。第1回目の講座開始までにお支払いをお願いします。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section yobikou-section-soft">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">安心材料</div>
+          <h2>自然派四柱推命の考え方を大切にして進めます</h2>
+        </div>
+        <div class="yobikou-text-panel">
+          <p>本講座は、自然派四柱推命創始者・浅野太志先生にも内容をご確認いただき、開講の了承をいただいています。</p>
+          <p>自然派四柱推命の考え方を大切にしながら、学んだ知識を実際の鑑定で活かせるように伴走していきます。</p>
         </div>
       </div>
     </section>
@@ -2083,6 +2193,42 @@ function renderYobikouPage() {
         </div>
         <div class="yobikou-voice-grid">
           ${voiceCards}
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-section-head">
+          <div class="yobikou-line"></div>
+          <div class="yobikou-kicker">FAQ</div>
+          <h2>よくある質問</h2>
+        </div>
+        <div class="yobikou-faq-list">
+          <article class="yobikou-faq-card">
+            <h3>Q. 自然派四柱推命を少ししか学んでいませんが、参加できますか。</h3>
+            <p>A. 学習歴を確認したうえでご案内します。まずは無料説明会で、現在の学習状況をお聞かせください。</p>
+          </article>
+          <article class="yobikou-faq-card">
+            <h3>Q. まだ鑑定経験がありませんが、参加できますか。</h3>
+            <p>A. 参加できます。鑑定経験が少ない方でも、命式の読み方や伝え方を一緒に練習していきます。</p>
+          </article>
+          <article class="yobikou-faq-card">
+            <h3>Q. 質問LINEでは、どんなことを質問できますか。</h3>
+            <p>A. 命式の読み方、五行バランス、干合、会局、通変星、鑑定での伝え方など、自然派四柱推命に関する内容をご質問いただけます。</p>
+          </article>
+          <article class="yobikou-faq-card">
+            <h3>Q. 個別Zoomでは何をしますか。</h3>
+            <p>A. 鑑定ロープレ、命式の解説、苦手箇所の確認、プチ講義などを行います。毎回一緒にテーマを決めて進めます。</p>
+          </article>
+          <article class="yobikou-faq-card">
+            <h3>Q. グループ勉強会に参加できない場合はどうなりますか。</h3>
+            <p>A. アーカイブをご用意します。リアルタイムで参加できない場合も、後から学習できます。</p>
+          </article>
+          <article class="yobikou-faq-card">
+            <h3>Q. 途中で解約できますか。</h3>
+            <p>A. 1カ月プランは1カ月ごと、3カ月・6カ月プランは各期間終了後に継続可否をご判断いただけます。</p>
+          </article>
         </div>
       </div>
     </section>
@@ -2108,15 +2254,17 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-cta-panel">
           <div class="yobikou-kicker">Final Call</div>
-          <h2>「もっと読めるようになりたい」から、<br />「ちゃんと届けられるようになりたい」へ。</h2>
-          <p>自然派四柱推命を学んだその先へ進みたい方のために、予備校という継続の場を用意しました。詳細は下記ページからご確認いただけます。</p>
-          <a class="yobikou-button" href="${ctaUrl}">自然派四柱推命予備校の詳細を見る</a>
+          <h2>学んだ知識を、<br />眠らせたままにしないでください。</h2>
+          <p>自然派四柱推命は、命式を自然の景色として読むことで、その人の生き方や行動のヒントを見つけていく鑑定法です。でも、その力は、知識を覚えただけでは十分に発揮できません。</p>
+          <p>命式を読み、言葉にし、相手に届ける。その練習を重ねることで、鑑定は少しずつ深まっていきます。自然派四柱推命予備校は、そのための伴走の場です。</p>
+          <p>一人で悩まず、まずは無料の個別説明会で今の課題を聞かせてください。</p>
+          <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
         </div>
       </div>
     </section>
 
     <div class="yobikou-sticky-cta">
-      <a href="${ctaUrl}">予備校の詳細を見る</a>
+      <a href="${ctaUrl}">無料の個別説明会に申し込む</a>
     </div>
   `;
 
