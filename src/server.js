@@ -78,6 +78,34 @@ function getUploadedImages() {
   }
 }
 
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function linkifyText(value) {
+  const escaped = escapeHtml(value);
+  return escaped.replace(/https?:\/\/[^\s<]+/g, (rawUrl) => {
+    let url = rawUrl;
+    let trailing = '';
+
+    while (/[),.!?、。]$/.test(url)) {
+      trailing = url.slice(-1) + trailing;
+      url = url.slice(0, -1);
+    }
+
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${trailing}`;
+  });
+}
+
+function formatLinkedText(value) {
+  return linkifyText(value).replace(/\r?\n/g, '<br>');
+}
+
 function renderAdminImagesPage(message) {
   const files = getUploadedImages();
   const rows = files
@@ -244,8 +272,10 @@ function renderPersonProductsPage(personId) {
   const cards = products
     .map(
       (product) => `
-      <a class="product-card" href="/products/${product.id}">
-        <img src="${product.image}" alt="${product.title}" loading="lazy" />
+      <article class="product-card product-card-static">
+        <a class="product-card-media-link" href="/products/${product.id}" aria-label="${escapeHtml(product.title)} の詳細を見る">
+          <img src="${product.image}" alt="${escapeHtml(product.title)}" loading="lazy" />
+        </a>
         <div class="card-body">
           <div class="badge">${product.typeLabel}</div>
           <div class="price">${
@@ -254,10 +284,15 @@ function renderPersonProductsPage(personId) {
               : formatCurrency(product.currency, product.price)
           }</div>
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
-          <div class="title"><strong>${product.title}</strong></div>
-          <p class="subtitle">${product.summary}</p>
+          <div class="title">
+            <a class="product-card-title-link" href="/products/${product.id}">
+              <strong>${escapeHtml(product.title)}</strong>
+            </a>
+          </div>
+          <p class="subtitle">${formatLinkedText(product.summary || '')}</p>
+          <a class="product-card-detail-link" href="/products/${product.id}">詳細を見る</a>
         </div>
-      </a>
+      </article>
     `
     )
     .join('');
@@ -3858,12 +3893,12 @@ function renderProductPage(product) {
     typeof product.price === 'number' ? product.price : Number(product.price || 0);
   const isFree = numericPrice === 0;
 
-  const detailItems = product.details.map((item) => `<li>${item}</li>`).join('');
+  const detailItems = product.details.map((item) => `<li>${formatLinkedText(item)}</li>`).join('');
   const rawBenefit =
     product.benefit && String(product.benefit).trim()
       ? String(product.benefit)
       : String(product.summary || '');
-  const benefitHtml = rawBenefit.replace(/\r?\n/g, '<br>');
+  const benefitHtml = formatLinkedText(rawBenefit);
 
   const content = `
     <div style="margin-bottom: 1rem;">
@@ -3873,10 +3908,10 @@ function renderProductPage(product) {
     </div>
     <div class="product-layout">
       <figure class="product-figure">
-        <img src="${product.image}" alt="${product.title}" loading="lazy" />
+        <img src="${product.image}" alt="${escapeHtml(product.title)}" loading="lazy" />
         <div class="product-meta">
           <div class="badge">${product.typeLabel}</div>
-          <div class="title"><strong>${product.title}</strong></div>
+          <div class="title"><strong>${escapeHtml(product.title)}</strong></div>
           <div class="price">${
             isFree ? '無料イベントです' : formatCurrency(product.currency, numericPrice)
           }</div>
