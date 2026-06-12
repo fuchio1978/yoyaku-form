@@ -87,9 +87,21 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+function extractUrls(value) {
+  const text = String(value == null ? '' : value);
+  const matches = text.match(/(?:https?:\/\/|www\.)[^\s<]+/g) || [];
+  return matches.map((rawUrl) => {
+    let url = rawUrl;
+    while (/[),.!?、。]$/.test(url)) {
+      url = url.slice(0, -1);
+    }
+    return url;
+  });
+}
+
 function linkifyText(value) {
   const escaped = escapeHtml(value);
-  return escaped.replace(/https?:\/\/[^\s<]+/g, (rawUrl) => {
+  return escaped.replace(/(?:https?:\/\/|www\.)[^\s<]+/g, (rawUrl) => {
     let url = rawUrl;
     let trailing = '';
 
@@ -98,12 +110,29 @@ function linkifyText(value) {
       url = url.slice(0, -1);
     }
 
-    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${trailing}`;
+    const href = /^https?:\/\//i.test(url) ? url : `https://${url}`;
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>${trailing}`;
   });
 }
 
 function formatLinkedText(value) {
   return linkifyText(value).replace(/\r?\n/g, '<br>');
+}
+
+function renderExternalLinks(urls) {
+  const uniqueUrls = Array.from(new Set((urls || []).filter(Boolean)));
+  if (!uniqueUrls.length) {
+    return '';
+  }
+
+  const items = uniqueUrls
+    .map((url) => {
+      const href = /^https?:\/\//i.test(url) ? url : `https://${url}`;
+      return `<a class="external-inline-link" href="${href}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>`;
+    })
+    .join('');
+
+  return `<div class="external-inline-links">${items}</div>`;
 }
 
 function renderAdminImagesPage(message) {
@@ -270,8 +299,10 @@ function renderPersonProductsPage(personId) {
   const personLabel = personId === 'tetsuya' ? 'てつ先生' : personId === 'chigusa' ? 'ちぐさ' : '';
 
   const cards = products
-    .map(
-      (product) => `
+    .map((product) => {
+      const summary = String(product.summary || '');
+      const summaryLinks = renderExternalLinks(extractUrls(summary));
+      return `
       <article class="product-card product-card-static">
         <a class="product-card-media-link" href="/products/${product.id}" aria-label="${escapeHtml(product.title)} の詳細を見る">
           <img src="${product.image}" alt="${escapeHtml(product.title)}" loading="lazy" />
@@ -289,12 +320,13 @@ function renderPersonProductsPage(personId) {
               <strong>${escapeHtml(product.title)}</strong>
             </a>
           </div>
-          <p class="subtitle">${formatLinkedText(product.summary || '')}</p>
+          <p class="subtitle">${formatLinkedText(summary)}</p>
+          ${summaryLinks}
           <a class="product-card-detail-link" href="/products/${product.id}">詳細を見る</a>
         </div>
       </article>
     `
-    )
+    })
     .join('');
 
   const gridClass = products.length === 1
@@ -3899,6 +3931,10 @@ function renderProductPage(product) {
       ? String(product.benefit)
       : String(product.summary || '');
   const benefitHtml = formatLinkedText(rawBenefit);
+  const benefitLinks = renderExternalLinks([
+    ...extractUrls(rawBenefit),
+    ...product.details.flatMap((item) => extractUrls(item)),
+  ]);
 
   const content = `
     <div style="margin-bottom: 1rem;">
@@ -3918,6 +3954,7 @@ function renderProductPage(product) {
           ${product.providerLabel ? `<div class="provider">${product.providerLabel}</div>` : ''}
         </div>
         <p class="product-benefit">${benefitHtml}</p>
+        ${benefitLinks}
         <div class="product-meta">
           <strong>時間</strong>
           <span>${product.duration}</span>

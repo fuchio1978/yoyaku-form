@@ -252,6 +252,33 @@ body {
   word-break: break-word;
 }
 
+.external-inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.external-inline-link {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: #eef6fb;
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.external-inline-link:hover,
+.external-inline-link:focus-visible {
+  background: #d8edf8;
+  text-decoration: underline;
+}
+
 .price {
   font-weight: 800;
   color: var(--primary);
