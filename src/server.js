@@ -1926,6 +1926,9 @@ function renderYobikouPage() {
   `;
 
   const ctaUrl = 'https://www.fuchilabo.com/products/yobikou-tetsu';
+  const sceneryForestUrl = 'https://images.pexels.com/photos/22696584/pexels-photo-22696584.jpeg?cs=srgb&dl=pexels-farfalina-22696584.jpg&fm=jpg';
+  const sceneryLakeUrl = 'https://images.pexels.com/photos/13308077/pexels-photo-13308077.jpeg?cs=srgb&dl=pexels-david-waschbusch-959602-13308077.jpg&fm=jpg';
+  const sceneryRiverUrl = 'https://images.pexels.com/photos/12779099/pexels-photo-12779099.jpeg?cs=srgb&dl=pexels-azxa661-12779099.jpg&fm=jpg';
   const voices = getVoiceTestimonials().slice(0, 4);
   const voiceCards = voices
     .map(
@@ -2019,6 +2022,22 @@ function renderYobikouPage() {
       </div>
     </section>
 
+    <section class="yobikou-section yobikou-section-scenery">
+      <div class="yobikou-shell">
+        <div class="yobikou-scenery-split">
+          <div class="yobikou-scenery-photo">
+            <img src="${sceneryForestUrl}" alt="やわらかな光が差し込む森の小道" loading="lazy" />
+          </div>
+          <div class="yobikou-scenery-copy">
+            <div class="yobikou-kicker">自然の景色で読む</div>
+            <h2>知識の断片を、<br />ひとつの景色としてつなげていく。</h2>
+            <p>自然派四柱推命の魅力は、命式をただの記号としてではなく、温度や湿度や流れを持つ「景色」として捉えられることにあります。</p>
+            <p>予備校では、その景色をどう読み、どう言葉に変え、どう相手へ届けるかを実践の中で育てていきます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="yobikou-program" class="yobikou-section">
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
@@ -2030,6 +2049,20 @@ function renderYobikouPage() {
           <p>自然派四柱推命予備校は、自然派四柱推命を学んだことのある方限定の継続フォロー講座です。</p>
           <p>目的は、新しい知識をただ増やすことではありません。すでに学んだ知識を、実際の鑑定で「使える」レベルに育てることです。</p>
           <p>質問用LINE、月2回の個別Zoom、月1回のグループ勉強会を通じて、わからない箇所の解消、命式の読み方の確認、鑑定ロープレ、伝え方の練習を行います。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section yobikou-section-soft">
+      <div class="yobikou-shell">
+        <div class="yobikou-scenery-band">
+          <div class="yobikou-scenery-band-image">
+            <img src="${sceneryLakeUrl}" alt="静かな湖面に山並みが映る景色" loading="lazy" />
+          </div>
+          <div class="yobikou-scenery-band-copy">
+            <div class="yobikou-kicker">届けられる状態へ</div>
+            <p>山や湖の景色が一目で全体として感じられるように、命式も「点」ではなく「全体」で読めるようになると、鑑定の言葉はぐっと自然になります。</p>
+          </div>
         </div>
       </div>
     </section>
@@ -2107,6 +2140,20 @@ function renderYobikouPage() {
               <li>学びっぱなしではなく、使えるレベルまで進みたい方</li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yobikou-section">
+      <div class="yobikou-shell">
+        <div class="yobikou-scenery-quote">
+          <div class="yobikou-scenery-quote-image">
+            <img src="${sceneryRiverUrl}" alt="岩のあいだを流れる穏やかな川" loading="lazy" />
+          </div>
+          <div class="yobikou-scenery-quote-copy">
+            <h2>読む順番が見えてくると、<br />言葉の流れも整っていきます。</h2>
+            <p>どこから読み始めればいいのか。何を先に見て、何をあとに整理すればいいのか。その流れが掴めると、鑑定は少しずつ怖いものではなくなっていきます。</p>
+          </div>
         </div>
       </div>
     </section>

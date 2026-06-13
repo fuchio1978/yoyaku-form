@@ -2460,6 +2460,64 @@ textarea {
   margin-top: 1.5rem;
 }
 
+.yobikou-section-scenery {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.yobikou-scenery-split,
+.yobikou-scenery-band,
+.yobikou-scenery-quote {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.yobikou-scenery-split {
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+}
+
+.yobikou-scenery-band {
+  grid-template-columns: minmax(320px, 1.05fr) minmax(260px, 0.95fr);
+  padding: 1.4rem;
+  border: 1px solid rgba(157, 123, 67, 0.22);
+  background: rgba(255, 251, 246, 0.86);
+  box-shadow: 0 18px 40px rgba(35, 50, 39, 0.08);
+}
+
+.yobikou-scenery-quote {
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+}
+
+.yobikou-scenery-photo,
+.yobikou-scenery-band-image,
+.yobikou-scenery-quote-image {
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 22px 46px rgba(20, 31, 24, 0.14);
+}
+
+.yobikou-scenery-photo img,
+.yobikou-scenery-band-image img,
+.yobikou-scenery-quote-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
+
+.yobikou-scenery-copy,
+.yobikou-scenery-band-copy,
+.yobikou-scenery-quote-copy {
+  padding: 0.5rem 0;
+}
+
+.yobikou-scenery-copy h2,
+.yobikou-scenery-quote-copy h2 {
+  margin-top: 0.6rem;
+}
+
 .yobikou-check-list {
   margin: 1.1rem 0;
   padding: 0;
@@ -2717,9 +2775,12 @@ textarea {
 @media (max-width: 960px) {
   .yobikou-hero-grid,
   .yobikou-story-layout,
-  .yobikou-register-card,
-  .yobikou-pricing-grid,
-  .yobikou-faq-list,
+.yobikou-register-card,
+.yobikou-pricing-grid,
+.yobikou-faq-list,
+  .yobikou-scenery-split,
+  .yobikou-scenery-band,
+  .yobikou-scenery-quote,
   .yobikou-teacher-card,
   .yobikou-problem-grid,
   .yobikou-fit-grid,
@@ -2763,6 +2824,12 @@ textarea {
     font-size: clamp(1.6rem, 7vw, 2.25rem);
   }
 
+  .yobikou-section h2,
+  .yobikou-cta-panel h2 {
+    font-size: clamp(1.37rem, 3.6vw, 1.98rem);
+    line-height: 1.5;
+  }
+
   .yobikou-hero-textbox,
   .yobikou-text-panel,
   .yobikou-register-card,
@@ -2783,6 +2850,12 @@ textarea {
 
   .yobikou-teacher-photo img {
     min-height: 300px;
+  }
+
+  .yobikou-scenery-photo img,
+  .yobikou-scenery-band-image img,
+  .yobikou-scenery-quote-image img {
+    min-height: 220px;
   }
 
   .yobikou-cta-row,
