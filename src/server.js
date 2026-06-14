@@ -1926,9 +1926,10 @@ function renderYobikouPage() {
   `;
 
   const ctaUrl = 'https://www.fuchilabo.com/products/yobikou-tetsu';
-  const sceneryForestUrl = 'https://images.pexels.com/photos/22696584/pexels-photo-22696584.jpeg?cs=srgb&dl=pexels-farfalina-22696584.jpg&fm=jpg';
-  const sceneryLakeUrl = 'https://images.pexels.com/photos/13308077/pexels-photo-13308077.jpeg?cs=srgb&dl=pexels-david-waschbusch-959602-13308077.jpg&fm=jpg';
-  const sceneryRiverUrl = 'https://images.pexels.com/photos/22696584/pexels-photo-22696584.jpeg?cs=srgb&dl=pexels-farfalina-22696584.jpg&fm=jpg';
+  const heroBannerUrl = '/uploads/images/yobikou-banner.jpg';
+  const sceneryForestUrl = 'https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?cs=srgb&dl=pexels-eberhardgross-931177.jpg&fm=jpg';
+  const sceneryLakeUrl = 'https://images.pexels.com/photos/3560044/pexels-photo-3560044.jpeg?cs=srgb&dl=pexels-jplenio-3560044.jpg&fm=jpg';
+  const sceneryRiverUrl = 'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?cs=srgb&dl=pexels-pixabay-414171.jpg&fm=jpg';
   const voices = getVoiceTestimonials().slice(0, 4);
   const voiceCards = voices
     .map(
@@ -1945,27 +1946,19 @@ function renderYobikouPage() {
 
   const content = `
     <section class="yobikou-hero">
-      <div class="yobikou-hero-backdrop"></div>
       <div class="yobikou-shell yobikou-hero-inner">
         <div class="yobikou-hero-copy">
-          <div class="yobikou-kicker">Natural Suimei Prep School</div>
-          <div class="yobikou-hero-grid">
-            <div class="yobikou-vertical-wrap">
-              <div class="yobikou-writing-vertical">学んだ自然派四柱推命を、</div>
-              <div class="yobikou-writing-vertical yobikou-writing-accent">「鑑定で使える力」へ。</div>
+          <div class="yobikou-hero-banner">
+            <img src="${heroBannerUrl}" alt="自然派四柱推命予備校 難しい理論を、実践で使える鑑定力へ" loading="eager" />
+          </div>
+          <div class="yobikou-hero-textbox yobikou-hero-textbox-below">
+            <div class="yobikou-cta-row">
+              <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
+              <a class="yobikou-button yobikou-button-secondary" href="#yobikou-program">予備校でできることを見る</a>
             </div>
-            <div class="yobikou-hero-textbox">
-              <h1>自然派四柱推命予備校</h1>
-              <p class="yobikou-hero-lead">難しい理論を、実践で使える鑑定力へ</p>
-              <p>質問LINE、月2回の個別Zoom、月1回のグループ勉強会で、あなたの鑑定力を実践レベルまで育てる継続フォロー型サブスクです。</p>
-              <div class="yobikou-cta-row">
-                <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
-                <a class="yobikou-button yobikou-button-secondary" href="#yobikou-program">予備校でできることを見る</a>
-              </div>
-              <div class="yobikou-hero-note">
-                <strong>60分／無料</strong><br />
-                学習歴の確認・模擬鑑定・講座内容の説明を行います。
-              </div>
+            <div class="yobikou-hero-note">
+              <strong>60分／無料</strong><br />
+              学習歴の確認・模擬鑑定・講座内容の説明を行います。
             </div>
           </div>
         </div>
@@ -2076,19 +2069,19 @@ function renderYobikouPage() {
         </div>
         <div class="yobikou-feature-grid yobikou-feature-grid-triple">
           <article class="yobikou-feature-card">
-            <div class="yobikou-feature-no">壱</div>
+            <div class="yobikou-feature-no">1.</div>
             <h3>質問用LINEで、<br />わからないところを確認できます</h3>
             <p>命式の読み方、五行バランス、干合、会局、通変星、用神の取り方など、学習中に出てきた疑問をLINEで質問できます。</p>
             <p>いただいた質問や命式については、毎回の勉強会で取り上げて解説します。すぐにお答えできる内容については、3日以内に返信します。</p>
           </article>
           <article class="yobikou-feature-card">
-            <div class="yobikou-feature-no">弐</div>
+            <div class="yobikou-feature-no">2.</div>
             <h3>月2回の個別Zoomで、<br />鑑定の実践力を磨きます</h3>
             <p>2週間に1回、60分のマンツーマンZoomを行います。内容は、受講生の状況に合わせて進めます。</p>
             <p>鑑定ロープレ、命式の五行読み、事前に送っていただいた命式の解説、苦手な箇所のプチ講義などを行い、「知っている」から「お客様に伝えられる」状態を目指します。</p>
           </article>
           <article class="yobikou-feature-card">
-            <div class="yobikou-feature-no">参</div>
+            <div class="yobikou-feature-no">3.</div>
             <h3>月1回のグループ勉強会で、<br />他の人の命式からも学べます</h3>
             <p>毎月第3土曜日の21:00〜22:30に、グループ勉強会を行います。他の受講生の質問や命式を見ることで、自分だけでは気づけない読み方に出会えます。</p>
             <p>アーカイブもあるため、リアルタイム参加が難しい場合も学習を止めずに進められます。</p>

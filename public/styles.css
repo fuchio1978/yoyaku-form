@@ -2264,24 +2264,10 @@ textarea {
 .yobikou-hero {
   position: relative;
   overflow: hidden;
-  padding: 3.5rem 0 5rem;
+  padding: 2rem 0 3.5rem;
   background:
-    radial-gradient(circle at 14% 10%, rgba(255, 255, 255, 0.98), transparent 28%),
-    radial-gradient(circle at 93% 10%, rgba(255, 229, 233, 0.9), transparent 21%),
-    radial-gradient(circle at 50% 100%, rgba(255, 215, 223, 0.44), transparent 22%),
-    linear-gradient(180deg, #fffefd 0%, #fffaf8 60%, #fff2ef 100%);
-}
-
-.yobikou-hero-backdrop {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at left 16%, rgba(141, 183, 144, 0.18), transparent 11%),
-    radial-gradient(circle at left 30%, rgba(141, 183, 144, 0.14), transparent 9%),
-    radial-gradient(circle at left 42%, rgba(255, 236, 201, 0.28), transparent 10%),
-    radial-gradient(circle at right 14%, rgba(255, 218, 226, 0.54), transparent 16%),
-    radial-gradient(circle at right 30%, rgba(255, 244, 220, 0.28), transparent 12%),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 250, 249, 0.56) 44%, rgba(255, 240, 243, 0.28) 100%);
+    radial-gradient(circle at top left, rgba(255, 230, 236, 0.66), transparent 24%),
+    linear-gradient(180deg, #fffefd 0%, #fff8f6 60%, #fff1ef 100%);
 }
 
 .yobikou-hero-inner {
@@ -2290,75 +2276,38 @@ textarea {
 }
 
 .yobikou-hero-copy {
-  padding: 1rem 0;
+  padding: 0.25rem 0 0;
 }
 
 .yobikou-hero .yobikou-shell {
-  width: min(1280px, calc(100% - 2rem));
+  width: min(1720px, calc(100% - 1rem));
 }
 
-.yobikou-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(360px, 420px) minmax(0, 860px);
-  gap: 1.5rem;
-  align-items: end;
-  justify-content: start;
-  margin-top: 1rem;
+.yobikou-hero-banner {
+  overflow: hidden;
+  border-radius: 1.4rem;
+  box-shadow: 0 24px 54px rgba(222, 186, 182, 0.2);
+  background: #ffffff;
 }
 
-.yobikou-vertical-wrap {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  gap: 1.25rem;
-  width: min(100%, 420px);
-  min-height: 640px;
-  padding: 1.75rem 1.5rem;
-  border: 1px solid rgba(231, 190, 177, 0.4);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 247, 245, 0.86) 100%);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 24px 48px rgba(181, 128, 131, 0.18);
-  overflow: visible;
-}
-
-.yobikou-writing-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  letter-spacing: 0.16em;
-  font-family: 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
-  font-size: clamp(1.7rem, 2.9vw, 3.15rem);
-  color: #4c2729;
-  line-height: 1.38;
-}
-
-.yobikou-writing-accent {
-  color: #de7d8f;
+.yobikou-hero-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .yobikou-hero-textbox {
   padding: 2.3rem;
-  margin-bottom: 1.75rem;
+  margin: 1.5rem auto 0;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 248, 246, 0.95) 100%);
   border: 1px solid rgba(240, 206, 197, 0.5);
   box-shadow: 0 30px 60px rgba(214, 171, 175, 0.18);
   backdrop-filter: blur(6px);
+  max-width: 1120px;
 }
 
-@media (max-width: 1200px) {
-  .yobikou-hero-grid {
-    grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
-  }
-
-  .yobikou-vertical-wrap {
-    width: min(100%, 360px);
-    min-height: 560px;
-    padding: 1.5rem 1.2rem;
-  }
-
-  .yobikou-writing-vertical {
-    font-size: clamp(1.55rem, 2.6vw, 2.65rem);
-    letter-spacing: 0.14em;
-  }
+.yobikou-hero-textbox-below {
+  text-align: left;
 }
 
 .yobikou-hero h1 {
@@ -2832,7 +2781,6 @@ textarea {
 }
 
 @media (max-width: 960px) {
-  .yobikou-hero-grid,
   .yobikou-story-layout,
 .yobikou-register-card,
 .yobikou-pricing-grid,
@@ -2847,10 +2795,6 @@ textarea {
   .yobikou-voice-grid {
     grid-template-columns: 1fr;
   }
-
-  .yobikou-vertical-wrap {
-    min-height: auto;
-  }
 }
 
 @media (max-width: 640px) {
@@ -2863,24 +2807,15 @@ textarea {
   }
 
   .yobikou-hero {
-    padding: 1.25rem 0 3rem;
+    padding: 1rem 0 2.5rem;
   }
 
   .yobikou-section {
     padding: 4rem 0;
   }
 
-  .yobikou-vertical-wrap {
-    display: grid;
-    gap: 0.7rem;
-    padding: 1.25rem 1rem;
-  }
-
-  .yobikou-writing-vertical {
-    writing-mode: horizontal-tb;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
-    font-size: clamp(1.6rem, 7vw, 2.25rem);
+  .yobikou-hero .yobikou-shell {
+    width: min(100%, calc(100% - 0.5rem));
   }
 
   .yobikou-section h2,
@@ -2909,6 +2844,10 @@ textarea {
 
   .yobikou-teacher-photo img {
     min-height: 300px;
+  }
+
+  .yobikou-hero-banner {
+    border-radius: 0.9rem;
   }
 
   .yobikou-scenery-photo img,
