@@ -1969,7 +1969,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">共感パート</div>
           <h2>自然派四柱推命を学んだのに、<br />鑑定で手が止まっていませんか。</h2>
         </div>
         <div class="yobikou-text-panel">
@@ -2002,12 +2001,11 @@ function renderYobikouPage() {
             </div>
           </div>
           <div class="yobikou-story-panel">
-            <div class="yobikou-panel-label">越えたい谷</div>
             <div class="yobikou-flow">
               <div class="yobikou-flow-box">学んだ知識</div>
-              <div class="yobikou-flow-arrow">→</div>
+              <div class="yobikou-flow-arrow">↓</div>
               <div class="yobikou-flow-box">実際の命式を前にすると止まる</div>
-              <div class="yobikou-flow-arrow">→</div>
+              <div class="yobikou-flow-arrow">↓</div>
               <div class="yobikou-flow-box">相手に届く言葉で伝えられる</div>
             </div>
           </div>
@@ -2022,7 +2020,6 @@ function renderYobikouPage() {
             <img src="${sceneryForestUrl}" alt="やわらかな光が差し込む森の小道" loading="lazy" />
           </div>
           <div class="yobikou-scenery-copy">
-            <div class="yobikou-kicker">自然の景色で読む</div>
             <h2>知識の断片を、<br />ひとつの景色としてつなげていく。</h2>
             <p>自然派四柱推命の魅力は、命式をただの記号としてではなく、温度や湿度や流れを持つ「景色」として捉えられることにあります。</p>
             <p>予備校では、その景色をどう読み、どう言葉に変え、どう相手へ届けるかを実践の中で育てていきます。</p>
@@ -2035,7 +2032,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">商品紹介</div>
           <h2>自然派四柱推命予備校とは</h2>
         </div>
         <div class="yobikou-text-panel">
@@ -2053,7 +2049,6 @@ function renderYobikouPage() {
             <img src="${sceneryLakeUrl}" alt="静かな湖面に山並みが映る景色" loading="lazy" />
           </div>
           <div class="yobikou-scenery-band-copy">
-            <div class="yobikou-kicker">届けられる状態へ</div>
             <p>山や湖の景色が一目で全体として感じられるように、命式も「点」ではなく「全体」で読めるようになると、鑑定の言葉はぐっと自然になります。</p>
           </div>
         </div>
@@ -2064,7 +2059,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">できること</div>
           <h2>自然派四柱推命予備校でできること</h2>
         </div>
         <div class="yobikou-feature-grid yobikou-feature-grid-triple">
@@ -2094,7 +2088,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">対象者</div>
           <h2>この予備校は、<br />自然派四柱推命を学んだことのある方限定です。</h2>
         </div>
         <div class="yobikou-text-panel">
@@ -2114,7 +2107,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">おすすめの方</div>
           <h2>こんな方におすすめです</h2>
         </div>
         <div class="yobikou-fit-grid yobikou-fit-grid-double">
@@ -2155,7 +2147,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">無料説明会</div>
           <h2>まずは無料の個別説明会にご参加ください</h2>
         </div>
         <div class="yobikou-register-card">
