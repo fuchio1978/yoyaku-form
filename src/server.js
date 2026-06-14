@@ -2598,6 +2598,11 @@ function renderHomePage() {
     <div style="max-width: 900px; margin: 0 auto 1.5rem; text-align: center;">
       <p style="font-size: 0.95rem; color: #4b5563;">鑑定士を選んで、メニュー一覧をご覧ください。</p>
     </div>
+    <div class="home-banner-wrap">
+      <a class="home-banner-link" href="https://www.fuchilabo.com/yobikou" aria-label="自然派四柱推命 予備校の詳細を見る">
+        <img class="home-banner-image" src="/yobikou-banner-20260614.jpg" alt="自然派四柱推命 予備校" loading="lazy" />
+      </a>
+    </div>
     <div class="cards-grid">${cards}</div>
   `;
 
