@@ -1990,7 +1990,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-story-layout">
           <div class="yobikou-story-copy">
-            <div class="yobikou-kicker">問題提起</div>
             <h2>鑑定力は、<br />知識を増やすだけでは育ちません。</h2>
             <p>四柱推命の知識は、学べば学ぶほど増えていきます。</p>
             <p>でも、鑑定の現場で必要なのは、知識の量だけではありません。目の前の命式をどう読み、どの順番で整理し、どんな言葉でお客様に伝えるのか。ここには「実践」と「添削」と「場数」が必要です。</p>
@@ -2174,7 +2173,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">受講料</div>
           <h2>料金プラン</h2>
         </div>
         <div class="yobikou-pricing-grid">
@@ -2195,7 +2193,7 @@ function renderYobikouPage() {
           </article>
         </div>
         <div class="yobikou-text-panel yobikou-text-panel-compact">
-          <p>お支払い方法は、銀行振込またはPayPalでのカード払いです。</p>
+          <p>お支払い方法は、銀行振込またはクレジットカード払いです。</p>
           <p>銀行振込の場合、振込手数料はお客様のご負担となります。第1回目の講座開始までにお支払いをお願いします。</p>
         </div>
       </div>
@@ -2205,7 +2203,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">安心材料</div>
           <h2>自然派四柱推命の考え方を大切にして進めます</h2>
         </div>
         <div class="yobikou-text-panel">
@@ -2219,7 +2216,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">受講生の声</div>
           <h2>少しずつでも、確かな変化が積み上がっています。</h2>
         </div>
         <div class="yobikou-voice-grid">
@@ -2232,7 +2228,6 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <div class="yobikou-kicker">FAQ</div>
           <h2>よくある質問</h2>
         </div>
         <div class="yobikou-faq-list">
@@ -2271,7 +2266,6 @@ function renderYobikouPage() {
             <img src="/touyou-instructor.jpg" alt="てつ先生" />
           </div>
           <div class="yobikou-teacher-copy">
-            <div class="yobikou-kicker">Teacher</div>
             <h2>てつ先生</h2>
             <p class="yobikou-teacher-role">自然派四柱推命講師・鑑定士</p>
             <p>大学時代に哲学を学び、その後四柱推命の奥にある陰陽五行や自然観に魅了され、自然派四柱推命の世界を探究。</p>
@@ -2284,7 +2278,6 @@ function renderYobikouPage() {
     <section class="yobikou-section yobikou-section-cta">
       <div class="yobikou-shell">
         <div class="yobikou-cta-panel">
-          <div class="yobikou-kicker">Final Call</div>
           <h2>学んだ知識を、<br />眠らせたままにしないでください。</h2>
           <p>自然派四柱推命は、命式を自然の景色として読むことで、その人の生き方や行動のヒントを見つけていく鑑定法です。でも、その力は、知識を覚えただけでは十分に発揮できません。</p>
           <p>命式を読み、言葉にし、相手に届ける。その練習を重ねることで、鑑定は少しずつ深まっていきます。自然派四柱推命予備校は、そのための伴走の場です。</p>

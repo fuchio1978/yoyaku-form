@@ -2307,7 +2307,7 @@ textarea {
 }
 
 .yobikou-hero-textbox-below {
-  text-align: left;
+  text-align: center;
 }
 
 .yobikou-hero h1 {
@@ -2343,6 +2343,8 @@ textarea {
   line-height: 1.8;
   font-size: 1rem;
   max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .yobikou-cta-row {
@@ -2350,6 +2352,7 @@ textarea {
   flex-wrap: wrap;
   gap: 1.25rem;
   align-items: stretch;
+  justify-content: center;
   margin-top: 0;
 }
 
