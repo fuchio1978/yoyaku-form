@@ -1928,7 +1928,7 @@ function renderYobikouPage() {
   const ctaUrl = 'https://www.fuchilabo.com/products/yobikou-tetsu';
   const sceneryForestUrl = 'https://images.pexels.com/photos/22696584/pexels-photo-22696584.jpeg?cs=srgb&dl=pexels-farfalina-22696584.jpg&fm=jpg';
   const sceneryLakeUrl = 'https://images.pexels.com/photos/13308077/pexels-photo-13308077.jpeg?cs=srgb&dl=pexels-david-waschbusch-959602-13308077.jpg&fm=jpg';
-  const sceneryRiverUrl = 'https://images.pexels.com/photos/12779099/pexels-photo-12779099.jpeg?cs=srgb&dl=pexels-azxa661-12779099.jpg&fm=jpg';
+  const sceneryRiverUrl = 'https://images.pexels.com/photos/22696584/pexels-photo-22696584.jpeg?cs=srgb&dl=pexels-farfalina-22696584.jpg&fm=jpg';
   const voices = getVoiceTestimonials().slice(0, 4);
   const voiceCards = voices
     .map(
@@ -2146,9 +2146,9 @@ function renderYobikouPage() {
 
     <section class="yobikou-section">
       <div class="yobikou-shell">
-        <div class="yobikou-scenery-quote">
-          <div class="yobikou-scenery-quote-image">
-            <img src="${sceneryRiverUrl}" alt="岩のあいだを流れる穏やかな川" loading="lazy" />
+          <div class="yobikou-scenery-quote">
+            <div class="yobikou-scenery-quote-image">
+            <img src="${sceneryRiverUrl}" alt="やわらかな光に包まれた白い花と葉" loading="lazy" />
           </div>
           <div class="yobikou-scenery-quote-copy">
             <h2>読む順番が見えてくると、<br />言葉の流れも整っていきます。</h2>
