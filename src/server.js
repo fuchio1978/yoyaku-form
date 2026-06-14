@@ -1956,7 +1956,7 @@ function renderYobikouPage() {
             </div>
             <div class="yobikou-hero-textbox">
               <h1>自然派四柱推命予備校</h1>
-              <p class="yobikou-hero-lead">自然派四柱推命を学んだけれど、命式を前にすると言葉が止まる方へ。</p>
+              <p class="yobikou-hero-lead">難しい理論を、実践で使える鑑定力へ</p>
               <p>質問LINE、月2回の個別Zoom、月1回のグループ勉強会で、あなたの鑑定力を実践レベルまで育てる継続フォロー型サブスクです。</p>
               <div class="yobikou-cta-row">
                 <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>

@@ -2171,9 +2171,10 @@ textarea {
 /* 自然派四柱推命予備校 LP */
 .yobikou-body {
   background:
-    radial-gradient(circle at top, rgba(212, 192, 151, 0.28), transparent 22%),
-    linear-gradient(180deg, #f4efe7 0%, #efe6d7 100%);
-  color: #2f3029;
+    radial-gradient(circle at top left, rgba(255, 219, 228, 0.72), transparent 26%),
+    radial-gradient(circle at top right, rgba(255, 244, 214, 0.68), transparent 24%),
+    linear-gradient(180deg, #fffdfa 0%, #fff6f7 42%, #fdf2ee 100%);
+  color: #4b3634;
 }
 
 .page.yobikou-page {
@@ -2192,7 +2193,7 @@ textarea {
 }
 
 .yobikou-kicker {
-  color: #9d7b43;
+  color: #d28a8e;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -2202,7 +2203,7 @@ textarea {
 .yobikou-line {
   width: 64px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(157, 123, 67, 0), #9d7b43, rgba(157, 123, 67, 0));
+  background: linear-gradient(90deg, rgba(210, 138, 142, 0), #d8af69, rgba(210, 138, 142, 0));
   margin: 0 auto 1.25rem;
 }
 
@@ -2213,13 +2214,14 @@ textarea {
 
 .yobikou-section-deep {
   background:
-    linear-gradient(135deg, rgba(37, 51, 38, 0.96) 0%, rgba(25, 39, 30, 0.98) 100%);
-  color: #f8f2e8;
+    radial-gradient(circle at top left, rgba(255, 226, 232, 0.7), transparent 24%),
+    linear-gradient(180deg, #fff8f8 0%, #fdeff1 100%);
+  color: #5c403d;
 }
 
 .yobikou-section-soft {
   background:
-    linear-gradient(180deg, rgba(255, 252, 247, 0.88) 0%, rgba(242, 234, 222, 0.96) 100%);
+    linear-gradient(180deg, rgba(255, 253, 251, 0.95) 0%, rgba(255, 242, 244, 0.98) 100%);
 }
 
 .yobikou-section-cta {
@@ -2247,7 +2249,7 @@ textarea {
 .yobikou-section h2,
 .yobikou-cta-panel h2 {
   margin: 0.8rem 0 0;
-  color: #213227;
+  color: #5f302f;
   font-size: clamp(1.9rem, 4vw, 3rem);
   line-height: 1.55;
 }
@@ -2255,7 +2257,7 @@ textarea {
 .yobikou-section-deep h2,
 .yobikou-section-deep p,
 .yobikou-section-deep .yobikou-kicker {
-  color: #f6f0e7;
+  color: #5c403d;
 }
 
 .yobikou-hero {
@@ -2263,16 +2265,19 @@ textarea {
   overflow: hidden;
   padding: 3.5rem 0 5rem;
   background:
-    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.8), transparent 30%),
-    linear-gradient(135deg, #24372a 0%, #17241b 62%, #0f1712 100%);
+    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.96), transparent 28%),
+    radial-gradient(circle at 94% 12%, rgba(255, 228, 233, 0.88), transparent 22%),
+    linear-gradient(180deg, #fffefc 0%, #fff7f8 60%, #feefe8 100%);
 }
 
 .yobikou-hero-backdrop {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(255, 248, 238, 0.86) 0%, rgba(255, 248, 238, 0.28) 46%, rgba(12, 20, 15, 0.2) 100%),
-    radial-gradient(circle at top right, rgba(180, 151, 90, 0.22), transparent 30%);
+    radial-gradient(circle at left 20%, rgba(138, 182, 142, 0.16), transparent 14%),
+    radial-gradient(circle at left 34%, rgba(138, 182, 142, 0.14), transparent 11%),
+    radial-gradient(circle at right 16%, rgba(255, 214, 223, 0.5), transparent 18%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 249, 249, 0.48) 46%, rgba(255, 239, 241, 0.2) 100%);
 }
 
 .yobikou-hero-inner {
@@ -2305,10 +2310,10 @@ textarea {
   width: min(100%, 420px);
   min-height: 640px;
   padding: 1.75rem 1.5rem;
-  border: 1px solid rgba(180, 151, 90, 0.35);
-  background: rgba(255, 251, 245, 0.66);
+  border: 1px solid rgba(231, 190, 177, 0.4);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 247, 245, 0.86) 100%);
   backdrop-filter: blur(6px);
-  box-shadow: 0 22px 44px rgba(8, 15, 11, 0.18);
+  box-shadow: 0 24px 48px rgba(181, 128, 131, 0.18);
   overflow: visible;
 }
 
@@ -2318,20 +2323,20 @@ textarea {
   letter-spacing: 0.16em;
   font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
   font-size: clamp(1.7rem, 2.9vw, 3.15rem);
-  color: #213227;
+  color: #56322f;
   line-height: 1.38;
 }
 
 .yobikou-writing-accent {
-  color: #a9874f;
+  color: #dd7b88;
 }
 
 .yobikou-hero-textbox {
   padding: 2.3rem;
   margin-bottom: 1.75rem;
-  background: rgba(255, 250, 243, 0.8);
-  border: 1px solid rgba(180, 151, 90, 0.32);
-  box-shadow: 0 26px 54px rgba(7, 14, 10, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 247, 245, 0.92) 100%);
+  border: 1px solid rgba(232, 193, 184, 0.45);
+  box-shadow: 0 26px 54px rgba(205, 154, 158, 0.18);
   backdrop-filter: blur(6px);
 }
 
@@ -2354,7 +2359,7 @@ textarea {
 
 .yobikou-hero h1 {
   margin: 0;
-  color: #1d2d23;
+  color: #4e2727;
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1.35;
 }
@@ -2371,7 +2376,7 @@ textarea {
 
 .yobikou-hero-lead {
   margin: 1rem 0 0.8rem;
-  color: #1d2d23;
+  color: #d06c7e;
   font-size: 1.12rem;
   font-weight: 700;
 }
@@ -2379,8 +2384,8 @@ textarea {
 .yobikou-hero-note {
   margin-top: 1.2rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(29, 45, 35, 0.18);
-  color: #4d584f;
+  border-top: 1px solid rgba(208, 157, 159, 0.28);
+  color: #7b5a58;
   line-height: 1.8;
   font-size: 0.95rem;
 }
@@ -2398,27 +2403,27 @@ textarea {
   justify-content: center;
   min-height: 56px;
   padding: 0.95rem 1.7rem;
-  border: 1px solid #1f3024;
-  background: #1f3024;
+  border: 1px solid #de7f8f;
+  background: linear-gradient(135deg, #e77f94 0%, #d95d76 100%);
   color: #fffdf8;
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.08em;
-  box-shadow: 0 18px 36px rgba(31, 48, 36, 0.24);
+  box-shadow: 0 18px 36px rgba(224, 128, 145, 0.28);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .yobikou-button:hover,
 .yobikou-button:focus-visible {
   transform: translateY(-1px);
-  background: #314637;
-  box-shadow: 0 22px 44px rgba(31, 48, 36, 0.32);
+  background: linear-gradient(135deg, #ef92a4 0%, #df6b83 100%);
+  box-shadow: 0 22px 44px rgba(224, 128, 145, 0.34);
 }
 
 .yobikou-button-secondary {
-  background: transparent;
-  color: #1f3024;
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.78);
+  color: #b45c6c;
+  box-shadow: 0 10px 24px rgba(228, 177, 168, 0.16);
 }
 
 .yobikou-button-secondary:hover,
@@ -2466,9 +2471,9 @@ textarea {
 .yobikou-story-panel,
 .yobikou-teacher-card,
 .yobikou-cta-panel {
-  border: 1px solid rgba(157, 123, 67, 0.22);
-  background: rgba(255, 251, 246, 0.86);
-  box-shadow: 0 18px 40px rgba(35, 50, 39, 0.08);
+  border: 1px solid rgba(232, 193, 184, 0.42);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 247, 245, 0.93) 100%);
+  box-shadow: 0 18px 40px rgba(214, 170, 161, 0.14);
 }
 
 .yobikou-problem-card,
@@ -2514,9 +2519,9 @@ textarea {
 .yobikou-scenery-band {
   grid-template-columns: minmax(320px, 1.05fr) minmax(260px, 0.95fr);
   padding: 1.4rem;
-  border: 1px solid rgba(157, 123, 67, 0.22);
-  background: rgba(255, 251, 246, 0.86);
-  box-shadow: 0 18px 40px rgba(35, 50, 39, 0.08);
+  border: 1px solid rgba(232, 193, 184, 0.42);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 245, 246, 0.93) 100%);
+  box-shadow: 0 18px 40px rgba(214, 170, 161, 0.14);
 }
 
 .yobikou-scenery-quote {
@@ -2571,7 +2576,7 @@ textarea {
   position: absolute;
   left: 0;
   top: 0;
-  color: #a9874f;
+  color: #d47e88;
   font-weight: 800;
 }
 
@@ -2579,7 +2584,7 @@ textarea {
 .yobikou-feature-no {
   display: inline-block;
   margin-bottom: 1rem;
-  color: #a9874f;
+  color: #d47e88;
   font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
   font-size: 1.8rem;
 }
@@ -2589,7 +2594,7 @@ textarea {
 .yobikou-fit-card h3,
 .yobikou-voice-card h3 {
   margin: 0 0 0.9rem;
-  color: #213227;
+  color: #5f302f;
   font-size: 1.35rem;
   line-height: 1.6;
 }
@@ -2604,19 +2609,19 @@ textarea {
 .yobikou-highlight {
   margin-top: 1.5rem;
   padding: 1.2rem 1.3rem;
-  border-left: 2px solid #d8ba86;
-  background: rgba(255, 255, 255, 0.08);
+  border-left: 2px solid #e2a7a2;
+  background: rgba(255, 255, 255, 0.52);
 }
 
 .yobikou-story-panel {
   padding: 2rem;
-  background: rgba(255, 247, 235, 0.1);
-  color: #f8f2e8;
+  background: linear-gradient(180deg, rgba(255, 250, 249, 0.94) 0%, rgba(255, 243, 244, 0.92) 100%);
+  color: #5f302f;
 }
 
 .yobikou-panel-label {
   margin-bottom: 1.25rem;
-  color: #dcc18f;
+  color: #d47e88;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -2629,20 +2634,20 @@ textarea {
 
 .yobikou-flow-box {
   padding: 1rem 1.1rem;
-  border: 1px solid rgba(220, 193, 143, 0.28);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(232, 193, 184, 0.42);
+  background: rgba(255, 255, 255, 0.78);
   font-weight: 700;
 }
 
 .yobikou-flow-arrow {
   text-align: center;
-  color: #dcc18f;
+  color: #d8af69;
   font-size: 1.5rem;
 }
 
 .yobikou-fit-card,
 .yobikou-voice-card {
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96) 0%, rgba(247, 240, 230, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 244, 246, 0.95) 100%);
 }
 
 .yobikou-register-card {
@@ -2655,7 +2660,7 @@ textarea {
 .yobikou-pricing-card h3,
 .yobikou-faq-card h3 {
   margin: 0 0 1rem;
-  color: #213227;
+  color: #5f302f;
   font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
   line-height: 1.6;
 }
@@ -2676,8 +2681,8 @@ textarea {
 }
 
 .yobikou-pricing-card-recommended {
-  border-color: rgba(169, 135, 79, 0.45);
-  box-shadow: 0 22px 44px rgba(35, 50, 39, 0.12);
+  border-color: rgba(223, 127, 143, 0.44);
+  box-shadow: 0 22px 44px rgba(224, 128, 145, 0.18);
 }
 
 .yobikou-pricing-badge {
@@ -2686,7 +2691,7 @@ textarea {
   right: 1rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: #1f3024;
+  background: linear-gradient(135deg, #e77f94 0%, #d95d76 100%);
   color: #fffdf8;
   font-size: 0.72rem;
   font-weight: 700;
@@ -2695,7 +2700,7 @@ textarea {
 
 .yobikou-pricing-price {
   margin: 0;
-  color: #213227;
+  color: #5f302f;
   font-size: 2rem;
   font-weight: 800;
 }
@@ -2703,12 +2708,12 @@ textarea {
 .yobikou-pricing-price span {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #5b665d;
+  color: #8d6764;
 }
 
 .yobikou-pricing-note {
   margin-top: 0.8rem;
-  color: #816640;
+  color: #c46d79;
   font-weight: 700;
 }
 
@@ -2736,7 +2741,7 @@ textarea {
 
 .yobikou-voice-meta {
   margin: -0.3rem 0 1rem;
-  color: #816640;
+  color: #c46d79;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -2763,13 +2768,13 @@ textarea {
 
 .yobikou-teacher-copy h2 {
   margin: 0.5rem 0;
-  color: #213227;
+  color: #5f302f;
   font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
 .yobikou-teacher-role {
   margin: 0 0 1rem;
-  color: #816640;
+  color: #c46d79;
   font-weight: 700;
 }
 
@@ -2777,12 +2782,13 @@ textarea {
   padding: 3rem;
   text-align: center;
   background:
-    linear-gradient(135deg, rgba(33, 50, 39, 0.96) 0%, rgba(28, 38, 31, 0.96) 100%);
+    radial-gradient(circle at top left, rgba(255, 224, 231, 0.46), transparent 28%),
+    linear-gradient(135deg, rgba(111, 47, 55, 0.96) 0%, rgba(164, 92, 103, 0.96) 100%);
 }
 
 .yobikou-cta-panel h2,
 .yobikou-cta-panel p {
-  color: #f9f4ea;
+  color: #fff7f6;
 }
 
 .yobikou-cta-panel .yobikou-button {
@@ -2798,9 +2804,9 @@ textarea {
   align-items: center;
   justify-content: center;
   min-height: 52px;
-  border: 1px solid rgba(220, 193, 143, 0.55);
-  background: linear-gradient(135deg, #d9bf8a 0%, #b5965d 100%);
-  color: #1f241d;
+  border: 1px solid rgba(255, 227, 208, 0.72);
+  background: linear-gradient(135deg, #e77f94 0%, #d95d76 100%);
+  color: #fffdf8;
   text-decoration: none;
   font-weight: 800;
   letter-spacing: 0.08em;
