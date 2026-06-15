@@ -2310,6 +2310,31 @@ textarea {
   text-align: center;
 }
 
+.yobikou-hero-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    'primary secondary'
+    'note note';
+  gap: 1.25rem;
+  align-items: stretch;
+  justify-items: center;
+}
+
+.yobikou-cta-primary {
+  grid-area: primary;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.yobikou-cta-secondary {
+  grid-area: secondary;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .yobikou-hero h1 {
   margin: 0;
   color: #401d20;
@@ -2336,6 +2361,7 @@ textarea {
 }
 
 .yobikou-hero-note {
+  grid-area: note;
   margin-top: 1.45rem;
   padding-top: 1.35rem;
   border-top: 1px solid rgba(208, 157, 159, 0.28);
@@ -2873,9 +2899,31 @@ textarea {
   }
 
   .yobikou-cta-row,
+  .yobikou-hero-cta-grid,
+  .yobikou-cta-primary,
+  .yobikou-cta-secondary,
   .yobikou-button,
   .yobikou-button-secondary {
     width: 100%;
+  }
+
+  .yobikou-hero-cta-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'primary'
+      'note'
+      'secondary';
+    gap: 1rem;
+  }
+
+  .yobikou-cta-primary,
+  .yobikou-cta-secondary {
+    justify-content: center;
+  }
+
+  .yobikou-hero-note {
+    margin-top: 0;
+    order: 2;
   }
 
   .yobikou-button {

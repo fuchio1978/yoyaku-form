@@ -1927,9 +1927,9 @@ function renderYobikouPage() {
 
   const ctaUrl = 'https://www.fuchilabo.com/products/yobikou-tetsu';
   const heroBannerUrl = '/uploads/images/yobikou-banner.jpg';
-  const sceneryForestUrl = 'https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?cs=srgb&dl=pexels-eberhardgross-931177.jpg&fm=jpg';
-  const sceneryLakeUrl = 'https://images.pexels.com/photos/3560044/pexels-photo-3560044.jpeg?cs=srgb&dl=pexels-jplenio-3560044.jpg&fm=jpg';
-  const sceneryRiverUrl = 'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?cs=srgb&dl=pexels-pixabay-414171.jpg&fm=jpg';
+  const sceneryForestUrl = 'https://images.pexels.com/photos/36699898/pexels-photo-36699898.jpeg?cs=srgb&dl=pexels-mariaorlova-36699898.jpg&fm=jpg';
+  const sceneryLakeUrl = 'https://images.pexels.com/photos/11496963/pexels-photo-11496963.jpeg?cs=srgb&dl=pexels-jill-burrow-11496963.jpg&fm=jpg';
+  const sceneryRiverUrl = 'https://images.pexels.com/photos/12649073/pexels-photo-12649073.jpeg?cs=srgb&dl=pexels-dids-12649073.jpg&fm=jpg';
   const voices = getVoiceTestimonials().slice(0, 4);
   const voiceCards = voices
     .map(
@@ -1952,13 +1952,17 @@ function renderYobikouPage() {
             <img src="${heroBannerUrl}" alt="自然派四柱推命予備校 難しい理論を、実践で使える鑑定力へ" loading="eager" />
           </div>
           <div class="yobikou-hero-textbox yobikou-hero-textbox-below">
-            <div class="yobikou-cta-row">
-              <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
-              <a class="yobikou-button yobikou-button-secondary" href="#yobikou-program">予備校でできることを見る</a>
-            </div>
-            <div class="yobikou-hero-note">
-              <strong>60分／無料</strong><br />
-              学習歴の確認・模擬鑑定・講座内容の説明を行います。
+            <div class="yobikou-hero-cta-grid">
+              <div class="yobikou-cta-primary">
+                <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
+              </div>
+              <div class="yobikou-cta-secondary">
+                <a class="yobikou-button yobikou-button-secondary" href="#yobikou-program">予備校でできることを見る</a>
+              </div>
+              <div class="yobikou-hero-note">
+                <strong>60分／無料</strong><br />
+                学習歴の確認・模擬鑑定・講座内容の説明を行います。
+              </div>
             </div>
           </div>
         </div>
@@ -1969,7 +1973,7 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-section-head">
           <div class="yobikou-line"></div>
-          <h2>自然派四柱推命を学んだのに、<br />鑑定で手が止まっていませんか。</h2>
+          <h2>自然派四柱推命を学んだ後、<br />鑑定で言葉が止まっていませんか？</h2>
         </div>
         <div class="yobikou-text-panel">
           <p>自然派四柱推命は、命式を自然の景色として読む、とても奥深い鑑定法です。</p>
@@ -2003,7 +2007,7 @@ function renderYobikouPage() {
             <div class="yobikou-flow">
               <div class="yobikou-flow-box">学んだ知識</div>
               <div class="yobikou-flow-arrow">↓</div>
-              <div class="yobikou-flow-box">実際の命式を前にすると止まる</div>
+              <div class="yobikou-flow-box">実際の命式を、読んでみるトレーニング</div>
               <div class="yobikou-flow-arrow">↓</div>
               <div class="yobikou-flow-box">相手に届く言葉で伝えられる</div>
             </div>
@@ -2016,7 +2020,7 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-scenery-split">
           <div class="yobikou-scenery-photo">
-            <img src="${sceneryForestUrl}" alt="やわらかな光が差し込む森の小道" loading="lazy" />
+            <img src="${sceneryForestUrl}" alt="やわらかなピンクの花々" loading="lazy" />
           </div>
           <div class="yobikou-scenery-copy">
             <h2>知識の断片を、<br />ひとつの景色としてつなげていく。</h2>
@@ -2045,7 +2049,7 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-scenery-band">
           <div class="yobikou-scenery-band-image">
-            <img src="${sceneryLakeUrl}" alt="静かな湖面に山並みが映る景色" loading="lazy" />
+            <img src="${sceneryLakeUrl}" alt="やわらかな光に包まれた空と雲" loading="lazy" />
           </div>
           <div class="yobikou-scenery-band-copy">
             <p>山や湖の景色が一目で全体として感じられるように、命式も「点」ではなく「全体」で読めるようになると、鑑定の言葉はぐっと自然になります。</p>
@@ -2065,7 +2069,7 @@ function renderYobikouPage() {
             <div class="yobikou-feature-no">1.</div>
             <h3>質問用LINEで、<br />わからないところを確認できます</h3>
             <p>命式の読み方、五行バランス、干合、会局、通変星、用神の取り方など、学習中に出てきた疑問をLINEで質問できます。</p>
-            <p>いただいた質問や命式については、毎回の勉強会で取り上げて解説します。すぐにお答えできる内容については、3日以内に返信します。</p>
+            <p>いただいた質問や命式については、毎回の個別zoomで取り上げて解説します。すぐにお答えできる内容については、3日以内に返信します。</p>
           </article>
           <article class="yobikou-feature-card">
             <div class="yobikou-feature-no">2.</div>
@@ -2132,7 +2136,7 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
           <div class="yobikou-scenery-quote">
             <div class="yobikou-scenery-quote-image">
-            <img src="${sceneryRiverUrl}" alt="やわらかな光に包まれた白い花と葉" loading="lazy" />
+            <img src="${sceneryRiverUrl}" alt="明るい光が差し込む山と湖の景色" loading="lazy" />
           </div>
           <div class="yobikou-scenery-quote-copy">
             <h2>読む順番が見えてくると、<br />言葉の流れも整っていきます。</h2>
@@ -2279,8 +2283,9 @@ function renderYobikouPage() {
       <div class="yobikou-shell">
         <div class="yobikou-cta-panel">
           <h2>学んだ知識を、<br />眠らせたままにしないでください。</h2>
-          <p>自然派四柱推命は、命式を自然の景色として読むことで、その人の生き方や行動のヒントを見つけていく鑑定法です。でも、その力は、知識を覚えただけでは十分に発揮できません。</p>
-          <p>命式を読み、言葉にし、相手に届ける。その練習を重ねることで、鑑定は少しずつ深まっていきます。自然派四柱推命予備校は、そのための伴走の場です。</p>
+          <p>自然派四柱推命は、命式を自然の景色として読むことで、その人の生き方や行動のヒントを見つけていく鑑定法です。</p>
+          <p>ただ、その力は、知識を覚えただけでは十分に発揮できません。</p>
+          <p>命式を読み、言葉にし、相手に届ける。<br />その練習を重ねることで、鑑定は少しずつ深まっていきます。<br />自然派四柱推命予備校は、そのための伴走の場です。</p>
           <p>一人で悩まず、まずは無料の個別説明会で今の課題を聞かせてください。</p>
           <a class="yobikou-button" href="${ctaUrl}">まずは無料の個別説明会に申し込む</a>
         </div>
