@@ -16,6 +16,28 @@ const NAVIGATION_VARIANTS = {
   ],
 };
 
+function renderAnalyticsHead() {
+  const measurementId = String(process.env.GA_MEASUREMENT_ID || '').trim();
+  if (!measurementId) {
+    return '';
+  }
+
+  const safeMeasurementId = measurementId.replace(/[^A-Za-z0-9-]/g, '');
+  if (!safeMeasurementId) {
+    return '';
+  }
+
+  return `
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${safeMeasurementId}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${safeMeasurementId}');
+    </script>
+  `;
+}
+
 function buildNavHtml(navVariant = 'default') {
   const links = NAVIGATION_VARIANTS[navVariant] || NAVIGATION_VARIANTS.default;
   return links.map((link) => `<a href="${link.href}">${link.label}</a>`).join('\n');
@@ -35,6 +57,8 @@ function renderPage({
   const layoutPath = path.join(__dirname, '..', 'templates', 'layout.html');
   let layout = fs.readFileSync(layoutPath, 'utf-8');
   const navHtml = buildNavHtml(navVariant);
+  const analyticsHead = renderAnalyticsHead();
+  const combinedHeadExtras = [analyticsHead, headExtras].filter(Boolean).join('\n');
 
   if (hideHeading) {
     layout = layout.replace(
@@ -45,7 +69,7 @@ function renderPage({
 
   return layout
     .replace('{{title}}', title)
-    .replace('{{headExtras}}', headExtras)
+    .replace('{{headExtras}}', combinedHeadExtras)
     .replace('{{bodyClass}}', bodyClass)
     .replace('{{desktopNav}}', navHtml)
     .replace('{{mobileNav}}', navHtml)
