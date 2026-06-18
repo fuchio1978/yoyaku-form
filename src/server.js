@@ -2579,15 +2579,26 @@ function serveDistributionPdfByPathname(req, res) {
   }
 
   const downloadName = path.basename(item.originalFileName || item.storedFileName || 'document.pdf');
+  const encodedDownloadName = encodeURIComponent(downloadName)
+    .replace(/['()]/g, escape)
+    .replace(/\*/g, '%2A');
   res.writeHead(200, {
     'Content-Type': 'application/pdf',
-    'Content-Disposition': `inline; filename="${downloadName}"`,
+    'Content-Disposition': `inline; filename="document.pdf"; filename*=UTF-8''${encodedDownloadName}`,
   });
   if (req.method === 'HEAD') {
     res.end();
     return true;
   }
-  fs.createReadStream(filePath).pipe(res);
+  const stream = fs.createReadStream(filePath);
+  stream.on('error', (error) => {
+    console.error('Failed to stream PDF', error);
+    if (!res.headersSent) {
+      res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+    }
+    res.end('Failed to load PDF');
+  });
+  stream.pipe(res);
   return true;
 }
 
