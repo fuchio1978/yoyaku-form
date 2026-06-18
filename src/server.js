@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const url = require('url');
 const querystring = require('querystring');
+const { loadEnv } = require('./utils/env');
 const { getProducts, getProduct, saveProducts } = require('./data/products');
 const {
   getSchedules,
@@ -14,6 +15,20 @@ const {
 const { renderPage, formatCurrency } = require('./utils/render');
 const { saveReservation } = require('./utils/reservations');
 const { sendReservationEmail, recipient } = require('./utils/email');
+const {
+  LEGACY_PDF_ID,
+  LEGACY_PDF_URL,
+  deleteDistributionPdfFile,
+  findDistributionPdfById,
+  findDistributionPdfByPath,
+  getDistributionPdfs,
+  getPdfAbsolutePath,
+  normalizeUrlPath,
+  saveDistributionPdfs,
+  writeDistributionPdfFile,
+} = require('./utils/distribution-pdfs');
+
+loadEnv();
 
 const publicDir = path.join(__dirname, '..', 'public');
 // 永続ストレージのルート（Render の Persistent Disk など）
@@ -76,6 +91,71 @@ function getUploadedImages() {
     console.error('Failed to list uploaded images', e);
     return [];
   }
+}
+
+function slugifyPdfId(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 80);
+}
+
+function getReservedPdfPaths() {
+  return new Set([
+    '/',
+    '/index.html',
+    '/admin',
+    '/admin/schedules',
+    '/admin/images',
+    '/admin/product',
+    '/reserve/confirm',
+    '/contact',
+    '/contact/confirm',
+    '/contact/thanks',
+    '/haifu-PDF',
+    '/ai-web-seminar',
+    '/courses/canva-ai',
+    '/products/tetsuya',
+    '/products/chigusa',
+    '/touyou',
+    '/yobikou',
+  ]);
+}
+
+function validateDistributionPdfInput(input, options = {}) {
+  const title = String(input.title || '').trim();
+  const urlPath = normalizeUrlPath(input.urlPath || '');
+  const existingId = options.existingId || '';
+  const lockedUrl = !!options.lockedUrl;
+
+  if (!title) {
+    throw new Error('タイトルを入力してください。');
+  }
+
+  if (!lockedUrl) {
+    if (!urlPath || urlPath === '/') {
+      throw new Error('URLを入力してください。');
+    }
+    if (!/^\/[A-Za-z0-9/_-]+$/.test(urlPath)) {
+      throw new Error('URLは /pdf-sample のような形式で入力してください。');
+    }
+    if (getReservedPdfPaths().has(urlPath)) {
+      throw new Error('このURLはすでにシステムで使用されています。別のURLをご指定ください。');
+    }
+  }
+
+  const duplicate = getDistributionPdfs().find(
+    (item) => item.id !== existingId && normalizeUrlPath(item.urlPath) === urlPath
+  );
+  if (!lockedUrl && duplicate) {
+    throw new Error('このURLはすでに別のPDFで使用されています。');
+  }
+
+  return {
+    title,
+    urlPath: lockedUrl ? LEGACY_PDF_URL : urlPath,
+  };
 }
 
 function escapeHtml(value) {
@@ -235,7 +315,7 @@ function parseMultipartImage(req) {
   });
 }
 
-function parseMultipartPdf(req) {
+function parseMultipartPdfForm(req) {
   return new Promise((resolve, reject) => {
     const contentType = req.headers['content-type'] || '';
     const boundaryMatch = contentType.match(/boundary=(.+)$/);
@@ -260,6 +340,8 @@ function parseMultipartPdf(req) {
         const buffer = Buffer.concat(chunks);
         const all = buffer.toString('binary');
         const rawParts = all.split(boundaryStr).slice(1, -1);
+        const fields = {};
+        let file = null;
         for (const rawPart of rawParts) {
           const part = Buffer.from(rawPart, 'binary');
           const idx = part.indexOf('\r\n\r\n');
@@ -267,16 +349,26 @@ function parseMultipartPdf(req) {
           const headerBuf = part.slice(0, idx).toString('utf8');
           const body = part.slice(idx + 4, part.length - 2);
 
-          if (!/name="pdf"/i.test(headerBuf)) continue;
+          const nameMatch = headerBuf.match(/name="([^"]+)"/i);
+          const fieldName = nameMatch && nameMatch[1] ? nameMatch[1] : '';
+          if (!fieldName) continue;
+
           const fileNameMatch = headerBuf.match(/filename="([^"\\]+)"/i);
-          if (!fileNameMatch || !fileNameMatch[1]) continue;
-          let fileName = path.basename(fileNameMatch[1]);
-          if (!/\.(pdf)$/i.test(fileName)) {
-            throw new Error('Unsupported file type');
+          if (fileNameMatch && fileNameMatch[1]) {
+            const fileName = path.basename(fileNameMatch[1]);
+            if (!/\.(pdf)$/i.test(fileName)) {
+              throw new Error('Unsupported file type');
+            }
+            if (fieldName === 'pdf') {
+              file = { fileName, data: body };
+            }
+            continue;
           }
-          return resolve({ fileName, data: body });
+
+          fields[fieldName] = body.toString('utf8').trim();
         }
-        reject(new Error('No pdf file field'));
+
+        resolve({ fields, file });
       } catch (e) {
         reject(e);
       }
@@ -2472,6 +2564,33 @@ function serveUploadedImage(req, res) {
   return true;
 }
 
+function serveDistributionPdfByPathname(req, res) {
+  const pathname = url.parse(req.url).pathname || '';
+  const item = findDistributionPdfByPath(pathname);
+  if (!item) {
+    return false;
+  }
+
+  const filePath = getPdfAbsolutePath(item);
+  if (!filePath || !fs.existsSync(filePath)) {
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('PDF not found');
+    return true;
+  }
+
+  const downloadName = path.basename(item.originalFileName || item.storedFileName || 'document.pdf');
+  res.writeHead(200, {
+    'Content-Type': 'application/pdf',
+    'Content-Disposition': `inline; filename="${downloadName}"`,
+  });
+  if (req.method === 'HEAD') {
+    res.end();
+    return true;
+  }
+  fs.createReadStream(filePath).pipe(res);
+  return true;
+}
+
 function parseScheduleText(text) {
   return (text || '')
     .split(/\r?\n/)
@@ -3690,6 +3809,53 @@ function renderAdminHome(message) {
     `
     )
     .join('');
+  const distributionPdfs = getDistributionPdfs();
+  const pdfCards = distributionPdfs
+    .map((item) => {
+      const lockedNotice = item.lockedUrl
+        ? '<p style="margin:0.4rem 0 0; color:#b45309; font-size:0.95rem;">このURLはすでに配布済みのため固定です。</p>'
+        : '';
+      const deleteForm = item.legacy
+        ? ''
+        : `
+          <form method="POST" action="/admin/delete-distribution-pdf" onsubmit="return confirm('このPDFを削除してよろしいですか？');" style="margin-top:0.75rem;">
+            <input type="hidden" name="id" value="${escapeHtml(item.id)}" />
+            <button class="button secondary" type="submit" style="margin:0;">このPDFを削除</button>
+          </form>
+        `;
+
+      return `
+        <div style="border:1px solid #e5e7eb; border-radius:14px; padding:1rem; background:#fff;">
+          <form method="POST" action="/admin/save-distribution-pdf" enctype="multipart/form-data" class="reservation-form">
+            <input type="hidden" name="id" value="${escapeHtml(item.id)}" />
+            <div style="display:grid; gap:0.75rem;">
+              <label>
+                タイトル
+                <input type="text" name="title" value="${escapeHtml(item.title)}" required />
+              </label>
+              <label>
+                配布URL
+                <input type="text" name="urlPath" value="${escapeHtml(item.urlPath)}" ${item.lockedUrl ? 'readonly' : 'required'} />
+              </label>
+              <div style="font-size:0.95rem; color:#4b5563;">
+                現在のファイル: ${escapeHtml(item.originalFileName || item.storedFileName || '未設定')}
+              </div>
+              ${lockedNotice}
+              <label>
+                PDFファイルを差し替え
+                <input type="file" name="pdf" accept="application/pdf" />
+              </label>
+              <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                <button class="button" type="submit" style="margin:0;">保存</button>
+                <a href="${escapeHtml(item.urlPath)}" target="_blank" rel="noopener noreferrer">公開URLを開く</a>
+              </div>
+            </div>
+          </form>
+          ${deleteForm}
+        </div>
+      `;
+    })
+    .join('');
 
   const notice = message ? `<p style="color:#16a34a; margin-bottom:1rem; font-weight:bold;">${message}</p>` : '';
 
@@ -3716,14 +3882,32 @@ function renderAdminHome(message) {
 
       <hr style="margin: 2rem 0;" />
 
-      <h3>配布用PDFのアップロード</h3>
-      <p><code>/haifu-PDF</code> で配信されるPDFファイルを差し替えることができます。</p>
-      <form method="POST" action="/admin/upload-haifu-pdf" enctype="multipart/form-data" class="reservation-form" style="display:flex; gap:1rem; align-items:center;">
-        <div>
-          <input type="file" name="pdf" accept="application/pdf" required />
-        </div>
-        <button class="button" type="submit" style="margin:0;">PDFをアップロード</button>
-      </form>
+      <h3>配布用PDFの管理</h3>
+      <p>PDFごとに配布URLを持たせて管理できます。既存の <code>${escapeHtml(LEGACY_PDF_URL)}</code> は配布済みのためURL固定です。</p>
+      <div style="display:grid; gap:1rem; margin-top:1rem;">
+        ${pdfCards || '<p>登録済みのPDFはありません。</p>'}
+      </div>
+
+      <div style="margin-top:1.5rem; border-top:1px solid #e5e7eb; padding-top:1.5rem;">
+        <h4 style="margin-top:0;">PDFを追加</h4>
+        <form method="POST" action="/admin/save-distribution-pdf" enctype="multipart/form-data" class="reservation-form">
+          <div style="display:grid; gap:0.75rem;">
+            <label>
+              タイトル
+              <input type="text" name="title" required />
+            </label>
+            <label>
+              配布URL
+              <input type="text" name="urlPath" placeholder="/line-pdf" required />
+            </label>
+            <label>
+              PDFファイル
+              <input type="file" name="pdf" accept="application/pdf" required />
+            </label>
+            <button class="button" type="submit" style="margin:0; width:fit-content;">PDFを追加</button>
+          </div>
+        </form>
+      </div>
     </div>
     <script>
       (function() {
@@ -4672,19 +4856,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  //配布用PDF配信
-  if (isReadMethod && parsedUrl.pathname === '/haifu-PDF') {
-    const pdfPath = path.join(storageRoot, 'haifu-PDF.pdf');
-    if (fs.existsSync(pdfPath)) {
-      res.writeHead(200, {
-        'Content-Type': 'application/pdf',
-        'Content-Disposition': 'inline; filename="haifu-PDF.pdf"'
-      });
-      fs.createReadStream(pdfPath).pipe(res);
-    } else {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-      res.end('PDF not found');
-    }
+  if (isReadMethod && serveDistributionPdfByPathname(req, res)) {
     return;
   }
 
@@ -4836,17 +5008,105 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.method === 'POST' && parsedUrl.pathname === '/admin/upload-haifu-pdf') {
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/save-distribution-pdf') {
     try {
-      const { data } = await parseMultipartPdf(req);
-      const targetPath = path.join(storageRoot, 'haifu-PDF.pdf');
-      fs.writeFileSync(targetPath, data, 'binary');
+      const { fields, file } = await parseMultipartPdfForm(req);
+      const existingId = String(fields.id || '').trim();
+      const existing = existingId ? findDistributionPdfById(existingId) : null;
+      const lockedUrl = !!(existing && existing.lockedUrl);
+      const validated = validateDistributionPdfInput(fields, {
+        existingId,
+        lockedUrl,
+      });
 
-      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent('PDFをアップロードしました。すぐに反映されます。') });
+      if (!existing && !file) {
+        throw new Error('新規追加時はPDFファイルが必要です。');
+      }
+
+      if (existingId && !existing) {
+        throw new Error('対象のPDFが見つかりません。');
+      }
+
+      const now = new Date().toISOString();
+      const allPdfs = getDistributionPdfs();
+
+      if (existing) {
+        let storedFileName = existing.storedFileName;
+        let originalFileName = existing.originalFileName;
+        if (file) {
+          storedFileName = writeDistributionPdfFile(existing.id, file.fileName, file.data);
+          originalFileName = file.fileName;
+        }
+
+        const next = allPdfs.map((item) =>
+          item.id === existing.id
+            ? {
+                ...item,
+                title: validated.title,
+                urlPath: lockedUrl ? item.urlPath : validated.urlPath,
+                storedFileName,
+                originalFileName,
+                updatedAt: now,
+              }
+            : item
+        );
+        saveDistributionPdfs(next);
+      } else {
+        const baseId = slugifyPdfId(validated.title) || `pdf-${Date.now()}`;
+        const usedIds = new Set(allPdfs.map((item) => item.id));
+        let nextId = baseId;
+        let suffix = 2;
+        while (usedIds.has(nextId)) {
+          nextId = `${baseId}-${suffix}`;
+          suffix += 1;
+        }
+
+        const storedFileName = writeDistributionPdfFile(nextId, file.fileName, file.data);
+        const next = allPdfs.concat({
+          id: nextId,
+          title: validated.title,
+          urlPath: validated.urlPath,
+          storedFileName,
+          originalFileName: file.fileName,
+          legacy: false,
+          lockedUrl: false,
+          createdAt: now,
+          updatedAt: now,
+        });
+        saveDistributionPdfs(next);
+      }
+
+      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent('PDF設定を保存しました。すぐに反映されます。') });
       res.end();
     } catch (error) {
       console.error('Failed to upload PDF', error);
-      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent('PDFのアップロードに失敗しました。ファイル形式とサイズをご確認ください。') });
+      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent(error.message || 'PDFの保存に失敗しました。') });
+      res.end();
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/delete-distribution-pdf') {
+    try {
+      const body = await parseBody(req);
+      const id = String(body.id || '').trim();
+      const item = findDistributionPdfById(id);
+      if (!item) {
+        throw new Error('対象のPDFが見つかりません。');
+      }
+      if (item.legacy || item.lockedUrl) {
+        throw new Error('既存配布PDFは削除できません。');
+      }
+
+      deleteDistributionPdfFile(item);
+      const next = getDistributionPdfs().filter((pdf) => pdf.id !== id);
+      saveDistributionPdfs(next);
+
+      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent('PDFを削除しました。') });
+      res.end();
+    } catch (error) {
+      console.error('Failed to delete PDF', error);
+      res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent(error.message || 'PDFの削除に失敗しました。') });
       res.end();
     }
     return;
