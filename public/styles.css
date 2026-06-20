@@ -178,16 +178,23 @@ body {
 
 .home-banner-viewport {
   position: relative;
+  aspect-ratio: 1100 / 290;
+  min-height: 180px;
   background: #f8f3ec;
 }
 
 .home-banner-slide {
-  display: none;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
 }
 
 .home-banner-slide.is-active {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .home-banner-slide:focus-visible {
@@ -198,7 +205,10 @@ body {
 .home-banner-image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  background: #f8f3ec;
 }
 
 .home-banner-arrow {
@@ -298,6 +308,10 @@ body {
 
   .home-banner-slider {
     border-radius: 18px;
+  }
+
+  .home-banner-viewport {
+    min-height: 120px;
   }
 
   .home-banner-arrow {
