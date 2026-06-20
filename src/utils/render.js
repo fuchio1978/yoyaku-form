@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { loadEnv } = require('./env');
+
+loadEnv();
 
 const NAVIGATION_VARIANTS = {
   default: [

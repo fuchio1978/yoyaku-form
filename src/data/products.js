@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { loadEnv } = require('../utils/env');
+
+loadEnv();
 
 // 永続ストレージのルート（Render の Persistent Disk など）
 // PERSISTENT_STORAGE_PATH が指定されていればそちらを優先し、なければ従来どおりローカルstorageを使用

@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
+const { loadEnv } = require('./env');
+
+loadEnv();
 
 const adminRecipient = process.env.RESERVATION_RECIPIENT || 'info@fuchilabo.com';
 

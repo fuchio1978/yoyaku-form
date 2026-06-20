@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { loadEnv } = require('./env');
+
+loadEnv();
 
 // 永続ストレージのルート（Render の Persistent Disk など）
 const storageRoot = process.env.PERSISTENT_STORAGE_PATH || path.join(__dirname, '..', '..', 'storage');
