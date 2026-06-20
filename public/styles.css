@@ -317,22 +317,17 @@ body {
     min-height: 150px;
   }
 
-  .home-banner-slide {
-    padding: 0 44px;
-    box-sizing: border-box;
-  }
-
   .home-banner-arrow {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
   }
 
   .home-banner-arrow-prev {
-    left: 8px;
+    left: 10px;
   }
 
   .home-banner-arrow-next {
-    right: 8px;
+    right: 10px;
   }
 
   .home-banner-dots {
