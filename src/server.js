@@ -2706,16 +2706,134 @@ function renderHomePage() {
     })
     .join('');
 
+  const homeBannerSlides = [
+    {
+      href: 'https://note.com/fuchio_4suimei/n/nc1971c21b41d',
+      image: '/uploads/images/touyou-banner.jpg',
+      alt: '東洋思想入門講座',
+      label: '東洋思想入門講座',
+    },
+    {
+      href: 'https://www.fuchilabo.com/yobikou',
+      image: '/uploads/images/yobikou-banner.jpg',
+      alt: '自然派四柱推命 予備校',
+      label: '自然派四柱推命予備校',
+    },
+  ];
+
+  const homeBannerSlidesMarkup = homeBannerSlides
+    .map(
+      (slide, index) => `
+        <a
+          class="home-banner-slide${index === 0 ? ' is-active' : ''}"
+          href="${slide.href}"
+          aria-label="${slide.label}の詳細を見る"
+          data-home-banner-slide="${index}"
+          ${index === 0 ? '' : 'tabindex="-1" aria-hidden="true"'}
+        >
+          <img class="home-banner-image" src="${slide.image}" alt="${slide.alt}" loading="lazy" />
+        </a>
+      `,
+    )
+    .join('');
+
+  const homeBannerDotsMarkup = homeBannerSlides
+    .map(
+      (slide, index) => `
+        <button
+          class="home-banner-dot${index === 0 ? ' is-active' : ''}"
+          type="button"
+          aria-label="${slide.label}を表示"
+          aria-pressed="${index === 0 ? 'true' : 'false'}"
+          data-home-banner-dot="${index}"
+        ></button>
+      `,
+    )
+    .join('');
+
   const content = `
     <div style="max-width: 900px; margin: 0 auto 1.5rem; text-align: center;">
       <p style="font-size: 0.95rem; color: #4b5563;">鑑定士を選んで、メニュー一覧をご覧ください。</p>
     </div>
     <div class="home-banner-wrap">
-      <a class="home-banner-link" href="https://www.fuchilabo.com/yobikou" aria-label="自然派四柱推命 予備校の詳細を見る">
-        <img class="home-banner-image" src="/yobikou-banner-20260614.jpg" alt="自然派四柱推命 予備校" loading="lazy" />
-      </a>
+      <div class="home-banner-slider" data-home-banner-slider>
+        <div class="home-banner-viewport">
+          ${homeBannerSlidesMarkup}
+        </div>
+        <div class="home-banner-dots" aria-label="おすすめバナー切り替え">
+          ${homeBannerDotsMarkup}
+        </div>
+      </div>
     </div>
     <div class="cards-grid">${cards}</div>
+    <script>
+      (function () {
+        var slider = document.querySelector('[data-home-banner-slider]');
+        if (!slider) return;
+
+        var slides = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-slide]'));
+        var dots = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-dot]'));
+        var currentIndex = 0;
+        var timerId = null;
+        var autoplayMs = 5000;
+
+        function showSlide(nextIndex) {
+          currentIndex = nextIndex;
+
+          slides.forEach(function (slide, index) {
+            var isActive = index === currentIndex;
+            slide.classList.toggle('is-active', isActive);
+            slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+            if (isActive) {
+              slide.removeAttribute('tabindex');
+            } else {
+              slide.setAttribute('tabindex', '-1');
+            }
+          });
+
+          dots.forEach(function (dot, index) {
+            var isActive = index === currentIndex;
+            dot.classList.toggle('is-active', isActive);
+            dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          timerId = window.setInterval(function () {
+            showSlide((currentIndex + 1) % slides.length);
+          }, autoplayMs);
+        }
+
+        function stopAutoplay() {
+          if (timerId !== null) {
+            window.clearInterval(timerId);
+            timerId = null;
+          }
+        }
+
+        dots.forEach(function (dot, index) {
+          dot.addEventListener('click', function () {
+            showSlide(index);
+            startAutoplay();
+          });
+        });
+
+        slider.addEventListener('mouseenter', stopAutoplay);
+        slider.addEventListener('mouseleave', startAutoplay);
+        slider.addEventListener('focusin', stopAutoplay);
+        slider.addEventListener('focusout', function (event) {
+          if (!slider.contains(event.relatedTarget)) {
+            startAutoplay();
+          }
+        });
+
+        showSlide(0);
+        if (slides.length > 1) {
+          startAutoplay();
+        }
+      })();
+    </script>
   `;
 
   return renderPage({
