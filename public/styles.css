@@ -311,7 +311,8 @@ body {
   }
 
   .home-banner-viewport {
-    min-height: 120px;
+    aspect-ratio: 1100 / 360;
+    min-height: 140px;
   }
 
   .home-banner-arrow {
