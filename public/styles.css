@@ -178,22 +178,16 @@ body {
 
 .home-banner-viewport {
   position: relative;
-  aspect-ratio: 1100 / 290;
   background: #f8f3ec;
 }
 
 .home-banner-slide {
-  position: absolute;
-  inset: 0;
-  display: block;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.45s ease;
+  display: none;
+  position: relative;
 }
 
 .home-banner-slide.is-active {
-  opacity: 1;
-  pointer-events: auto;
+  display: block;
 }
 
 .home-banner-slide:focus-visible {
@@ -204,8 +198,57 @@ body {
 .home-banner-image {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+}
+
+.home-banner-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f2c59;
+  box-shadow: 0 10px 24px rgba(15, 44, 89, 0.18);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-banner-arrow:hover,
+.home-banner-arrow:focus-visible {
+  background: #ffffff;
+  box-shadow: 0 14px 28px rgba(15, 44, 89, 0.24);
+}
+
+.home-banner-arrow:focus-visible {
+  outline: 3px solid rgba(15, 44, 89, 0.2);
+}
+
+.home-banner-arrow:active {
+  transform: translateY(-50%) scale(0.97);
+}
+
+.home-banner-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.home-banner-arrow-prev {
+  left: 14px;
+}
+
+.home-banner-arrow-next {
+  right: 14px;
+}
+
+.home-banner-arrow-next svg {
+  transform: rotate(180deg);
 }
 
 .home-banner-dots {
@@ -255,6 +298,19 @@ body {
 
   .home-banner-slider {
     border-radius: 18px;
+  }
+
+  .home-banner-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .home-banner-arrow-prev {
+    left: 10px;
+  }
+
+  .home-banner-arrow-next {
+    right: 10px;
   }
 
   .home-banner-dots {

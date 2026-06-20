@@ -2751,6 +2751,12 @@ function renderHomePage() {
     )
     .join('');
 
+  const homeBannerArrowIcon = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11l4.29 4.3a1 1 0 1 1-1.41 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.41 0Z" fill="currentColor"></path>
+    </svg>
+  `;
+
   const content = `
     <div style="max-width: 900px; margin: 0 auto 1.5rem; text-align: center;">
       <p style="font-size: 0.95rem; color: #4b5563;">鑑定士を選んで、メニュー一覧をご覧ください。</p>
@@ -2758,7 +2764,13 @@ function renderHomePage() {
     <div class="home-banner-wrap">
       <div class="home-banner-slider" data-home-banner-slider>
         <div class="home-banner-viewport">
+          <button class="home-banner-arrow home-banner-arrow-prev" type="button" aria-label="前のバナーを表示" data-home-banner-prev>
+            ${homeBannerArrowIcon}
+          </button>
           ${homeBannerSlidesMarkup}
+          <button class="home-banner-arrow home-banner-arrow-next" type="button" aria-label="次のバナーを表示" data-home-banner-next>
+            ${homeBannerArrowIcon}
+          </button>
         </div>
         <div class="home-banner-dots" aria-label="おすすめバナー切り替え">
           ${homeBannerDotsMarkup}
@@ -2773,6 +2785,8 @@ function renderHomePage() {
 
         var slides = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-slide]'));
         var dots = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-dot]'));
+        var prevButton = slider.querySelector('[data-home-banner-prev]');
+        var nextButton = slider.querySelector('[data-home-banner-next]');
         var currentIndex = 0;
         var timerId = null;
         var autoplayMs = 5000;
@@ -2798,6 +2812,10 @@ function renderHomePage() {
           });
         }
 
+        function showRelativeSlide(step) {
+          showSlide((currentIndex + step + slides.length) % slides.length);
+        }
+
         function startAutoplay() {
           stopAutoplay();
           timerId = window.setInterval(function () {
@@ -2819,11 +2837,34 @@ function renderHomePage() {
           });
         });
 
+        if (prevButton) {
+          prevButton.addEventListener('click', function () {
+            showRelativeSlide(-1);
+            startAutoplay();
+          });
+        }
+
+        if (nextButton) {
+          nextButton.addEventListener('click', function () {
+            showRelativeSlide(1);
+            startAutoplay();
+          });
+        }
+
         slider.addEventListener('mouseenter', stopAutoplay);
         slider.addEventListener('mouseleave', startAutoplay);
         slider.addEventListener('focusin', stopAutoplay);
         slider.addEventListener('focusout', function (event) {
           if (!slider.contains(event.relatedTarget)) {
+            startAutoplay();
+          }
+        });
+        slider.addEventListener('keydown', function (event) {
+          if (event.key === 'ArrowLeft') {
+            showRelativeSlide(-1);
+            startAutoplay();
+          } else if (event.key === 'ArrowRight') {
+            showRelativeSlide(1);
             startAutoplay();
           }
         });
