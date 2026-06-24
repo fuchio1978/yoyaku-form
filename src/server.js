@@ -120,6 +120,7 @@ function getReservedPdfPaths() {
     '/products/chigusa',
     '/touyou',
     '/yobikou',
+    '/kouza-annai',
   ]);
 }
 
@@ -1688,6 +1689,1327 @@ function renderKouzaCoursePage() {
         </div>
     </footer>
 
+</body>
+</html>`;
+}
+
+function renderKouzaAnnaiPage() {
+  const explanationUrl = 'https://www.fuchilabo.com/products/kouzasetumei';
+  const lineDetailUrl = process.env.KOUZA_LINE_URL || 'https://www.fuchilabo.com/contact';
+  const heroImage =
+    'https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=1600';
+  const conceptImage =
+    'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=1200';
+  const teacherImage =
+    'https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1200';
+
+  const worries = [
+    '四柱推命を学びたいけれど、漢字や専門用語が難しく感じる',
+    '「死」「絶」「病」「傷官」などの言葉が、なんだか怖く感じる',
+    '命式を見ても、どこから読めばいいのかわからない',
+    '本や動画で学んでも、自分ひとりでは理解が進まない',
+    '占いとして当てるだけでなく、人生に活かせる読み方を学びたい',
+    'いずれ鑑定にもつなげたいが、何から始めればいいかわからない',
+  ];
+
+  const changes = [
+    '命式を見たときに、まずどこを見ればいいかがわかる',
+    '星の名前を暗記するだけでなく、五行の景色として理解できる',
+    '自分の命式を、怖がらずに受け止められる',
+    '家族や身近な人の気質を、やさしい言葉で理解できる',
+    '鑑定で使える読み方の土台ができる',
+    '自分らしい人生の選び方を、命式から考えられるようになる',
+  ];
+
+  const supportItems = [
+    {
+      title: 'マンツーマン指導',
+      body: '個別の理解度に合わせて丁寧に進めるため、初めての方でも安心です。',
+    },
+    {
+      title: '復習用アーカイブ',
+      body: '講義の動画をすべてお渡し。ご自身のペースで何度でも復習できます。',
+    },
+    {
+      title: '実践的な添削課題',
+      body: '実際の命式を使った課題を通じて、本物の読み解く力を確実に身につけます。',
+    },
+    {
+      title: 'LINEでの質問サポート',
+      body: '学習中の疑問をその都度ご質問いただけます。わからないままにしません。',
+    },
+  ];
+
+  const comparisonRows = [
+    {
+      title: '入門講座',
+      target: '四柱推命を初めて学ぶ方',
+      goal: '命式の出し方と基礎を、景色の視点で理解する',
+    },
+    {
+      title: '中級講座',
+      target: '基礎を学び、命式全体を読めるようになりたい方',
+      goal: '五行バランス・原命式・運気の流れを読めるようになる',
+    },
+    {
+      title: '上級講座',
+      target: '鑑定力を深め、仕事・恋愛・相性などに応用したい方（中級修了者）',
+      goal: '命式を人生の戦略として読み解けるようになる',
+    },
+  ];
+
+  const introCourseOutline = [
+    '第1回：概論・陰陽五行・五行の理解と相関',
+    '第2回：十干・十二支・六十干支・空亡・十二運',
+  ];
+
+  const intermediateCurriculum = [
+    { label: '第1回', title: '四柱推命の基本', items: ['01. 四柱推命とは', '02. 大自然のイメージで', '03. 八文字だけシンプルに', '04. 基本的な鑑定方法'] },
+    { label: '第2回', title: '十干と十二支の概略', items: ['05. 五行がもつ特性', '06. 日主がもつ特性', '07. 十干の字義', '08. 十二支の字義'] },
+    { label: '第3回', title: '命式の算出と時柱', items: ['09. 干支の世界の時間概念', '10. 命式の算出方法', '11. 出生時間不明の場合'] },
+    { label: '第4回', title: '陰陽五行・十二支と蔵干 1', items: ['12. 陰陽論', '13. 五行論', '14. 五行の関係性'] },
+    { label: '第5回', title: '陰陽五行・十二支と蔵干 2', items: ['15. 生支・正支・墓支', '16. 十二支の実態', '17. 土の十二支（墓支）', '18. 同命式について', '19. 火土同根'] },
+    { label: '第6回', title: '五行属性の変化・五行鑑定', items: ['20. 十二支の法則', '21. 十干の法則', '22. 五行による性格'] },
+    { label: '第7回', title: '通変五種の理解', items: ['23. 通変五種の定義', '24. 通変五種の解説'] },
+    { label: '第8回', title: '命式の定位・通根・身旺身弱', items: ['25. 命式の定位', '26. 通根', '27. 身旺・身弱'] },
+    { label: '第9回', title: '内格・外格・用神 1', items: ['28. 命式の区分', '29. 内格の鑑定', '30. 外格の鑑定'] },
+    { label: '第10回', title: '内格・外格・用神 2', items: ['31. 用いるとは', '32. 用神・喜神'] },
+    { label: '第11回', title: '命式のスタイル', items: ['33. 外格スタイルと流動型スタイル', '34. 外格スタイル', '35. 流動型スタイル'] },
+    { label: '第12回', title: '立運と大運', items: ['36. 立運', '37. 大運'] },
+    { label: '第13回', title: '通変が巡る運勢の見方', items: ['38. それぞれの通変が巡る運勢', '39. 接木運・大運・年運'] },
+    { label: '第14回', title: '実践ワーク', items: ['学んだ理論を命式読解へ落とし込むワーク', '苦手分野の整理と理解の定着'] },
+    { label: '第15回', title: '質問会', items: ['質問会（60分）で疑問点を解消', '次の学びへつなげる整理'] },
+  ];
+
+  const advancedOutline = [
+    {
+      title: '前半：高度な推命理論',
+      body: '十干百態論、五行の偏りの調整法 など',
+    },
+    {
+      title: '中盤：実践鑑定テーマ',
+      body: 'ビジネス運、恋愛・結婚、対人相性',
+    },
+    {
+      title: '後半：開運の極意',
+      body: 'スタイル論をふまえた最適戦略の読み解き',
+    },
+    {
+      title: 'まとめ',
+      body: '理論とテーマ別の読み方を統合し、現実に活かせる鑑定へ',
+    },
+  ];
+
+  const voices = [
+    {
+      heading: '① 学び直しの声',
+      subheading: '「講座難民」を越えて',
+      body:
+        'いくつか講座を受けても自信が持てなかった四柱推命が、「景色で読み解く」ことで、その人に合った開運方法や運気が分かるようになりました。学ぶことが楽しいだけでなく、実際に使える力へと変わっていく感覚も得られました。',
+      meta: '40代女性',
+      href: '/voice#voice-difficult-to-find-right-course',
+    },
+    {
+      heading: '② 鑑定につながった声',
+      subheading: '「わかる」から「できる」へ',
+      body:
+        '鑑定に自信が持てず足踏みしていましたが、お客様に寄り添いながら、自信を持って鑑定できるようになりました。難しい話も分かりやすく、講座が終わって終了ではなくフォローも充実しているので安心です。',
+      meta: '30代女性',
+      href: '/voice#voice-confidence-in-reading',
+    },
+    {
+      heading: '③ 続けられた声',
+      subheading: '行き詰まりを越えて',
+      body:
+        '学びに行き詰まっていた頃、ポッドキャストでてつ先生を知りました。講座だけでなく、配信や勉強会など学びをフォローしてくれる仕掛けがたくさんあり、着実に知識と鑑定力が身についていると実感しています。',
+      meta: '40代女性',
+      href: '/voice#voice-podcast-moved-me-forward',
+    },
+  ];
+
+  const faqItems = [
+    {
+      q: '四柱推命をまったく学んだことがなくても大丈夫ですか。',
+      a: 'はい。初めての方は入門講座からご案内します。専門用語を暗記する前に、まずは自然の景色として命式を捉えるところから丁寧に進めます。',
+    },
+    {
+      q: '漢字や専門用語が苦手でも学べますか。',
+      a: '大丈夫です。難しい漢字をそのまま覚えるのではなく、木・火・土・金・水の景色として理解していきます。',
+    },
+    {
+      q: '鑑定士を目指していなくても受講できますか。',
+      a: '受講できます。自分自身や家族、身近な人を理解するために学ぶ方にも向いています。',
+    },
+    {
+      q: '講座は録画で復習できますか。',
+      a: 'はい。講座後に動画アーカイブをお渡しします。ご自身のペースで何度でも見返せます。',
+    },
+    {
+      q: 'どの講座を選べばいいかわかりません。',
+      a: '無料説明会で現在の学習状況や目的を確認し、合う講座をご案内します。',
+    },
+    {
+      q: '受講料はいくらですか。',
+      a: '受講される講座や現在の学習状況によってご案内内容が変わるため、料金は無料説明会または公式LINEにて個別にお伝えしています。無理なご案内は行いませんので、まずはご自身に合う学び方を確認する場としてご利用ください。',
+    },
+  ];
+
+  const renderDualCta = (className = '') => `
+    <div class="cta-row ${className}">
+      <a class="cta-button cta-button-primary" href="${explanationUrl}">無料説明会で、あなたに合う講座を相談する</a>
+      <a class="cta-button cta-button-secondary" href="${lineDetailUrl}">公式LINEで詳細を受け取る</a>
+    </div>
+  `;
+
+  return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自然の景色でみる四柱推命講座のご案内 | ふちLABO.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #2d3a32;
+      --sage: #7d9d85;
+      --sage-soft: #f4f7f2;
+      --pearl: #fffaf6;
+      --rose: #f7efea;
+      --gold: #c6a36a;
+      --text: #4a5047;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(240, 233, 220, 0.75), transparent 26%),
+        linear-gradient(180deg, #fffdfb 0%, #fdf9f6 55%, #fbf6f1 100%);
+    }
+    h1, h2, h3, h4, summary {
+      font-family: 'Shippori Mincho', serif;
+      color: var(--forest);
+    }
+    .shell {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+    .floating-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 252, 248, 0.86);
+      border-bottom: 1px solid rgba(125, 157, 133, 0.18);
+    }
+    .floating-nav-inner {
+      width: min(1180px, calc(100% - 1.5rem));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .brand {
+      color: var(--forest);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 0.85rem;
+    }
+    .nav-links a {
+      color: rgba(45, 58, 50, 0.78);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--sage);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0 5.5rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(31, 40, 34, 0.72) 0%, rgba(45, 58, 50, 0.36) 56%, rgba(45, 58, 50, 0.14) 100%),
+        linear-gradient(180deg, rgba(247, 239, 234, 0.06), rgba(247, 239, 234, 0.22));
+      z-index: 1;
+    }
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.9) brightness(0.86);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 4rem 0 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+      gap: 2rem;
+      align-items: end;
+    }
+    .hero-card,
+    .glass-card,
+    .soft-card,
+    .course-card,
+    .quote-card,
+    .faq-card,
+    .support-card,
+    .voice-card,
+    .table-card {
+      border: 1px solid rgba(125, 157, 133, 0.14);
+      box-shadow: 0 22px 48px rgba(88, 69, 52, 0.1);
+    }
+    .hero-copy {
+      padding: 3rem 3rem 2.7rem;
+      border-radius: 2rem;
+      background: linear-gradient(180deg, rgba(255, 253, 249, 0.95) 0%, rgba(255, 247, 241, 0.9) 100%);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--sage);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 2.8rem;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(125, 157, 133, 0), rgba(125, 157, 133, 0.95));
+    }
+    .hero h1 {
+      margin: 1.2rem 0 1.25rem;
+      font-size: clamp(2rem, 4.1vw, 3.9rem);
+      line-height: 1.48;
+      letter-spacing: 0.05em;
+    }
+    .hero-lead {
+      margin: 0;
+      color: #5d655b;
+      line-height: 2.05;
+      font-size: 1rem;
+    }
+    .hero-note {
+      padding: 1.4rem 1.5rem;
+      border-radius: 1.6rem;
+      background: rgba(250, 244, 238, 0.88);
+      border: 1px solid rgba(198, 163, 106, 0.22);
+      color: #6b665d;
+      line-height: 1.9;
+      font-size: 0.95rem;
+    }
+    .section {
+      padding: 5.5rem 0;
+    }
+    .section-soft {
+      background:
+        radial-gradient(circle at top right, rgba(245, 234, 223, 0.78), transparent 22%),
+        linear-gradient(180deg, rgba(255, 255, 253, 0.94) 0%, rgba(248, 243, 238, 0.94) 100%);
+    }
+    .section-deep {
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 24%),
+        linear-gradient(135deg, rgba(45, 58, 50, 0.98) 0%, rgba(67, 78, 69, 0.98) 100%);
+      color: rgba(255, 252, 248, 0.88);
+    }
+    .section-deep h2,
+    .section-deep h3,
+    .section-deep h4,
+    .section-deep .section-copy,
+    .section-deep .section-kicker {
+      color: inherit;
+    }
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+    .section-kicker {
+      color: var(--sage);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    .section-head h2 {
+      margin: 0.9rem 0 1rem;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.6;
+    }
+    .section-copy {
+      margin: 0;
+      line-height: 2;
+      color: rgba(74, 80, 71, 0.88);
+    }
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .soft-card,
+    .support-card,
+    .voice-card,
+    .faq-card,
+    .table-card,
+    .course-card,
+    .glass-card,
+    .quote-card {
+      border-radius: 1.8rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 244, 0.95) 100%);
+      padding: 2rem;
+    }
+    .problem-list,
+    .change-list,
+    .support-list,
+    .outline-list,
+    .faq-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1rem;
+    }
+    .problem-list li,
+    .change-list li,
+    .outline-list li {
+      position: relative;
+      padding-left: 1.6rem;
+      line-height: 1.9;
+    }
+    .problem-list li::before,
+    .change-list li::before,
+    .outline-list li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--sage);
+      font-weight: 700;
+    }
+    .image-text {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.05fr);
+      gap: 2rem;
+      align-items: center;
+    }
+    .image-frame {
+      overflow: hidden;
+      border-radius: 2rem;
+      box-shadow: 0 26px 54px rgba(92, 73, 60, 0.18);
+      min-height: 100%;
+    }
+    .image-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+    }
+    .glass-card {
+      background: rgba(255, 252, 247, 0.74);
+      backdrop-filter: blur(12px);
+    }
+    .scenery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+    .scenery-card {
+      padding: 1.3rem 1.2rem;
+      border-radius: 1.35rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .scenery-card strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-size: 1rem;
+      color: #fff8ef;
+    }
+    .scenery-card span {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: rgba(255, 250, 244, 0.82);
+    }
+    .table-card {
+      overflow: hidden;
+      padding: 0;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1.15rem 1.25rem;
+      border-bottom: 1px solid rgba(125, 157, 133, 0.14);
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.85;
+    }
+    .comparison-table thead th {
+      background: rgba(244, 247, 242, 0.92);
+      color: var(--forest);
+      font-size: 0.9rem;
+    }
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .course-stack {
+      display: grid;
+      gap: 2rem;
+    }
+    .course-card {
+      padding: 2.2rem;
+    }
+    .course-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: var(--sage);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .course-badge::before {
+      content: '';
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(198, 163, 106, 0.88), rgba(125, 157, 133, 0.92));
+    }
+    .course-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+      line-height: 1.65;
+    }
+    .course-sub {
+      margin: 0 0 1.3rem;
+      color: var(--sage);
+      font-weight: 700;
+      line-height: 1.8;
+    }
+    .course-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 1.5rem;
+      margin-top: 1.6rem;
+    }
+    .course-meta {
+      padding: 1.5rem;
+      border-radius: 1.4rem;
+      background: rgba(244, 247, 242, 0.95);
+      border: 1px solid rgba(125, 157, 133, 0.14);
+    }
+    .course-meta dl {
+      margin: 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .course-meta dt {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .course-meta dd {
+      margin: 0;
+      line-height: 1.85;
+      color: var(--forest);
+      font-weight: 500;
+    }
+    .course-block {
+      margin-top: 1.4rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(125, 157, 133, 0.12);
+    }
+    .course-block h4 {
+      margin: 0 0 0.75rem;
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+    .course-block p {
+      margin: 0;
+      line-height: 1.95;
+    }
+    .details {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+    details {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(125, 157, 133, 0.14);
+      background: rgba(255, 255, 255, 0.88);
+      overflow: hidden;
+    }
+    details summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1rem 1.15rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+    details summary::after {
+      content: '+';
+      color: var(--sage);
+      font-size: 1.2rem;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+    .details-body {
+      padding: 0 1.15rem 1.1rem;
+      color: rgba(74, 80, 71, 0.88);
+      line-height: 1.9;
+    }
+    .details-body ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .details-body li + li {
+      margin-top: 0.35rem;
+    }
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.88fr) minmax(0, 1.12fr);
+      gap: 2rem;
+      align-items: center;
+    }
+    .teacher-photo {
+      overflow: hidden;
+      border-radius: 2rem;
+      box-shadow: 0 24px 52px rgba(92, 73, 60, 0.18);
+    }
+    .teacher-photo img {
+      display: block;
+      width: 100%;
+      min-height: 460px;
+      object-fit: cover;
+    }
+    .quote-card {
+      background: linear-gradient(135deg, rgba(255, 253, 249, 0.98) 0%, rgba(246, 239, 232, 0.98) 100%);
+    }
+    .voice-card h3,
+    .faq-card h3 {
+      margin: 0 0 0.65rem;
+      font-size: 1.18rem;
+      line-height: 1.7;
+    }
+    .voice-meta {
+      color: var(--sage);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+    .voice-card p,
+    .faq-card p,
+    .support-card p,
+    .quote-card p {
+      margin: 0;
+      line-height: 1.95;
+    }
+    .voice-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      color: var(--forest);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .voice-link:hover,
+    .voice-link:focus-visible {
+      color: var(--sage);
+    }
+    .cta-panel {
+      padding: 2.4rem;
+      border-radius: 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 26%),
+        linear-gradient(135deg, rgba(45, 58, 50, 0.98) 0%, rgba(78, 93, 81, 0.96) 100%);
+      color: rgba(255, 252, 248, 0.9);
+      text-align: center;
+    }
+    .cta-panel h2,
+    .cta-panel p {
+      color: inherit;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: stretch;
+      margin-top: 1.5rem;
+    }
+    .cta-row.center {
+      justify-content: center;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 1rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      text-align: center;
+      flex: 1 1 280px;
+    }
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      transform: translateY(-1px);
+    }
+    .cta-button-primary {
+      background: linear-gradient(135deg, #e0b97b 0%, #c59a60 100%);
+      color: #fffdf8;
+      box-shadow: 0 16px 30px rgba(198, 163, 106, 0.24);
+    }
+    .cta-button-primary:hover,
+    .cta-button-primary:focus-visible {
+      box-shadow: 0 20px 36px rgba(198, 163, 106, 0.3);
+    }
+    .cta-button-secondary {
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--forest);
+      border: 1px solid rgba(125, 157, 133, 0.22);
+      box-shadow: 0 12px 24px rgba(92, 73, 60, 0.08);
+    }
+    .cta-button-secondary:hover,
+    .cta-button-secondary:focus-visible {
+      color: var(--sage);
+      box-shadow: 0 18px 30px rgba(92, 73, 60, 0.12);
+    }
+    .subnote {
+      margin-top: 1rem;
+      color: rgba(107, 102, 93, 0.92);
+      line-height: 1.9;
+      font-size: 0.94rem;
+    }
+    .mini-note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: rgba(255, 252, 248, 0.78);
+    }
+    .footer {
+      padding: 2rem 0 4rem;
+      text-align: center;
+      color: rgba(74, 80, 71, 0.75);
+      font-size: 0.84rem;
+    }
+    .footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .footer a:hover,
+    .footer a:focus-visible {
+      text-decoration: underline;
+    }
+    .sticky-cta {
+      display: none;
+    }
+    @media (max-width: 960px) {
+      .hero-inner,
+      .image-text,
+      .course-grid,
+      .teacher-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .comparison-table,
+      .comparison-table thead,
+      .comparison-table tbody,
+      .comparison-table tr,
+      .comparison-table th,
+      .comparison-table td {
+        grid-template-columns: 1fr;
+      }
+      .comparison-table thead {
+        display: none;
+      }
+      .comparison-table tbody,
+      .comparison-table tr {
+        display: grid;
+      }
+      .comparison-table tr {
+        border-bottom: 1px solid rgba(125, 157, 133, 0.14);
+      }
+      .comparison-table td {
+        display: block;
+        border-bottom: none;
+        padding-top: 0.35rem;
+        padding-bottom: 0.35rem;
+      }
+      .comparison-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 0.2rem;
+        color: var(--sage);
+        font-size: 0.73rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .scenery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 720px) {
+      .floating-nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 0.9rem 1rem;
+      }
+      .hero {
+        padding-top: 1.5rem;
+      }
+      .hero-inner {
+        padding-top: 2rem;
+      }
+      .hero-copy,
+      .soft-card,
+      .course-card,
+      .support-card,
+      .voice-card,
+      .faq-card,
+      .quote-card,
+      .glass-card,
+      .cta-panel {
+        padding: 1.4rem;
+      }
+      .section {
+        padding: 4rem 0;
+      }
+      .image-frame img,
+      .teacher-photo img {
+        min-height: 280px;
+      }
+      .scenery-grid {
+        grid-template-columns: 1fr;
+      }
+      .sticky-cta {
+        position: sticky;
+        bottom: 0;
+        z-index: 60;
+        display: block;
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(34, 43, 37, 0.92);
+        backdrop-filter: blur(10px);
+      }
+      .sticky-cta .cta-button {
+        min-height: 54px;
+        font-size: 0.92rem;
+        padding: 0.9rem 1rem;
+      }
+      .sticky-cta .cta-row {
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="floating-nav">
+    <div class="floating-nav-inner">
+      <a class="brand" href="/">ふちLABO. course guide</a>
+      <div class="nav-links">
+        <a href="#nayami">お悩み</a>
+        <a href="#erabikata">講座の選び方</a>
+        <a href="#teacher">講師紹介</a>
+        <a href="#setsumeikai">無料説明会</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img class="hero-image" src="${heroImage}" alt="">
+    <div class="shell hero-inner">
+      <div class="hero-copy hero-card">
+        <div class="eyebrow">Scenery Reading Course</div>
+        <h1>四柱推命の難しい漢字を、<br>あなただけの「自然の景色」として読めるようになる講座です。</h1>
+        <p class="hero-lead">
+          命式を見ても、どこから読めばいいかわからない。<br>
+          星の意味を覚えても、自分や人にどう伝えればいいかわからない。<br>
+          そんな方へ。
+        </p>
+        <p class="hero-lead" style="margin-top:1rem;">
+          自然派四柱推命では、命式を木・火・土・金・水のバランスから眺め、<br>
+          その人らしさや人生の流れを「景色」として読み解いていきます。<br>
+          暗記だけで終わらず、人にやさしく伝えられる力まで育てるマンツーマン講座です。
+        </p>
+        ${renderDualCta()}
+        <p class="subnote">60分／オンライン／簡単な模擬鑑定つき<br>現在の学習状況とご希望をお聞きし、あなたに合う講座を一緒に整理します。</p>
+      </div>
+      <aside class="hero-note">
+        <strong style="display:block; margin-bottom:0.7rem; color:var(--forest); font-family:'Shippori Mincho',serif;">このページでわかること</strong>
+        悩みから講座の選び方、受講後の変化、安心サポート、無料説明会の流れまで、今のままの世界観でわかりやすく整理しました。<br><br>
+        料金は掲載せず、説明会または公式LINEで個別にご案内します。
+      </aside>
+    </div>
+  </header>
+
+  <section id="nayami" class="section">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-kicker">Problem</div>
+        <h2>こんなお悩みはありませんか？</h2>
+      </div>
+      <div class="soft-card">
+        <ul class="problem-list">
+          ${worries.map((item) => `<li>${item}</li>`).join('')}
+        </ul>
+        <p class="section-copy" style="margin-top:1.6rem;">
+          ひとつでも当てはまるなら、それはあなたに才能がないからではなく、命式を見る「順番」と「言葉」が、まだ整っていないだけです。<br>
+          この講座では、難しい知識を一つひとつ景色に置き換えながら、自分にも人にもやさしく伝えられる読み方を育てていきます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="shell image-text">
+      <div class="image-frame">
+        <img src="${conceptImage}" alt="">
+      </div>
+      <div class="glass-card">
+        <div class="section-kicker">Concept</div>
+        <h2 style="margin:0.9rem 0 1rem; font-size:clamp(1.7rem,2.7vw,2.6rem); line-height:1.7;">自然派四柱推命は、命式を「景色」として読みます</h2>
+        <p class="section-copy">
+          四柱推命には、少し怖く見える言葉があります。<br>
+          でも、その言葉だけで自分や誰かの人生を決めつける必要はありません。
+        </p>
+        <p class="section-copy" style="margin-top:1rem;">
+          自然派四柱推命では、命式に並ぶ漢字を、木・火・土・金・水のバランスとして見ていきます。<br>
+          暑すぎる景色なのか。寒さが強い景色なのか。水が多いのか。土が乾いているのか。<br>
+          そうやって命式を「自然の景色」として眺めることで、その人がどうすれば無理なく輝けるかが見えてきます。
+        </p>
+        <p class="section-copy" style="margin-top:1rem;">これは単なる占いではなく、自分と人を理解するための言葉を育てる学びです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-deep">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-kicker">Scenery</div>
+        <h2>十干の漢字を、あなただけの命式の景色に置き換えていきます</h2>
+        <p class="section-copy">前のページで強みだった世界観は残しつつ、ここでは悩みへの答えとして短く、でも印象深く伝えます。</p>
+      </div>
+      <div class="scenery-grid">
+        <div class="scenery-card"><strong>甲・乙（木）</strong><span>伸びゆく樹木や草花</span></div>
+        <div class="scenery-card"><strong>丙・丁（火）</strong><span>万物を照らす太陽や灯火</span></div>
+        <div class="scenery-card"><strong>戊・己（土）</strong><span>どっしりとした山や大地</span></div>
+        <div class="scenery-card"><strong>庚・辛（金）</strong><span>強固な岩や気高い宝石</span></div>
+        <div class="scenery-card"><strong>壬・癸（水）</strong><span>大河や雨露</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-kicker">Change</div>
+        <h2>この講座で目指す変化</h2>
+        <p class="section-copy">受講後は、次のような状態を目指します。</p>
+      </div>
+      <div class="soft-card">
+        <ul class="change-list">
+          ${changes.map((item) => `<li>${item}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="erabikata" class="section section-soft">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-kicker">Map</div>
+        <h2>あなたに合う講座の選び方</h2>
+      </div>
+      <div class="table-card">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>講座</th>
+              <th>こんな方に</th>
+              <th>目指す状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${comparisonRows
+              .map(
+                (row) => `
+                  <tr>
+                    <td data-label="講座"><strong>${row.title}</strong></td>
+                    <td data-label="こんな方に">${row.target}</td>
+                    <td data-label="目指す状態">${row.goal}</td>
+                  </tr>
+                `,
+              )
+              .join('')}
+          </tbody>
+        </table>
+      </div>
+      <p class="section-copy" style="text-align:center; margin-top:1.2rem;">どの講座が合うか迷う方も大丈夫です。無料説明会で、今の学習状況に合わせて一緒に選びます。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell course-stack">
+      <article class="course-card">
+        <div class="course-badge">Level 01</div>
+        <h3>入門講座｜基礎の基礎を「景色」の視点で整える</h3>
+        <p class="course-sub">四柱推命を初めて学ぶ方や、独学でつまずいた経験のある方へ。</p>
+        <div class="course-grid">
+          <div>
+            <div class="course-block" style="margin-top:0; padding-top:0; border-top:none;">
+              <h4>この講座でできるようになること</h4>
+              <ul class="outline-list">
+                <li>命式に出る「各星」を、自分で出せるようになる</li>
+                <li>陰陽五行・十干・十二支という土台を、景色の視点で押さえられる</li>
+                <li>専門用語を暗記する前に、命式を眺める最初の視点が育つ</li>
+              </ul>
+            </div>
+            <div class="course-block">
+              <h4>講座内容（要約）</h4>
+              <ul class="outline-list">
+                ${introCourseOutline.map((item) => `<li>${item}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+          <aside class="course-meta">
+            <dl>
+              <div>
+                <dt>対象</dt>
+                <dd>四柱推命を初めて学ぶ方／独学でつまずいた経験のある方</dd>
+              </div>
+              <div>
+                <dt>回数・形式</dt>
+                <dd>90分 × 2回／Zoomマンツーマン</dd>
+              </div>
+              <div>
+                <dt>サポート</dt>
+                <dd>講座後に動画アーカイブをお渡し／LINEでの質問無制限／各回ごとの演習課題つき</dd>
+              </div>
+              <div>
+                <dt>事前課題</dt>
+                <dd>「四柱推命完全マニュアル」第2章まで</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+        ${renderDualCta()}
+      </article>
+
+      <article class="course-card">
+        <div class="course-badge">Level 02</div>
+        <h3>中級講座｜五行バランスから「原命式」と「運気の流れ」を読み解く</h3>
+        <p class="course-sub">ふちLABO.の中核講座。理論をばらばらに覚えるのではなく、一つの景色としてつなげていきます。</p>
+        <div class="course-grid">
+          <div>
+            <div class="course-block" style="margin-top:0; padding-top:0; border-top:none;">
+              <h4>この講座でできるようになること</h4>
+              <ul class="outline-list">
+                <li>木火土金水の五行バランスを軸に、命式全体の傾向を捉えられる</li>
+                <li>原命式と運気の流れ（大運・年運）を順序立てて読めるようになる</li>
+                <li>通変・身旺身弱・内格外格・用神を、一つの景色としてつなげられる</li>
+              </ul>
+            </div>
+            <div class="course-block">
+              <h4>講座内容（要約）</h4>
+              <p>全39項目を15回に整理。四柱推命の基本から、十干・十二支、通変、身旺身弱、内格・外格、用神、大運・年運までを段階的に学びます。最後の2回は実践ワークと質問会（60分）で、理論を命式読解へ落とし込みます。</p>
+            </div>
+          </div>
+          <aside class="course-meta">
+            <dl>
+              <div>
+                <dt>対象</dt>
+                <dd>基礎を踏まえ、命式全体の見方と運気の流れまで深めたい方</dd>
+              </div>
+              <div>
+                <dt>回数・形式</dt>
+                <dd>2時間 × 15回 ＋ 質問会（60分）／Zoomマンツーマン</dd>
+              </div>
+              <div>
+                <dt>サポート</dt>
+                <dd>講座後に動画アーカイブをお渡し／LINEでの質問無制限／月1オンライン勉強会／各回ワーク（宿題）つき</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+        <div class="details">
+          <details>
+            <summary>各回の詳細カリキュラム（第1回〜第15回）を見る</summary>
+            <div class="details-body">
+              ${intermediateCurriculum
+                .map(
+                  (lesson) => `
+                    <div style="padding:0.75rem 0; border-top:1px solid rgba(125, 157, 133, 0.12);">
+                      <strong style="display:block; color:var(--forest); margin-bottom:0.35rem;">${lesson.label}｜${lesson.title}</strong>
+                      <ul>
+                        ${lesson.items.map((item) => `<li>${item}</li>`).join('')}
+                      </ul>
+                    </div>
+                  `,
+                )
+                .join('')}
+            </div>
+          </details>
+        </div>
+        ${renderDualCta()}
+      </article>
+
+      <article class="course-card">
+        <div class="course-badge">Level 03</div>
+        <h3>上級講座｜鑑定を「生き方の戦略」へと昇華させる</h3>
+        <p class="course-sub">中級修了者向け。鑑定を、人生の選び方や現実のテーマに結びつけていく段階です。</p>
+        <div class="course-grid">
+          <div>
+            <div class="course-block" style="margin-top:0; padding-top:0; border-top:none;">
+              <h4>この講座でできるようになること</h4>
+              <ul class="outline-list">
+                <li>「五行バランス」×「命式の景色」を統合し、より深い鑑定ができる</li>
+                <li>仕事・恋愛・相性など、現実の相談テーマごとの読み方が身につく</li>
+                <li>一人ひとりに最適な開運戦略・行動の方向性を読み解けるようになる</li>
+              </ul>
+            </div>
+            <div class="course-block">
+              <h4>講座内容（要約）</h4>
+              <div class="details">
+                <details open>
+                  <summary>上級講座の学習テーマ</summary>
+                  <div class="details-body">
+                    <ul>
+                      ${advancedOutline.map((item) => `<li><strong>${item.title}</strong>｜${item.body}</li>`).join('')}
+                    </ul>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+          <aside class="course-meta">
+            <dl>
+              <div>
+                <dt>対象・受講条件</dt>
+                <dd>中級講座を修了し、より深い鑑定力と応用力を身につけたい方<br>※本講座は「中級講座」受講者が対象です</dd>
+              </div>
+              <div>
+                <dt>回数・形式</dt>
+                <dd>2時間 × 18回 ＋ 質問会（60分）／Zoomマンツーマン</dd>
+              </div>
+              <div>
+                <dt>サポート</dt>
+                <dd>講座後に動画アーカイブをお渡し／LINEでの質問無制限／月1オンライン勉強会／各回ワーク（宿題）つき</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+        ${renderDualCta()}
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-kicker">Support</div>
+        <h2>全コース共通の安心サポート</h2>
+      </div>
+      <div class="grid-4">
+        ${supportItems
+          .map(
+            (item) => `
+              <article class="support-card">
+                <h3 style="margin:0 0 0.7rem; font-size:1.1rem; line-height:1.7;">${item.title}</h3>
+                <p>${item.body}</p>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </div>
+  </section>
+
+  <section id="teacher" class="section">
+    <div class="shell teacher-grid">
+      <div class="teacher-photo">
+        <img src="${teacherImage}" alt="">
+      </div>
+      <div class="quote-card">
+        <div class="section-kicker">Teacher</div>
+        <h2 style="margin:0.9rem 0 1rem; font-size:clamp(1.75rem,2.8vw,2.7rem); line-height:1.7;">講師｜てつ先生（自然派四柱推命講師・鑑定士）</h2>
+        <p>大学時代に哲学を学び、人の生き方や運命について探究する中で、四柱推命の奥にある陰陽五行と自然観に出会いました。</p>
+        <p style="margin-top:1rem;">その後、自然派四柱推命の世界を深く学び、命式を単なる吉凶や怖い言葉で判断するのではなく、自然の景色として読み解く講義を行っています。</p>
+        <p style="margin-top:1rem;">講座で大切にしているのは、キーワードを丸暗記することではありません。</p>
+        <p style="margin-top:1rem;">
+          「なぜその意味になるのか」<br>
+          「その人の命式には、どんな景色が広がっているのか」<br>
+          「その景色を、どうやさしい言葉で伝えるのか」
+        </p>
+        <p style="margin-top:1rem;">ここまで丁寧に解きほぐしながら、実際に使える鑑定力へとつなげていきます。はじめて学ぶ方にも、学び直しの方にも、安心して一歩ずつ進んでいただけるよう伴走します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="setsumeikai" class="section section-deep">
+    <div class="shell">
+      <div class="cta-panel">
+        <div class="section-kicker" style="color:rgba(255,252,248,0.68);">Free Session</div>
+        <h2 style="margin:0.9rem 0 1rem; font-size:clamp(1.8rem,3vw,2.8rem); line-height:1.7;">まずは無料講座説明会にご参加ください</h2>
+        <p>講座にいきなり申し込む必要はありません。まずは60分の無料説明会で、現在の学習状況や目的をお聞きし、どの講座があなたに合っているかを一緒に整理します。</p>
+        <p style="margin-top:1rem;">説明会では、簡単な模擬鑑定も行います。自然派四柱推命の読み方が自分に合うかどうか、実際に体験してからご判断ください。</p>
+        <div class="soft-card" style="margin-top:1.4rem; text-align:left;">
+          <h3 style="margin:0 0 0.8rem; font-size:1.15rem;">説明会で行うこと</h3>
+          <ul class="outline-list">
+            <li>現在のお悩みや学習歴の確認</li>
+            <li>自然派四柱推命の考え方のご説明</li>
+            <li>簡単な模擬鑑定</li>
+            <li>入門・中級・上級講座の違いのご説明</li>
+            <li>あなたに合う学び方のご提案</li>
+            <li>料金・お支払い方法のご案内</li>
+            <li>質疑応答</li>
+          </ul>
+        </div>
+        <p class="mini-note">無理な勧誘は行いません。迷っている段階でも、お気軽にご相談ください。</p>
+        <p class="mini-note">※講座の料金とお支払い方法は、おひとりおひとりに合う講座を一緒に選んだうえでご案内したいため、無料説明会、または公式LINEにて個別にお伝えしています。</p>
+        ${renderDualCta('center')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-kicker">Voice</div>
+        <h2>受講生の声</h2>
+      </div>
+      <div class="grid-3">
+        ${voices
+          .map(
+            (voice) => `
+              <article class="voice-card">
+                <div class="section-kicker" style="margin-bottom:0.7rem;">${voice.heading}</div>
+                <h3>${voice.subheading}</h3>
+                <div class="voice-meta">${voice.meta}</div>
+                <p>${voice.body}（${voice.meta}）</p>
+                <a class="voice-link" href="${voice.href}">ほかの受講生の声も見る</a>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+      <p style="text-align:center; margin-top:1.4rem;">
+        <a class="voice-link" href="/voice">ほかの受講生の声をもっと見る</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-kicker">FAQ</div>
+        <h2>よくある質問</h2>
+      </div>
+      <div class="grid-2">
+        ${faqItems
+          .map(
+            (item) => `
+              <article class="faq-card">
+                <h3>Q. ${item.q}</h3>
+                <p>A. ${item.a}</p>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta-panel">
+        <div class="section-kicker" style="color:rgba(255,252,248,0.68);">Last Call</div>
+        <h2 style="margin:0.9rem 0 1rem; font-size:clamp(1.8rem,3vw,2.8rem); line-height:1.7;">怖い漢字を、あなたの人生の景色に変えていきましょう</h2>
+        <p>四柱推命は、人生を決めつけるためのものではありません。自分を知り、人を知り、これからの一歩をやさしく選ぶための学びです。</p>
+        <p style="margin-top:1rem;">命式に並ぶ漢字が、ただの難しい記号ではなく、あなた自身の自然の景色として見えてきたとき、自分のことも、人のことも、少しあたたかく受け止められるようになります。</p>
+        <p style="margin-top:1rem;">まずは無料説明会で、今の学習状況や目的をお聞かせください。あなたに合う学び方を、一緒に整理していきます。</p>
+        ${renderDualCta('center')}
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-cta">
+    <div class="shell" style="width:min(100%, calc(100% - 0rem));">
+      ${renderDualCta()}
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="shell">
+      <p style="margin:0 0 0.5rem;">
+        <a href="/legal">特定商取引法に関する表記</a>
+        <span style="opacity:0.45;">｜</span>
+        <a href="/terms">利用規約</a>
+        <span style="opacity:0.45;">｜</span>
+        <a href="/privacy">プライバシーポリシー</a>
+      </p>
+      <p style="margin:0;">© ふちLABO. / 自然の景色でみる四柱推命を探究するラボ</p>
+    </div>
+  </footer>
 </body>
 </html>`;
 }
@@ -4998,6 +6320,12 @@ const server = http.createServer(async (req, res) => {
   if (isReadMethod && parsedUrl.pathname === '/kouza') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderKouzaCoursePage());
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/kouza-annai') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderKouzaAnnaiPage());
     return;
   }
 
