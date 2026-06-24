@@ -215,6 +215,184 @@ function renderExternalLinks(urls) {
   return `<div class="external-inline-links">${items}</div>`;
 }
 
+const HOME_BANNER_SLIDES = [
+  {
+    href: 'https://note.com/fuchio_4suimei/n/nc1971c21b41d',
+    image: '/uploads/images/touyou-banner.jpg',
+    alt: '東洋思想入門講座',
+    label: '東洋思想入門講座',
+  },
+  {
+    href: 'https://www.fuchilabo.com/yobikou',
+    image: '/uploads/images/yobikou-banner.jpg',
+    alt: '自然派四柱推命 予備校',
+    label: '自然派四柱推命予備校',
+  },
+  {
+    href: 'https://www.youtube.com/@fuchio.502/streams',
+    image: '/uploads/images/zissen-banner.jpg',
+    alt: 'YouTubeライブ配信',
+    label: 'YouTubeライブ配信',
+  },
+];
+
+const HOME_BANNER_ARROW_ICON = `
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11l4.29 4.3a1 1 0 1 1-1.41 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.41 0Z" fill="currentColor"></path>
+  </svg>
+`;
+
+const HOME_BANNER_SCRIPT = `
+  (function () {
+    var sliders = document.querySelectorAll('[data-home-banner-slider]');
+    if (!sliders.length) return;
+
+    Array.prototype.forEach.call(sliders, function (slider) {
+      var slides = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-slide]'));
+      var dots = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-dot]'));
+      var prevButton = slider.querySelector('[data-home-banner-prev]');
+      var nextButton = slider.querySelector('[data-home-banner-next]');
+      var currentIndex = 0;
+      var timerId = null;
+      var autoplayMs = 5000;
+
+      function showSlide(nextIndex) {
+        currentIndex = nextIndex;
+
+        slides.forEach(function (slide, index) {
+          var isActive = index === currentIndex;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+          if (isActive) {
+            slide.removeAttribute('tabindex');
+          } else {
+            slide.setAttribute('tabindex', '-1');
+          }
+        });
+
+        dots.forEach(function (dot, index) {
+          var isActive = index === currentIndex;
+          dot.classList.toggle('is-active', isActive);
+          dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      }
+
+      function showRelativeSlide(step) {
+        showSlide((currentIndex + step + slides.length) % slides.length);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        timerId = window.setInterval(function () {
+          showSlide((currentIndex + 1) % slides.length);
+        }, autoplayMs);
+      }
+
+      function stopAutoplay() {
+        if (timerId !== null) {
+          window.clearInterval(timerId);
+          timerId = null;
+        }
+      }
+
+      dots.forEach(function (dot, index) {
+        dot.addEventListener('click', function () {
+          showSlide(index);
+          startAutoplay();
+        });
+      });
+
+      if (prevButton) {
+        prevButton.addEventListener('click', function () {
+          showRelativeSlide(-1);
+          startAutoplay();
+        });
+      }
+
+      if (nextButton) {
+        nextButton.addEventListener('click', function () {
+          showRelativeSlide(1);
+          startAutoplay();
+        });
+      }
+
+      slider.addEventListener('mouseenter', stopAutoplay);
+      slider.addEventListener('mouseleave', startAutoplay);
+      slider.addEventListener('focusin', stopAutoplay);
+      slider.addEventListener('focusout', function (event) {
+        if (!slider.contains(event.relatedTarget)) {
+          startAutoplay();
+        }
+      });
+      slider.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') {
+          showRelativeSlide(-1);
+          startAutoplay();
+        } else if (event.key === 'ArrowRight') {
+          showRelativeSlide(1);
+          startAutoplay();
+        }
+      });
+
+      showSlide(0);
+      if (slides.length > 1) {
+        startAutoplay();
+      }
+    });
+  })();
+`;
+
+function renderHomeBannerSection() {
+  const homeBannerSlidesMarkup = HOME_BANNER_SLIDES
+    .map(
+      (slide, index) => `
+        <a
+          class="home-banner-slide${index === 0 ? ' is-active' : ''}"
+          href="${slide.href}"
+          aria-label="${slide.label}の詳細を見る"
+          data-home-banner-slide="${index}"
+          ${index === 0 ? '' : 'tabindex="-1" aria-hidden="true"'}
+        >
+          <img class="home-banner-image" src="${slide.image}" alt="${slide.alt}" loading="lazy" />
+        </a>
+      `,
+    )
+    .join('');
+
+  const homeBannerDotsMarkup = HOME_BANNER_SLIDES
+    .map(
+      (slide, index) => `
+        <button
+          class="home-banner-dot${index === 0 ? ' is-active' : ''}"
+          type="button"
+          aria-label="${slide.label}を表示"
+          aria-pressed="${index === 0 ? 'true' : 'false'}"
+          data-home-banner-dot="${index}"
+        ></button>
+      `,
+    )
+    .join('');
+
+  return `
+    <div class="home-banner-wrap">
+      <div class="home-banner-slider" data-home-banner-slider>
+        <div class="home-banner-viewport">
+          <button class="home-banner-arrow home-banner-arrow-prev" type="button" aria-label="前のバナーを表示" data-home-banner-prev>
+            ${HOME_BANNER_ARROW_ICON}
+          </button>
+          ${homeBannerSlidesMarkup}
+          <button class="home-banner-arrow home-banner-arrow-next" type="button" aria-label="次のバナーを表示" data-home-banner-next>
+            ${HOME_BANNER_ARROW_ICON}
+          </button>
+        </div>
+        <div class="home-banner-dots" aria-label="おすすめバナー切り替え">
+          ${homeBannerDotsMarkup}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function renderAdminImagesPage(message) {
   const files = getUploadedImages();
   const rows = files
@@ -426,8 +604,11 @@ function renderPersonProductsPage(personId) {
   const content = `
     <div style="margin-bottom: 0.75rem;"><a href="/" style="font-size: 0.85rem; color: #2563eb; text-decoration: none;">&larr; TOPに戻る</a></div>
     <h2 style="margin-bottom: 1rem;">${personLabel ? `${personLabel}のメニュー一覧` : 'メニュー一覧'}</h2>
+    ${renderHomeBannerSection()}
     <div class="${gridClass}">${cards}</div>
     <script>
+      ${HOME_BANNER_SCRIPT}
+
       (function () {
         var cards = document.querySelectorAll('.product-card-clickable[data-href]');
         if (!cards.length) return;
@@ -2706,180 +2887,14 @@ function renderHomePage() {
     })
     .join('');
 
-  const homeBannerSlides = [
-    {
-      href: 'https://note.com/fuchio_4suimei/n/nc1971c21b41d',
-      image: '/uploads/images/touyou-banner.jpg',
-      alt: '東洋思想入門講座',
-      label: '東洋思想入門講座',
-    },
-    {
-      href: 'https://www.fuchilabo.com/yobikou',
-      image: '/uploads/images/yobikou-banner.jpg',
-      alt: '自然派四柱推命 予備校',
-      label: '自然派四柱推命予備校',
-    },
-    {
-      href: 'https://www.youtube.com/@fuchio.502/streams',
-      image: '/uploads/images/zissen-banner.jpg',
-      alt: 'YouTubeライブ配信',
-      label: 'YouTubeライブ配信',
-    },
-  ];
-
-  const homeBannerSlidesMarkup = homeBannerSlides
-    .map(
-      (slide, index) => `
-        <a
-          class="home-banner-slide${index === 0 ? ' is-active' : ''}"
-          href="${slide.href}"
-          aria-label="${slide.label}の詳細を見る"
-          data-home-banner-slide="${index}"
-          ${index === 0 ? '' : 'tabindex="-1" aria-hidden="true"'}
-        >
-          <img class="home-banner-image" src="${slide.image}" alt="${slide.alt}" loading="lazy" />
-        </a>
-      `,
-    )
-    .join('');
-
-  const homeBannerDotsMarkup = homeBannerSlides
-    .map(
-      (slide, index) => `
-        <button
-          class="home-banner-dot${index === 0 ? ' is-active' : ''}"
-          type="button"
-          aria-label="${slide.label}を表示"
-          aria-pressed="${index === 0 ? 'true' : 'false'}"
-          data-home-banner-dot="${index}"
-        ></button>
-      `,
-    )
-    .join('');
-
-  const homeBannerArrowIcon = `
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11l4.29 4.3a1 1 0 1 1-1.41 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.41 0Z" fill="currentColor"></path>
-    </svg>
-  `;
-
   const content = `
     <div style="max-width: 900px; margin: 0 auto 1.5rem; text-align: center;">
       <p style="font-size: 0.95rem; color: #4b5563;">鑑定士を選んで、メニュー一覧をご覧ください。</p>
     </div>
-    <div class="home-banner-wrap">
-      <div class="home-banner-slider" data-home-banner-slider>
-        <div class="home-banner-viewport">
-          <button class="home-banner-arrow home-banner-arrow-prev" type="button" aria-label="前のバナーを表示" data-home-banner-prev>
-            ${homeBannerArrowIcon}
-          </button>
-          ${homeBannerSlidesMarkup}
-          <button class="home-banner-arrow home-banner-arrow-next" type="button" aria-label="次のバナーを表示" data-home-banner-next>
-            ${homeBannerArrowIcon}
-          </button>
-        </div>
-        <div class="home-banner-dots" aria-label="おすすめバナー切り替え">
-          ${homeBannerDotsMarkup}
-        </div>
-      </div>
-    </div>
+    ${renderHomeBannerSection()}
     <div class="cards-grid">${cards}</div>
     <script>
-      (function () {
-        var slider = document.querySelector('[data-home-banner-slider]');
-        if (!slider) return;
-
-        var slides = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-slide]'));
-        var dots = Array.prototype.slice.call(slider.querySelectorAll('[data-home-banner-dot]'));
-        var prevButton = slider.querySelector('[data-home-banner-prev]');
-        var nextButton = slider.querySelector('[data-home-banner-next]');
-        var currentIndex = 0;
-        var timerId = null;
-        var autoplayMs = 5000;
-
-        function showSlide(nextIndex) {
-          currentIndex = nextIndex;
-
-          slides.forEach(function (slide, index) {
-            var isActive = index === currentIndex;
-            slide.classList.toggle('is-active', isActive);
-            slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-            if (isActive) {
-              slide.removeAttribute('tabindex');
-            } else {
-              slide.setAttribute('tabindex', '-1');
-            }
-          });
-
-          dots.forEach(function (dot, index) {
-            var isActive = index === currentIndex;
-            dot.classList.toggle('is-active', isActive);
-            dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-          });
-        }
-
-        function showRelativeSlide(step) {
-          showSlide((currentIndex + step + slides.length) % slides.length);
-        }
-
-        function startAutoplay() {
-          stopAutoplay();
-          timerId = window.setInterval(function () {
-            showSlide((currentIndex + 1) % slides.length);
-          }, autoplayMs);
-        }
-
-        function stopAutoplay() {
-          if (timerId !== null) {
-            window.clearInterval(timerId);
-            timerId = null;
-          }
-        }
-
-        dots.forEach(function (dot, index) {
-          dot.addEventListener('click', function () {
-            showSlide(index);
-            startAutoplay();
-          });
-        });
-
-        if (prevButton) {
-          prevButton.addEventListener('click', function () {
-            showRelativeSlide(-1);
-            startAutoplay();
-          });
-        }
-
-        if (nextButton) {
-          nextButton.addEventListener('click', function () {
-            showRelativeSlide(1);
-            startAutoplay();
-          });
-        }
-
-        slider.addEventListener('mouseenter', stopAutoplay);
-        slider.addEventListener('mouseleave', startAutoplay);
-        slider.addEventListener('focusin', stopAutoplay);
-        slider.addEventListener('focusout', function (event) {
-          if (!slider.contains(event.relatedTarget)) {
-            startAutoplay();
-          }
-        });
-        slider.addEventListener('keydown', function (event) {
-          if (event.key === 'ArrowLeft') {
-            showRelativeSlide(-1);
-            startAutoplay();
-          } else if (event.key === 'ArrowRight') {
-            showRelativeSlide(1);
-            startAutoplay();
-          }
-        });
-
-        showSlide(0);
-        if (slides.length > 1) {
-          startAutoplay();
-        }
-      })();
+      ${HOME_BANNER_SCRIPT}
     </script>
   `;
 
