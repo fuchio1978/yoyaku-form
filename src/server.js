@@ -2719,6 +2719,12 @@ function renderHomePage() {
       alt: '自然派四柱推命 予備校',
       label: '自然派四柱推命予備校',
     },
+    {
+      href: 'https://www.youtube.com/@fuchio.502/streams',
+      image: '/uploads/images/zissen-banner.jpg',
+      alt: 'YouTubeライブ配信',
+      label: 'YouTubeライブ配信',
+    },
   ];
 
   const homeBannerSlidesMarkup = homeBannerSlides
