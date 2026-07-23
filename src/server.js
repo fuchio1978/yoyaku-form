@@ -5694,6 +5694,29 @@ function renderReservationForm(product) {
   const paymentOptions = product.id === 'shichusuimei-kiso'
     ? '<option value="bank">銀行振込</option>'
     : '<option value="bank">銀行振込</option><option value="paypal">クレジットカード</option>';
+  const collectsBirthDetails = product.id !== SHICHUSUIMEI_KISO_PRODUCT.id;
+  const birthdayField = collectsBirthDetails
+    ? `
+      <div class="field">
+        <label for="birthday">生年月日</label>
+        <input id="birthday" name="birthday" type="date" value="1980-01-01" required />
+        <div class="field-error-message" data-error-for="birthday"></div>
+      </div>
+    `
+    : '';
+  const birthContextFields = collectsBirthDetails
+    ? `
+      <div class="field">
+        <label for="birthTime">生まれ時間</label>
+        <input id="birthTime" name="birthTime" type="text" placeholder="例）14:52" />
+      </div>
+      <div class="field">
+        <label for="birthPlace">出身地</label>
+        <input id="birthPlace" name="birthPlace" type="text" placeholder="例）愛知県" required />
+        <div class="field-error-message" data-error-for="birthPlace"></div>
+      </div>
+    `
+    : '';
 
   let dateTimeFields = '';
 
@@ -5811,11 +5834,7 @@ function renderReservationForm(product) {
         <div class="field-error-message" data-error-for="emailConfirm"></div>
       </div>
       ${sessionTypeField}
-      <div class="field">
-        <label for="birthday">生年月日</label>
-        <input id="birthday" name="birthday" type="date" value="1980-01-01" required />
-        <div class="field-error-message" data-error-for="birthday"></div>
-      </div>
+      ${birthdayField}
       <div class="field">
         <label for="genderAtBirth">性別（出生時）</label>
         <select id="genderAtBirth" name="genderAtBirth" required>
@@ -5828,15 +5847,7 @@ function renderReservationForm(product) {
         </small>
         <div class="field-error-message" data-error-for="genderAtBirth"></div>
       </div>
-      <div class="field">
-        <label for="birthTime">生まれ時間</label>
-        <input id="birthTime" name="birthTime" type="text" placeholder="例）14:52" />
-      </div>
-      <div class="field">
-        <label for="birthPlace">出身地</label>
-        <input id="birthPlace" name="birthPlace" type="text" placeholder="例）愛知県" required />
-        <div class="field-error-message" data-error-for="birthPlace"></div>
-      </div>
+      ${birthContextFields}
       ${compatibilityOptionField}
       ${
         isFree
@@ -6216,7 +6227,11 @@ function handleReservation(body, res) {
   if (product.showSessionType) {
     required.push('sessionType');
   }
-  required.push('birthday', 'genderAtBirth', 'birthPlace');
+  if (product.id === SHICHUSUIMEI_KISO_PRODUCT.id) {
+    required.push('genderAtBirth');
+  } else {
+    required.push('birthday', 'genderAtBirth', 'birthPlace');
+  }
   if (!isFree) {
     required.push('paymentMethod');
   }

@@ -57,6 +57,7 @@ function renderShichusuimeiKisoPage(options = {}) {
         </div>
         <figure class="kiso-hero-image">
           <img src="/shichusuimei-kiso-hero.png" alt="ホワイトボードを使って四柱推命を解説する講師" loading="eager" />
+          <figcaption>講師：てつ先生</figcaption>
         </figure>
       </div>
     </section>

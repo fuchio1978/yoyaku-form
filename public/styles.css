@@ -203,6 +203,7 @@ body {
 .kiso-hero-image { position: relative; margin: 0; padding: 13px; border: 1px solid rgba(168,117,36,.44); border-radius: 34px 34px 12px 12px; background: rgba(255,253,248,.82); box-shadow: 0 28px 60px rgba(76,55,35,.18); }
 .kiso-hero-image::before { content: ''; position: absolute; inset: -10px 14px 14px -10px; z-index: -1; border: 1px solid rgba(168,117,36,.28); border-radius: 42px 42px 16px 16px; }
 .kiso-hero-image img { position: relative; display: block; width: 100%; height: auto; object-fit: contain; border-radius: 24px 24px 7px 7px; }
+.kiso-hero-image figcaption { padding: .85rem .5rem .15rem; color: #65472f; text-align: center; font: 600 1rem/1.5 'Noto Serif JP', 'Yu Mincho', serif; letter-spacing: .08em; }
 
 .kiso-section { padding: 6.5rem 0; }
 .kiso-section-soft { background: var(--kiso-cream); }
