@@ -35,7 +35,11 @@ const {
 loadEnv();
 
 function getPublicProduct(id) {
-  return getProduct(id) || (id === SHICHUSUIMEI_KISO_PRODUCT.id ? SHICHUSUIMEI_KISO_PRODUCT : undefined);
+  const storedProduct = getProduct(id);
+  if (id === SHICHUSUIMEI_KISO_PRODUCT.id) {
+    return { ...storedProduct, ...SHICHUSUIMEI_KISO_PRODUCT };
+  }
+  return storedProduct;
 }
 
 const SHICHUSUIMEI_KISO_SALES_START_AT =
@@ -5704,6 +5708,22 @@ function renderReservationForm(product) {
       </div>
     `
     : '';
+  const genderField = collectsBirthDetails
+    ? `
+      <div class="field">
+        <label for="genderAtBirth">性別（出生時）</label>
+        <select id="genderAtBirth" name="genderAtBirth" required>
+          <option value="">選択してください</option>
+          <option value="男性">男性</option>
+          <option value="女性">女性</option>
+        </select>
+        <small style="font-size: 0.85rem; color: #6b7280;">
+          ※四柱推命では大運（10年運）の算出に必要なため「出生時の性別」をお伺いします。
+        </small>
+        <div class="field-error-message" data-error-for="genderAtBirth"></div>
+      </div>
+    `
+    : '';
   const birthContextFields = collectsBirthDetails
     ? `
       <div class="field">
@@ -5835,18 +5855,7 @@ function renderReservationForm(product) {
       </div>
       ${sessionTypeField}
       ${birthdayField}
-      <div class="field">
-        <label for="genderAtBirth">性別（出生時）</label>
-        <select id="genderAtBirth" name="genderAtBirth" required>
-          <option value="">選択してください</option>
-          <option value="男性">男性</option>
-          <option value="女性">女性</option>
-        </select>
-        <small style="font-size: 0.85rem; color: #6b7280;">
-          ※四柱推命では大運（10年運）の算出に必要なため「出生時の性別」をお伺いします。
-        </small>
-        <div class="field-error-message" data-error-for="genderAtBirth"></div>
-      </div>
+      ${genderField}
       ${birthContextFields}
       ${compatibilityOptionField}
       ${
@@ -6227,9 +6236,7 @@ function handleReservation(body, res) {
   if (product.showSessionType) {
     required.push('sessionType');
   }
-  if (product.id === SHICHUSUIMEI_KISO_PRODUCT.id) {
-    required.push('genderAtBirth');
-  } else {
+  if (product.id !== SHICHUSUIMEI_KISO_PRODUCT.id) {
     required.push('birthday', 'genderAtBirth', 'birthPlace');
   }
   if (!isFree) {

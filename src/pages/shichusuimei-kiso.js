@@ -10,7 +10,7 @@ const SHICHUSUIMEI_KISO_PRODUCT = {
   benefit: '暗記ではなく「なぜそうなるのか」を学び、日柱を自分の言葉で読める基礎を作ります。',
   details: [
     '全6回・各回90分（講義60分＋質問30分）',
-    '2026年8月22日〜10月31日／土曜日16:00〜17:30',
+    '2026年8月22日〜10月31日／隔週土曜日16:00〜17:30',
     'オンライン（Zoom）・全講義アーカイブあり',
     '定員20名',
   ],
@@ -219,7 +219,7 @@ function renderShichusuimeiKisoPage(options = {}) {
       <div class="kiso-shell">
         <div class="kiso-heading kiso-heading-light"><p>開催概要</p><h2>3か月かけて、<br />四柱推命の基礎をつなぎ直します。</h2></div>
         <div class="kiso-outline">
-          <dl><div><dt>講座名</dt><dd>四柱推命 基礎完成講座</dd></div><div><dt>形式</dt><dd>オンライン・グループ講座（Zoom）</dd></div><div><dt>回数・時間</dt><dd>全6回／各回90分（講義60分＋質問30分）</dd></div><div><dt>日程</dt><dd>2026年 8/22、9/5、9/19、10/3、10/17、10/31<br /><small>すべて土曜日 16:00〜17:30</small></dd></div><div><dt>定員</dt><dd><strong>20名</strong></dd></div><div><dt>アーカイブ</dt><dd>全講義あり</dd></div><div><dt>お支払い</dt><dd>銀行振込<br /><small>※お振込み手数料はお客さまのご負担となります</small></dd></div></dl>
+          <dl><div><dt>講座名</dt><dd>四柱推命 基礎完成講座</dd></div><div><dt>形式</dt><dd>オンライン・グループ講座（Zoom）</dd></div><div><dt>回数・時間</dt><dd>全6回／各回90分（講義60分＋質問30分）</dd></div><div><dt>日程</dt><dd>2026年 8/22、9/5、9/19、10/3、10/17、10/31<br /><small>隔週土曜日 16:00〜17:30</small></dd></div><div><dt>定員</dt><dd><strong>20名</strong></dd></div><div><dt>アーカイブ</dt><dd>全講義あり</dd></div><div><dt>お支払い</dt><dd>銀行振込<br /><small>※お振込み手数料はお客さまのご負担となります</small></dd></div></dl>
           <div class="kiso-price"><p>受講料</p><strong>30,000<small>円（税込）</small></strong><span>全6回・1回あたり5,000円</span><p class="kiso-price-copy">動画を見るだけではなく、毎回の質問時間と日柱を使った実践を通して、その後の鑑定や用神の学びにも使い続けられる土台を作ります。</p></div>
         </div>
         ${cta('定員20名｜2026年8月22日スタート')}
