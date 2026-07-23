@@ -53,5 +53,27 @@
     "personId": "tetsuya",
     "providerLabel": "担当：てつ先生",
     "displayOrder": 2
+  },
+  {
+    "id": "shichusuimei-kiso",
+    "title": "四柱推命 基礎完成講座",
+    "price": 30000,
+    "currency": "¥",
+    "image": "/shichusuimei-kiso-hero.png",
+    "summary": "陰陽五行・十干十二支・蔵干・通変星をつなげ、日柱を根拠を持って読める状態を目指す全6回のオンライン講座です。",
+    "benefit": "暗記ではなく「なぜそうなるのか」を学び、日柱を自分の言葉で読める基礎を作ります。",
+    "details": [
+      "全6回・各回90分（講義60分＋質問30分）",
+      "2026年8月22日〜10月31日／土曜日16:00〜17:30",
+      "オンライン（Zoom）・全講義アーカイブあり",
+      "定員20名"
+    ],
+    "duration": "全6回（約3か月）",
+    "typeLabel": "オンライン・グループ講座",
+    "requiresSchedule": false,
+    "personId": "tetsuya",
+    "providerLabel": "講師：てつ先生",
+    "isHidden": true,
+    "displayOrder": 99
   }
 ]

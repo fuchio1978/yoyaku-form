@@ -16,6 +16,10 @@ const { renderPage, formatCurrency } = require('./utils/render');
 const { saveReservation } = require('./utils/reservations');
 const { sendReservationEmail, recipient } = require('./utils/email');
 const {
+  renderShichusuimeiKisoPage,
+  SHICHUSUIMEI_KISO_PRODUCT,
+} = require('./pages/shichusuimei-kiso');
+const {
   LEGACY_PDF_ID,
   LEGACY_PDF_URL,
   deleteDistributionPdfFile,
@@ -29,6 +33,36 @@ const {
 } = require('./utils/distribution-pdfs');
 
 loadEnv();
+
+function getPublicProduct(id) {
+  return getProduct(id) || (id === SHICHUSUIMEI_KISO_PRODUCT.id ? SHICHUSUIMEI_KISO_PRODUCT : undefined);
+}
+
+const SHICHUSUIMEI_KISO_SALES_START_AT =
+  process.env.SHICHUSUIMEI_KISO_SALES_START_AT || '2026-07-24T17:55:00+09:00';
+
+function isShichusuimeiKisoSaleOpen() {
+  const startAt = Date.parse(SHICHUSUIMEI_KISO_SALES_START_AT);
+  return Number.isFinite(startAt) && Date.now() >= startAt;
+}
+
+function getShichusuimeiKisoPreviewKey(parsedUrl) {
+  const configuredKey = String(process.env.SHICHUSUIMEI_KISO_PREVIEW_KEY || '').trim();
+  const requestedKey = String((parsedUrl.query && parsedUrl.query.preview) || '').trim();
+  return configuredKey && requestedKey === configuredKey ? requestedKey : '';
+}
+
+function canViewShichusuimeiKiso(parsedUrl) {
+  return isShichusuimeiKisoSaleOpen() || !!getShichusuimeiKisoPreviewKey(parsedUrl);
+}
+
+function renderShichusuimeiKisoUnavailable(res, method = 'GET') {
+  res.writeHead(404, {
+    'Content-Type': 'text/html; charset=utf-8',
+    'Cache-Control': 'no-store, max-age=0',
+  });
+  res.end(method === 'HEAD' ? undefined : renderNotFound());
+}
 
 const publicDir = path.join(__dirname, '..', 'public');
 // 永続ストレージのルート（Render の Persistent Disk など）
@@ -121,6 +155,7 @@ function getReservedPdfPaths() {
     '/touyou',
     '/yobikou',
     '/kouza-annai',
+    '/shichusuimei-kiso',
   ]);
 }
 
@@ -5656,6 +5691,9 @@ function renderReservationForm(product) {
   const numericPrice =
     typeof product.price === 'number' ? product.price : Number(product.price || 0);
   const isFree = numericPrice === 0;
+  const paymentOptions = product.id === 'shichusuimei-kiso'
+    ? '<option value="bank">銀行振込</option>'
+    : '<option value="bank">銀行振込</option><option value="paypal">クレジットカード</option>';
 
   let dateTimeFields = '';
 
@@ -5807,8 +5845,7 @@ function renderReservationForm(product) {
       <div class="field">
         <label for="paymentMethod">お支払方法</label>
         <select id="paymentMethod" name="paymentMethod" required>
-          <option value="bank">銀行振込</option>
-          <option value="paypal">クレジットカード</option>
+          ${paymentOptions}
         </select>
         <small id="paymentMethodNote" style="display: none; font-size: 0.85rem; color: #6b7280;"></small>
         <div class="field-error-message" data-error-for="paymentMethod"></div>
@@ -6151,7 +6188,11 @@ function parseBody(req) {
 }
 
 function handleReservation(body, res) {
-  const product = getProduct(body.productId);
+  const product = getPublicProduct(body.productId);
+  if (body.productId === SHICHUSUIMEI_KISO_PRODUCT.id && !isShichusuimeiKisoSaleOpen()) {
+    renderShichusuimeiKisoUnavailable(res, 'POST');
+    return;
+  }
   const requiresSchedule = product && product.requiresSchedule !== false;
   const personId = body.personId || (product && product.personId) || '';
   const numericPrice =
@@ -6184,6 +6225,12 @@ function handleReservation(body, res) {
   if (missing.length > 0 || !product) {
     res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(renderPage({ title: 'エラー', content: '<p>入力内容を確認してください。</p>', backLink: '/' }));
+    return;
+  }
+
+  if (product.id === SHICHUSUIMEI_KISO_PRODUCT.id && body.paymentMethod !== 'bank') {
+    res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(renderPage({ title: 'エラー', content: '<p>お支払方法は銀行振込を選択してください。</p>', backLink: '/' }));
     return;
   }
 
@@ -6341,6 +6388,17 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (isReadMethod && parsedUrl.pathname === '/shichusuimei-kiso') {
+    if (!canViewShichusuimeiKiso(parsedUrl)) {
+      renderShichusuimeiKisoUnavailable(res, req.method);
+      return;
+    }
+    const previewKey = getShichusuimeiKisoPreviewKey(parsedUrl);
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(req.method === 'HEAD' ? undefined : renderShichusuimeiKisoPage(previewKey));
+    return;
+  }
+
   if (isReadMethod && parsedUrl.pathname === '/admin') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     const msg = parsedUrl.query && parsedUrl.query.msg;
@@ -6401,7 +6459,11 @@ const server = http.createServer(async (req, res) => {
 
   if (isReadMethod && parsedUrl.pathname.startsWith('/products/')) {
     const productId = parsedUrl.pathname.split('/')[2];
-    const product = getProduct(productId);
+    if (productId === SHICHUSUIMEI_KISO_PRODUCT.id && !canViewShichusuimeiKiso(parsedUrl)) {
+      renderShichusuimeiKisoUnavailable(res, req.method);
+      return;
+    }
+    const product = getPublicProduct(productId);
     if (!product) {
       res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(req.method === 'HEAD' ? undefined : renderNotFound());
@@ -6422,7 +6484,11 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'POST' && parsedUrl.pathname === '/reserve/confirm') {
     try {
       const body = await parseBody(req);
-      const product = getProduct(body.productId);
+      if (body.productId === SHICHUSUIMEI_KISO_PRODUCT.id && !isShichusuimeiKisoSaleOpen()) {
+        renderShichusuimeiKisoUnavailable(res, req.method);
+        return;
+      }
+      const product = getPublicProduct(body.productId);
       const requiresSchedule = product && product.requiresSchedule !== false;
       const personId = body.personId || (product && product.personId) || '';
 
@@ -6451,6 +6517,12 @@ const server = http.createServer(async (req, res) => {
       if (missing.length > 0 || !product) {
         res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
         res.end(renderPage({ title: 'エラー', content: '<p>入力内容を確認してください。</p>', backLink: '/' }));
+        return;
+      }
+
+      if (product.id === SHICHUSUIMEI_KISO_PRODUCT.id && body.paymentMethod !== 'bank') {
+        res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(renderPage({ title: 'エラー', content: '<p>お支払方法は銀行振込を選択してください。</p>', backLink: '/' }));
         return;
       }
 

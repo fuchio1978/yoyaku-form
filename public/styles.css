@@ -156,6 +156,196 @@ body {
   justify-content: center;
 }
 
+/* 四柱推命 基礎完成講座 LP */
+.kiso-body {
+  --kiso-ink: #352923;
+  --kiso-brown: #6f4d32;
+  --kiso-gold: #a87524;
+  --kiso-green: #315a4b;
+  --kiso-cream: #f8f3e9;
+  background: #fffdf8;
+  color: var(--kiso-ink);
+}
+
+.page.kiso-page { max-width: 100%; padding: 0; }
+.kiso-page > section { margin: 0; }
+.kiso-shell { width: min(1120px, calc(100% - 2.5rem)); margin: 0 auto; }
+.kiso-narrow { max-width: 880px; }
+.kiso-page h1,
+.kiso-page h2,
+.kiso-page h3,
+.kiso-page blockquote { font-family: 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif; }
+.kiso-page p { line-height: 1.95; }
+
+.kiso-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 0 4.5rem;
+  background:
+    radial-gradient(circle at 7% 8%, rgba(205, 164, 91, .16), transparent 22%),
+    linear-gradient(120deg, #fffdf8 0%, #f7f0e3 100%);
+}
+.kiso-hero::after {
+  content: '陰陽五行'; position: absolute; right: -1rem; bottom: -3rem;
+  color: rgba(115, 82, 42, .045); font: 800 clamp(5rem, 13vw, 11rem)/1 'Noto Serif JP', serif;
+  letter-spacing: .12em; white-space: nowrap;
+}
+.kiso-hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.06fr .94fr; gap: 3.2rem; align-items: center; }
+.kiso-open-label { display: inline-flex; align-items: center; gap: .6rem; margin: 0 0 1.6rem; color: var(--kiso-brown); font-weight: 700; letter-spacing: .08em; }
+.kiso-open-label span { padding: .45rem .8rem; border-radius: 999px; background: var(--kiso-gold); color: #fff; }
+.kiso-kicker { margin: 0 0 .8rem; color: var(--kiso-gold); font: 600 clamp(1.15rem, 2vw, 1.55rem)/1.8 'Noto Serif JP', serif; }
+.kiso-hero h1 { margin: 0; color: #30231e; font-size: clamp(2.65rem, 5.4vw, 4.85rem); line-height: 1.32; letter-spacing: .04em; }
+.kiso-hero h1 small { display: block; margin-bottom: .35rem; color: var(--kiso-brown); font-size: .35em; font-weight: 600; letter-spacing: .18em; }
+.kiso-hero-lead { margin: 1.55rem 0 .8rem; color: var(--kiso-brown); font: 600 clamp(1.08rem, 2vw, 1.38rem)/1.9 'Noto Serif JP', serif; }
+.kiso-hero-body { max-width: 620px; margin: 0; }
+.kiso-meta-row { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.4rem 0 0; }
+.kiso-meta-row span { padding: .45rem .75rem; border: 1px solid rgba(168, 117, 36, .3); border-radius: 999px; background: rgba(255,255,255,.68); color: #67482e; font-size: .88rem; font-weight: 700; }
+.kiso-hero-image { position: relative; margin: 0; padding: 13px; border: 1px solid rgba(168,117,36,.44); border-radius: 34px 34px 12px 12px; background: rgba(255,253,248,.82); box-shadow: 0 28px 60px rgba(76,55,35,.18); }
+.kiso-hero-image::before { content: ''; position: absolute; inset: -10px 14px 14px -10px; z-index: -1; border: 1px solid rgba(168,117,36,.28); border-radius: 42px 42px 16px 16px; }
+.kiso-hero-image img { position: relative; display: block; width: 100%; height: auto; object-fit: contain; border-radius: 24px 24px 7px 7px; }
+
+.kiso-section { padding: 6.5rem 0; }
+.kiso-section-soft { background: var(--kiso-cream); }
+.kiso-section-deep { background: linear-gradient(135deg, #294c40 0%, #18372e 100%); color: #f9f4e9; }
+.kiso-heading { max-width: 790px; margin: 0 auto 3rem; text-align: center; }
+.kiso-heading > p { margin: 0 0 .8rem; color: var(--kiso-gold); font-weight: 700; letter-spacing: .16em; }
+.kiso-heading h2,
+.kiso-two-col h2,
+.kiso-teacher h2,
+.kiso-final h2 { margin: 0; color: #493529; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.55; }
+.kiso-heading-light h2, .kiso-section-deep h2 { color: #fffaf0; }
+.kiso-card { border: 1px solid rgba(168,117,36,.2); border-radius: 18px; background: rgba(255,255,255,.88); box-shadow: 0 18px 45px rgba(75,53,31,.08); }
+.kiso-check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; margin: 0; padding: 2.4rem; list-style: none; }
+.kiso-check-list li { position: relative; padding-left: 2rem; line-height: 1.8; }
+.kiso-check-list li::before { content: '✓'; position: absolute; left: 0; top: .05rem; display: grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: #ad843e; color: white; font-size: .8rem; }
+.kiso-message { margin: 2.5rem auto 0; text-align: center; }
+.kiso-message strong { display: block; color: var(--kiso-green); font: 700 clamp(1.2rem, 2.5vw, 1.65rem)/1.8 'Noto Serif JP', serif; }
+.kiso-two-col { display: grid; grid-template-columns: 1.08fr .92fr; gap: 4rem; align-items: center; }
+.kiso-two-col h2 { margin-bottom: 1.5rem; font-size: clamp(1.85rem, 3.5vw, 2.75rem); }
+.kiso-two-col h2 em { color: #e6bd72; font-style: normal; }
+.kiso-eyebrow { margin: 0 0 .8rem !important; color: #d4a651; font-size: .77rem; font-weight: 800; letter-spacing: .22em; }
+.kiso-question-card { padding: 2.4rem; border: 1px solid rgba(240,215,165,.28); background: rgba(255,255,255,.07); box-shadow: 0 24px 48px rgba(0,0,0,.14); }
+.kiso-question-card p { position: relative; margin: 0; padding: 1rem 0 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,.13); font: 600 1.1rem/1.7 'Noto Serif JP', serif; }
+.kiso-question-card p::before { content: '？'; position: absolute; left: 0; color: #e6bd72; }
+.kiso-question-card span { display: block; margin-top: 1.4rem; color: #e6dfd2; line-height: 1.9; }
+.kiso-flow-line { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; justify-content: center; margin: 0 auto 3rem; }
+.kiso-flow-line span { padding: .8rem 1.1rem; border: 1px solid rgba(168,117,36,.28); background: #fffaf0; color: #6e4b2e; font-weight: 700; }
+.kiso-flow-line b { color: var(--kiso-gold); }
+.kiso-prose { font-size: 1.05rem; }
+.kiso-page blockquote { margin: 3rem 0 0; padding: 2.3rem; border-top: 1px solid #cda866; border-bottom: 1px solid #cda866; color: #684a31; text-align: center; font-size: clamp(1.35rem, 2.8vw, 1.9rem); line-height: 1.8; }
+.kiso-goal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.kiso-goal-grid article { min-height: 150px; padding: 1.6rem; border: 1px solid rgba(168,117,36,.2); background: #fffdf9; }
+.kiso-goal-grid span { color: #b3853c; font: 700 1.35rem 'Noto Serif JP', serif; }
+.kiso-goal-grid p { margin: .7rem 0 0; font-weight: 600; }
+.kiso-notice { max-width: 880px; margin: 2rem auto 0; padding: 1.4rem 1.6rem; border-left: 4px solid #ad843e; background: #fff; }
+.kiso-notice strong { color: #6c4a2c; }
+.kiso-notice p { margin: .5rem 0 0; }
+.kiso-cta-block { margin: 2.2rem auto 0; text-align: center; }
+.kiso-button { display: inline-flex; min-width: min(540px, 100%); min-height: 72px; align-items: center; justify-content: center; gap: 1.5rem; padding: 1rem 2rem; border-radius: 999px; background: linear-gradient(135deg, #b78632, #835b21); color: #fff; box-shadow: 0 18px 36px rgba(121,82,28,.25); text-decoration: none; font-size: 1.12rem; font-weight: 800; letter-spacing: .08em; transition: transform .2s, box-shadow .2s; }
+.kiso-button:hover, .kiso-button:focus-visible { transform: translateY(-2px); box-shadow: 0 22px 44px rgba(121,82,28,.32); }
+.kiso-cta-block p { margin: .7rem 0 0; color: #795b43; font-size: .87rem; }
+.kiso-section-deep .kiso-cta-block p { color: #e7dcca; }
+.kiso-reason-visual { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; padding: 2rem; background: #f2e8d7; }
+.kiso-reason-visual span, .kiso-reason-visual strong { display: grid; place-items: center; min-height: 260px; border: 1px solid #c9aa72; background: #fffaf1; writing-mode: vertical-rl; color: #76634f; font: 600 1.2rem 'Noto Serif JP', serif; letter-spacing: .18em; }
+.kiso-reason-visual strong { transform: translateY(-1rem); background: var(--kiso-green); color: #fff; box-shadow: 0 14px 28px rgba(40,77,64,.25); }
+.kiso-inline-em { display: block; margin-top: 1.2rem; color: var(--kiso-green); font-family: 'Noto Serif JP', serif; }
+.kiso-curriculum { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.15); }
+.kiso-curriculum article { padding: 2.2rem; background: rgba(18,50,40,.92); }
+.kiso-curriculum article > div { display: flex; justify-content: space-between; color: #e6bd72; font-weight: 700; }
+.kiso-curriculum time { font-size: .9rem; }
+.kiso-curriculum h3 { margin: 1rem 0 .5rem; color: #fff9ed; font-size: 1.3rem; line-height: 1.6; }
+.kiso-curriculum p { margin: 0; color: #ded8cc; }
+.kiso-feature-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+.kiso-feature-grid article { grid-column: span 2; padding: 2rem; border: 1px solid rgba(168,117,36,.18); background: white; }
+.kiso-feature-grid article:nth-child(4) { grid-column: 2 / span 2; }
+.kiso-feature-grid span { color: #c09755; font: 700 1.5rem 'Noto Serif JP', serif; }
+.kiso-feature-grid h3 { margin: .8rem 0; color: #563d2b; font-size: 1.2rem; }
+.kiso-feature-grid p { margin: 0; }
+.kiso-teacher { display: grid; grid-template-columns: minmax(280px, 390px) 1fr; gap: 4rem; align-items: center; }
+.kiso-teacher figure { margin: 0; padding: 1rem; background: #eee2ce; transform: rotate(-1.5deg); }
+.kiso-teacher img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; }
+.kiso-teacher h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.kiso-teacher-name { display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem; }
+.kiso-teacher-name strong { font: 700 1.4rem 'Noto Serif JP', serif; }
+.kiso-teacher-name span { color: #857465; font-size: .88rem; }
+.kiso-fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+.kiso-fit-grid article { padding: 2.2rem; border: 1px solid rgba(168,117,36,.2); background: white; }
+.kiso-fit-grid h3 { margin: 0 0 1.2rem; font-size: 1.35rem; }
+.kiso-fit-grid .is-good h3 { color: var(--kiso-green); }
+.kiso-fit-grid .is-not { background: #f3eee7; color: #756b63; }
+.kiso-fit-grid ul { margin: 0; padding-left: 1.25rem; line-height: 2; }
+.kiso-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
+.kiso-steps article { position: relative; padding: 2.4rem 1.8rem 1.8rem; border-top: 1px solid #bd9655; background: #fbf6ed; }
+.kiso-steps span { position: absolute; top: -1.1rem; left: 1.5rem; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--kiso-green); color: white; font-weight: 800; }
+.kiso-steps h3 { margin: .5rem 0; color: #5f432e; }
+.kiso-steps p { margin: 0; }
+.kiso-outline { display: grid; grid-template-columns: 1.3fr .7fr; gap: 1.5rem; }
+.kiso-outline dl, .kiso-price { margin: 0; padding: 2.2rem; background: #fffaf0; color: var(--kiso-ink); }
+.kiso-outline dl > div { display: grid; grid-template-columns: 9rem 1fr; padding: .9rem 0; border-bottom: 1px solid #ded0b9; }
+.kiso-outline dl > div:last-child { border: 0; }
+.kiso-outline dt { color: #86602e; font-weight: 700; }
+.kiso-outline dd { margin: 0; line-height: 1.8; }
+.kiso-price { display: flex; flex-direction: column; justify-content: center; text-align: center; background: linear-gradient(150deg,#e3c98f,#b88334); color: #352717; }
+.kiso-price > p:first-child { margin: 0; font-weight: 700; letter-spacing: .18em; }
+.kiso-price > strong { display: block; font-size: clamp(2.5rem,5vw,4rem); line-height: 1.3; }
+.kiso-price > strong small { font-size: .3em; }
+.kiso-price > span { font-weight: 700; }
+.kiso-price .kiso-price-copy { margin: 1.5rem 0 0; padding-top: 1.2rem; border-top: 1px solid rgba(58,38,17,.25); font-size: .92rem; }
+.kiso-faq { display: grid; gap: .8rem; }
+.kiso-faq details { border: 1px solid rgba(168,117,36,.2); background: white; }
+.kiso-faq summary { position: relative; padding: 1.35rem 3.5rem 1.35rem 1.5rem; cursor: pointer; color: #60442f; font: 600 1rem/1.7 'Noto Serif JP', serif; list-style: none; }
+.kiso-faq summary::-webkit-details-marker { display: none; }
+.kiso-faq summary::after { content: '+'; position: absolute; right: 1.4rem; top: 50%; transform: translateY(-50%); color: var(--kiso-gold); font-size: 1.5rem; }
+.kiso-faq details[open] summary::after { content: '−'; }
+.kiso-faq details p { margin: 0; padding: 0 1.5rem 1.4rem; }
+.kiso-final { padding: 7rem 0 8rem; text-align: center; background: radial-gradient(circle at top, rgba(201,158,79,.16), transparent 34%), #fffdf8; }
+.kiso-final h2 { margin-bottom: 2rem; }
+.kiso-final .kiso-prose { text-align: left; }
+.kiso-final-line { display: block; margin: 2.5rem 0; color: var(--kiso-green); font: 700 clamp(1.25rem, 3vw, 1.75rem)/1.8 'Noto Serif JP', serif; }
+.kiso-contact-note { font-size: .9rem; }
+.kiso-contact-note a { color: var(--kiso-green); font-weight: 700; }
+.kiso-sticky-cta { display: none; }
+
+@media (max-width: 900px) {
+  .kiso-hero-grid, .kiso-two-col, .kiso-teacher, .kiso-outline { grid-template-columns: 1fr; }
+  .kiso-hero-copy { order: 1; }
+  .kiso-hero-image { order: 2; max-width: 620px; margin: 1rem auto 0; }
+  .kiso-goal-grid { grid-template-columns: 1fr 1fr; }
+  .kiso-feature-grid { grid-template-columns: 1fr 1fr; }
+  .kiso-feature-grid article, .kiso-feature-grid article:nth-child(4) { grid-column: auto; }
+  .kiso-feature-grid article:last-child { grid-column: 1 / -1; }
+  .kiso-teacher figure { max-width: 440px; margin: auto; }
+}
+
+@media (max-width: 640px) {
+  .kiso-shell { width: min(100% - 1.25rem, 1120px); }
+  .kiso-hero { padding: 2rem 0 3rem; }
+  .kiso-hero-grid { gap: 2rem; }
+  .kiso-hero h1 { font-size: clamp(2.45rem, 13vw, 3.6rem); }
+  .kiso-hero-lead br { display: none; }
+  .kiso-hero-image { max-width: 440px; padding: 8px; }
+  .kiso-section { padding: 4.3rem 0; }
+  .kiso-heading { margin-bottom: 2.1rem; }
+  .kiso-heading h2, .kiso-two-col h2, .kiso-teacher h2, .kiso-final h2 { font-size: clamp(1.65rem, 7.2vw, 2.2rem); }
+  .kiso-check-list, .kiso-goal-grid, .kiso-curriculum, .kiso-feature-grid, .kiso-fit-grid, .kiso-steps { grid-template-columns: 1fr; }
+  .kiso-check-list { padding: 1.4rem; }
+  .kiso-two-col, .kiso-teacher { gap: 2.3rem; }
+  .kiso-question-card, .kiso-curriculum article, .kiso-feature-grid article, .kiso-fit-grid article { padding: 1.5rem; }
+  .kiso-feature-grid article:last-child { grid-column: auto; }
+  .kiso-flow-line b { display: none; }
+  .kiso-flow-line span { width: calc(50% - .5rem); text-align: center; }
+  .kiso-page blockquote { padding: 1.6rem .4rem; }
+  .kiso-reason-grid > .kiso-reason-visual { order: 2; }
+  .kiso-reason-visual { padding: 1rem; }
+  .kiso-reason-visual span, .kiso-reason-visual strong { min-height: 190px; }
+  .kiso-outline dl, .kiso-price { padding: 1.4rem; }
+  .kiso-outline dl > div { grid-template-columns: 1fr; gap: .2rem; }
+  .kiso-final { padding: 5rem 0 7.5rem; }
+  .kiso-button { min-height: 64px; padding: .9rem 1.3rem; font-size: 1rem; }
+  .kiso-sticky-cta { position: fixed; z-index: 20; display: block; left: 0; right: 0; bottom: 0; padding: .55rem .7rem; background: rgba(255,253,248,.94); box-shadow: 0 -8px 30px rgba(67,49,31,.16); backdrop-filter: blur(8px); }
+  .kiso-sticky-cta a { display: flex; min-height: 52px; align-items: center; justify-content: center; border-radius: 999px; background: linear-gradient(135deg,#b78632,#835b21); color: white; text-decoration: none; font-weight: 800; }
+}
+
 .home-banner-wrap {
   max-width: 1100px;
   margin: 0 auto 1.75rem;
