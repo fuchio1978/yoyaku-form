@@ -157,7 +157,7 @@ function renderShichusuimeiKisoPage(options = {}) {
         </div>
         <div class="kiso-curriculum">
           <article><div><span>第1回</span><time>8/22</time></div><h3>万年暦を使って命式を出す</h3><p>自分や身近な人の生年月日から、命式に並ぶ八文字を出します。最初に実際の命式を見ることで、その後の知識がどこで使われるのかを確認します。</p></article>
-          <article><div><span>第2回</span><time>9/5</time></div><h3>陰陽五行と五行の関係</h3><p>陰と陽の違い、木・火・土・金・水の性質、相生・相剋・比和の関係。四柱推命のすべての土台となる世界観を学びます。</p></article>
+          <article><div><span>第2回</span><time>9/5</time></div><h3>陰陽と五行の関係</h3><p>陰と陽の違い、木・火・土・金・水の性質、相生・相剋・比和の関係。四柱推命のすべての土台となる世界観を学びます。</p></article>
           <article><div><span>第3回</span><time>9/19</time></div><h3>十干を自然の景色として理解する</h3><p>甲から癸までの十干を、単語の暗記ではなく自然の景色として学び、それぞれの性質がなぜその意味になるのかを整理します。</p></article>
           <article><div><span>第4回</span><time>10/3</time></div><h3>十二支と蔵干を理解する</h3><p>十二支を季節や時間、自然の変化として学びます。十二支の中にある蔵干が、命式でどのように働くのかを見ていきます。</p></article>
           <article><div><span>第5回</span><time>10/17</time></div><h3>通変星が生まれる仕組みを理解する</h3><p>十種類の意味を丸暗記せず、日干と他の干の関係から通変星が生まれる仕組みを学びます。</p></article>
