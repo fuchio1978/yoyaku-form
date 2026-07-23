@@ -6328,6 +6328,37 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (isReadMethod && parsedUrl.pathname === '/admin/preview/shichusuimei-kiso') {
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store, max-age=0',
+    });
+    res.end(
+      req.method === 'HEAD'
+        ? undefined
+        : renderShichusuimeiKisoPage({
+            ctaUrl: '/admin/preview/products/shichusuimei-kiso',
+          })
+    );
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/admin/preview/products/shichusuimei-kiso') {
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store, max-age=0',
+    });
+    res.end(
+      req.method === 'HEAD'
+        ? undefined
+        : renderProductPage({
+            ...SHICHUSUIMEI_KISO_PRODUCT,
+            benefit: `【公開前プレビュー】この画面では表示内容のみご確認ください。公開時刻まではお申し込みできません。\n\n${SHICHUSUIMEI_KISO_PRODUCT.benefit}`,
+          })
+    );
+    return;
+  }
+
   if (isReadMethod && parsedUrl.pathname === '/about') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderAboutPage());
@@ -6395,7 +6426,7 @@ const server = http.createServer(async (req, res) => {
     }
     const previewKey = getShichusuimeiKisoPreviewKey(parsedUrl);
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(req.method === 'HEAD' ? undefined : renderShichusuimeiKisoPage(previewKey));
+    res.end(req.method === 'HEAD' ? undefined : renderShichusuimeiKisoPage({ previewKey }));
     return;
   }
 
