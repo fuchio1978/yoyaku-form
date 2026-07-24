@@ -27,7 +27,7 @@ function renderShichusuimeiKisoPage(options = {}) {
   const previewKey = options.previewKey || '';
   const previewQuery = previewKey ? `?preview=${encodeURIComponent(previewKey)}` : '';
   const ctaUrl = options.ctaUrl || `/products/shichusuimei-kiso${previewQuery}`;
-  const lineUrl = process.env.KOUZA_LINE_URL || '/contact';
+  const lineUrl = process.env.KOUZA_LINE_URL || 'https://lin.ee/U8JMJPz';
   const headExtras = `
     <meta name="description" content="暗記ではなく、陰陽五行・十干十二支・蔵干・通変星のつながりを学び、日柱を自分の言葉で読める状態を目指す全6回のオンライン講座です。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -43,7 +43,7 @@ function getPublicProduct(id) {
 }
 
 const SHICHUSUIMEI_KISO_SALES_START_AT =
-  process.env.SHICHUSUIMEI_KISO_SALES_START_AT || '2026-07-24T17:55:00+09:00';
+  process.env.SHICHUSUIMEI_KISO_SALES_START_AT || '2026-07-24T17:30:00+09:00';
 
 function isShichusuimeiKisoSaleOpen() {
   const startAt = Date.parse(SHICHUSUIMEI_KISO_SALES_START_AT);
@@ -4361,6 +4361,7 @@ function renderContactComplete(body) {
 }
 
 function renderReservationConfirmPage(reservation) {
+  const collectsBirthDetails = reservation.productId !== SHICHUSUIMEI_KISO_PRODUCT.id;
   const amount =
     typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
       ? reservation.displayPrice
@@ -4371,13 +4372,15 @@ function renderReservationConfirmPage(reservation) {
 
   const rows = [
     ['商品', reservation.productTitle],
-    ['日時', `${reservation.date} ${reservation.timeSlot}`],
+    reservation.date || reservation.timeSlot
+      ? ['日時', `${reservation.date} ${reservation.timeSlot}`]
+      : null,
     ['お名前', reservation.name],
     ['メール', reservation.email],
-    ['生年月日', reservation.birthday || '未入力'],
-    ['性別（出生時）', reservation.genderAtBirth || '未入力'],
-    ['生まれ時間', reservation.birthTime || '未入力'],
-    ['出身地', reservation.birthPlace || '未入力'],
+    collectsBirthDetails ? ['生年月日', reservation.birthday || '未入力'] : null,
+    collectsBirthDetails ? ['性別（出生時）', reservation.genderAtBirth || '未入力'] : null,
+    collectsBirthDetails ? ['生まれ時間', reservation.birthTime || '未入力'] : null,
+    collectsBirthDetails ? ['出身地', reservation.birthPlace || '未入力'] : null,
     ['お支払方法',
       reservation.paymentMethod === 'bank'
         ? '銀行振込（振込手数料はお客様のご負担となります）'
