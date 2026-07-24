@@ -19,6 +19,14 @@ const {
   renderShichusuimeiKisoPage,
   SHICHUSUIMEI_KISO_PRODUCT,
 } = require('./pages/shichusuimei-kiso');
+const KISO_COMPLETION_PRODUCT_IDS = new Set([
+  SHICHUSUIMEI_KISO_PRODUCT.id,
+  'kisokannsei',
+]);
+
+function isKisoCompletionProduct(productId) {
+  return KISO_COMPLETION_PRODUCT_IDS.has(String(productId || ''));
+}
 const {
   LEGACY_PDF_ID,
   LEGACY_PDF_URL,
@@ -4373,7 +4381,7 @@ function renderContactComplete(body) {
 }
 
 function renderReservationConfirmPage(reservation) {
-  const collectsBirthDetails = reservation.productId !== SHICHUSUIMEI_KISO_PRODUCT.id;
+  const collectsBirthDetails = !isKisoCompletionProduct(reservation.productId);
   const amount =
     typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
       ? reservation.displayPrice
@@ -5801,10 +5809,10 @@ function renderReservationForm(product) {
   const numericPrice =
     typeof product.price === 'number' ? product.price : Number(product.price || 0);
   const isFree = numericPrice === 0;
-  const paymentOptions = product.id === 'shichusuimei-kiso'
+  const paymentOptions = isKisoCompletionProduct(product.id)
     ? '<option value="bank">銀行振込</option>'
     : '<option value="bank">銀行振込</option><option value="paypal">クレジットカード</option>';
-  const collectsBirthDetails = product.id !== SHICHUSUIMEI_KISO_PRODUCT.id;
+  const collectsBirthDetails = !isKisoCompletionProduct(product.id);
   const birthdayField = collectsBirthDetails
     ? `
       <div class="field">
@@ -6221,7 +6229,7 @@ function renderNotFound() {
 }
 
 function renderConfirmation(reservation) {
-  const collectsBirthDetails = reservation.productId !== SHICHUSUIMEI_KISO_PRODUCT.id;
+  const collectsBirthDetails = !isKisoCompletionProduct(reservation.productId);
   const amount =
     typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
       ? reservation.displayPrice
@@ -6350,7 +6358,7 @@ async function handleReservation(body, res) {
   if (product.showSessionType) {
     required.push('sessionType');
   }
-  if (product.id !== SHICHUSUIMEI_KISO_PRODUCT.id) {
+  if (!isKisoCompletionProduct(product.id)) {
     required.push('birthday', 'genderAtBirth', 'birthPlace');
   }
   if (!isFree) {
@@ -6364,7 +6372,7 @@ async function handleReservation(body, res) {
     return;
   }
 
-  if (product.id === SHICHUSUIMEI_KISO_PRODUCT.id && body.paymentMethod !== 'bank') {
+  if (isKisoCompletionProduct(product.id) && body.paymentMethod !== 'bank') {
     res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(renderPage({ title: 'エラー', content: '<p>お支払方法は銀行振込を選択してください。</p>', backLink: '/' }));
     return;
@@ -6717,7 +6725,7 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
-      if (product.id === SHICHUSUIMEI_KISO_PRODUCT.id && body.paymentMethod !== 'bank') {
+      if (isKisoCompletionProduct(product.id) && body.paymentMethod !== 'bank') {
         res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
         res.end(renderPage({ title: 'エラー', content: '<p>お支払方法は銀行振込を選択してください。</p>', backLink: '/' }));
         return;
