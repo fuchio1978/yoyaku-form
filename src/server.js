@@ -6230,6 +6230,9 @@ function renderNotFound() {
 
 function renderConfirmation(reservation) {
   const collectsBirthDetails = !isKisoCompletionProduct(reservation.productId);
+  const paymentFollowUpMessage = isKisoCompletionProduct(reservation.productId)
+    ? '内容を確認のうえ、24時間以内に銀行振込先などの詳細をメールにてご案内いたします。'
+    : '内容を確認のうえ、24時間以内にご入金先やクレジットカード支払い方法などの詳細をメールにてご案内いたします。';
   const amount =
     typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
       ? reservation.displayPrice
@@ -6289,7 +6292,7 @@ function renderConfirmation(reservation) {
       <h3>予約を受け付けました</h3>
       <p style="white-space: pre-line; margin-bottom: 1rem;">
 ご予約ありがとうございます。
-内容を確認のうえ、24時間以内にご入金先やクレジットカード支払い方法などの詳細をメールにてご案内いたします。
+${paymentFollowUpMessage}
       </p>
       <p style="white-space: pre-line;">
 ご連絡先として info@fuchilabo.com を登録しております。
