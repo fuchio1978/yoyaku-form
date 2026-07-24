@@ -13,7 +13,7 @@ const {
   updateScheduleForPerson,
 } = require('./data/schedules');
 const { renderPage, formatCurrency } = require('./utils/render');
-const { saveReservation } = require('./utils/reservations');
+const { loadReservations, saveReservation } = require('./utils/reservations');
 const { sendReservationEmail, recipient } = require('./utils/email');
 const {
   renderShichusuimeiKisoPage,
@@ -79,7 +79,9 @@ const sheetsWebhookUrl =
   'https://script.google.com/macros/s/AKfycbyppWE01CZyQgz_S-8o2LfvOrKoTw4gX9IM97iNmsR0LCmGFIPlyPT07Xxp7XmM-VTzvw/exec';
 
 async function sendReservationToSheets(reservation) {
-  if (!sheetsWebhookUrl) return;
+  if (!sheetsWebhookUrl) {
+    return { sent: false, error: 'Google Sheets webhook is not configured' };
+  }
 
   const payload = {
     productTitle: reservation.productTitle || '',
@@ -105,15 +107,23 @@ async function sendReservationToSheets(reservation) {
 
   try {
     // Node.js 18+ on Render ではグローバルfetchが利用可能
-    await fetch(sheetsWebhookUrl, {
+    const response = await fetch(sheetsWebhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
     });
+    if (!response.ok) {
+      throw new Error(`Google Sheets webhook responded with HTTP ${response.status}`);
+    }
+    return { sent: true, status: response.status };
   } catch (e) {
     console.error('Failed to send reservation to Google Sheets webhook', e);
+    return {
+      sent: false,
+      error: e && e.message ? e.message : String(e),
+    };
   }
 }
 
@@ -144,6 +154,8 @@ function getReservedPdfPaths() {
     '/',
     '/index.html',
     '/admin',
+    '/admin/reservations',
+    '/admin/reservations.csv',
     '/admin/schedules',
     '/admin/images',
     '/admin/product',
@@ -5421,6 +5433,7 @@ function renderAdminHome(message) {
       <p>商品を編集するとトップページと商品ページに反映されます。</p>
       <div class="admin-actions">
         <a class="button secondary" href="/admin/product">新規商品を追加</a>
+        <a class="button" href="/admin/reservations">予約一覧を確認</a>
         <a class="button" href="/admin/schedules">予約枠を編集</a>
         <a class="button" href="/admin/images">画像を管理</a>
       </div>
@@ -5511,6 +5524,96 @@ function renderAdminHome(message) {
   `;
 
   return renderPage({ title: '', subtitle: '', content, backLink: '/', hideHeading: true });
+}
+
+function formatReservationCreatedAt(value) {
+  const date = new Date(value || '');
+  if (Number.isNaN(date.getTime())) return '';
+  return date.toLocaleString('ja-JP', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+function getReservationPaymentLabel(value) {
+  if (value === 'bank') return '銀行振込';
+  if (value === 'paypal') return 'クレジットカード';
+  return value || '';
+}
+
+function renderAdminReservationsPage() {
+  let reservations = [];
+  let loadError = '';
+  try {
+    reservations = loadReservations().slice().reverse();
+  } catch (error) {
+    loadError = error && error.message ? error.message : String(error);
+  }
+
+  const rows = reservations
+    .map(
+      (reservation) => `
+        <tr>
+          <td>${escapeHtml(formatReservationCreatedAt(reservation.createdAt))}</td>
+          <td>${escapeHtml(reservation.productTitle || reservation.productId || '')}</td>
+          <td>${escapeHtml(reservation.name || '')}</td>
+          <td><a href="mailto:${escapeHtml(reservation.email || '')}">${escapeHtml(reservation.email || '')}</a></td>
+          <td>${escapeHtml(getReservationPaymentLabel(reservation.paymentMethod))}</td>
+          <td>${escapeHtml(reservation.notes || '')}</td>
+        </tr>
+      `
+    )
+    .join('');
+
+  const content = `
+    <div class="panel" style="max-width:1200px;">
+      <h3>予約一覧</h3>
+      <p>Google連携やメール通知に関係なく、申込完了時にサーバーへ保存された予約です。</p>
+      <div class="admin-actions" style="margin-bottom:1rem;">
+        <a class="button secondary" href="/admin">商品一覧へ戻る</a>
+        <a class="button" href="/admin/reservations.csv">CSVをダウンロード</a>
+      </div>
+      ${
+        loadError
+          ? `<p style="color:#b91c1c;"><strong>予約データの読み込みに失敗しました。</strong><br />${escapeHtml(loadError)}</p>`
+          : ''
+      }
+      <p><strong>${reservations.length}件</strong>の予約が保存されています。</p>
+      <div style="overflow-x:auto;">
+        <table class="schedule-table">
+          <thead>
+            <tr><th>申込日時</th><th>商品</th><th>お名前</th><th>メール</th><th>支払方法</th><th>メモ</th></tr>
+          </thead>
+          <tbody>${rows || '<tr><td colspan="6">保存済みの予約はありません。</td></tr>'}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  return renderPage({ title: '', subtitle: '', content, backLink: '/admin', hideHeading: true });
+}
+
+function buildReservationsCsv() {
+  const csvEscape = (value) => `"${String(value == null ? '' : value).replace(/"/g, '""')}"`;
+  const header = ['申込日時', '商品ID', '商品名', 'お名前', 'メール', '支払方法', '金額', '通貨', '希望日', '時間', 'メモ'];
+  const rows = loadReservations().map((reservation) => [
+    formatReservationCreatedAt(reservation.createdAt),
+    reservation.productId || '',
+    reservation.productTitle || '',
+    reservation.name || '',
+    reservation.email || '',
+    getReservationPaymentLabel(reservation.paymentMethod),
+    reservation.price == null ? '' : reservation.price,
+    reservation.currency || '',
+    reservation.date || '',
+    reservation.timeSlot || '',
+    reservation.notes || '',
+  ]);
+  return '\uFEFF' + [header, ...rows].map((row) => row.map(csvEscape).join(',')).join('\r\n');
 }
 
 function renderAdminProductForm(product) {
@@ -6118,6 +6221,7 @@ function renderNotFound() {
 }
 
 function renderConfirmation(reservation) {
+  const collectsBirthDetails = reservation.productId !== SHICHUSUIMEI_KISO_PRODUCT.id;
   const amount =
     typeof reservation.displayPrice === 'number' && reservation.displayPrice > 0
       ? reservation.displayPrice
@@ -6128,13 +6232,15 @@ function renderConfirmation(reservation) {
 
   const summaryRows = [
     ['商品', reservation.productTitle],
-    ['日時', `${reservation.date} ${reservation.timeSlot}`],
+    reservation.date || reservation.timeSlot
+      ? ['日時', `${reservation.date} ${reservation.timeSlot}`]
+      : null,
     ['お名前', reservation.name],
     ['メール', reservation.email],
-    ['生年月日', reservation.birthday || '未入力'],
-    ['性別（出生時）', reservation.genderAtBirth || '未入力'],
-    ['生まれ時間', reservation.birthTime || '未入力'],
-    ['出身地', reservation.birthPlace || '未入力'],
+    collectsBirthDetails ? ['生年月日', reservation.birthday || '未入力'] : null,
+    collectsBirthDetails ? ['性別（出生時）', reservation.genderAtBirth || '未入力'] : null,
+    collectsBirthDetails ? ['生まれ時間', reservation.birthTime || '未入力'] : null,
+    collectsBirthDetails ? ['出身地', reservation.birthPlace || '未入力'] : null,
     ['お支払方法',
       reservation.paymentMethod === 'bank'
         ? '銀行振込（振込手数料はお客様のご負担となります）'
@@ -6142,7 +6248,7 @@ function renderConfirmation(reservation) {
         ? 'PAYPAL'
         : '未入力',
     ],
-    ['対面／オンライン', reservation.sessionType || '未入力'],
+    reservation.sessionType ? ['対面／オンライン', reservation.sessionType] : null,
     ['金額', amountText],
     reservation.compatibilityOptionEnabled
       ? ['相性鑑定オプション', `追加人数：${reservation.compatibilityOptionCount}名 / 料金：${formatCurrency(reservation.currency || '¥', reservation.compatibilityTotalPrice || 0)}`]
@@ -6181,6 +6287,11 @@ function renderConfirmation(reservation) {
 ご連絡先として info@fuchilabo.com を登録しております。
 こちらのアドレスより、あらためてご連絡いたします。
       </p>
+      ${
+        reservation.customerEmailSent
+          ? '<p>お申し込み内容の自動返信メールを送信しました。届かない場合は迷惑メールフォルダもご確認ください。</p>'
+          : '<p style="color:#9a3412;"><strong>自動返信メールの送信を確認できませんでした。</strong><br />お申し込み情報は受け付けています。恐れ入りますが、info@fuchilabo.com までお問い合わせください。</p>'
+      }
       <table class="schedule-table"><tbody>${summaryRows}</tbody></table>
       <div>
         <strong>ご要望・メモ</strong>
@@ -6210,7 +6321,7 @@ function parseBody(req) {
   });
 }
 
-function handleReservation(body, res) {
+async function handleReservation(body, res) {
   const product = getPublicProduct(body.productId);
   if (body.productId === SHICHUSUIMEI_KISO_PRODUCT.id && !isShichusuimeiKisoSaleOpen()) {
     renderShichusuimeiKisoUnavailable(res, 'POST');
@@ -6318,8 +6429,13 @@ function handleReservation(body, res) {
   };
 
   saveReservation(reservation);
-  sendReservationEmail(reservation);
-  sendReservationToSheets(reservation);
+  const [emailResult, sheetsResult] = await Promise.all([
+    sendReservationEmail(reservation),
+    sendReservationToSheets(reservation),
+  ]);
+  reservation.adminEmailSent = !!(emailResult && emailResult.adminSent);
+  reservation.customerEmailSent = !!(emailResult && emailResult.customerSent);
+  reservation.sheetsSent = !!(sheetsResult && sheetsResult.sent);
 
   try {
     if (requiresSchedule && reservation.personId && reservation.date && reservation.timeSlot) {
@@ -6490,6 +6606,31 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (isReadMethod && serveDistributionPdfByPathname(req, res)) {
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/admin/reservations') {
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store, max-age=0',
+    });
+    res.end(req.method === 'HEAD' ? undefined : renderAdminReservationsPage());
+    return;
+  }
+
+  if (isReadMethod && parsedUrl.pathname === '/admin/reservations.csv') {
+    try {
+      const csv = buildReservationsCsv();
+      res.writeHead(200, {
+        'Content-Type': 'text/csv; charset=utf-8',
+        'Content-Disposition': 'attachment; filename="reservations.csv"',
+        'Cache-Control': 'no-store, max-age=0',
+      });
+      res.end(req.method === 'HEAD' ? undefined : csv);
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end(req.method === 'HEAD' ? undefined : '予約データの出力に失敗しました。');
+    }
     return;
   }
 
@@ -6821,7 +6962,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'POST' && parsedUrl.pathname === '/reserve') {
     try {
       const body = await parseBody(req);
-      handleReservation(body, res);
+      await handleReservation(body, res);
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });
       res.end(renderPage({ title: 'エラー', content: '<p>サーバーで問題が発生しました。</p>', backLink: '/' }));
