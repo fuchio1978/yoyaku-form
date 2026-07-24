@@ -6118,6 +6118,12 @@ function renderProductPage(product) {
             setFieldError(emailConfirmInput, 'emailConfirm', 'メールアドレスと確認用メールアドレスが一致しません。');
             return false;
           }
+          var emailDomain = (emailInput.value.trim().split('@')[1] || '').toLowerCase();
+          if (emailDomain === 'gmmail.com') {
+            setFieldError(emailInput, 'email', '「@gmmail.com」ではなく「@gmail.com」ではないかご確認ください。');
+            return false;
+          }
+          setFieldError(emailInput, 'email', '');
           setFieldError(emailConfirmInput, 'emailConfirm', '');
           return true;
         }
@@ -6332,6 +6338,17 @@ function parseBody(req) {
   });
 }
 
+function getReservationEmailError(value) {
+  const email = String(value || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return 'メールアドレスの形式をご確認ください。';
+  }
+  if (email.endsWith('@gmmail.com')) {
+    return '「@gmmail.com」ではなく「@gmail.com」ではないかご確認ください。';
+  }
+  return '';
+}
+
 async function handleReservation(body, res) {
   const product = getPublicProduct(body.productId);
   if (body.productId === SHICHUSUIMEI_KISO_PRODUCT.id && !isShichusuimeiKisoSaleOpen()) {
@@ -6372,6 +6389,13 @@ async function handleReservation(body, res) {
   if (missing.length > 0 || !product) {
     res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(renderPage({ title: 'エラー', content: '<p>入力内容を確認してください。</p>', backLink: '/' }));
+    return;
+  }
+
+  const emailError = getReservationEmailError(body.email);
+  if (emailError) {
+    res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(renderPage({ title: 'エラー', content: `<p>${escapeHtml(emailError)}</p>`, backLink: '/' }));
     return;
   }
 
@@ -6725,6 +6749,13 @@ const server = http.createServer(async (req, res) => {
       if (missing.length > 0 || !product) {
         res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
         res.end(renderPage({ title: 'エラー', content: '<p>入力内容を確認してください。</p>', backLink: '/' }));
+        return;
+      }
+
+      const emailError = getReservationEmailError(body.email);
+      if (emailError) {
+        res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(renderPage({ title: 'エラー', content: `<p>${escapeHtml(emailError)}</p>`, backLink: '/' }));
         return;
       }
 
