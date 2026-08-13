@@ -217,6 +217,39 @@ body {
   height: auto;
 }
 
+/* 管理画面：トップページのバナー管理 */
+.admin-banner-card {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.admin-banner-preview img {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.admin-banner-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.admin-banner-actions button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 /* キャッチコピーは画像に焼き込まれているため、切れないよう全体を表示する */
 .home-hero {
   background: linear-gradient(160deg, #2f4a30 0%, #16281a 100%);

@@ -300,54 +300,220 @@ function renderHomeHeroSection() {
   `;
 }
 
-// トップページの「学び」バナー。
-// 増減はこの配列を編集するだけでよい（並び順もこの通りに表示される）。
-// - image: /admin/images でアップロードした画像を `/uploads/images/ファイル名` で指定
-// - href : 自サイト内は `/kouza` のようなパス、外部サイトは `https://...` を指定
-//          （外部リンクは自動で別タブ表示になる）
-// - alt  : 画像に書かれている内容を文章で（読み上げ・検索エンジン用）
-const HOME_LEARNING_BANNERS = [
+// トップページの「学び」バナー。/admin/home-banners から編集でき、
+// 編集結果は home-banners.json に保存される。
+// 一度も編集していない間は、この既定値がそのまま表示される。
+const DEFAULT_HOME_LEARNING_BANNERS = [
   {
+    id: 'kisokannsei',
     href: '/shichusuimei-kiso',
     image: '/uploads/images/kisokannsei.jpg',
     alt: '基礎完成講座｜四柱推命の基礎をしっかり学べる入門講座のご案内',
+    isHidden: false,
   },
   {
+    id: 'kouza-shoukai',
     href: '/kouza',
     image: '/uploads/images/kouza-shoukai.jpg',
     alt: '講座紹介｜中級・上級講座のご紹介',
+    isHidden: false,
   },
 ];
+
+const homeBannersStorePath = path.join(storageRoot, 'home-banners.json');
+
+function normalizeHomeBanner(banner) {
+  return {
+    id: String((banner && banner.id) || '').trim(),
+    href: String((banner && banner.href) || '').trim(),
+    image: String((banner && banner.image) || '').trim(),
+    alt: String((banner && banner.alt) || '').trim(),
+    isHidden: !!(banner && banner.isHidden),
+  };
+}
+
+function getHomeLearningBanners() {
+  try {
+    if (!fs.existsSync(homeBannersStorePath)) {
+      return DEFAULT_HOME_LEARNING_BANNERS.map(normalizeHomeBanner);
+    }
+    const parsed = JSON.parse(fs.readFileSync(homeBannersStorePath, 'utf-8'));
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed.map(normalizeHomeBanner).filter((banner) => banner.id && banner.image && banner.href);
+  } catch (e) {
+    console.error('Failed to load home banners', e);
+    // 読み込みに失敗してもトップページは表示できるようにする
+    return DEFAULT_HOME_LEARNING_BANNERS.map(normalizeHomeBanner);
+  }
+}
+
+function saveHomeLearningBanners(banners) {
+  fs.mkdirSync(path.dirname(homeBannersStorePath), { recursive: true });
+  fs.writeFileSync(homeBannersStorePath, JSON.stringify(banners.map(normalizeHomeBanner), null, 2));
+}
 
 function isExternalUrl(href) {
   return /^https?:\/\//i.test(String(href || ''));
 }
 
+// 管理画面から入力されたリンク先を検証する。
+// 自サイト内のパス（/kouza など）と http(s) のURLだけを許可し、
+// javascript: のようなスキームは受け付けない。
+function getHomeBannerHrefError(href) {
+  const value = String(href || '').trim();
+  if (!value) {
+    return 'リンク先を入力してください。';
+  }
+  if (isExternalUrl(value) || /^\/[^/]/.test(value) || value === '/') {
+    return '';
+  }
+  return 'リンク先は「/kouza」のようなサイト内のパスか、「https://」で始まるURLで入力してください。';
+}
+
 function renderHomeLearningSection() {
-  if (!HOME_LEARNING_BANNERS.length) {
+  const banners = getHomeLearningBanners().filter((banner) => !banner.isHidden);
+  if (!banners.length) {
     return '';
   }
 
-  const banners = HOME_LEARNING_BANNERS.map((banner) => {
-    const external = isExternalUrl(banner.href);
-    const alt = escapeHtml(banner.alt || '');
-    return `
+  const items = banners
+    .map((banner) => {
+      const external = isExternalUrl(banner.href);
+      return `
       <a
         class="home-promo-banner"
         href="${escapeHtml(banner.href)}"
         ${external ? 'target="_blank" rel="noopener noreferrer"' : ''}
       >
-        <img src="${escapeHtml(banner.image)}" alt="${alt}" loading="lazy" />
+        <img src="${escapeHtml(banner.image)}" alt="${escapeHtml(banner.alt)}" loading="lazy" />
       </a>
     `;
-  }).join('');
+    })
+    .join('');
 
   return `
     <section class="home-section">
       <h2 class="home-section-title">四柱推命の「学び」を求める方はこちら</h2>
-      <div class="home-promo-list">${banners}</div>
+      <div class="home-promo-list">${items}</div>
     </section>
   `;
+}
+
+function renderHomeBannerImageOptions(selected) {
+  const files = getUploadedImages();
+  const options = files
+    .map((file) => {
+      const value = `/uploads/images/${file}`;
+      return `<option value="${escapeHtml(value)}" ${value === selected ? 'selected' : ''}>${escapeHtml(file)}</option>`;
+    })
+    .join('');
+  return `<option value="">-- 画像を選択 --</option>${options}`;
+}
+
+function renderAdminHomeBannersPage(options = {}) {
+  const { message = '', error = '' } = options;
+  const banners = getHomeLearningBanners();
+  const lastIndex = banners.length - 1;
+
+  const rows = banners
+    .map((banner, index) => {
+      const id = escapeHtml(banner.id);
+      return `
+      <div class="admin-banner-card">
+        <div class="admin-banner-preview">
+          <img src="${escapeHtml(banner.image)}" alt="${escapeHtml(banner.alt)}" />
+        </div>
+        <form method="POST" action="/admin/save-home-banner" class="reservation-form" style="display:grid; gap:0.75rem;">
+          <input type="hidden" name="id" value="${id}" />
+          <label>
+            バナー画像
+            <select name="image" required>${renderHomeBannerImageOptions(banner.image)}</select>
+          </label>
+          <label>
+            リンク先（例: /kouza、https://note.com/... ）
+            <input type="text" name="href" value="${escapeHtml(banner.href)}" required />
+          </label>
+          <label>
+            画像の説明（読み上げ・検索エンジン用）
+            <input type="text" name="alt" value="${escapeHtml(banner.alt)}" />
+          </label>
+          <label style="display:flex; align-items:center; gap:0.5rem;">
+            <input type="checkbox" name="isHidden" value="1" ${banner.isHidden ? 'checked' : ''} />
+            このバナーを非表示にする（削除せず一時的に隠す）
+          </label>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+            <button class="button" type="submit" style="margin:0;">保存</button>
+            <span style="color:#6b7280; font-size:0.9rem;">${index + 1}番目に表示中</span>
+          </div>
+        </form>
+        <div class="admin-banner-actions">
+          <form method="POST" action="/admin/move-home-banner" style="margin:0;">
+            <input type="hidden" name="id" value="${id}" />
+            <input type="hidden" name="direction" value="up" />
+            <button class="button secondary" type="submit" style="margin:0;" ${index === 0 ? 'disabled' : ''}>↑ 上へ</button>
+          </form>
+          <form method="POST" action="/admin/move-home-banner" style="margin:0;">
+            <input type="hidden" name="id" value="${id}" />
+            <input type="hidden" name="direction" value="down" />
+            <button class="button secondary" type="submit" style="margin:0;" ${index === lastIndex ? 'disabled' : ''}>↓ 下へ</button>
+          </form>
+          <form method="POST" action="/admin/delete-home-banner" onsubmit="return confirm('このバナーを削除してよろしいですか？');" style="margin:0;">
+            <input type="hidden" name="id" value="${id}" />
+            <button class="button secondary" type="submit" style="margin:0;">削除</button>
+          </form>
+        </div>
+      </div>
+    `;
+    })
+    .join('');
+
+  const notice = message ? `<p style="color:#16a34a; font-weight:bold;">${escapeHtml(message)}</p>` : '';
+  const errorNotice = error ? `<p style="color:#b91c1c; font-weight:bold;">${escapeHtml(error)}</p>` : '';
+
+  const content = `
+    <div class="panel">
+      <h3>トップページのバナー管理</h3>
+      <p>
+        トップページの「四柱推命の『学び』を求める方はこちら」に並ぶバナーです。
+        上から順に表示され、1枚もない場合はこの見出しごと非表示になります。
+      </p>
+      <p style="color:#6b7280; font-size:0.95rem;">
+        画像は先に<a href="/admin/images">画像を管理</a>からアップロードしてください。ここではその画像を選ぶだけです。
+      </p>
+      ${notice}
+      ${errorNotice}
+      ${rows || '<p>まだバナーがありません。下のフォームから追加してください。</p>'}
+
+      <hr style="margin:2rem 0;" />
+      <h4>バナーを追加</h4>
+      <form method="POST" action="/admin/save-home-banner" class="reservation-form" style="display:grid; gap:0.75rem; max-width:640px;">
+        <label>
+          バナー画像
+          <select name="image" required>${renderHomeBannerImageOptions('')}</select>
+        </label>
+        <label>
+          リンク先（例: /kouza、https://note.com/... ）
+          <input type="text" name="href" placeholder="/kouza" required />
+        </label>
+        <label>
+          画像の説明（読み上げ・検索エンジン用）
+          <input type="text" name="alt" placeholder="講座紹介｜中級・上級講座のご紹介" />
+        </label>
+        <div>
+          <button class="button" type="submit" style="margin:0;">この内容で追加</button>
+        </div>
+      </form>
+
+      <p style="margin-top:1.5rem;">
+        <a class="button secondary" href="/">トップページを確認</a>
+        <a class="button secondary" href="/admin">商品一覧へ戻る</a>
+      </p>
+    </div>
+  `;
+
+  return renderPage({ title: '', subtitle: '', content, backLink: '/admin', hideHeading: true });
 }
 
 function renderAdminImagesPage(message) {
@@ -5339,6 +5505,7 @@ function renderAdminHome(message) {
         <a class="button" href="/admin/reservations">予約一覧を確認</a>
         <a class="button" href="/admin/schedules">予約枠を編集</a>
         <a class="button" href="/admin/images">画像を管理</a>
+        <a class="button" href="/admin/home-banners">トップページのバナーを管理</a>
       </div>
       <table class="schedule-table" style="margin-top:1rem;">
         <thead>
@@ -6521,6 +6688,17 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (isReadMethod && parsedUrl.pathname === '/admin/home-banners') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    const query = parsedUrl.query || {};
+    res.end(
+      req.method === 'HEAD'
+        ? undefined
+        : renderAdminHomeBannersPage({ message: query.msg || '', error: query.error || '' })
+    );
+    return;
+  }
+
   if (isReadMethod && parsedUrl.pathname === '/admin/product') {
     const id = parsedUrl.query.id;
     const product = id ? getProduct(id) : undefined;
@@ -6806,6 +6984,109 @@ const server = http.createServer(async (req, res) => {
     } catch (error) {
       console.error('Failed to upload PDF', error);
       res.writeHead(302, { Location: '/admin?msg=' + encodeURIComponent(error.message || 'PDFの保存に失敗しました。') });
+      res.end();
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/save-home-banner') {
+    try {
+      const body = await parseBody(req);
+      const id = String(body.id || '').trim();
+      const image = String(body.image || '').trim();
+      const href = String(body.href || '').trim();
+      const alt = String(body.alt || '').trim();
+      const isHidden = String(body.isHidden || '') === '1';
+
+      const imageFile = image.startsWith('/uploads/images/') ? image.slice('/uploads/images/'.length) : '';
+      if (!imageFile || !getUploadedImages().includes(imageFile)) {
+        throw new Error('バナー画像を選び直してください。');
+      }
+
+      const hrefError = getHomeBannerHrefError(href);
+      if (hrefError) {
+        throw new Error(hrefError);
+      }
+
+      const banners = getHomeLearningBanners();
+      const existingIndex = banners.findIndex((banner) => banner.id === id);
+
+      if (existingIndex >= 0) {
+        banners[existingIndex] = { ...banners[existingIndex], image, href, alt, isHidden };
+      } else {
+        const base = slugifyPdfId(imageFile.replace(/\.[^.]+$/, '')) || 'banner';
+        let newId = base;
+        let suffix = 2;
+        while (banners.some((banner) => banner.id === newId)) {
+          newId = `${base}-${suffix}`;
+          suffix += 1;
+        }
+        banners.push({ id: newId, image, href, alt, isHidden: false });
+      }
+
+      saveHomeLearningBanners(banners);
+
+      const msg = existingIndex >= 0 ? 'バナーを保存しました。' : 'バナーを追加しました。';
+      res.writeHead(302, { Location: '/admin/home-banners?msg=' + encodeURIComponent(msg) });
+      res.end();
+    } catch (error) {
+      console.error('Failed to save home banner', error);
+      res.writeHead(302, {
+        Location: '/admin/home-banners?error=' + encodeURIComponent(error.message || 'バナーの保存に失敗しました。'),
+      });
+      res.end();
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/delete-home-banner') {
+    try {
+      const body = await parseBody(req);
+      const id = String(body.id || '').trim();
+      const banners = getHomeLearningBanners();
+      if (!banners.some((banner) => banner.id === id)) {
+        throw new Error('対象のバナーが見つかりません。');
+      }
+
+      saveHomeLearningBanners(banners.filter((banner) => banner.id !== id));
+
+      res.writeHead(302, { Location: '/admin/home-banners?msg=' + encodeURIComponent('バナーを削除しました。') });
+      res.end();
+    } catch (error) {
+      console.error('Failed to delete home banner', error);
+      res.writeHead(302, {
+        Location: '/admin/home-banners?error=' + encodeURIComponent(error.message || 'バナーの削除に失敗しました。'),
+      });
+      res.end();
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && parsedUrl.pathname === '/admin/move-home-banner') {
+    try {
+      const body = await parseBody(req);
+      const id = String(body.id || '').trim();
+      const direction = String(body.direction || '').trim();
+      const banners = getHomeLearningBanners();
+      const index = banners.findIndex((banner) => banner.id === id);
+      if (index < 0) {
+        throw new Error('対象のバナーが見つかりません。');
+      }
+
+      const target = direction === 'up' ? index - 1 : index + 1;
+      if (target >= 0 && target < banners.length) {
+        const [moved] = banners.splice(index, 1);
+        banners.splice(target, 0, moved);
+        saveHomeLearningBanners(banners);
+      }
+
+      res.writeHead(302, { Location: '/admin/home-banners?msg=' + encodeURIComponent('並び順を変更しました。') });
+      res.end();
+    } catch (error) {
+      console.error('Failed to move home banner', error);
+      res.writeHead(302, {
+        Location: '/admin/home-banners?error=' + encodeURIComponent(error.message || '並び順の変更に失敗しました。'),
+      });
       res.end();
     }
     return;
