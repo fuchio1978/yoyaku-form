@@ -300,6 +300,56 @@ function renderHomeHeroSection() {
   `;
 }
 
+// トップページの「学び」バナー。
+// 増減はこの配列を編集するだけでよい（並び順もこの通りに表示される）。
+// - image: /admin/images でアップロードした画像を `/uploads/images/ファイル名` で指定
+// - href : 自サイト内は `/kouza` のようなパス、外部サイトは `https://...` を指定
+//          （外部リンクは自動で別タブ表示になる）
+// - alt  : 画像に書かれている内容を文章で（読み上げ・検索エンジン用）
+const HOME_LEARNING_BANNERS = [
+  {
+    href: '/shichusuimei-kiso',
+    image: '/uploads/images/kisokannsei.jpg',
+    alt: '基礎完成講座｜四柱推命の基礎をしっかり学べる入門講座のご案内',
+  },
+  {
+    href: '/kouza',
+    image: '/uploads/images/kouza-shoukai.jpg',
+    alt: '講座紹介｜中級・上級講座のご紹介',
+  },
+];
+
+function isExternalUrl(href) {
+  return /^https?:\/\//i.test(String(href || ''));
+}
+
+function renderHomeLearningSection() {
+  if (!HOME_LEARNING_BANNERS.length) {
+    return '';
+  }
+
+  const banners = HOME_LEARNING_BANNERS.map((banner) => {
+    const external = isExternalUrl(banner.href);
+    const alt = escapeHtml(banner.alt || '');
+    return `
+      <a
+        class="home-promo-banner"
+        href="${escapeHtml(banner.href)}"
+        ${external ? 'target="_blank" rel="noopener noreferrer"' : ''}
+      >
+        <img src="${escapeHtml(banner.image)}" alt="${alt}" loading="lazy" />
+      </a>
+    `;
+  }).join('');
+
+  return `
+    <section class="home-section">
+      <h2 class="home-section-title">四柱推命の「学び」を求める方はこちら</h2>
+      <div class="home-promo-list">${banners}</div>
+    </section>
+  `;
+}
+
 function renderAdminImagesPage(message) {
   const files = getUploadedImages();
   const rows = files
@@ -4115,8 +4165,11 @@ function renderHomePage() {
   const content = `
     ${renderHomeHeroSection()}
     <div class="home-shell">
-      <p class="home-intro">鑑定士を選んで、メニュー一覧をご覧ください。</p>
-      <div class="cards-grid">${cards}</div>
+      ${renderHomeLearningSection()}
+      <section class="home-section">
+        <h2 class="home-section-title">四柱推命の「鑑定」を求める方はこちら</h2>
+        <div class="cards-grid">${cards}</div>
+      </section>
     </div>
   `;
 

@@ -168,11 +168,53 @@ body {
   padding: 3rem 0 3.5rem;
 }
 
-.home-intro {
-  margin: 0 0 1.75rem;
-  color: var(--muted);
-  font-size: 0.95rem;
+.home-section + .home-section {
+  margin-top: 3.25rem;
+}
+
+.home-section-title {
+  margin: 0 0 1.5rem;
+  font-family: 'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', serif;
+  font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-align: center;
+}
+
+.home-section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 0.9rem auto 0;
+  background: rgba(31, 45, 61, 0.28);
+}
+
+/* バナーは横長のため、枚数が増減しても1枚ずつ縦に並べる */
+.home-promo-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.home-promo-banner {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.home-promo-banner:hover,
+.home-promo-banner:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.1);
+}
+
+.home-promo-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* キャッチコピーは画像に焼き込まれているため、切れないよう全体を表示する */
