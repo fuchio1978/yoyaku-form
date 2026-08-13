@@ -156,6 +156,57 @@ body {
   justify-content: center;
 }
 
+/* トップページ ヒーロー */
+.page.home-page {
+  max-width: 100%;
+  padding: 0;
+}
+
+.home-shell {
+  width: min(960px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 3rem 0 3.5rem;
+}
+
+.home-intro {
+  margin: 0 0 1.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* キャッチコピーは画像に焼き込まれているため、切れないよう全体を表示する */
+.home-hero {
+  background: linear-gradient(160deg, #2f4a30 0%, #16281a 100%);
+}
+
+.home-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1536 / 1024;
+  object-fit: cover;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 640px) {
+  .home-shell {
+    width: min(960px, calc(100% - 2rem));
+    padding: 2.25rem 0 2.75rem;
+  }
+}
+
 /* 四柱推命 基礎完成講座 LP */
 .kiso-body {
   --kiso-ink: #352923;
@@ -347,143 +398,6 @@ body {
   .kiso-sticky-cta a { display: flex; min-height: 52px; align-items: center; justify-content: center; border-radius: 999px; background: linear-gradient(135deg,#b78632,#835b21); color: white; text-decoration: none; font-weight: 800; }
 }
 
-.home-banner-wrap {
-  max-width: 1100px;
-  margin: 0 auto 1.75rem;
-}
-
-.home-banner-slider {
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid rgba(197, 168, 128, 0.42);
-  box-shadow: 0 18px 40px rgba(53, 34, 26, 0.12);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background: #fff;
-}
-
-.home-banner-slider:hover,
-.home-banner-slider:focus-within {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 48px rgba(53, 34, 26, 0.18);
-}
-
-.home-banner-viewport {
-  position: relative;
-  aspect-ratio: 1100 / 290;
-  min-height: 180px;
-  background: #f8f3ec;
-}
-
-.home-banner-slide {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-
-.home-banner-slide.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.home-banner-slide:focus-visible {
-  outline: 3px solid rgba(15, 44, 89, 0.55);
-  outline-offset: -3px;
-}
-
-.home-banner-image {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  background: #f8f3ec;
-}
-
-.home-banner-arrow {
-  position: absolute;
-  top: 50%;
-  z-index: 2;
-  width: 42px;
-  height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #0f2c59;
-  box-shadow: 0 10px 24px rgba(15, 44, 89, 0.18);
-  cursor: pointer;
-  transform: translateY(-50%);
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.home-banner-arrow:hover,
-.home-banner-arrow:focus-visible {
-  background: #ffffff;
-  box-shadow: 0 14px 28px rgba(15, 44, 89, 0.24);
-}
-
-.home-banner-arrow:focus-visible {
-  outline: 3px solid rgba(15, 44, 89, 0.2);
-}
-
-.home-banner-arrow:active {
-  transform: translateY(-50%) scale(0.97);
-}
-
-.home-banner-arrow svg {
-  width: 20px;
-  height: 20px;
-}
-
-.home-banner-arrow-prev {
-  left: 14px;
-}
-
-.home-banner-arrow-next {
-  right: 14px;
-}
-
-.home-banner-arrow-next svg {
-  transform: rotate(180deg);
-}
-
-.home-banner-dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 0 0.9rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, #f8f3ec 100%);
-}
-
-.home-banner-dot {
-  width: 10px;
-  height: 10px;
-  border: none;
-  border-radius: 999px;
-  padding: 0;
-  background: rgba(15, 44, 89, 0.22);
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.home-banner-dot:hover,
-.home-banner-dot:focus-visible {
-  transform: scale(1.12);
-  background: rgba(15, 44, 89, 0.42);
-}
-
-.home-banner-dot.is-active {
-  background: #0f2c59;
-}
-
 .cards-grid.single-person-grid {
   grid-template-columns: minmax(260px, 360px);
 }
@@ -493,36 +407,6 @@ body {
   .person-products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
-  }
-
-  .home-banner-wrap {
-    margin-bottom: 1.25rem;
-  }
-
-  .home-banner-slider {
-    border-radius: 18px;
-  }
-
-  .home-banner-viewport {
-    aspect-ratio: 1100 / 420;
-    min-height: 150px;
-  }
-
-  .home-banner-arrow {
-    width: 36px;
-    height: 36px;
-  }
-
-  .home-banner-arrow-prev {
-    left: 14px;
-  }
-
-  .home-banner-arrow-next {
-    right: 14px;
-  }
-
-  .home-banner-dots {
-    padding: 0.65rem 0 0.8rem;
   }
 }
 
