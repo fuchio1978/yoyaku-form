@@ -6633,6 +6633,16 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (isReadMethod && (parsedUrl.pathname === '/meisiki' || parsedUrl.pathname === '/meisiki/')) {
+    const salesPagePath = path.join(publicDir, 'meisiki.html');
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'public, max-age=300',
+    });
+    res.end(req.method === 'HEAD' ? undefined : fs.readFileSync(salesPagePath));
+    return;
+  }
+
   if (isReadMethod && parsedUrl.pathname === '/kouza') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(req.method === 'HEAD' ? undefined : renderKouzaCoursePage());
